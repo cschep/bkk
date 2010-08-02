@@ -1,0 +1,408 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D3623260D0F684500981E51 /* bkkAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* bkkAppDelegate.m */; };
+		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		832FB7A611BE0CCA0084909E /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 832FB7A411BE0CCA0084909E /* CalendarViewController.m */; };
+		832FB83D11BE200B0084909E /* Date.m in Sources */ = {isa = PBXBuildFile; fileRef = 832FB83C11BE200B0084909E /* Date.m */; };
+		8341AB50118937A200758183 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8341AB4F118937A200758183 /* Icon.png */; };
+		8381B5B91169BF0100B545AB /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 8381B5AE1169BF0100B545AB /* NSObject+SBJSON.m */; };
+		8381B5BA1169BF0100B545AB /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 8381B5B01169BF0100B545AB /* NSString+SBJSON.m */; };
+		8381B5BB1169BF0100B545AB /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 8381B5B21169BF0100B545AB /* SBJSON.m */; };
+		8381B5BC1169BF0100B545AB /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 8381B5B41169BF0100B545AB /* SBJsonBase.m */; };
+		8381B5BD1169BF0100B545AB /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8381B5B61169BF0100B545AB /* SBJsonParser.m */; };
+		8381B5BE1169BF0100B545AB /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8381B5B81169BF0100B545AB /* SBJsonWriter.m */; };
+		8381B6101169C65500B545AB /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 8381B60F1169C65500B545AB /* Song.m */; };
+		83829841116C69F600EE8539 /* SongDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8382983F116C69F600EE8539 /* SongDetailViewController.m */; };
+		83829842116C69F600EE8539 /* SongDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83829840116C69F600EE8539 /* SongDetailViewController.xib */; };
+		83ADD5FC1169939A00BF3809 /* bkklogobwtouchup.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 83ADD5FB1169939A00BF3809 /* bkklogobwtouchup.jpg */; };
+		83ADD5FF116993AB00BF3809 /* bkkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83ADD5FE116993AB00BF3809 /* bkkViewController.m */; };
+		83ADD601116993E800BF3809 /* bkkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83ADD600116993E800BF3809 /* bkkViewController.xib */; };
+		83ADD630116997AD00BF3809 /* SongListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83ADD62E116997AD00BF3809 /* SongListViewController.m */; };
+		83B47B99117A7CAD005ADAF3 /* VCTitleCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B47B98117A7CAD005ADAF3 /* VCTitleCase.m */; };
+		83F3CA5A11780BE00033611B /* bkk_vert_realcat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 83F3CA5511780BE00033611B /* bkk_vert_realcat.jpg */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D3623240D0F684500981E51 /* bkkAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bkkAppDelegate.h; sourceTree = "<group>"; };
+		1D3623250D0F684500981E51 /* bkkAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = bkkAppDelegate.m; sourceTree = "<group>"; };
+		1D6058910D05DD3D006BFB54 /* baby ketten.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "baby ketten.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		832FB7A311BE0CCA0084909E /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
+		832FB7A411BE0CCA0084909E /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
+		832FB83B11BE200B0084909E /* Date.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Date.h; sourceTree = "<group>"; };
+		832FB83C11BE200B0084909E /* Date.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Date.m; sourceTree = "<group>"; };
+		8341AB4F118937A200758183 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		8381B5AC1169BF0100B545AB /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		8381B5AD1169BF0100B545AB /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		8381B5AE1169BF0100B545AB /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
+		8381B5AF1169BF0100B545AB /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		8381B5B01169BF0100B545AB /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
+		8381B5B11169BF0100B545AB /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		8381B5B21169BF0100B545AB /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
+		8381B5B31169BF0100B545AB /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
+		8381B5B41169BF0100B545AB /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonBase.m; sourceTree = "<group>"; };
+		8381B5B51169BF0100B545AB /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		8381B5B61169BF0100B545AB /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		8381B5B71169BF0100B545AB /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		8381B5B81169BF0100B545AB /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		8381B60E1169C65500B545AB /* Song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Song.h; sourceTree = "<group>"; };
+		8381B60F1169C65500B545AB /* Song.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Song.m; sourceTree = "<group>"; };
+		8382983E116C69F600EE8539 /* SongDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongDetailViewController.h; sourceTree = "<group>"; };
+		8382983F116C69F600EE8539 /* SongDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongDetailViewController.m; sourceTree = "<group>"; };
+		83829840116C69F600EE8539 /* SongDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SongDetailViewController.xib; sourceTree = "<group>"; };
+		83ADD5FB1169939A00BF3809 /* bkklogobwtouchup.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bkklogobwtouchup.jpg; sourceTree = "<group>"; };
+		83ADD5FD116993AB00BF3809 /* bkkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bkkViewController.h; sourceTree = "<group>"; };
+		83ADD5FE116993AB00BF3809 /* bkkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = bkkViewController.m; sourceTree = "<group>"; };
+		83ADD600116993E800BF3809 /* bkkViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = bkkViewController.xib; sourceTree = "<group>"; };
+		83ADD62D116997AD00BF3809 /* SongListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongListViewController.h; sourceTree = "<group>"; };
+		83ADD62E116997AD00BF3809 /* SongListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongListViewController.m; sourceTree = "<group>"; };
+		83B47B97117A7CAD005ADAF3 /* VCTitleCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCTitleCase.h; sourceTree = "<group>"; };
+		83B47B98117A7CAD005ADAF3 /* VCTitleCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCTitleCase.m; sourceTree = "<group>"; };
+		83BFE0BA11C543140022D0CA /* baby ketten_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "baby ketten_Prefix.pch"; sourceTree = "<group>"; };
+		83F3CA5511780BE00033611B /* bkk_vert_realcat.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bkk_vert_realcat.jpg; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* baby ketten-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "baby ketten-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				83B47B97117A7CAD005ADAF3 /* VCTitleCase.h */,
+				83B47B98117A7CAD005ADAF3 /* VCTitleCase.m */,
+				8381B5AB1169BF0100B545AB /* JSON */,
+				83ADD5FD116993AB00BF3809 /* bkkViewController.h */,
+				83ADD5FE116993AB00BF3809 /* bkkViewController.m */,
+				1D3623240D0F684500981E51 /* bkkAppDelegate.h */,
+				1D3623250D0F684500981E51 /* bkkAppDelegate.m */,
+				83ADD62D116997AD00BF3809 /* SongListViewController.h */,
+				83ADD62E116997AD00BF3809 /* SongListViewController.m */,
+				8381B60E1169C65500B545AB /* Song.h */,
+				8381B60F1169C65500B545AB /* Song.m */,
+				8382983E116C69F600EE8539 /* SongDetailViewController.h */,
+				8382983F116C69F600EE8539 /* SongDetailViewController.m */,
+				83829840116C69F600EE8539 /* SongDetailViewController.xib */,
+				832FB7A311BE0CCA0084909E /* CalendarViewController.h */,
+				832FB7A411BE0CCA0084909E /* CalendarViewController.m */,
+				832FB83B11BE200B0084909E /* Date.h */,
+				832FB83C11BE200B0084909E /* Date.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD3D006BFB54 /* baby ketten.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				83BFE0BA11C543140022D0CA /* baby ketten_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8341AB4F118937A200758183 /* Icon.png */,
+				83F3CA5511780BE00033611B /* bkk_vert_realcat.jpg */,
+				83ADD600116993E800BF3809 /* bkkViewController.xib */,
+				83ADD5FB1169939A00BF3809 /* bkklogobwtouchup.jpg */,
+				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
+				8D1107310486CEB800E47090 /* baby ketten-Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8381B5AB1169BF0100B545AB /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				8381B5AC1169BF0100B545AB /* JSON.h */,
+				8381B5AD1169BF0100B545AB /* NSObject+SBJSON.h */,
+				8381B5AE1169BF0100B545AB /* NSObject+SBJSON.m */,
+				8381B5AF1169BF0100B545AB /* NSString+SBJSON.h */,
+				8381B5B01169BF0100B545AB /* NSString+SBJSON.m */,
+				8381B5B11169BF0100B545AB /* SBJSON.h */,
+				8381B5B21169BF0100B545AB /* SBJSON.m */,
+				8381B5B31169BF0100B545AB /* SBJsonBase.h */,
+				8381B5B41169BF0100B545AB /* SBJsonBase.m */,
+				8381B5B51169BF0100B545AB /* SBJsonParser.h */,
+				8381B5B61169BF0100B545AB /* SBJsonParser.m */,
+				8381B5B71169BF0100B545AB /* SBJsonWriter.h */,
+				8381B5B81169BF0100B545AB /* SBJsonWriter.m */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* baby ketten */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "baby ketten" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "baby ketten";
+			productName = bkk;
+			productReference = 1D6058910D05DD3D006BFB54 /* baby ketten.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Baby Ketten" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* baby ketten */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
+				83ADD5FC1169939A00BF3809 /* bkklogobwtouchup.jpg in Resources */,
+				83ADD601116993E800BF3809 /* bkkViewController.xib in Resources */,
+				83829842116C69F600EE8539 /* SongDetailViewController.xib in Resources */,
+				83F3CA5A11780BE00033611B /* bkk_vert_realcat.jpg in Resources */,
+				8341AB50118937A200758183 /* Icon.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				1D3623260D0F684500981E51 /* bkkAppDelegate.m in Sources */,
+				83ADD5FF116993AB00BF3809 /* bkkViewController.m in Sources */,
+				83ADD630116997AD00BF3809 /* SongListViewController.m in Sources */,
+				8381B5B91169BF0100B545AB /* NSObject+SBJSON.m in Sources */,
+				8381B5BA1169BF0100B545AB /* NSString+SBJSON.m in Sources */,
+				8381B5BB1169BF0100B545AB /* SBJSON.m in Sources */,
+				8381B5BC1169BF0100B545AB /* SBJsonBase.m in Sources */,
+				8381B5BD1169BF0100B545AB /* SBJsonParser.m in Sources */,
+				8381B5BE1169BF0100B545AB /* SBJsonWriter.m in Sources */,
+				8381B6101169C65500B545AB /* Song.m in Sources */,
+				83829841116C69F600EE8539 /* SongDetailViewController.m in Sources */,
+				83B47B99117A7CAD005ADAF3 /* VCTitleCase.m in Sources */,
+				832FB7A611BE0CCA0084909E /* CalendarViewController.m in Sources */,
+				832FB83D11BE200B0084909E /* Date.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../gdata-objectivec-client-1.10.0/Source/build/Debug\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "baby ketten_Prefix.pch";
+				INFOPLIST_FILE = "baby ketten-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../gdata-objectivec-client-1.10.0/Source/build/GData.build/Debug/GDataFramework.build/Objects-normal/i386\"",
+				);
+				PRODUCT_NAME = "baby ketten";
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../gdata-objectivec-client-1.10.0/Source/build/Debug\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "baby ketten_Prefix.pch";
+				INFOPLIST_FILE = "baby ketten-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../gdata-objectivec-client-1.10.0/Source/build/GData.build/Debug/GDataFramework.build/Objects-normal/i386\"",
+				);
+				PRODUCT_NAME = "baby ketten";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		83326A0C118939F50012C57C /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Christopher Schepman";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FF6D0548-18BB-47A4-A6D1-3EE4015C7950";
+				SDKROOT = iphonesimulator4.0;
+			};
+			name = Distribution;
+		};
+		83326A0D118939F50012C57C /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../gdata-objectivec-client-1.10.0/Source/build/Debug\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "baby ketten_Prefix.pch";
+				INFOPLIST_FILE = "baby ketten-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../gdata-objectivec-client-1.10.0/Source/build/GData.build/Debug/GDataFramework.build/Objects-normal/i386\"",
+				);
+				PRODUCT_NAME = "baby ketten";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Distribution;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PREBINDING = NO;
+				SDKROOT = iphonesimulator4.0;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = "";
+				PREBINDING = NO;
+				SDKROOT = iphonesimulator4.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "baby ketten" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+				83326A0D118939F50012C57C /* Distribution */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Baby Ketten" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+				83326A0C118939F50012C57C /* Distribution */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}
