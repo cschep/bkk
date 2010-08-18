@@ -17,16 +17,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 
+	/*
 	tabBarController = [[UITabBarController alloc] init];
 	
-	//searching
-	bkkViewController *bkkView = [[bkkViewController alloc] initWithNibName:@"bkkViewController" bundle:nil];
-	navControllerSearch = [[UINavigationController alloc] initWithRootViewController:bkkView];
-	[navControllerSearch navigationBar].hidden = YES;
-	navControllerSearch.navigationBar.tintColor = [UIColor blackColor];
-	navControllerSearch.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemSearch tag:1];
-	[bkkView release];
-
 	//calendaring
 	CalendarViewController *calendarViewController = [[CalendarViewController alloc] init];
 	calendarViewController.title = @"Calendar!";
@@ -37,9 +30,19 @@
 
 		
 	[tabBarController setViewControllers: [NSArray arrayWithObjects:navControllerSearch, navControllerCalendar, nil]];
+	 */
 	
+     //searching
+	bkkViewController *bkkView = [[bkkViewController alloc] initWithNibName:@"bkkViewController" bundle:nil];
+	navControllerSearch = [[UINavigationController alloc] initWithRootViewController:bkkView];
+	[navControllerSearch navigationBar].hidden = YES;
+	navControllerSearch.navigationBar.tintColor = [UIColor blackColor];
+	//navControllerSearch.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemSearch tag:1];
+	[bkkView release];
+	 
+	 
 	[window setBackgroundColor:[UIColor blackColor]];
-	[window addSubview:tabBarController.view];
+	[window addSubview:navControllerSearch.view];
     [window makeKeyAndVisible];
 	
 	return YES;

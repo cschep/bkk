@@ -11,9 +11,11 @@
 @interface bkkViewController : UIViewController {
 	IBOutlet UITextField *textField;
 	IBOutlet UISegmentedControl *segmented;
+	IBOutlet UIButton *kamikazeButton;
 }
 
 - (IBAction)loadWebPage;
+- (IBAction)kamikazeKetten;
 
 @end
 

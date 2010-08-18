@@ -8,6 +8,7 @@
 
 #import "SongListViewController.h"
 #import "SongDetailViewController.h"
+#import "LyricsWebViewController.h"
 #import "JSON.h"
 #import "Song.h"
 
@@ -16,6 +17,7 @@
 @synthesize songList;
 @synthesize searchTerm;
 @synthesize searchBy;
+@synthesize isRandom;
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -28,10 +30,11 @@
     return self;
 }
 
-- (id)initWithSearchTerm:(NSString *)searchTermIn SearchBy:(NSString *)searchByIn Style:(UITableViewStyle)style {
+- (id)initWithSearchTerm:(NSString *)searchTermIn SearchBy:(NSString *)searchByIn Random:(BOOL)_isRandom Style:(UITableViewStyle)style {
 	if (self = [super initWithStyle:style]) {
 		self.searchTerm = searchTermIn;
 		self.searchBy = searchByIn;
+		self.isRandom = _isRandom;
 	}
 	return self;
 }
@@ -69,8 +72,13 @@
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	self.songList = [[NSMutableArray alloc] init];
 	
-	//NSString *urlString = [NSString stringWithFormat:@"http://localhost:4567/json?search=%@&searchby=%@", self.searchTerm, self.searchBy];
-	NSString *urlString = [NSString stringWithFormat:@"http://bkk.schepman.org/json?search=%@&searchby=%@", self.searchTerm, self.searchBy];
+	NSString *urlString;
+	if (isRandom) {
+		urlString = [NSString stringWithFormat:@"http://bkk.schepman.org/random"];
+	} else {
+		urlString = [NSString stringWithFormat:@"http://bkk.schepman.org/json?search=%@&searchby=%@", self.searchTerm, self.searchBy];
+	}
+	
 	NSString* escapedUrlString = [[urlString lowercaseString] stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
 	NSURL *url = [NSURL URLWithString:escapedUrlString];
 	
@@ -103,7 +111,11 @@
 	if ([songList count] == 0) {
 		self.title = @"Not Found!";
 	} else {
-		self.title = @"Results";
+		if (isRandom) {
+			self.title = @"Kamikaze!";
+		} else {
+			self.title = @"Results";
+		}
 	}
 
 	[(UIActivityIndicatorView *)self.navigationItem.rightBarButtonItem.customView  stopAnimating];
@@ -168,7 +180,7 @@
     // Configure the cell...
     cell.textLabel.text = [[songList objectAtIndex:indexPath.row] title];
 	cell.detailTextLabel.text = [[songList objectAtIndex:indexPath.row] artist];
-	//cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -218,13 +230,19 @@
 #pragma mark -
 #pragma mark Table view delegate
 
-/*
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	/*
 	SongDetailViewController *songDetailViewController = [[SongDetailViewController alloc] initWithSong:[songList objectAtIndex:indexPath.row]];
 	[self.navigationController pushViewController:songDetailViewController animated:YES];
 	[songDetailViewController release];
+	*/
+	
+	LyricsWebViewController *lyricsWebViewController = [[LyricsWebViewController alloc] initWithSong:[songList objectAtIndex:indexPath.row]];
+	[self.navigationController pushViewController:lyricsWebViewController animated:YES];
+	[lyricsWebViewController release];
 }
-*/
+
 
 
 #pragma mark -

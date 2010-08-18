@@ -30,6 +30,9 @@
 		83ADD601116993E800BF3809 /* bkkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83ADD600116993E800BF3809 /* bkkViewController.xib */; };
 		83ADD630116997AD00BF3809 /* SongListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83ADD62E116997AD00BF3809 /* SongListViewController.m */; };
 		83B47B99117A7CAD005ADAF3 /* VCTitleCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B47B98117A7CAD005ADAF3 /* VCTitleCase.m */; };
+		83DA582A121B7A87006804B8 /* LyricsWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83DA5828121B7A87006804B8 /* LyricsWebViewController.m */; };
+		83DA582B121B7A87006804B8 /* LyricsWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83DA5829121B7A87006804B8 /* LyricsWebViewController.xib */; };
+		83DA58AA121B96DD006804B8 /* kamikaze_ketten.png in Resources */ = {isa = PBXBuildFile; fileRef = 83DA58A9121B96DD006804B8 /* kamikaze_ketten.png */; };
 		83F3CA5A11780BE00033611B /* bkk_vert_realcat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 83F3CA5511780BE00033611B /* bkk_vert_realcat.jpg */; };
 /* End PBXBuildFile section */
 
@@ -64,7 +67,7 @@
 		8381B60F1169C65500B545AB /* Song.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Song.m; sourceTree = "<group>"; };
 		8382983E116C69F600EE8539 /* SongDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongDetailViewController.h; sourceTree = "<group>"; };
 		8382983F116C69F600EE8539 /* SongDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongDetailViewController.m; sourceTree = "<group>"; };
-		83829840116C69F600EE8539 /* SongDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SongDetailViewController.xib; sourceTree = "<group>"; };
+		83829840116C69F600EE8539 /* SongDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = SongDetailViewController.xib; path = Classes/SongDetailViewController.xib; sourceTree = "<group>"; };
 		83ADD5FB1169939A00BF3809 /* bkklogobwtouchup.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bkklogobwtouchup.jpg; sourceTree = "<group>"; };
 		83ADD5FD116993AB00BF3809 /* bkkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bkkViewController.h; sourceTree = "<group>"; };
 		83ADD5FE116993AB00BF3809 /* bkkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = bkkViewController.m; sourceTree = "<group>"; };
@@ -74,6 +77,10 @@
 		83B47B97117A7CAD005ADAF3 /* VCTitleCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCTitleCase.h; sourceTree = "<group>"; };
 		83B47B98117A7CAD005ADAF3 /* VCTitleCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCTitleCase.m; sourceTree = "<group>"; };
 		83BFE0BA11C543140022D0CA /* baby ketten_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "baby ketten_Prefix.pch"; sourceTree = "<group>"; };
+		83DA5827121B7A87006804B8 /* LyricsWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LyricsWebViewController.h; sourceTree = "<group>"; };
+		83DA5828121B7A87006804B8 /* LyricsWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LyricsWebViewController.m; sourceTree = "<group>"; };
+		83DA5829121B7A87006804B8 /* LyricsWebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = LyricsWebViewController.xib; path = Classes/LyricsWebViewController.xib; sourceTree = "<group>"; };
+		83DA58A9121B96DD006804B8 /* kamikaze_ketten.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kamikaze_ketten.png; sourceTree = "<group>"; };
 		83F3CA5511780BE00033611B /* bkk_vert_realcat.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bkk_vert_realcat.jpg; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* baby ketten-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "baby ketten-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -108,11 +115,12 @@
 				8381B60F1169C65500B545AB /* Song.m */,
 				8382983E116C69F600EE8539 /* SongDetailViewController.h */,
 				8382983F116C69F600EE8539 /* SongDetailViewController.m */,
-				83829840116C69F600EE8539 /* SongDetailViewController.xib */,
 				832FB7A311BE0CCA0084909E /* CalendarViewController.h */,
 				832FB7A411BE0CCA0084909E /* CalendarViewController.m */,
 				832FB83B11BE200B0084909E /* Date.h */,
 				832FB83C11BE200B0084909E /* Date.m */,
+				83DA5827121B7A87006804B8 /* LyricsWebViewController.h */,
+				83DA5828121B7A87006804B8 /* LyricsWebViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -149,6 +157,9 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				83829840116C69F600EE8539 /* SongDetailViewController.xib */,
+				83DA5829121B7A87006804B8 /* LyricsWebViewController.xib */,
+				83DA58A9121B96DD006804B8 /* kamikaze_ketten.png */,
 				8341AB4F118937A200758183 /* Icon.png */,
 				83F3CA5511780BE00033611B /* bkk_vert_realcat.jpg */,
 				83ADD600116993E800BF3809 /* bkkViewController.xib */,
@@ -237,6 +248,8 @@
 				83829842116C69F600EE8539 /* SongDetailViewController.xib in Resources */,
 				83F3CA5A11780BE00033611B /* bkk_vert_realcat.jpg in Resources */,
 				8341AB50118937A200758183 /* Icon.png in Resources */,
+				83DA582B121B7A87006804B8 /* LyricsWebViewController.xib in Resources */,
+				83DA58AA121B96DD006804B8 /* kamikaze_ketten.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +275,7 @@
 				83B47B99117A7CAD005ADAF3 /* VCTitleCase.m in Sources */,
 				832FB7A611BE0CCA0084909E /* CalendarViewController.m in Sources */,
 				832FB83D11BE200B0084909E /* Date.m in Sources */,
+				83DA582A121B7A87006804B8 /* LyricsWebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

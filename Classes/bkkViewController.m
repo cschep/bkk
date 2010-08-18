@@ -13,7 +13,7 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
 	[textField resignFirstResponder];
-	SongListViewController *songListViewController = [[SongListViewController alloc] initWithSearchTerm:theTextField.text SearchBy:[segmented titleForSegmentAtIndex:[segmented selectedSegmentIndex]] Style:UITableViewStylePlain];
+	SongListViewController *songListViewController = [[SongListViewController alloc] initWithSearchTerm:theTextField.text SearchBy:[segmented titleForSegmentAtIndex:[segmented selectedSegmentIndex]] Random:NO Style:UITableViewStylePlain];
 	songListViewController.title = @"Results";
 	
 	self.navigationController.navigationBar.hidden = NO;
@@ -40,6 +40,13 @@
 - (IBAction)loadWebPage {
 	NSURL *url = [NSURL URLWithString:@"http://babyketten.com"];
 	[[UIApplication sharedApplication] openURL:url];
+}
+
+- (IBAction)kamikazeKetten {
+	SongListViewController *songListViewController = [[SongListViewController alloc] initWithSearchTerm:@"none" SearchBy:@"none" Random:YES Style:UITableViewStylePlain];
+	
+	self.navigationController.navigationBar.hidden = NO;
+	[self.navigationController pushViewController:songListViewController animated:YES];
 }
 
 /*
