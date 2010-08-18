@@ -7,6 +7,7 @@
 //
 
 #import "LyricsWebViewController.h"
+#import "VCTitleCase.h"
 
 @implementation LyricsWebViewController
 
@@ -35,6 +36,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
+	//Create an instance of activity indicator view
+	UIActivityIndicatorView * activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+	
+	//set the initial property
+	[activityIndicator hidesWhenStopped];
+	[activityIndicator startAnimating];
+	
+	//Create an instance of Bar button item with custome view which is of activity indicator
+	UIBarButtonItem * barButton = [[UIBarButtonItem alloc] initWithCustomView:activityIndicator];
+	
+	//Set the bar button the navigation bar
+	[self navigationItem].rightBarButtonItem = barButton;
+	
+	//Memory clean up
+	[activityIndicator release];
+	[barButton release];
+	
+	self.title = @"Loading...";
+	
 	NSString *urlString = [NSString stringWithFormat:@"http://lyrics.wikia.com/index.php?search=%@+%@&ns0=1&ns220=1&title=Special:Search&fulltext=Search&fulltext=Search", song.artist , song.title];
 	NSString* escapedUrlString = [[urlString lowercaseString] stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
 
@@ -42,6 +62,13 @@
 	NSURL *url = [NSURL URLWithString:escapedUrlString];
 	NSURLRequest *request = [NSURLRequest requestWithURL:url];
 	[lyricsWebView loadRequest:request];
+}
+
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+	[(UIActivityIndicatorView *)self.navigationItem.rightBarButtonItem.customView  stopAnimating];
+	self.title = [song.title titlecaseString];
+
 }
 
 

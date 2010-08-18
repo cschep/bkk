@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Song.h"
 
-@interface LyricsWebViewController : UIViewController {
+@interface LyricsWebViewController : UIViewController <UIWebViewDelegate> {
 	IBOutlet UIWebView *lyricsWebView;
 	Song *song;
 }
