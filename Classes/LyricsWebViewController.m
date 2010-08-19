@@ -12,7 +12,10 @@
 @implementation LyricsWebViewController
 
 @synthesize song;
-
+@synthesize lyricsWebView;
+@synthesize backButton;
+@synthesize forwardButton;
+@synthesize activityIndicator;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -36,8 +39,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
+	lyricsWebView.backgroundColor = [UIColor clearColor];
+	
 	//Create an instance of activity indicator view
-	UIActivityIndicatorView * activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+	activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
 	
 	//set the initial property
 	[activityIndicator hidesWhenStopped];
@@ -64,11 +69,28 @@
 	[lyricsWebView loadRequest:request];
 }
 
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+	[activityIndicator startAnimating];
+	return YES;
+}
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-	[(UIActivityIndicatorView *)self.navigationItem.rightBarButtonItem.customView  stopAnimating];
+	lyricsWebView.backgroundColor = [UIColor whiteColor];
+	[activityIndicator  stopAnimating];
 	self.title = [song.title titlecaseString];
 
+	if ([webView canGoBack]) {
+		backButton.enabled = YES;
+	} else {
+		backButton.enabled = NO;
+	}
+	
+	if ([webView canGoForward]) {
+		forwardButton.enabled = YES;
+	} else {
+		forwardButton.enabled = NO;
+	}
+	
 }
 
 
@@ -96,6 +118,7 @@
 
 - (void)dealloc {
     [super dealloc];
+	[lyricsWebView release];
 }
 
 

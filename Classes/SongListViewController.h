@@ -14,15 +14,18 @@
 	NSString *searchTerm;
 	NSString *searchBy;
 	BOOL isRandom;
+	UIActivityIndicatorView *activityIndicator;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style;
 - (id)initWithSearchTerm:(NSString *)searchTermIn SearchBy:(NSString *)searchByIn Random:(BOOL)_isRandom Style:(UITableViewStyle)style;
 - (void)loadSongs;
+- (void)startLoadingSongs;
 
 @property (retain) NSMutableArray *songList;
 @property (retain) NSString *searchTerm;
 @property (retain) NSString *searchBy;
+@property (nonatomic, retain) UIActivityIndicatorView *activityIndicator;
 @property BOOL isRandom;
 
 @end

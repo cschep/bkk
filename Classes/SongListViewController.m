@@ -18,6 +18,7 @@
 @synthesize searchTerm;
 @synthesize searchBy;
 @synthesize isRandom;
+@synthesize activityIndicator;
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -41,31 +42,46 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	//spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-	//[spinner hidesWhenStopped];
-	//[self.tableView addSubview:spinner];
-	//[spinner startAnimating];
 
 	//Create an instance of activity indicator view
-	UIActivityIndicatorView * activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
-	
+	activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
 	//set the initial property
 	[activityIndicator hidesWhenStopped];
-	[activityIndicator startAnimating];
 	
 	//Create an instance of Bar button item with custome view which is of activity indicator
 	UIBarButtonItem * barButton = [[UIBarButtonItem alloc] initWithCustomView:activityIndicator];
 	
 	//Set the bar button the navigation bar
 	[self navigationItem].rightBarButtonItem = barButton;
-
+	
 	//Memory clean up
 	[activityIndicator release];
 	[barButton release];
 	
-	self.title = @"Loading...";
+	//start the load
+	[self startLoadingSongs];
+}
+
+- (void)startLoadingSongs {
+	//let the user know!
+	[activityIndicator startAnimating];
 	
+	self.title = @"Loading...";
 	[NSThread detachNewThreadSelector:@selector(loadSongs) toTarget:self withObject:nil];
+}
+
+-(BOOL)canBecomeFirstResponder {
+    return YES;
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [self becomeFirstResponder];
+}
+
+- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
+	if (event.type == UIEventSubtypeMotionShake) {
+		[self startLoadingSongs];
+	}
 }
 
 - (void)loadSongs {
@@ -181,7 +197,7 @@
     cell.textLabel.text = [[songList objectAtIndex:indexPath.row] title];
 	cell.detailTextLabel.text = [[songList objectAtIndex:indexPath.row] artist];
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	cell.selectionStyle = UITableViewCellSelectionStyleNone;
+	//cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
@@ -237,11 +253,12 @@
 	[self.navigationController pushViewController:songDetailViewController animated:YES];
 	[songDetailViewController release];
 	*/
-	
+
 	LyricsWebViewController *lyricsWebViewController = [[LyricsWebViewController alloc] initWithSong:[songList objectAtIndex:indexPath.row]];
 	[self.navigationController pushViewController:lyricsWebViewController animated:YES];
 	[lyricsWebViewController release];
 }
+
 
 
 

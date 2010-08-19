@@ -18,6 +18,7 @@
 	
 	self.navigationController.navigationBar.hidden = NO;
 	[self.navigationController pushViewController:songListViewController animated:YES];
+	[songListViewController release];
 	
 	return YES;
 }
@@ -31,6 +32,20 @@
     return self;
 }
 */
+
+-(BOOL)canBecomeFirstResponder {
+    return YES;
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [self becomeFirstResponder];
+}
+
+- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
+	if (event.type == UIEventSubtypeMotionShake) {
+		[self kamikazeKetten];
+	}
+}
 
 - (void)viewWillAppear:(BOOL)animated {
 	self.navigationController.navigationBar.hidden = YES;
@@ -47,6 +62,7 @@
 	
 	self.navigationController.navigationBar.hidden = NO;
 	[self.navigationController pushViewController:songListViewController animated:YES];
+	[songListViewController release];
 }
 
 /*
