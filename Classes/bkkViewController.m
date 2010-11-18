@@ -39,6 +39,7 @@
 
 -(void)viewDidAppear:(BOOL)animated {
     [self becomeFirstResponder];
+	
 }
 
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
@@ -60,8 +61,19 @@
 - (IBAction)kamikazeKetten {
 	SongListViewController *songListViewController = [[SongListViewController alloc] initWithSearchTerm:@"none" SearchBy:@"none" Random:YES Style:UITableViewStylePlain];
 	
+
 	self.navigationController.navigationBar.hidden = NO;
-	[self.navigationController pushViewController:songListViewController animated:YES];
+	
+	[UIView beginAnimations:@"animation" context:nil];
+	[UIView setAnimationDuration:2.0];
+	[self.navigationController pushViewController: songListViewController animated:NO]; 
+	[UIView setAnimationTransition:UIViewAnimationTransitionCurlDown forView:self.navigationController.view cache:NO]; 
+	[UIView commitAnimations];
+	
+//	songListViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+//	[self presentModalViewController:songListViewController animated:YES];
+	
+	//[self.navigationController pushViewController:songListViewController animated:YES];
 	[songListViewController release];
 }
 
@@ -75,9 +87,9 @@
 /*
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-    [super viewDidLoad];
+	[super viewDidLoad];
 }
-
+*/
 
 
 /*

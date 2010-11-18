@@ -103,9 +103,9 @@
 	//[spinner stopAnimating];
 	//self.title = [NSString stringWithFormat:@"Results for %@",[self searchTerm]];
 	if ([dateList count] == 0) {
-		self.title = @"Not Found!";
+		self.title = @"not found!";
 	} else {
-		self.title = @"Calendar";
+		self.title = @"where?";
 	}
 	
 	[(UIActivityIndicatorView *)self.navigationItem.rightBarButtonItem.customView  stopAnimating];

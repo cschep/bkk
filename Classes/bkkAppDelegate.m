@@ -9,6 +9,7 @@
 #import "bkkAppDelegate.h"
 #import "bkkViewController.h"
 #import "CalendarViewController.h"
+#import "TwitterViewController.h"
 
 @implementation bkkAppDelegate
 
@@ -17,32 +18,34 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 
-	/*
 	tabBarController = [[UITabBarController alloc] init];
 	
 	//calendaring
 	CalendarViewController *calendarViewController = [[CalendarViewController alloc] init];
-	calendarViewController.title = @"Calendar!";
+	//calendarViewController.title = @"Calendar!";
 	navControllerCalendar = [[UINavigationController alloc] initWithRootViewController:calendarViewController];
 	navControllerCalendar.navigationBar.tintColor = [UIColor blackColor];
-	navControllerCalendar.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemRecents tag:2];
+	navControllerCalendar.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"where?" image:[UIImage imageNamed:@"calendar"]  tag:2];
 	[calendarViewController release];
 
-		
-	[tabBarController setViewControllers: [NSArray arrayWithObjects:navControllerSearch, navControllerCalendar, nil]];
-	 */
-	
-     //searching
+	//searching
 	bkkViewController *bkkView = [[bkkViewController alloc] initWithNibName:@"bkkViewController" bundle:nil];
 	navControllerSearch = [[UINavigationController alloc] initWithRootViewController:bkkView];
 	[navControllerSearch navigationBar].hidden = YES;
 	navControllerSearch.navigationBar.tintColor = [UIColor blackColor];
 	//navControllerSearch.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemSearch tag:1];
+	navControllerSearch.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"songs!" image:[UIImage imageNamed:@"mic"] tag:1];
 	[bkkView release];
-	 
-	 
+	
+	//twittering? newsing?
+	TwitterViewController *twitterView = [[TwitterViewController alloc] initWithNibName:@"TwitterViewController" bundle:nil];
+	twitterView.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemRecents tag:3];
+	
+	[tabBarController setViewControllers: [NSArray arrayWithObjects:navControllerSearch, navControllerCalendar, twitterView, nil]];
+	[twitterView release];	
+	
 	[window setBackgroundColor:[UIColor blackColor]];
-	[window addSubview:navControllerSearch.view];
+	[window addSubview:tabBarController.view];
     [window makeKeyAndVisible];
 	
 	return YES;
@@ -52,6 +55,7 @@
 - (void)dealloc {
 	[navControllerSearch release];
 	[navControllerCalendar release];
+
 	[tabBarController release];
 	[window release];
     [super dealloc];
