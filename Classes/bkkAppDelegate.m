@@ -10,6 +10,8 @@
 #import "bkkViewController.h"
 #import "CalendarViewController.h"
 #import "TwitterViewController.h"
+#import "FavoritesListViewController.h"
+#import "KamikazeViewController.h"
 
 @implementation bkkAppDelegate
 
@@ -25,7 +27,7 @@
 	//calendarViewController.title = @"Calendar!";
 	navControllerCalendar = [[UINavigationController alloc] initWithRootViewController:calendarViewController];
 	navControllerCalendar.navigationBar.tintColor = [UIColor blackColor];
-	navControllerCalendar.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"where?" image:[UIImage imageNamed:@"calendar"]  tag:2];
+	navControllerCalendar.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"calendar" image:[UIImage imageNamed:@"calendar"]  tag:2];
 	[calendarViewController release];
 
 	//searching
@@ -33,16 +35,27 @@
 	navControllerSearch = [[UINavigationController alloc] initWithRootViewController:bkkView];
 	[navControllerSearch navigationBar].hidden = YES;
 	navControllerSearch.navigationBar.tintColor = [UIColor blackColor];
-	//navControllerSearch.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemSearch tag:1];
-	navControllerSearch.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"songs!" image:[UIImage imageNamed:@"mic"] tag:1];
+	navControllerSearch.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"search" image:[UIImage imageNamed:@"mic"] tag:1];
 	[bkkView release];
 	
-	//twittering? newsing?
+	// twittering? newsing?
+	/*
 	TwitterViewController *twitterView = [[TwitterViewController alloc] initWithNibName:@"TwitterViewController" bundle:nil];
-	twitterView.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemRecents tag:3];
+	twitterView.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"tweets" image:[UIImage imageNamed:@"comment"] tag:4];
+	*/
+	 
+	//kamz
+	KamikazeViewController *kamikazeView = [[KamikazeViewController alloc] initWithNibName:@"KamikazeViewController" bundle:nil];
+	kamikazeView.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"kamikaze!" image:[UIImage imageNamed:@"question"] tag:4];
+								
+	//favorites list? all kinds'a lists?
+	FavoritesListViewController *favoritesView = [[FavoritesListViewController alloc] initWithNibName:@"FavoritesListViewController" bundle:nil];
+	favoritesView.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"faves" image:[UIImage imageNamed:@"inbox"] tag:3];
 	
-	[tabBarController setViewControllers: [NSArray arrayWithObjects:navControllerSearch, navControllerCalendar, twitterView, nil]];
-	[twitterView release];	
+	[tabBarController setViewControllers: [NSArray arrayWithObjects:navControllerSearch, navControllerCalendar, favoritesView, kamikazeView, nil]];
+	[kamikazeView release];	
+	[favoritesView release];
+	
 	
 	[window setBackgroundColor:[UIColor blackColor]];
 	[window addSubview:tabBarController.view];
@@ -55,7 +68,7 @@
 - (void)dealloc {
 	[navControllerSearch release];
 	[navControllerCalendar release];
-
+	
 	[tabBarController release];
 	[window release];
     [super dealloc];

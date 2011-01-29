@@ -8,8 +8,11 @@
 
 #import "bkkViewController.h"
 #import "SongListViewController.h"
+#import "JSON.h"
 
 @implementation bkkViewController
+
+@synthesize tweet;
 
 - (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
 	[textField resignFirstResponder];
@@ -84,12 +87,37 @@
 */
 
 
-/*
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	[super viewDidLoad];
+	
+	[NSThread detachNewThreadSelector:@selector(loadTweet) toTarget:self withObject:nil];	
 }
-*/
+
+- (void)loadTweet {
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	
+	NSString *urlString = @"http://api.twitter.com/1/statuses/user_timeline.json?count=1&screen_name=babykettenOR";
+	NSURL *url = [NSURL URLWithString:urlString];
+	NSString *jsonString = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
+	id jsonValue = [jsonString JSONValue];
+	
+	//NSLog([[jsonValue objectAtIndex:0] valueForKey:@"text"]);
+	self.tweet = [[jsonValue objectAtIndex:0] valueForKey:@"text"];
+	
+
+	[self performSelectorOnMainThread:@selector(didFinishLoadingTweet) withObject:nil waitUntilDone:NO];
+	[jsonString release];
+	[pool release];
+}
+
+- (void)didFinishLoadingTweet {
+	latestTweet.text = tweet;
+	
+	//[(UIActivityIndicatorView *)self.navigationItem.rightBarButtonItem.customView  stopAnimating];
+	//[self.tableView reloadData];
+	//[self.tableView flashScrollIndicators];
+}
 
 
 /*

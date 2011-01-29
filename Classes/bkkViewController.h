@@ -12,10 +12,14 @@
 	IBOutlet UITextField *textField;
 	IBOutlet UISegmentedControl *segmented;
 	IBOutlet UIButton *kamikazeButton;
+	IBOutlet UILabel *latestTweet;
+	NSString *tweet;
 }
 
 - (IBAction)loadWebPage;
 - (IBAction)kamikazeKetten;
+
+@property (retain) NSString *tweet;
 
 @end
 

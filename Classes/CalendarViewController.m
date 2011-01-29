@@ -45,7 +45,7 @@
 	[activityIndicator release];
 	[barButton release];
 	
-	self.title = @"Loading...";
+	self.navigationItem.title = @"Loading...";
 	
 	[NSThread detachNewThreadSelector:@selector(loadDates) toTarget:self withObject:nil];
 }
@@ -64,7 +64,7 @@
 
 	[df setDateFormat:@"yyyy-MM-dd"]; //AHHHHH!
 	NSString *urlString = [NSString stringWithFormat:@"http://www.google.com/calendar/feeds/9a434tnlm9mbo57r05rkodl6d0%%40group.calendar.google.com/public/full?alt=json&ctz=America/Los_Angeles&orderby=starttime&start-min=%@&start-max=%@&sortorder=a&singleevents=true", [df stringFromDate:minDate], [df stringFromDate:maxDate]];
-	NSLog(urlString);
+	//NSLog(urlString);
 	[df release];
 
 	NSURL *url = [NSURL URLWithString:urlString];
@@ -78,8 +78,9 @@
 		
 		NSArray *when = [[entry valueForKey:@"gd$when"] valueForKey:@"startTime"];
 		if (when) {
-			[dateFormatter setDateFormat:@"yyyy-MM-dd"];
-			NSDate *date = [dateFormatter dateFromString:(NSString *)[when objectAtIndex:0]];
+			[dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"]; //.SSSZ"]; //2010-11-23T21:00:00.000-08:00
+			//mother of hacks!
+			NSDate *date = [dateFormatter dateFromString:[[[when objectAtIndex:0] componentsSeparatedByString:@"."] objectAtIndex:0]];
 			[dateFormatter setDateFormat:@"EEEE, MMM d"];
 			d.when = [dateFormatter stringFromDate:date];;
 		} else {
@@ -87,9 +88,9 @@
 		}
 		
 		[dateList addObject:d];
-		NSLog(@"%@", d.title);
-		NSLog(@"%@", when);
-		NSLog(@"%@", [[entry valueForKey:@"content"] valueForKey:@"$t"]);
+		NSLog(@"title: %@", d.title);
+		NSLog(@"when:  %@", d.when);
+		NSLog(@"$t:    %@", [[entry valueForKey:@"content"] valueForKey:@"$t"]);
 		[d release];
 	}
 	[dateFormatter release];
@@ -100,12 +101,10 @@
 }
 
 - (void)didFinishLoadingDates {
-	//[spinner stopAnimating];
-	//self.title = [NSString stringWithFormat:@"Results for %@",[self searchTerm]];
 	if ([dateList count] == 0) {
-		self.title = @"not found!";
+		self.navigationItem.title = @"not found!";
 	} else {
-		self.title = @"where?";
+		self.navigationItem.title = @"Calendar";
 	}
 	
 	[(UIActivityIndicatorView *)self.navigationItem.rightBarButtonItem.customView  stopAnimating];
@@ -158,7 +157,11 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+	
+	//why is when nil???
+	
 	return [[dateList objectAtIndex:section] when];
+	//return @"test title";
 }
 
 // Customize the appearance of table view cells.
