@@ -12,7 +12,7 @@
 	IBOutlet UITextField *textField;
 	IBOutlet UISegmentedControl *segmented;
 	IBOutlet UIButton *kamikazeButton;
-	IBOutlet UILabel *latestTweet;
+	IBOutlet UITextView *latestTweet;
 	NSString *tweet;
 }
 
