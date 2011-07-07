@@ -28,7 +28,7 @@
 */
 
 - (id)initWithSong:(Song *)_song {
-	if (self = [super initWithNibName:@"LyricsWebViewController" bundle:nil]) {
+	if ((self = [super initWithNibName:@"LyricsWebViewController" bundle:nil])) {
 		self.song = _song;
 	}
 	return self;

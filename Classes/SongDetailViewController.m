@@ -24,7 +24,7 @@
 }
 
 - (id)initWithSong:(Song *)songIn {
-	if (self = [super initWithNibName:@"SongDetailViewController" bundle:nil]) {
+	if ((self = [super initWithNibName:@"SongDetailViewController" bundle:nil])) {
 		self.song = songIn;
 	}
 	return self;
