@@ -42,7 +42,6 @@
 
 -(void)viewDidAppear:(BOOL)animated {
     [self becomeFirstResponder];
-	
 }
 
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
@@ -53,7 +52,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	self.navigationController.navigationBar.hidden = YES;
-	[super viewWillAppear:animated];
+    
+    [super viewWillAppear:animated];
 }
 
 - (IBAction)loadWebPage {
@@ -90,8 +90,10 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	
-	[NSThread detachNewThreadSelector:@selector(loadTweet) toTarget:self withObject:nil];	
+    
+    [tweetSpinner startAnimating];
+   
+    [NSThread detachNewThreadSelector:@selector(loadTweet) toTarget:self withObject:nil];
 }
 
 - (void)loadTweet {
@@ -112,11 +114,8 @@
 }
 
 - (void)didFinishLoadingTweet {
-	latestTweet.text = tweet;
-	
-	//[(UIActivityIndicatorView *)self.navigationItem.rightBarButtonItem.customView  stopAnimating];
-	//[self.tableView reloadData];
-	//[self.tableView flashScrollIndicators];
+	[tweetSpinner stopAnimating];
+    latestTweet.text = tweet;
 }
 
 

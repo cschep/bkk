@@ -13,6 +13,8 @@
 	IBOutlet UISegmentedControl *segmented;
 	IBOutlet UIButton *kamikazeButton;
 	IBOutlet UITextView *latestTweet;
+    
+    IBOutlet UIActivityIndicatorView *tweetSpinner;
 	NSString *tweet;
 }
 
