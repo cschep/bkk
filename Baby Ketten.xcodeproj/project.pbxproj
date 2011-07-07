@@ -13,6 +13,13 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		8300C3CE137F613E00E45770 /* jumpinkettenicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8300C3CD137F613E00E45770 /* jumpinkettenicon.png */; };
+		8300C3E3137F62C200E45770 /* BSAddressComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8300C3DA137F62C200E45770 /* BSAddressComponent.m */; };
+		8300C3E4137F62C200E45770 /* BSForwardGeocoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8300C3DC137F62C200E45770 /* BSForwardGeocoder.m */; };
+		8300C3E5137F62C200E45770 /* BSGoogleV2KmlParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8300C3DE137F62C200E45770 /* BSGoogleV2KmlParser.m */; };
+		8300C3E6137F62C200E45770 /* BSGoogleV3KmlParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8300C3E0137F62C200E45770 /* BSGoogleV3KmlParser.m */; };
+		8300C3E7137F62C200E45770 /* BSKmlResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 8300C3E2137F62C200E45770 /* BSKmlResult.m */; };
+		8300C3EB137F73BB00E45770 /* ketten_small.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8300C3EA137F73BA00E45770 /* ketten_small.jpg */; };
 		830F9355129597CF00282FC6 /* calendar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 830F9354129597CF00282FC6 /* calendar@2x.png */; };
 		830F935F12959A2B00282FC6 /* calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 830F935E12959A2B00282FC6 /* calendar.png */; };
 		830F939112959BD100282FC6 /* mic.png in Resources */ = {isa = PBXBuildFile; fileRef = 830F939012959BD100282FC6 /* mic.png */; };
@@ -24,6 +31,12 @@
 		831BAF40121EE7A300A7AD86 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 831BAF3F121EE7A300A7AD86 /* Icon@2x.png */; };
 		832FB7A611BE0CCA0084909E /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 832FB7A411BE0CCA0084909E /* CalendarViewController.m */; };
 		832FB83D11BE200B0084909E /* Date.m in Sources */ = {isa = PBXBuildFile; fileRef = 832FB83C11BE200B0084909E /* Date.m */; };
+		83305335137F28C9007943E8 /* PlainTableViewSectionHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = 83305333137F28C9007943E8 /* PlainTableViewSectionHeader.png */; };
+		83305336137F28C9007943E8 /* PlainTableViewSectionHeader@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83305334137F28C9007943E8 /* PlainTableViewSectionHeader@2x.png */; };
+		8366C1721340523000D2B518 /* CalendarDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8366C1701340523000D2B518 /* CalendarDetailViewController.m */; };
+		8366C1731340523000D2B518 /* CalendarDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8366C1711340523000D2B518 /* CalendarDetailViewController.xib */; };
+		8366C1761340F8DB00D2B518 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8366C1751340F8DB00D2B518 /* MapKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		8366C1781341012000D2B518 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8366C1771341012000D2B518 /* CoreLocation.framework */; };
 		8381B5B91169BF0100B545AB /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 8381B5AE1169BF0100B545AB /* NSObject+SBJSON.m */; };
 		8381B5BA1169BF0100B545AB /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 8381B5B01169BF0100B545AB /* NSString+SBJSON.m */; };
 		8381B5BB1169BF0100B545AB /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 8381B5B21169BF0100B545AB /* SBJSON.m */; };
@@ -67,6 +80,18 @@
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8300C3CD137F613E00E45770 /* jumpinkettenicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jumpinkettenicon.png; sourceTree = "<group>"; };
+		8300C3D9137F62C200E45770 /* BSAddressComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSAddressComponent.h; sourceTree = "<group>"; };
+		8300C3DA137F62C200E45770 /* BSAddressComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSAddressComponent.m; sourceTree = "<group>"; };
+		8300C3DB137F62C200E45770 /* BSForwardGeocoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSForwardGeocoder.h; sourceTree = "<group>"; };
+		8300C3DC137F62C200E45770 /* BSForwardGeocoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSForwardGeocoder.m; sourceTree = "<group>"; };
+		8300C3DD137F62C200E45770 /* BSGoogleV2KmlParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSGoogleV2KmlParser.h; sourceTree = "<group>"; };
+		8300C3DE137F62C200E45770 /* BSGoogleV2KmlParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSGoogleV2KmlParser.m; sourceTree = "<group>"; };
+		8300C3DF137F62C200E45770 /* BSGoogleV3KmlParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSGoogleV3KmlParser.h; sourceTree = "<group>"; };
+		8300C3E0137F62C200E45770 /* BSGoogleV3KmlParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSGoogleV3KmlParser.m; sourceTree = "<group>"; };
+		8300C3E1137F62C200E45770 /* BSKmlResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSKmlResult.h; sourceTree = "<group>"; };
+		8300C3E2137F62C200E45770 /* BSKmlResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSKmlResult.m; sourceTree = "<group>"; };
+		8300C3EA137F73BA00E45770 /* ketten_small.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ketten_small.jpg; sourceTree = "<group>"; };
 		830F9354129597CF00282FC6 /* calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar@2x.png"; sourceTree = "<group>"; };
 		830F935E12959A2B00282FC6 /* calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar.png; sourceTree = "<group>"; };
 		830F939012959BD100282FC6 /* mic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mic.png; sourceTree = "<group>"; };
@@ -84,6 +109,13 @@
 		832FB7A411BE0CCA0084909E /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
 		832FB83B11BE200B0084909E /* Date.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Date.h; sourceTree = "<group>"; };
 		832FB83C11BE200B0084909E /* Date.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Date.m; sourceTree = "<group>"; };
+		83305333137F28C9007943E8 /* PlainTableViewSectionHeader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PlainTableViewSectionHeader.png; sourceTree = "<group>"; };
+		83305334137F28C9007943E8 /* PlainTableViewSectionHeader@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PlainTableViewSectionHeader@2x.png"; sourceTree = "<group>"; };
+		8366C16F1340523000D2B518 /* CalendarDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarDetailViewController.h; sourceTree = "<group>"; };
+		8366C1701340523000D2B518 /* CalendarDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarDetailViewController.m; sourceTree = "<group>"; };
+		8366C1711340523000D2B518 /* CalendarDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarDetailViewController.xib; sourceTree = "<group>"; };
+		8366C1751340F8DB00D2B518 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		8366C1771341012000D2B518 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8381B5AC1169BF0100B545AB /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		8381B5AD1169BF0100B545AB /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
 		8381B5AE1169BF0100B545AB /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
@@ -141,6 +173,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8366C1781341012000D2B518 /* CoreLocation.framework in Frameworks */,
+				8366C1761340F8DB00D2B518 /* MapKit.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
@@ -153,6 +187,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				8300C3D8137F62AE00E45770 /* BSForwardGeocode */,
 				83FD939A126A3E360041513F /* TwitterViewController.h */,
 				83FD939B126A3E360041513F /* TwitterViewController.m */,
 				83B47B97117A7CAD005ADAF3 /* VCTitleCase.h */,
@@ -178,6 +213,9 @@
 				83B7C5B71296E6E500A52BD9 /* FavoritesListViewController.m */,
 				8397065112F4AA6C00050E9E /* KamikazeViewController.h */,
 				8397065212F4AA6C00050E9E /* KamikazeViewController.m */,
+				8366C16F1340523000D2B518 /* CalendarDetailViewController.h */,
+				8366C1701340523000D2B518 /* CalendarDetailViewController.m */,
+				8366C1711340523000D2B518 /* CalendarDetailViewController.xib */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -214,6 +252,10 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8300C3EA137F73BA00E45770 /* ketten_small.jpg */,
+				8300C3CD137F613E00E45770 /* jumpinkettenicon.png */,
+				83305333137F28C9007943E8 /* PlainTableViewSectionHeader.png */,
+				83305334137F28C9007943E8 /* PlainTableViewSectionHeader@2x.png */,
 				83B7C5B81296E6E500A52BD9 /* FavoritesListViewController.xib */,
 				8397065312F4AA6C00050E9E /* KamikazeViewController.xib */,
 				8397063612F4A9BD00050E9E /* question.png */,
@@ -253,11 +295,30 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8366C1771341012000D2B518 /* CoreLocation.framework */,
+				8366C1751340F8DB00D2B518 /* MapKit.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8300C3D8137F62AE00E45770 /* BSForwardGeocode */ = {
+			isa = PBXGroup;
+			children = (
+				8300C3D9137F62C200E45770 /* BSAddressComponent.h */,
+				8300C3DA137F62C200E45770 /* BSAddressComponent.m */,
+				8300C3DB137F62C200E45770 /* BSForwardGeocoder.h */,
+				8300C3DC137F62C200E45770 /* BSForwardGeocoder.m */,
+				8300C3DD137F62C200E45770 /* BSGoogleV2KmlParser.h */,
+				8300C3DE137F62C200E45770 /* BSGoogleV2KmlParser.m */,
+				8300C3DF137F62C200E45770 /* BSGoogleV3KmlParser.h */,
+				8300C3E0137F62C200E45770 /* BSGoogleV3KmlParser.m */,
+				8300C3E1137F62C200E45770 /* BSKmlResult.h */,
+				8300C3E2137F62C200E45770 /* BSKmlResult.m */,
+			);
+			name = BSForwardGeocode;
 			sourceTree = "<group>";
 		};
 		8381B5AB1169BF0100B545AB /* JSON */ = {
@@ -356,6 +417,11 @@
 				8397063812F4A9BD00050E9E /* question.png in Resources */,
 				8397063912F4A9BD00050E9E /* question@2x.png in Resources */,
 				8397065512F4AA6C00050E9E /* KamikazeViewController.xib in Resources */,
+				8366C1731340523000D2B518 /* CalendarDetailViewController.xib in Resources */,
+				83305335137F28C9007943E8 /* PlainTableViewSectionHeader.png in Resources */,
+				83305336137F28C9007943E8 /* PlainTableViewSectionHeader@2x.png in Resources */,
+				8300C3CE137F613E00E45770 /* jumpinkettenicon.png in Resources */,
+				8300C3EB137F73BB00E45770 /* ketten_small.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,6 +451,12 @@
 				83FD939D126A3E360041513F /* TwitterViewController.m in Sources */,
 				83B7C5B91296E6E500A52BD9 /* FavoritesListViewController.m in Sources */,
 				8397065412F4AA6C00050E9E /* KamikazeViewController.m in Sources */,
+				8366C1721340523000D2B518 /* CalendarDetailViewController.m in Sources */,
+				8300C3E3137F62C200E45770 /* BSAddressComponent.m in Sources */,
+				8300C3E4137F62C200E45770 /* BSForwardGeocoder.m in Sources */,
+				8300C3E5137F62C200E45770 /* BSGoogleV2KmlParser.m in Sources */,
+				8300C3E6137F62C200E45770 /* BSGoogleV3KmlParser.m in Sources */,
+				8300C3E7137F62C200E45770 /* BSKmlResult.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

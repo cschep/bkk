@@ -25,14 +25,14 @@
 
 - (id)initWithStyle:(UITableViewStyle)style {
     // Override initWithStyle: if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-    if (self = [super initWithStyle:style]) {
+    if ((self = [super initWithStyle:style])) {
 		//self.title = @"Results";
 	}
     return self;
 }
 
 - (id)initWithSearchTerm:(NSString *)searchTermIn SearchBy:(NSString *)searchByIn Random:(BOOL)_isRandom Style:(UITableViewStyle)style {
-	if (self = [super initWithStyle:style]) {
+	if ((self = [super initWithStyle:style])) {
 		self.searchTerm = searchTermIn;
 		self.searchBy = searchByIn;
 		self.isRandom = _isRandom;

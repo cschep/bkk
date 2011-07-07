@@ -7,6 +7,7 @@
 //
 
 #import "CalendarViewController.h"
+#import "CalendarDetailViewController.h"
 #import "JSON.h"
 #import "Date.h"
 
@@ -52,12 +53,8 @@
 
 - (void)loadDates {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	self.dateList = [[NSMutableArray alloc] init];
+	dateList = [[NSMutableArray alloc] init];
 	
-	//NSString *urlString = [NSString stringWithFormat:@"http://localhost:4567/json?search=%@&searchby=%@", self.searchTerm, self.searchBy];
-	//NSString *urlString = [NSString stringWithFormat:@"http://bkk.schepman.org/json?search=%@&searchby=%@", self.searchTerm, self.searchBy];
-	//NSString* escapedUrlString = [[urlString lowercaseString] stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
-
 	NSDate *minDate = [NSDate dateWithTimeIntervalSinceNow:-60*60*24*5]; //trailing 5 days...
 	NSDate *maxDate = [NSDate dateWithTimeIntervalSinceNow:60*60*24*30*3]; //next 3 months'ish
 	NSDateFormatter *df = [[NSDateFormatter alloc] init];
@@ -75,22 +72,26 @@
 	for (NSDictionary *entry in [[jsonValue valueForKey:@"feed"] valueForKey:@"entry"] ) {
 		Date *d = [[Date alloc] init];
 		d.title = [[entry valueForKey:@"title"] valueForKey:@"$t"];
-		
+		d.where = [NSString stringWithString:[[[entry valueForKey:@"gd$where"] valueForKey:@"valueString"] objectAtIndex:0]];
+        d.description = [[entry valueForKey:@"content"] valueForKey:@"$t"];
+        
 		NSArray *when = [[entry valueForKey:@"gd$when"] valueForKey:@"startTime"];
 		if (when) {
 			[dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"]; //.SSSZ"]; //2010-11-23T21:00:00.000-08:00
-			//mother of hacks!
+			
+            //mother of hacks!
 			NSDate *date = [dateFormatter dateFromString:[[[when objectAtIndex:0] componentsSeparatedByString:@"."] objectAtIndex:0]];
-			[dateFormatter setDateFormat:@"EEEE, MMM d"];
+			[dateFormatter setDateFormat:@"EEE, MMM d"];
 			d.when = [dateFormatter stringFromDate:date];;
 		} else {
 			d.when = @"no date!";
 		}
 		
 		[dateList addObject:d];
-		NSLog(@"title: %@", d.title);
-		NSLog(@"when:  %@", d.when);
-		NSLog(@"$t:    %@", [[entry valueForKey:@"content"] valueForKey:@"$t"]);
+		//NSLog(@"title: %@", d.title);
+		//NSLog(@"when:  %@", d.when);
+        //NSLog(@"where: %@", d.where);
+		//NSLog(@"$t:    %@", [[entry valueForKey:@"content"] valueForKey:@"$t"]);
 		[d release];
 	}
 	[dateFormatter release];
@@ -150,18 +151,49 @@
 
 }
 
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
 	return 1;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-	
-	//why is when nil???
-	
-	return [[dateList objectAtIndex:section] when];
-	//return @"test title";
+- (UIView *)tableView:(UITableView *)tbl viewForHeaderInSection:(NSInteger)section
+{
+    //text things
+    NSDate *now = [NSDate date];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"EEE, MMM d"];
+
+    //view
+    UIView* sectionHead = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tbl.bounds.size.width, 18)];
+    sectionHead.backgroundColor = [UIColor colorWithWhite:0 alpha:0];
+    sectionHead.userInteractionEnabled = YES;
+    sectionHead.tag = section;
+    
+    UIImageView *headerImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"PlainTableViewSectionHeader.png"]];
+    headerImage.contentMode = UIViewContentModeScaleAspectFit;
+    
+    [sectionHead addSubview:headerImage];
+    [headerImage release];
+    
+    UILabel *sectionText = [[UILabel alloc] initWithFrame:CGRectMake(10, 2, tbl.bounds.size.width - 10, 18)];
+    sectionText.backgroundColor = [UIColor clearColor];
+    sectionText.shadowOffset = CGSizeMake(0,.6);
+    sectionText.font = [UIFont boldSystemFontOfSize:18];
+    sectionText.text = [[dateList objectAtIndex:section] when];
+      
+    if ([[dateFormatter stringFromDate:now] isEqualToString:[[dateList objectAtIndex:section] when]]) {
+        sectionText.textColor = [UIColor colorWithRed:0.0 green:0.4 blue:0.9 alpha:1];
+        sectionText.shadowColor = [UIColor whiteColor];
+    } else {
+        sectionText.textColor = [UIColor whiteColor];
+        sectionText.shadowColor = [UIColor darkGrayColor];
+    }
+
+
+    [sectionHead addSubview:sectionText];
+    [sectionText release];
+    
+    return [sectionHead autorelease];
 }
 
 // Customize the appearance of table view cells.
@@ -174,75 +206,38 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    // Configure the cell...
-	/*
-	if ([[dateList objectAtIndex:indexPath.section] when] != nil) {
-		cell.textLabel.text = [[dateList objectAtIndex:indexPath.section] when];
-	} else {
-		cell.textLabel.text = @"woops!";
-	}
-	*/
-	
-	//cell.textLabel.text = [[dateList objectAtIndex:indexPath.section] when];
-	cell.textLabel.text = [[dateList objectAtIndex:indexPath.section] title];
+ 	cell.textLabel.text = [[dateList objectAtIndex:indexPath.section] title];
     return cell;
 }
-
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 
 #pragma mark -
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Navigation logic may go here. Create and push another view controller.
-	/*
-	 <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-	 [self.navigationController pushViewController:detailViewController animated:YES];
-	 [detailViewController release];
-	 */
+	
+    Date *d = [dateList objectAtIndex:indexPath.section];
+    if (![d.where isEqualToString:@""]) {
+        CalendarDetailViewController *calendarDetailViewController = [[CalendarDetailViewController alloc] initWithDate:d];
+        // ...
+        // Pass the selected object to the new view controller.
+        
+        [UIView beginAnimations:@"animation" context:nil];
+        [UIView setAnimationDuration:1.0];
+        [self.navigationController pushViewController:calendarDetailViewController animated:NO];
+        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.navigationController.view cache:NO]; 
+        [UIView commitAnimations];
+        
+        /*[self.navigationController pushViewController:calendarDetailViewController animated:YES];
+         [calendarDetailViewController release];*/    
+    } else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"title" message:@"Not Sure Where?!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+    }
+    
+    
 }
-
 
 #pragma mark -
 #pragma mark Memory management
@@ -261,6 +256,8 @@
 
 
 - (void)dealloc {
+    
+    [dateList release];
     [super dealloc];
 }
 
