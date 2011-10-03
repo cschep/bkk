@@ -64,7 +64,6 @@
 - (IBAction)kamikazeKetten {
 	SongListViewController *songListViewController = [[SongListViewController alloc] initWithSearchTerm:@"none" SearchBy:@"none" Random:YES Style:UITableViewStylePlain];
 	
-
 	self.navigationController.navigationBar.hidden = NO;
 	
 	[UIView beginAnimations:@"animation" context:nil];
@@ -90,23 +89,32 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	[super viewDidLoad];
-    
+
+    [self loadTweetInBackground];
+}
+
+- (void)loadTweetInBackground {
     [tweetSpinner startAnimating];
-   
-    [NSThread detachNewThreadSelector:@selector(loadTweet) toTarget:self withObject:nil];
+    latestTweet.text = @"";
+    
+    [NSThread detachNewThreadSelector:@selector(loadTweet) toTarget:self withObject:nil];    
 }
 
 - (void)loadTweet {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	
+    
+    [NSThread sleepForTimeInterval:1];
+    
 	NSString *urlString = @"http://api.twitter.com/1/statuses/user_timeline.json?count=1&screen_name=babykettenOR";
 	NSURL *url = [NSURL URLWithString:urlString];
 	NSString *jsonString = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-	id jsonValue = [jsonString JSONValue];
 	
-	//NSLog([[jsonValue objectAtIndex:0] valueForKey:@"text"]);
-	self.tweet = [[jsonValue objectAtIndex:0] valueForKey:@"text"];
-	
+    if (jsonString != nil) {
+        id jsonValue = [jsonString JSONValue];
+        self.tweet = [[jsonValue objectAtIndex:0] valueForKey:@"text"];
+    } else {
+        self.tweet = @"Can't reach the internetz! Sing pretty!";
+    }
 
 	[self performSelectorOnMainThread:@selector(didFinishLoadingTweet) withObject:nil waitUntilDone:NO];
 	[jsonString release];

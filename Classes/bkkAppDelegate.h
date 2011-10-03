@@ -7,12 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "bkkViewController.h"
 
 @interface bkkAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
     UIWindow *window;
 	UINavigationController *navControllerSearch;
 	UINavigationController *navControllerCalendar;
 	UITabBarController *tabBarController;
+    
+    bkkViewController *mainViewController;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;

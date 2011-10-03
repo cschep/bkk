@@ -31,12 +31,12 @@
 	[calendarViewController release];
 
 	//searching
-	bkkViewController *bkkView = [[bkkViewController alloc] initWithNibName:@"bkkViewController" bundle:nil];
-	navControllerSearch = [[UINavigationController alloc] initWithRootViewController:bkkView];
+	mainViewController = [[bkkViewController alloc] initWithNibName:@"bkkViewController" bundle:nil];
+	navControllerSearch = [[UINavigationController alloc] initWithRootViewController:mainViewController];
 	[navControllerSearch navigationBar].hidden = YES;
 	navControllerSearch.navigationBar.tintColor = [UIColor blackColor];
 	navControllerSearch.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"search" image:[UIImage imageNamed:@"mic"] tag:1];
-	[bkkView release];
+	
 	
 	// twittering? newsing?
 	/*
@@ -64,8 +64,15 @@
 	return YES;
 }
 
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+    //refresh the tweet dude.
+    [mainViewController loadTweetInBackground];
+}
+
 
 - (void)dealloc {
+    [mainViewController release];
+    
 	[navControllerSearch release];
 	[navControllerCalendar release];
 	

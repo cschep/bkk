@@ -4,4 +4,6 @@ build/
 *.mode2v3
 *.mode1v3
 **/*.perspectivev*
+xcuserdata/
+project.xcworkspace/
 

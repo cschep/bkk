@@ -21,6 +21,8 @@
 - (IBAction)loadWebPage;
 - (IBAction)kamikazeKetten;
 
+- (void)loadTweetInBackground;
+
 @property (retain) NSString *tweet;
 
 @end
