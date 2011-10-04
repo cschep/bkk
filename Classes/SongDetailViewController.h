@@ -11,10 +11,12 @@
 
 @interface SongDetailViewController : UIViewController {
 	Song *song;
-	IBOutlet UITextView *lyricsView;
 }
 
-- (id)initWithSong:(Song *)songIn;
+- (id)initWithSong:(Song *)_song;
+
+- (IBAction)lyricsClicked:(id)sender;
+- (IBAction)youTubeClicked:(id)sender;
 
 @property (retain) Song *song;
 

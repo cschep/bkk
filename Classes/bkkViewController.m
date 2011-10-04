@@ -57,8 +57,8 @@
 }
 
 - (IBAction)loadWebPage {
-	NSURL *url = [NSURL URLWithString:@"http://babyketten.com"];
-	[[UIApplication sharedApplication] openURL:url];
+    NSURL *url = [NSURL URLWithString:@"http://babyketten.com"];
+    [[UIApplication sharedApplication] openURL:url];
 }
 
 - (IBAction)kamikazeKetten {

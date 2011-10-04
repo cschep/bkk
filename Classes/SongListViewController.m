@@ -198,8 +198,7 @@
     // Configure the cell...
     cell.textLabel.text = [[songList objectAtIndex:indexPath.row] title];
 	cell.detailTextLabel.text = [[songList objectAtIndex:indexPath.row] artist];
-	//cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
     return cell;
 }
 
@@ -214,7 +213,6 @@
 
 
 /*
- 
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -248,18 +246,18 @@
 #pragma mark -
 #pragma mark Table view delegate
 
-/*
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	//SongDetailViewController *songDetailViewController = [[SongDetailViewController alloc] initWithSong:[songList objectAtIndex:indexPath.row]];
-	//[self.navigationController pushViewController:songDetailViewController animated:YES];
-	//[songDetailViewController release];
-	
 
-	LyricsWebViewController *lyricsWebViewController = [[LyricsWebViewController alloc] initWithSong:[songList objectAtIndex:indexPath.row]];
-	[self.navigationController pushViewController:lyricsWebViewController animated:YES];
-	[lyricsWebViewController release];
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	SongDetailViewController *songDetailViewController = [[SongDetailViewController alloc] initWithSong:[songList objectAtIndex:indexPath.row]];
+	[self.navigationController pushViewController:songDetailViewController animated:YES];
+	[songDetailViewController release];
+	
+    
+//	LyricsWebViewController *lyricsWebViewController = [[LyricsWebViewController alloc] initWithSong:[songList objectAtIndex:indexPath.row]];
+//	[self.navigationController pushViewController:lyricsWebViewController animated:YES];
+//	[lyricsWebViewController release];
 }
-*/
+
 
 
 #pragma mark -

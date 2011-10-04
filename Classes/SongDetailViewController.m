@@ -7,8 +7,6 @@
 //
 
 #import "SongDetailViewController.h"
-#import "Song.h"
-#import "JSON.h"
 #import "VCTitleCase.h"
 
 @implementation SongDetailViewController
@@ -23,9 +21,9 @@
     return self;
 }
 
-- (id)initWithSong:(Song *)songIn {
+- (id)initWithSong:(Song *)_song {
 	if ((self = [super initWithNibName:@"SongDetailViewController" bundle:nil])) {
-		self.song = songIn;
+		self.song = _song;
 	}
 	return self;
 }
@@ -33,84 +31,9 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	
-	//Create an instance of activity indicator view
-	UIActivityIndicatorView * activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
-	
-	//set the initial property
-	[activityIndicator hidesWhenStopped];
-	[activityIndicator startAnimating];
-	
-	//Create an instance of Bar button item with custome view which is of activity indicator
-	UIBarButtonItem * barButton = [[UIBarButtonItem alloc] initWithCustomView:activityIndicator];
-	
-	//Set the bar button the navigation bar
-	[self navigationItem].rightBarButtonItem = barButton;
-	
-	//Memory clean up
-	[activityIndicator release];
-	[barButton release];
-	
-	self.title = @"Loading...";
-	
-	UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(foo)];
-	//self.navigationItem.rightBarButtonItem = rightButton;
-	[rightButton release];
-	
-	[NSThread detachNewThreadSelector:@selector(loadLyrics) toTarget:self withObject:nil];
+    
+    self.title = [self.song.title titlecaseString];
 }
-
-/*
-- (void)foo {
-	NSLog(@"wrong clicked.");
-	
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Bad Lyrics!" message:@"Report these lyrics as incorrect?" delegate:nil cancelButtonTitle:@"Nope." otherButtonTitles:nil];
-	[alert addButtonWithTitle:@"Yeah!"];
-	[alert show];
-	[alert release];
-}
-*/
-
-- (void)loadLyrics {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	
-	NSString *urlString = [NSString stringWithFormat:@"http://bkk.schepman.org/lyrics?songid=%@", self.song.songID];
-	NSURL *url = [NSURL URLWithString:urlString];
-	
-	NSString *jsonString = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-    id jsonValue = [jsonString JSONValue];
-	
-	NSString *lyrics = [[jsonValue objectAtIndex:0] objectForKey:@"lyrics"];
-	
-	if (lyrics == (NSString *)[NSNull null]) {
-		lyrics = @"The lyrics for this song are not loaded yet, sorry!";
-	} 
-	
-	self.song.lyrics = lyrics;
-	
-	[self performSelectorOnMainThread:@selector(didFinishLoadingLyrics) withObject:nil waitUntilDone:NO];
-	[pool release];
-}
-
-- (void)didFinishLoadingLyrics {
-	//[spinner stopAnimating];
-	//self.title = [NSString stringWithFormat:@"Results for %@",[self searchTerm]];
-	self.title = [self.song.title titlecaseString];
-	
-	[(UIActivityIndicatorView *)self.navigationItem.rightBarButtonItem.customView  stopAnimating];
-	lyricsView.text =  self.song.lyrics;
-	//[self.tableView reloadData];
-    //[self.tableView flashScrollIndicators];
-}
-
-
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
@@ -125,6 +48,41 @@
     // e.g. self.myOutlet = nil;
 }
 
+- (IBAction)lyricsClicked:(id)sender {
+    NSMutableString *searchString = [NSMutableString string];
+    for (NSString *word in [song.artist componentsSeparatedByString:@" "]) {
+        [searchString appendString:[NSString stringWithFormat:@"%@+", word]];
+    }
+    
+    for (NSString *word in [song.title componentsSeparatedByString:@" "]) {
+        [searchString appendString:[NSString stringWithFormat:@"%@+", word]];
+    }
+    
+    NSString *urlString = [NSString stringWithFormat:@"http://www.songlyrics.com/index.php?section=search&searchW=%@&submit=Search&searchIn1=artist&searchIn2=album&searchIn3=song&searchIn4=lyrics", searchString];
+
+    NSString* escapedUrlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
+	NSURL *url = [NSURL URLWithString:escapedUrlString];
+
+    [[UIApplication sharedApplication] openURL:url];
+}
+
+- (IBAction)youTubeClicked:(id)sender {
+    NSMutableString *searchString = [NSMutableString string];
+    for (NSString *word in [song.artist componentsSeparatedByString:@" "]) {
+        [searchString appendString:[NSString stringWithFormat:@"%@+", word]];
+    }
+    
+    for (NSString *word in [song.title componentsSeparatedByString:@" "]) {
+        [searchString appendString:[NSString stringWithFormat:@"%@+", word]];
+    }
+    
+    NSString *urlString = [NSString stringWithFormat:@"http://m.youtube.com/results?q=%@", searchString];
+    
+    NSString* escapedUrlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
+	NSURL *url = [NSURL URLWithString:escapedUrlString];
+    
+    [[UIApplication sharedApplication] openURL:url];
+}
 
 - (void)dealloc {
     [super dealloc];
