@@ -13,7 +13,7 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
-		8300C3CE137F613E00E45770 /* jumpinkettenicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8300C3CD137F613E00E45770 /* jumpinkettenicon.png */; };
+		8300C3CE137F613E00E45770 /* jumpinkettenicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8300C3CD137F613E00E45770 /* jumpinkettenicon@2x.png */; };
 		8300C3E3137F62C200E45770 /* BSAddressComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8300C3DA137F62C200E45770 /* BSAddressComponent.m */; };
 		8300C3E4137F62C200E45770 /* BSForwardGeocoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8300C3DC137F62C200E45770 /* BSForwardGeocoder.m */; };
 		8300C3E5137F62C200E45770 /* BSGoogleV2KmlParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8300C3DE137F62C200E45770 /* BSGoogleV2KmlParser.m */; };
@@ -33,6 +33,10 @@
 		832FB83D11BE200B0084909E /* Date.m in Sources */ = {isa = PBXBuildFile; fileRef = 832FB83C11BE200B0084909E /* Date.m */; };
 		83305335137F28C9007943E8 /* PlainTableViewSectionHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = 83305333137F28C9007943E8 /* PlainTableViewSectionHeader.png */; };
 		83305336137F28C9007943E8 /* PlainTableViewSectionHeader@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83305334137F28C9007943E8 /* PlainTableViewSectionHeader@2x.png */; };
+		834714291441048F00F4ADC5 /* bkk_logo_bw.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 834714281441048F00F4ADC5 /* bkk_logo_bw.jpeg */; };
+		834A5A501465C18A00C87455 /* CoolButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 834A5A4F1465C18A00C87455 /* CoolButton.m */; };
+		834A5A521465C1E800C87455 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 834A5A511465C1E800C87455 /* QuartzCore.framework */; };
+		8358DC94145B23A400FF0DD3 /* jumpinkettenicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8358DC93145B23A400FF0DD3 /* jumpinkettenicon.png */; };
 		8366C1721340523000D2B518 /* CalendarDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8366C1701340523000D2B518 /* CalendarDetailViewController.m */; };
 		8366C1731340523000D2B518 /* CalendarDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8366C1711340523000D2B518 /* CalendarDetailViewController.xib */; };
 		8366C1761340F8DB00D2B518 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8366C1751340F8DB00D2B518 /* MapKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
@@ -80,7 +84,7 @@
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainWindow.xib; path = ../MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		8300C3CD137F613E00E45770 /* jumpinkettenicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jumpinkettenicon.png; sourceTree = "<group>"; };
+		8300C3CD137F613E00E45770 /* jumpinkettenicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jumpinkettenicon@2x.png"; sourceTree = "<group>"; };
 		8300C3D9137F62C200E45770 /* BSAddressComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSAddressComponent.h; sourceTree = "<group>"; };
 		8300C3DA137F62C200E45770 /* BSAddressComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSAddressComponent.m; sourceTree = "<group>"; };
 		8300C3DB137F62C200E45770 /* BSForwardGeocoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSForwardGeocoder.h; sourceTree = "<group>"; };
@@ -111,6 +115,11 @@
 		832FB83C11BE200B0084909E /* Date.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Date.m; sourceTree = "<group>"; };
 		83305333137F28C9007943E8 /* PlainTableViewSectionHeader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PlainTableViewSectionHeader.png; sourceTree = "<group>"; };
 		83305334137F28C9007943E8 /* PlainTableViewSectionHeader@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PlainTableViewSectionHeader@2x.png"; sourceTree = "<group>"; };
+		834714281441048F00F4ADC5 /* bkk_logo_bw.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bkk_logo_bw.jpeg; sourceTree = "<group>"; };
+		834A5A4E1465C18A00C87455 /* CoolButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoolButton.h; sourceTree = "<group>"; };
+		834A5A4F1465C18A00C87455 /* CoolButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoolButton.m; sourceTree = "<group>"; };
+		834A5A511465C1E800C87455 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		8358DC93145B23A400FF0DD3 /* jumpinkettenicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jumpinkettenicon.png; sourceTree = "<group>"; };
 		8366C16F1340523000D2B518 /* CalendarDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarDetailViewController.h; sourceTree = "<group>"; };
 		8366C1701340523000D2B518 /* CalendarDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarDetailViewController.m; sourceTree = "<group>"; };
 		8366C1711340523000D2B518 /* CalendarDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarDetailViewController.xib; sourceTree = "<group>"; };
@@ -173,6 +182,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				834A5A521465C1E800C87455 /* QuartzCore.framework in Frameworks */,
 				8366C1781341012000D2B518 /* CoreLocation.framework in Frameworks */,
 				8366C1761340F8DB00D2B518 /* MapKit.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
@@ -192,6 +202,8 @@
 				83FD939A126A3E360041513F /* TwitterViewController.h */,
 				83FD939B126A3E360041513F /* TwitterViewController.m */,
 				83FD939C126A3E360041513F /* TwitterViewController.xib */,
+				834A5A4E1465C18A00C87455 /* CoolButton.h */,
+				834A5A4F1465C18A00C87455 /* CoolButton.m */,
 				83B47B97117A7CAD005ADAF3 /* VCTitleCase.h */,
 				83B47B98117A7CAD005ADAF3 /* VCTitleCase.m */,
 				83ADD5FD116993AB00BF3809 /* bkkViewController.h */,
@@ -260,8 +272,10 @@
 			isa = PBXGroup;
 			children = (
 				8300C3EA137F73BA00E45770 /* ketten_small.jpg */,
-				8300C3CD137F613E00E45770 /* jumpinkettenicon.png */,
+				8358DC93145B23A400FF0DD3 /* jumpinkettenicon.png */,
+				8300C3CD137F613E00E45770 /* jumpinkettenicon@2x.png */,
 				83305333137F28C9007943E8 /* PlainTableViewSectionHeader.png */,
+				834714281441048F00F4ADC5 /* bkk_logo_bw.jpeg */,
 				83305334137F28C9007943E8 /* PlainTableViewSectionHeader@2x.png */,
 				8397063612F4A9BD00050E9E /* question.png */,
 				8397063712F4A9BD00050E9E /* question@2x.png */,
@@ -295,6 +309,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				834A5A511465C1E800C87455 /* QuartzCore.framework */,
 				8366C1771341012000D2B518 /* CoreLocation.framework */,
 				8366C1751340F8DB00D2B518 /* MapKit.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
@@ -420,8 +435,10 @@
 				8366C1731340523000D2B518 /* CalendarDetailViewController.xib in Resources */,
 				83305335137F28C9007943E8 /* PlainTableViewSectionHeader.png in Resources */,
 				83305336137F28C9007943E8 /* PlainTableViewSectionHeader@2x.png in Resources */,
-				8300C3CE137F613E00E45770 /* jumpinkettenicon.png in Resources */,
+				8300C3CE137F613E00E45770 /* jumpinkettenicon@2x.png in Resources */,
 				8300C3EB137F73BB00E45770 /* ketten_small.jpg in Resources */,
+				834714291441048F00F4ADC5 /* bkk_logo_bw.jpeg in Resources */,
+				8358DC94145B23A400FF0DD3 /* jumpinkettenicon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,6 +474,7 @@
 				8300C3E5137F62C200E45770 /* BSGoogleV2KmlParser.m in Sources */,
 				8300C3E6137F62C200E45770 /* BSGoogleV3KmlParser.m in Sources */,
 				8300C3E7137F62C200E45770 /* BSKmlResult.m in Sources */,
+				834A5A501465C18A00C87455 /* CoolButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,6 +507,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Christopher Schepman (9UY2RV34LS)";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -497,10 +516,48 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "baby ketten";
 				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "115E8248-9317-486E-BD0E-FF6841D23045";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
+		};
+		8319EF801454B28F001B45CD /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Christopher Schepman (9UY2RV34LS)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = "";
+				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E687FEB1-BCEF-4906-9A24-228F06C521CC";
+				SDKROOT = iphoneos;
+			};
+			name = "Ad Hoc";
+		};
+		8319EF811454B28F001B45CD /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Christopher Schepman";
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "baby ketten_Prefix.pch";
+				INFOPLIST_FILE = "baby ketten-Info.plist";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				PRODUCT_NAME = "baby ketten";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4B562FA2-9230-4C53-BEEC-81442DD808FE";
+				TARGETED_DEVICE_FAMILY = 1;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Ad Hoc";
 		};
 		83326A0C118939F50012C57C /* Distribution */ = {
 			isa = XCBuildConfiguration;
@@ -523,6 +580,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Christopher Schepman";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -531,6 +589,7 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "baby ketten";
 				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4B562FA2-9230-4C53-BEEC-81442DD808FE";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -540,7 +599,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Christopher Schepman (9UY2RV34LS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -548,7 +607,7 @@
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E687FEB1-BCEF-4906-9A24-228F06C521CC";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -578,6 +637,7 @@
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
 				1D6058950D05DD3E006BFB54 /* Release */,
+				8319EF811454B28F001B45CD /* Ad Hoc */,
 				83326A0D118939F50012C57C /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -588,6 +648,7 @@
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
 				C01FCF5008A954540054247B /* Release */,
+				8319EF801454B28F001B45CD /* Ad Hoc */,
 				83326A0C118939F50012C57C /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;

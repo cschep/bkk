@@ -55,7 +55,7 @@
 //    titleLabel.text = date.title;
     self.title = date.title;
     
-    NSLog(@"%@", date.description);
+    //NSLog(@"%@", date.description);
     descText.text = date.description;
     
     
@@ -67,7 +67,7 @@
 	// Forward geocode! - "pdx" makes the airport come up.. hrm..
     NSString *searchTerm = [self.date.where stringByReplacingOccurrencesOfString:@"pdx" withString:@"Portland, OR"];
     searchTerm = [searchTerm stringByReplacingOccurrencesOfString:@"the woods 6637 milwauke ave" withString:@"6637 SE Milwaukie Avenue"];    
-    NSLog(@"searching for term: %@", searchTerm);
+    //NSLog(@"searching for term: %@", searchTerm);
 	[forwardGeocoder findLocation:searchTerm];
 }
 
@@ -89,19 +89,30 @@
 - (MKAnnotationView *)mapView:(MKMapView *)sender viewForAnnotation:(id <MKAnnotation>)annotation
 {
 //    MKAnnotationView *aView = [[[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"foo"] autorelease];
-//    UIImage *test = [UIImage imageNamed:@"jumpinkettenicon.png"];
-//    aView.image = test;
+//    aView.image = [UIImage imageNamed:@"jumpinkettenicon.png"];
+//    aView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
 //    
 //    return aView;
     
     MKPinAnnotationView *aView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"foo"];
-    //aView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    aView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     aView.canShowCallout = YES;
     aView.animatesDrop = YES;
-    //aView.pinColor = MKPinAnnotationColorGreen;
+
     
     return aView;
+}
 
+- (void)mapView:(MKMapView *)sender annotationView:(MKAnnotationView *)aView calloutAccessoryControlTapped:(UIControl *)control
+{
+    //[(FindARetailerViewController *)top retailerSelected:aView.annotation];
+    NSLog(@"%@", aView.annotation.title);
+    
+    NSString* addr = [NSString stringWithFormat:@"http://maps.google.com/maps?saddr=Current Location&daddr=%f,%f",aView.annotation.coordinate.latitude,aView.annotation.coordinate.longitude];
+    NSLog(@"%@", addr);
+    NSURL* url = [[NSURL alloc] initWithString:[addr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    [[UIApplication sharedApplication] openURL:url];
+    [url release];
 }
 
 #pragma mark - BSForwardGeocode
@@ -114,12 +125,9 @@
 		{
 			BSKmlResult *place = [forwardGeocoder.results objectAtIndex:0];
             
-            //CustomPlacemark *placemark = [[CustomPlacemark alloc] initWithRegion:place.coordinateRegion];
-			//placemark.title = place.address;
-			//placemark.image = [UIImage imageNamed:@"jumpinkettenicon.png"];
-            
             MKPointAnnotation *pa = [[MKPointAnnotation alloc] init];
             pa.coordinate = place.coordinate;
+            pa.title = date.title;
             
             [mapView addAnnotation:pa];	
             

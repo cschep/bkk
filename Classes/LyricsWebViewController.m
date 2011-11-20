@@ -16,6 +16,7 @@
 @synthesize backButton;
 @synthesize forwardButton;
 @synthesize activityIndicator;
+@synthesize url;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -59,12 +60,14 @@
 	[barButton release];
 	
 	self.title = @"Loading...";
-	
-	NSString *urlString = [NSString stringWithFormat:@"http://lyrics.wikia.com/index.php?search=%@+%@&ns0=1&ns220=1&title=Special:Search&fulltext=Search&fulltext=Search", song.artist , song.title];
-	NSString* escapedUrlString = [[urlString lowercaseString] stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
-
-	NSLog(@"%@", escapedUrlString);
-	NSURL *url = [NSURL URLWithString:escapedUrlString];
+    
+    //if a url didn't get set already
+    if (url == nil) {
+        NSString *urlString = [NSString stringWithFormat:@"http://lyrics.wikia.com/index.php?search=%@+%@&ns0=1&ns220=1&title=Special:Search&fulltext=Search&fulltext=Search", song.artist , song.title];
+        NSString* escapedUrlString = [[urlString lowercaseString] stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
+        url = [NSURL URLWithString:escapedUrlString];
+    }
+    
 	NSURLRequest *request = [NSURLRequest requestWithURL:url];
 	[lyricsWebView loadRequest:request];
 }

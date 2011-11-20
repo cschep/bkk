@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 
-@interface FavoritesListViewController : UITableViewController {
+@interface FavoritesListViewController : UITableViewController
 
-}
+- (void)syncFavorites;
 
 @end

@@ -15,6 +15,8 @@
 	IBOutlet UIBarButtonItem *forwardButton;
 	Song *song;
 	UIActivityIndicatorView *activityIndicator;
+    
+    NSURL *url;
 }
 
 - (id)initWithSong:(Song *)_song;
@@ -23,6 +25,7 @@
 @property (nonatomic, retain) UIWebView *lyricsWebView;
 @property (nonatomic, retain) UIBarButtonItem *backButton;
 @property (nonatomic, retain) UIBarButtonItem *forwardButton;
+@property (nonatomic, retain) NSURL *url;
 @property (retain) UIActivityIndicatorView *activityIndicator;
 
 @end

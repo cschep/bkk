@@ -21,45 +21,49 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 
 	tabBarController = [[UITabBarController alloc] init];
-	
-	//calendaring
-	CalendarViewController *calendarViewController = [[CalendarViewController alloc] init];
-	//calendarViewController.title = @"Calendar!";
-	navControllerCalendar = [[UINavigationController alloc] initWithRootViewController:calendarViewController];
-	navControllerCalendar.navigationBar.tintColor = [UIColor blackColor];
-	navControllerCalendar.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"calendar" image:[UIImage imageNamed:@"calendar"]  tag:2];
-	[calendarViewController release];
 
-	//searching
+    //searching
 	mainViewController = [[bkkViewController alloc] initWithNibName:@"bkkViewController" bundle:nil];
 	navControllerSearch = [[UINavigationController alloc] initWithRootViewController:mainViewController];
 	[navControllerSearch navigationBar].hidden = YES;
 	navControllerSearch.navigationBar.tintColor = [UIColor blackColor];
 	navControllerSearch.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"search" image:[UIImage imageNamed:@"mic"] tag:1];
+
+	//calendaring
+	CalendarViewController *calendarViewController = [[CalendarViewController alloc] init];
+	navControllerCalendar = [[UINavigationController alloc] initWithRootViewController:calendarViewController];
+	navControllerCalendar.navigationBar.tintColor = [UIColor blackColor];
+	navControllerCalendar.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"calendar" image:[UIImage imageNamed:@"calendar"]  tag:2];
+	[calendarViewController release];
+
+	//favorites list
+	FavoritesListViewController *favoritesViewController = [[FavoritesListViewController alloc] initWithNibName:@"FavoritesListViewController" bundle:nil];
+	navControllerFaves = [[UINavigationController alloc] initWithRootViewController:favoritesViewController];
+    navControllerFaves.navigationBar.tintColor = [UIColor blackColor];
+    navControllerFaves.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"faves" image:[UIImage imageNamed:@"inbox"] tag:3];
+    [favoritesViewController release];
 	
-	
-	// twittering? newsing?
-	/*
-	TwitterViewController *twitterView = [[TwitterViewController alloc] initWithNibName:@"TwitterViewController" bundle:nil];
-	twitterView.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"tweets" image:[UIImage imageNamed:@"comment"] tag:4];
-	*/
-	 
-	//kamz
+    //kamz
 	KamikazeViewController *kamikazeView = [[KamikazeViewController alloc] initWithNibName:@"KamikazeViewController" bundle:nil];
 	kamikazeView.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"kamikaze!" image:[UIImage imageNamed:@"question"] tag:4];
-								
-	//favorites list? all kinds'a lists?
-	FavoritesListViewController *favoritesView = [[FavoritesListViewController alloc] initWithNibName:@"FavoritesListViewController" bundle:nil];
-	favoritesView.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"faves" image:[UIImage imageNamed:@"inbox"] tag:3];
-	
-	[tabBarController setViewControllers: [NSArray arrayWithObjects:navControllerSearch, navControllerCalendar, favoritesView, kamikazeView, nil]];
+    
+	[tabBarController setViewControllers: [NSArray arrayWithObjects:navControllerSearch, navControllerCalendar, navControllerFaves, kamikazeView, nil]];
 	[kamikazeView release];	
-	[favoritesView release];
-	
+
 	
 	[window setBackgroundColor:[UIColor blackColor]];
 	[window addSubview:tabBarController.view];
     [window makeKeyAndVisible];
+    
+    //if there is no favorites array in defaults then create an empty one
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSArray *favorites = [defaults arrayForKey:@"favorites"];
+    
+    if (favorites == nil) {
+        favorites = [[NSArray alloc] init];
+        [defaults setObject:favorites forKey:@"favorites"];
+        [favorites release];
+    }
 	
 	return YES;
 }

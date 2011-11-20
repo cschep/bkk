@@ -14,16 +14,29 @@
 
 @synthesize tweet;
 
-- (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
-	[textField resignFirstResponder];
-	SongListViewController *songListViewController = [[SongListViewController alloc] initWithSearchTerm:theTextField.text SearchBy:[segmented titleForSegmentAtIndex:[segmented selectedSegmentIndex]] Random:NO Style:UITableViewStylePlain];
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [self searchFor:textField.text
+                 By:[segmented titleForSegmentAtIndex:[segmented selectedSegmentIndex]]  
+        UsingRandom:NO];
+	
+	return YES;
+}
+
+- (IBAction)dismissKeyboard:(id)sender {
+    [searchTextField resignFirstResponder];
+}
+
+- (void)searchFor:(NSString *)searchTerm By:(NSString *)searchBy UsingRandom:(BOOL)random  {
+    SongListViewController *songListViewController = [[SongListViewController alloc] 
+                                                      initWithSearchTerm:searchTerm 
+                                                      SearchBy:searchBy 
+                                                      Random:random 
+                                                      Style:UITableViewStylePlain];
 	songListViewController.title = @"Results";
 	
 	self.navigationController.navigationBar.hidden = NO;
 	[self.navigationController pushViewController:songListViewController animated:YES];
 	[songListViewController release];
-	
-	return YES;
 }
 
 /*

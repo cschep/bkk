@@ -8,6 +8,8 @@
 
 #import "SongDetailViewController.h"
 #import "VCTitleCase.h"
+#import "LyricsWebViewController.h"
+#import "bkkViewController.h"
 
 @implementation SongDetailViewController
 
@@ -32,8 +34,27 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
     
-    self.title = [self.song.title titlecaseString];
+    self.title = @"Details";
+    songLabel.text = self.song.title;
+    artistLabel.text = self.song.artist;
+    
+    [favoriteButton setTitle:@"Favorite" forState:UIControlStateNormal];
+    [favoriteButton setTitle:@"Favorite \u2605" forState:UIControlStateSelected]; 
+    
+    [artistButton setButtonColor:[UIColor blackColor]];
+    [favoriteButton setButtonColor:[UIColor blackColor]];
 }
+
+- (void)viewWillAppear:(BOOL)animated {
+    NSArray *favorites = [[NSUserDefaults standardUserDefaults] objectForKey:@"favorites"];
+    NSDictionary *song_dict = [[NSDictionary alloc] initWithObjectsAndKeys:self.song.artist, @"artist", self.song.title, @"title",  nil];
+    
+    isFavorite = [favorites containsObject:song_dict];
+    [song_dict release];
+    
+    [favoriteButton setSelected:isFavorite];
+}
+
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
@@ -48,7 +69,7 @@
     // e.g. self.myOutlet = nil;
 }
 
-- (IBAction)lyricsClicked:(id)sender {
+- (NSString *)getSearchString {
     NSMutableString *searchString = [NSMutableString string];
     for (NSString *word in [song.artist componentsSeparatedByString:@" "]) {
         [searchString appendString:[NSString stringWithFormat:@"%@+", word]];
@@ -57,6 +78,12 @@
     for (NSString *word in [song.title componentsSeparatedByString:@" "]) {
         [searchString appendString:[NSString stringWithFormat:@"%@+", word]];
     }
+    
+    return searchString;
+}
+
+- (IBAction)lyricsClicked:(id)sender {
+    NSString *searchString = [self getSearchString];
     
     NSString *urlString = [NSString stringWithFormat:@"http://www.songlyrics.com/index.php?section=search&searchW=%@&submit=Search&searchIn1=artist&searchIn2=album&searchIn3=song&searchIn4=lyrics", searchString];
 
@@ -67,14 +94,7 @@
 }
 
 - (IBAction)youTubeClicked:(id)sender {
-    NSMutableString *searchString = [NSMutableString string];
-    for (NSString *word in [song.artist componentsSeparatedByString:@" "]) {
-        [searchString appendString:[NSString stringWithFormat:@"%@+", word]];
-    }
-    
-    for (NSString *word in [song.title componentsSeparatedByString:@" "]) {
-        [searchString appendString:[NSString stringWithFormat:@"%@+", word]];
-    }
+    NSString *searchString = [self getSearchString];
     
     NSString *urlString = [NSString stringWithFormat:@"http://m.youtube.com/results?q=%@", searchString];
     
@@ -82,6 +102,36 @@
 	NSURL *url = [NSURL URLWithString:escapedUrlString];
     
     [[UIApplication sharedApplication] openURL:url];
+}
+
+- (IBAction)artistSearch:(id)sender {
+    [self.navigationController popToRootViewControllerAnimated:NO];
+    bkkViewController *bkkVC = (bkkViewController *)[self.tabBarController.viewControllers objectAtIndex:0];
+    [bkkVC searchFor:song.artist By:@"artist" UsingRandom:NO];  
+}
+
+- (IBAction)toggleFavorite:(id)sender {
+
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSMutableArray *favorites = [[defaults arrayForKey:@"favorites"] mutableCopy];
+    
+    NSDictionary *song_dict = [[NSDictionary alloc] initWithObjectsAndKeys:self.song.artist, @"artist", self.song.title, @"title", nil];
+    
+    if ([favorites containsObject:song_dict]) {
+        //remove
+        [favorites removeObject:song_dict];
+    } else {
+        //store
+        [favorites addObject:song_dict];
+    }
+
+    [song_dict release];
+
+    [defaults setObject:favorites forKey:@"favorites"];
+    [defaults synchronize];
+    
+    [sender setSelected:(![sender isSelected])];
+
 }
 
 - (void)dealloc {

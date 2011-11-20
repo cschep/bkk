@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface bkkViewController : UIViewController {
-	IBOutlet UITextField *textField;
+@interface bkkViewController : UIViewController <UITextFieldDelegate> {
+	IBOutlet UITextField *searchTextField;
 	IBOutlet UISegmentedControl *segmented;
 	IBOutlet UIButton *kamikazeButton;
 	IBOutlet UITextView *latestTweet;
@@ -22,6 +22,7 @@
 - (IBAction)kamikazeKetten;
 
 - (void)loadTweetInBackground;
+- (void)searchFor:(NSString *)searchTerm By:(NSString *)searchBy UsingRandom:(BOOL)random;
 
 @property (retain) NSString *tweet;
 

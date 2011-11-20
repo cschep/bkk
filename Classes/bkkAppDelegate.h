@@ -11,9 +11,12 @@
 
 @interface bkkAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
     UIWindow *window;
-	UINavigationController *navControllerSearch;
+	
+    UINavigationController *navControllerSearch;
 	UINavigationController *navControllerCalendar;
-	UITabBarController *tabBarController;
+    UINavigationController *navControllerFaves;
+	
+    UITabBarController *tabBarController;
     
     bkkViewController *mainViewController;
 }
