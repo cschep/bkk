@@ -11,18 +11,15 @@
 @interface bkkViewController : UIViewController <UITextFieldDelegate> {
 	IBOutlet UITextField *searchTextField;
 	IBOutlet UISegmentedControl *segmented;
-	IBOutlet UIButton *kamikazeButton;
 	IBOutlet UITextView *latestTweet;
     
     IBOutlet UIActivityIndicatorView *tweetSpinner;
 	NSString *tweet;
 }
 
-- (IBAction)loadWebPage;
-- (IBAction)kamikazeKetten;
-
 - (void)loadTweetInBackground;
 - (void)searchFor:(NSString *)searchTerm By:(NSString *)searchBy UsingRandom:(BOOL)random;
+- (void)dismissKeyboard:(id)sender;
 
 @property (retain) NSString *tweet;
 

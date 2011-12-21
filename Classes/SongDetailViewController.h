@@ -8,27 +8,27 @@
 
 #import <UIKit/UIKit.h>
 #import "Song.h"
-#import "CoolButton.h"
 
-@interface SongDetailViewController : UIViewController {
+@interface SongDetailViewController : UITableViewController {
 	Song *song;
     BOOL isFavorite;
     
-    IBOutlet UILabel *songLabel;
+    IBOutlet UIView *headerView;
+    IBOutlet UILabel *titleLabel;
     IBOutlet UILabel *artistLabel;
-    
-    IBOutlet CoolButton *favoriteButton;
-    IBOutlet UIButton *lyricsButton;
-    IBOutlet CoolButton *artistButton;
-    IBOutlet UIButton *youtubeButton;
-    
 }
 
 - (id)initWithSong:(Song *)_song;
 
-- (IBAction)lyricsClicked:(id)sender;
-- (IBAction)youTubeClicked:(id)sender;
+- (void)lyricsSearch;
+- (void)artistSearch;
+- (void)youTubeSearch;
+- (void)toggleFavorite;
 
 @property (nonatomic, retain) Song *song;
+
+@property (nonatomic, retain) IBOutlet UIView *headerView;
+@property (nonatomic, retain) IBOutlet UILabel *titleLabel;
+@property (nonatomic, retain) IBOutlet UILabel *artistLabel;
 
 @end

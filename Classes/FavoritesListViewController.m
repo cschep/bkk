@@ -13,7 +13,7 @@
 
 @implementation FavoritesListViewController
 
-NSMutableArray *favorites;
+@synthesize favorites;
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -26,12 +26,10 @@ NSMutableArray *favorites;
     self.navigationItem.title = @"Favorites!";
 }
 
-
-
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    favorites = [[[NSUserDefaults standardUserDefaults] objectForKey:@"favorites"] mutableCopy];
+    self.favorites = [[[NSUserDefaults standardUserDefaults] objectForKey:@"favorites"] mutableCopy];
     [self.tableView reloadData];
 }
 
@@ -71,7 +69,7 @@ NSMutableArray *favorites;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return [favorites count];
+    return [self.favorites count];
 }
 
 
@@ -86,8 +84,8 @@ NSMutableArray *favorites;
     }
     
     // Configure the cell...
-    cell.textLabel.text = [[favorites objectAtIndex:indexPath.row] objectForKey:@"title"];
-    cell.detailTextLabel.text = [[favorites objectAtIndex:indexPath.row] objectForKey:@"artist"];
+    cell.textLabel.text = [[self.favorites objectAtIndex:indexPath.row] objectForKey:@"title"];
+    cell.detailTextLabel.text = [[self.favorites objectAtIndex:indexPath.row] objectForKey:@"artist"];
     
     return cell;
 }
@@ -102,7 +100,7 @@ NSMutableArray *favorites;
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [favorites removeObjectAtIndex:indexPath.row];
+        [self.favorites removeObjectAtIndex:indexPath.row];
         [self syncFavorites];
         
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
@@ -111,14 +109,14 @@ NSMutableArray *favorites;
 
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-    [favorites exchangeObjectAtIndex:fromIndexPath.row withObjectAtIndex:toIndexPath.row];
+    [self.favorites exchangeObjectAtIndex:fromIndexPath.row withObjectAtIndex:toIndexPath.row];
     
     [self syncFavorites];
 }
 
 - (void)syncFavorites
 {
-    [[NSUserDefaults standardUserDefaults] setObject:favorites forKey:@"favorites"];
+    [[NSUserDefaults standardUserDefaults] setObject:self.favorites forKey:@"favorites"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -135,8 +133,8 @@ NSMutableArray *favorites;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     Song *song = [[Song alloc] init];
-    song.title = [[favorites objectAtIndex:indexPath.row] objectForKey:@"title"];
-    song.artist = [[favorites objectAtIndex:indexPath.row] objectForKey:@"artist"];
+    song.title = [[self.favorites objectAtIndex:indexPath.row] objectForKey:@"title"];
+    song.artist = [[self.favorites objectAtIndex:indexPath.row] objectForKey:@"artist"];
 
    	SongDetailViewController *songDetailViewController = [[SongDetailViewController alloc] initWithSong:song];
     [song release];

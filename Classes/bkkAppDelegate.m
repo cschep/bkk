@@ -44,12 +44,13 @@
     [favoritesViewController release];
 	
     //kamz
-	KamikazeViewController *kamikazeView = [[KamikazeViewController alloc] initWithNibName:@"KamikazeViewController" bundle:nil];
-	kamikazeView.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"kamikaze!" image:[UIImage imageNamed:@"question"] tag:4];
+	KamikazeViewController *kamikazeViewController = [[KamikazeViewController alloc] initWithNibName:@"KamikazeViewController" bundle:nil];
+	navControllerKamikaze = [[UINavigationController alloc] initWithRootViewController:kamikazeViewController];
+	navControllerKamikaze.navigationBar.tintColor = [UIColor blackColor];
+	navControllerKamikaze.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"kamikaze!" image:[UIImage imageNamed:@"question"] tag:4];
+    [kamikazeViewController release];
     
-	[tabBarController setViewControllers: [NSArray arrayWithObjects:navControllerSearch, navControllerCalendar, navControllerFaves, kamikazeView, nil]];
-	[kamikazeView release];	
-
+	[tabBarController setViewControllers: [NSArray arrayWithObjects:navControllerSearch, navControllerCalendar, navControllerFaves, navControllerKamikaze, nil]];
 	
 	[window setBackgroundColor:[UIColor blackColor]];
 	[window addSubview:tabBarController.view];

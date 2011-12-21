@@ -15,6 +15,7 @@
     UINavigationController *navControllerSearch;
 	UINavigationController *navControllerCalendar;
     UINavigationController *navControllerFaves;
+    UINavigationController *navControllerKamikaze;
 	
     UITabBarController *tabBarController;
     

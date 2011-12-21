@@ -14,6 +14,7 @@
 @implementation SongDetailViewController
 
 @synthesize song;
+@synthesize headerView, titleLabel, artistLabel;
 
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -35,14 +36,8 @@
 	[super viewDidLoad];
     
     self.title = @"Details";
-    songLabel.text = self.song.title;
-    artistLabel.text = self.song.artist;
+    self.clearsSelectionOnViewWillAppear = YES;
     
-    [favoriteButton setTitle:@"Favorite" forState:UIControlStateNormal];
-    [favoriteButton setTitle:@"Favorite \u2605" forState:UIControlStateSelected]; 
-    
-    [artistButton setButtonColor:[UIColor blackColor]];
-    [favoriteButton setButtonColor:[UIColor blackColor]];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -51,8 +46,8 @@
     
     isFavorite = [favorites containsObject:song_dict];
     [song_dict release];
-    
-    [favoriteButton setSelected:isFavorite];
+
+    [self.tableView reloadData];
 }
 
 
@@ -69,6 +64,117 @@
     // e.g. self.myOutlet = nil;
 }
 
+/* TableView Stuff */
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    // Return the number of sections.
+    return 2;
+}
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    // Return the number of rows in the section.
+    return 2;
+}
+
+// Customize the appearance of table view cells.
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    }
+    
+    //menu stuff
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            cell.textLabel.text = @"Favorite";
+
+            if (isFavorite) {
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            }
+            
+        } else if (indexPath.row == 1) {
+            cell.textLabel.text = @"Artist Search";
+        }  
+    } else if (indexPath.section == 1) { 
+        if (indexPath.row == 0) {
+            cell.textLabel.text = @"Lyrics Search";
+        } else if (indexPath.row == 1) {
+            cell.textLabel.text = @"YouTube Search";
+        }
+    }
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  
+    if (indexPath.row == 0) {
+        [self toggleFavorite];
+        
+        isFavorite = !isFavorite;
+        
+        if (isFavorite) {
+            [[self.tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryCheckmark];
+        } else {
+            [[self.tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryNone];
+        }
+        
+    } else if (indexPath.row == 1) {
+        [self artistSearch];
+        
+    } else if (indexPath.row == 2) {
+        [self lyricsSearch];
+        
+    } else if (indexPath.row == 3) {
+        [self youTubeSearch];
+        
+    }
+    
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+/*
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    //return [NSString stringWithFormat:@"%@ - %@", song.artist, song.title];
+    if (section == 1) {
+        return @"Elsewhere..";
+    } else {
+        return nil;
+    }
+}
+*/
+
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+    if (section == 1) {
+        return @"these will take you to the browser!";
+    } else {
+        return nil;
+    }
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        artistLabel.text = self.song.artist;
+        titleLabel.text = self.song.title;  
+        
+        return headerView; 
+    } else {
+        return nil;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return 116;
+    } else {
+        return 24;
+    }
+}
+
 - (NSString *)getSearchString {
     NSMutableString *searchString = [NSMutableString string];
     for (NSString *word in [song.artist componentsSeparatedByString:@" "]) {
@@ -82,7 +188,7 @@
     return searchString;
 }
 
-- (IBAction)lyricsClicked:(id)sender {
+- (void)lyricsSearch {
     NSString *searchString = [self getSearchString];
     
     NSString *urlString = [NSString stringWithFormat:@"http://www.songlyrics.com/index.php?section=search&searchW=%@&submit=Search&searchIn1=artist&searchIn2=album&searchIn3=song&searchIn4=lyrics", searchString];
@@ -93,7 +199,7 @@
     [[UIApplication sharedApplication] openURL:url];
 }
 
-- (IBAction)youTubeClicked:(id)sender {
+- (void)youTubeSearch {
     NSString *searchString = [self getSearchString];
     
     NSString *urlString = [NSString stringWithFormat:@"http://m.youtube.com/results?q=%@", searchString];
@@ -104,13 +210,13 @@
     [[UIApplication sharedApplication] openURL:url];
 }
 
-- (IBAction)artistSearch:(id)sender {
+- (void)artistSearch {
     [self.navigationController popToRootViewControllerAnimated:NO];
     bkkViewController *bkkVC = (bkkViewController *)[self.tabBarController.viewControllers objectAtIndex:0];
     [bkkVC searchFor:song.artist By:@"artist" UsingRandom:NO];  
 }
 
-- (IBAction)toggleFavorite:(id)sender {
+- (void)toggleFavorite {
 
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSMutableArray *favorites = [[defaults arrayForKey:@"favorites"] mutableCopy];
@@ -129,12 +235,15 @@
 
     [defaults setObject:favorites forKey:@"favorites"];
     [defaults synchronize];
-    
-    [sender setSelected:(![sender isSelected])];
-
 }
 
 - (void)dealloc {
+    [artistLabel release];
+    [titleLabel release];
+    [headerView release];
+
+    [song release];
+
     [super dealloc];
 }
 

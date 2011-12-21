@@ -13,4 +13,6 @@
 	IBOutlet UITextView *numSongs;
 }
 
+- (void)kamikazeKetten;
+
 @end

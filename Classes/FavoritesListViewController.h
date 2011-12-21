@@ -11,6 +11,8 @@
 
 @interface FavoritesListViewController : UITableViewController
 
+@property (nonatomic, strong) NSMutableArray *favorites;
+
 - (void)syncFavorites;
 
 @end

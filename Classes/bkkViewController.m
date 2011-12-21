@@ -22,10 +22,6 @@
 	return YES;
 }
 
-- (IBAction)dismissKeyboard:(id)sender {
-    [searchTextField resignFirstResponder];
-}
-
 - (void)searchFor:(NSString *)searchTerm By:(NSString *)searchBy UsingRandom:(BOOL)random  {
     SongListViewController *songListViewController = [[SongListViewController alloc] 
                                                       initWithSearchTerm:searchTerm 
@@ -49,47 +45,10 @@
 }
 */
 
--(BOOL)canBecomeFirstResponder {
-    return YES;
-}
-
--(void)viewDidAppear:(BOOL)animated {
-    [self becomeFirstResponder];
-}
-
-- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
-	if (event.type == UIEventSubtypeMotionShake) {
-		[self kamikazeKetten];
-	}
-}
-
 - (void)viewWillAppear:(BOOL)animated {
 	self.navigationController.navigationBar.hidden = YES;
     
     [super viewWillAppear:animated];
-}
-
-- (IBAction)loadWebPage {
-    NSURL *url = [NSURL URLWithString:@"http://babyketten.com"];
-    [[UIApplication sharedApplication] openURL:url];
-}
-
-- (IBAction)kamikazeKetten {
-	SongListViewController *songListViewController = [[SongListViewController alloc] initWithSearchTerm:@"none" SearchBy:@"none" Random:YES Style:UITableViewStylePlain];
-	
-	self.navigationController.navigationBar.hidden = NO;
-	
-	[UIView beginAnimations:@"animation" context:nil];
-	[UIView setAnimationDuration:2.0];
-	[self.navigationController pushViewController: songListViewController animated:NO]; 
-	[UIView setAnimationTransition:UIViewAnimationTransitionCurlDown forView:self.navigationController.view cache:NO]; 
-	[UIView commitAnimations];
-	
-//	songListViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-//	[self presentModalViewController:songListViewController animated:YES];
-	
-	//[self.navigationController pushViewController:songListViewController animated:YES];
-	[songListViewController release];
 }
 
 /*
@@ -98,12 +57,18 @@
 }
 */
 
-
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-	[super viewDidLoad];
-
+    UISwipeGestureRecognizer *recognizer;
+    
+    recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
+    [recognizer setDirection:UISwipeGestureRecognizerDirectionDown];
+    [[self view] addGestureRecognizer:recognizer];
+    [recognizer release]; 
+    
     [self loadTweetInBackground];
+    
+    [super viewDidLoad];
 }
 
 - (void)loadTweetInBackground {
@@ -111,6 +76,10 @@
     latestTweet.text = @"";
     
     [NSThread detachNewThreadSelector:@selector(loadTweet) toTarget:self withObject:nil];    
+}
+
+- (void)dismissKeyboard:(id)sender {
+    [searchTextField resignFirstResponder];
 }
 
 - (void)loadTweet {
@@ -139,7 +108,6 @@
     latestTweet.text = tweet;
 }
 
-
 /*
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -161,6 +129,12 @@
 }
 
 - (void)dealloc {
+    [searchTextField release];
+	[segmented release];
+	[latestTweet release];
+    [tweetSpinner release];
+    [tweet release];
+    
     [super dealloc];
 }
 

@@ -7,7 +7,7 @@
 //
 
 #import "KamikazeViewController.h"
-
+#import "SongListViewController.h"
 
 @implementation KamikazeViewController
 
@@ -22,12 +22,20 @@
 }
 */
 
-/*
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+ 
 }
-*/
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+    self.navigationController.navigationBar.hidden = YES;
+}
 
 /*
 // Override to allow orientations other than the default portrait orientation.
@@ -62,6 +70,39 @@
     // e.g. self.myOutlet = nil;
 }
 
+- (BOOL)canBecomeFirstResponder {
+    return YES;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+
+    [self becomeFirstResponder];
+}
+
+- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
+	if (event.type == UIEventSubtypeMotionShake) {
+		[self kamikazeKetten];
+	}
+}
+
+- (void)kamikazeKetten {
+	SongListViewController *songListViewController = [[SongListViewController alloc] initWithSearchTerm:@"none" SearchBy:@"none" Random:YES Style:UITableViewStylePlain];
+	
+	self.navigationController.navigationBar.hidden = NO;
+	
+	[UIView beginAnimations:@"animation" context:nil];
+	[UIView setAnimationDuration:2.0];
+	[self.navigationController pushViewController: songListViewController animated:NO]; 
+	[UIView setAnimationTransition:UIViewAnimationTransitionCurlDown forView:self.navigationController.view cache:NO]; 
+	[UIView commitAnimations];
+	
+    //	songListViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    //	[self presentModalViewController:songListViewController animated:YES];
+	
+	//[self.navigationController pushViewController:songListViewController animated:YES];
+	[songListViewController release];
+}
 
 - (void)dealloc {
     [super dealloc];

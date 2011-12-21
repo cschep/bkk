@@ -34,7 +34,6 @@
 		83305335137F28C9007943E8 /* PlainTableViewSectionHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = 83305333137F28C9007943E8 /* PlainTableViewSectionHeader.png */; };
 		83305336137F28C9007943E8 /* PlainTableViewSectionHeader@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83305334137F28C9007943E8 /* PlainTableViewSectionHeader@2x.png */; };
 		834714291441048F00F4ADC5 /* bkk_logo_bw.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 834714281441048F00F4ADC5 /* bkk_logo_bw.jpeg */; };
-		834A5A501465C18A00C87455 /* CoolButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 834A5A4F1465C18A00C87455 /* CoolButton.m */; };
 		834A5A521465C1E800C87455 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 834A5A511465C1E800C87455 /* QuartzCore.framework */; };
 		8358DC94145B23A400FF0DD3 /* jumpinkettenicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8358DC93145B23A400FF0DD3 /* jumpinkettenicon.png */; };
 		8366C1721340523000D2B518 /* CalendarDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8366C1701340523000D2B518 /* CalendarDetailViewController.m */; };
@@ -50,6 +49,8 @@
 		8381B6101169C65500B545AB /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 8381B60F1169C65500B545AB /* Song.m */; };
 		83829841116C69F600EE8539 /* SongDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8382983F116C69F600EE8539 /* SongDetailViewController.m */; };
 		83829842116C69F600EE8539 /* SongDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83829840116C69F600EE8539 /* SongDetailViewController.xib */; };
+		839597A914A29D9900E8CB30 /* ketten_small_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 839597A714A29D9900E8CB30 /* ketten_small_white@2x.png */; };
+		839597AA14A29D9900E8CB30 /* ketten_small_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 839597A814A29D9900E8CB30 /* ketten_small_white.png */; };
 		8397062812F4A20B00050E9E /* kamizake_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8397062612F4A20B00050E9E /* kamizake_icon@2x.png */; };
 		8397062912F4A20B00050E9E /* kamizake_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8397062712F4A20B00050E9E /* kamizake_icon.png */; };
 		8397063812F4A9BD00050E9E /* question.png in Resources */ = {isa = PBXBuildFile; fileRef = 8397063612F4A9BD00050E9E /* question.png */; };
@@ -116,8 +117,6 @@
 		83305333137F28C9007943E8 /* PlainTableViewSectionHeader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PlainTableViewSectionHeader.png; sourceTree = "<group>"; };
 		83305334137F28C9007943E8 /* PlainTableViewSectionHeader@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PlainTableViewSectionHeader@2x.png"; sourceTree = "<group>"; };
 		834714281441048F00F4ADC5 /* bkk_logo_bw.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bkk_logo_bw.jpeg; sourceTree = "<group>"; };
-		834A5A4E1465C18A00C87455 /* CoolButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoolButton.h; sourceTree = "<group>"; };
-		834A5A4F1465C18A00C87455 /* CoolButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoolButton.m; sourceTree = "<group>"; };
 		834A5A511465C1E800C87455 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		8358DC93145B23A400FF0DD3 /* jumpinkettenicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jumpinkettenicon.png; sourceTree = "<group>"; };
 		8366C16F1340523000D2B518 /* CalendarDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarDetailViewController.h; sourceTree = "<group>"; };
@@ -143,6 +142,8 @@
 		8382983E116C69F600EE8539 /* SongDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongDetailViewController.h; sourceTree = "<group>"; };
 		8382983F116C69F600EE8539 /* SongDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongDetailViewController.m; sourceTree = "<group>"; };
 		83829840116C69F600EE8539 /* SongDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SongDetailViewController.xib; sourceTree = "<group>"; };
+		839597A714A29D9900E8CB30 /* ketten_small_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ketten_small_white@2x.png"; sourceTree = "<group>"; };
+		839597A814A29D9900E8CB30 /* ketten_small_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ketten_small_white.png; sourceTree = "<group>"; };
 		8397062612F4A20B00050E9E /* kamizake_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kamizake_icon@2x.png"; sourceTree = "<group>"; };
 		8397062712F4A20B00050E9E /* kamizake_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kamizake_icon.png; sourceTree = "<group>"; };
 		8397063612F4A9BD00050E9E /* question.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = question.png; sourceTree = "<group>"; };
@@ -202,8 +203,6 @@
 				83FD939A126A3E360041513F /* TwitterViewController.h */,
 				83FD939B126A3E360041513F /* TwitterViewController.m */,
 				83FD939C126A3E360041513F /* TwitterViewController.xib */,
-				834A5A4E1465C18A00C87455 /* CoolButton.h */,
-				834A5A4F1465C18A00C87455 /* CoolButton.m */,
 				83B47B97117A7CAD005ADAF3 /* VCTitleCase.h */,
 				83B47B98117A7CAD005ADAF3 /* VCTitleCase.m */,
 				83ADD5FD116993AB00BF3809 /* bkkViewController.h */,
@@ -272,6 +271,8 @@
 			isa = PBXGroup;
 			children = (
 				8300C3EA137F73BA00E45770 /* ketten_small.jpg */,
+				839597A714A29D9900E8CB30 /* ketten_small_white@2x.png */,
+				839597A814A29D9900E8CB30 /* ketten_small_white.png */,
 				8358DC93145B23A400FF0DD3 /* jumpinkettenicon.png */,
 				8300C3CD137F613E00E45770 /* jumpinkettenicon@2x.png */,
 				83305333137F28C9007943E8 /* PlainTableViewSectionHeader.png */,
@@ -381,6 +382,9 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Baby Ketten" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -439,6 +443,8 @@
 				8300C3EB137F73BB00E45770 /* ketten_small.jpg in Resources */,
 				834714291441048F00F4ADC5 /* bkk_logo_bw.jpeg in Resources */,
 				8358DC94145B23A400FF0DD3 /* jumpinkettenicon.png in Resources */,
+				839597A914A29D9900E8CB30 /* ketten_small_white@2x.png in Resources */,
+				839597AA14A29D9900E8CB30 /* ketten_small_white.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,7 +480,6 @@
 				8300C3E5137F62C200E45770 /* BSGoogleV2KmlParser.m in Sources */,
 				8300C3E6137F62C200E45770 /* BSGoogleV3KmlParser.m in Sources */,
 				8300C3E7137F62C200E45770 /* BSKmlResult.m in Sources */,
-				834A5A501465C18A00C87455 /* CoolButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -533,7 +538,6 @@
 				HEADER_SEARCH_PATHS = "";
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "";
-				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E687FEB1-BCEF-4906-9A24-228F06C521CC";
 				SDKROOT = iphoneos;
 			};
@@ -569,7 +573,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "";
-				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E687FEB1-BCEF-4906-9A24-228F06C521CC";
 				SDKROOT = iphoneos;
 			};
@@ -606,7 +609,6 @@
 				HEADER_SEARCH_PATHS = "";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
-				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
@@ -623,7 +625,6 @@
 				HEADER_SEARCH_PATHS = "";
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "";
-				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E687FEB1-BCEF-4906-9A24-228F06C521CC";
 				SDKROOT = iphoneos;
 			};
