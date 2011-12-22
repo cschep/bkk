@@ -24,6 +24,7 @@
 - (void)artistSearch;
 - (void)youTubeSearch;
 - (void)toggleFavorite;
+- (void)setCheckmarkForFavorite;
 
 @property (nonatomic, retain) Song *song;
 

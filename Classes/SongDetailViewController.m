@@ -9,7 +9,7 @@
 #import "SongDetailViewController.h"
 #import "VCTitleCase.h"
 #import "LyricsWebViewController.h"
-#import "bkkViewController.h"
+#import "SongListViewController.h"
 
 @implementation SongDetailViewController
 
@@ -48,6 +48,8 @@
     [song_dict release];
 
     [self.tableView reloadData];
+        
+    [self setCheckmarkForFavorite];
 }
 
 
@@ -96,7 +98,7 @@
             }
             
         } else if (indexPath.row == 1) {
-            cell.textLabel.text = @"Artist Search";
+            cell.textLabel.text = @"More By This Artist";
         }  
     } else if (indexPath.section == 1) { 
         if (indexPath.row == 0) {
@@ -111,26 +113,29 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   
-    if (indexPath.row == 0) {
-        [self toggleFavorite];
+    if (indexPath.section == 0) {
         
-        isFavorite = !isFavorite;
+        if (indexPath.row == 0) {
+            [self toggleFavorite];
+            
+            isFavorite = !isFavorite;
+            
+            [self setCheckmarkForFavorite];            
+
+        } else if (indexPath.row == 1) {
+            [self artistSearch];
+            
+        } 
+    
+    } else if (indexPath.section == 1) {
         
-        if (isFavorite) {
-            [[self.tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryCheckmark];
-        } else {
-            [[self.tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryNone];
+        if (indexPath.row == 0) {
+            [self lyricsSearch];
+            
+        } else if (indexPath.row == 1) {
+            [self youTubeSearch];
+            
         }
-        
-    } else if (indexPath.row == 1) {
-        [self artistSearch];
-        
-    } else if (indexPath.row == 2) {
-        [self lyricsSearch];
-        
-    } else if (indexPath.row == 3) {
-        [self youTubeSearch];
-        
     }
     
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -150,7 +155,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
     if (section == 1) {
-        return @"these will take you to the browser!";
+        return @"Searches will open a browser window.";
     } else {
         return nil;
     }
@@ -211,9 +216,18 @@
 }
 
 - (void)artistSearch {
-    [self.navigationController popToRootViewControllerAnimated:NO];
-    bkkViewController *bkkVC = (bkkViewController *)[self.tabBarController.viewControllers objectAtIndex:0];
-    [bkkVC searchFor:song.artist By:@"artist" UsingRandom:NO];  
+//    [self.navigationController popToRootViewControllerAnimated:NO];
+//    [self.navigationController.tabBarController setSelectedIndex:0];
+    
+//    bkkViewController *bkkVC = (bkkViewController *)[[self.navigationController.tabBarController.viewControllers objectAtIndex:0] topViewController];
+//    [bkkVC searchFor:song.artist By:@"artist" UsingRandom:NO];  
+    
+    SongListViewController *artistSearchVC = [[SongListViewController alloc] 
+                                                initWithSearchTerm:song.artist SearchBy:@"artist" Random:NO Style:UITableViewStylePlain];
+    
+    [self.navigationController pushViewController:artistSearchVC animated:YES];
+    [artistSearchVC release];
+    
 }
 
 - (void)toggleFavorite {
@@ -235,6 +249,15 @@
 
     [defaults setObject:favorites forKey:@"favorites"];
     [defaults synchronize];
+}
+
+- (void)setCheckmarkForFavorite {
+    if (isFavorite) {
+        [[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]] setAccessoryType:UITableViewCellAccessoryCheckmark];
+    } else {
+        [[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]] setAccessoryType:UITableViewCellAccessoryNone];
+    }
+
 }
 
 - (void)dealloc {
