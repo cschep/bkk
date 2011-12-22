@@ -198,6 +198,7 @@
     // Configure the cell...
     cell.textLabel.text = [[songList objectAtIndex:indexPath.row] title];
 	cell.detailTextLabel.text = [[songList objectAtIndex:indexPath.row] artist];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 
     return cell;
 }

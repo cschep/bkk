@@ -490,7 +490,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Christopher Schepman";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -501,7 +501,7 @@
 				INFOPLIST_FILE = "baby ketten-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "baby ketten";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "7792BF38-73CB-4293-91EA-746839753F97";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -511,7 +511,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Christopher Schepman";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Christopher Schepman (9UY2RV34LS)";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -520,7 +520,7 @@
 				INFOPLIST_FILE = "baby ketten-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "baby ketten";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "7792BF38-73CB-4293-91EA-746839753F97";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "115E8248-9317-486E-BD0E-FF6841D23045";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
@@ -531,14 +531,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Christopher Schepman (9UY2RV34LS)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Christopher Schepman";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Christopher Schepman";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E687FEB1-BCEF-4906-9A24-228F06C521CC";
+				PROVISIONING_PROFILE = "7792BF38-73CB-4293-91EA-746839753F97";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7792BF38-73CB-4293-91EA-746839753F97";
 				SDKROOT = iphoneos;
 			};
 			name = "Ad Hoc";
@@ -547,7 +549,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Christopher Schepman";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Christopher Schepman";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -556,8 +558,8 @@
 				INFOPLIST_FILE = "baby ketten-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "baby ketten";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4B562FA2-9230-4C53-BEEC-81442DD808FE";
+				PROVISIONING_PROFILE = "7792BF38-73CB-4293-91EA-746839753F97";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7792BF38-73CB-4293-91EA-746839753F97";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -567,12 +569,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Christopher Schepman";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Christopher Schepman (9UY2RV34LS)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "";
+				PROVISIONING_PROFILE = "7792BF38-73CB-4293-91EA-746839753F97";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E687FEB1-BCEF-4906-9A24-228F06C521CC";
 				SDKROOT = iphoneos;
 			};
@@ -582,7 +586,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Christopher Schepman";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Christopher Schepman";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -591,7 +595,7 @@
 				INFOPLIST_FILE = "baby ketten-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "baby ketten";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "7792BF38-73CB-4293-91EA-746839753F97";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4B562FA2-9230-4C53-BEEC-81442DD808FE";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
@@ -602,6 +606,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Christopher Schepman";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -609,6 +614,7 @@
 				HEADER_SEARCH_PATHS = "";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
+				PROVISIONING_PROFILE = "7792BF38-73CB-4293-91EA-746839753F97";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
@@ -618,6 +624,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Christopher Schepman";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Christopher Schepman (9UY2RV34LS)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -625,6 +632,7 @@
 				HEADER_SEARCH_PATHS = "";
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "";
+				PROVISIONING_PROFILE = "7792BF38-73CB-4293-91EA-746839753F97";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E687FEB1-BCEF-4906-9A24-228F06C521CC";
 				SDKROOT = iphoneos;
 			};

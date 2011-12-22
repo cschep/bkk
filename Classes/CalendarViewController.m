@@ -207,6 +207,8 @@
     }
     
  	cell.textLabel.text = [[dateList objectAtIndex:indexPath.section] title];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
     return cell;
 }
 

@@ -86,6 +86,7 @@
     // Configure the cell...
     cell.textLabel.text = [[self.favorites objectAtIndex:indexPath.row] objectForKey:@"title"];
     cell.detailTextLabel.text = [[self.favorites objectAtIndex:indexPath.row] objectForKey:@"artist"];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
 }
