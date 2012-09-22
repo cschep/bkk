@@ -87,7 +87,14 @@
     
     [NSThread sleepForTimeInterval:1];
     
-	NSString *urlString = @"http://api.twitter.com/1/statuses/user_timeline.json?count=1&screen_name=babykettenOR";
+    NSString *urlString;
+    NSString *city = [[NSUserDefaults standardUserDefaults] stringForKey:@"city"];
+    if ([city isEqualToString:@"1"]) {
+        urlString = @"http://api.twitter.com/1/statuses/user_timeline.json?count=1&screen_name=babykettenWA";
+    } else {
+        urlString = @"http://api.twitter.com/1/statuses/user_timeline.json?count=1&screen_name=babykettenOR";        
+    }
+
 	NSURL *url = [NSURL URLWithString:urlString];
 	NSString *jsonString = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
 	

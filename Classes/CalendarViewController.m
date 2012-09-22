@@ -61,7 +61,7 @@
 
 	[df setDateFormat:@"yyyy-MM-dd"]; //AHHHHH!
 	NSString *urlString = [NSString stringWithFormat:@"http://www.google.com/calendar/feeds/9a434tnlm9mbo57r05rkodl6d0%%40group.calendar.google.com/public/full?alt=json&ctz=America/Los_Angeles&orderby=starttime&start-min=%@&start-max=%@&sortorder=a&singleevents=true", [df stringFromDate:minDate], [df stringFromDate:maxDate]];
-	//NSLog(urlString);
+	NSLog(urlString);
 	[df release];
 
 	NSURL *url = [NSURL URLWithString:urlString];

@@ -35,6 +35,7 @@
 		83305336137F28C9007943E8 /* PlainTableViewSectionHeader@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83305334137F28C9007943E8 /* PlainTableViewSectionHeader@2x.png */; };
 		834714291441048F00F4ADC5 /* bkk_logo_bw.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 834714281441048F00F4ADC5 /* bkk_logo_bw.jpeg */; };
 		834A5A521465C1E800C87455 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 834A5A511465C1E800C87455 /* QuartzCore.framework */; };
+		834DE11A15DC83160050139B /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 834DE11915DC83160050139B /* Settings.bundle */; };
 		8358DC94145B23A400FF0DD3 /* jumpinkettenicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8358DC93145B23A400FF0DD3 /* jumpinkettenicon.png */; };
 		8366C1721340523000D2B518 /* CalendarDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8366C1701340523000D2B518 /* CalendarDetailViewController.m */; };
 		8366C1731340523000D2B518 /* CalendarDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8366C1711340523000D2B518 /* CalendarDetailViewController.xib */; };
@@ -68,6 +69,7 @@
 		83B7C5BA1296E6E500A52BD9 /* FavoritesListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83B7C5B81296E6E500A52BD9 /* FavoritesListViewController.xib */; };
 		83B7C5CE1296E84700A52BD9 /* comment.png in Resources */ = {isa = PBXBuildFile; fileRef = 83B7C5CC1296E84700A52BD9 /* comment.png */; };
 		83B7C5CF1296E84700A52BD9 /* comment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83B7C5CD1296E84700A52BD9 /* comment@2x.png */; };
+		83D34B01160E5EC10065EF6A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83D34B00160E5EC10065EF6A /* Default-568h@2x.png */; };
 		83DA582A121B7A87006804B8 /* LyricsWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83DA5828121B7A87006804B8 /* LyricsWebViewController.m */; };
 		83DA582B121B7A87006804B8 /* LyricsWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83DA5829121B7A87006804B8 /* LyricsWebViewController.xib */; };
 		83DA58AA121B96DD006804B8 /* kamikaze_ketten.png in Resources */ = {isa = PBXBuildFile; fileRef = 83DA58A9121B96DD006804B8 /* kamikaze_ketten.png */; };
@@ -118,6 +120,7 @@
 		83305334137F28C9007943E8 /* PlainTableViewSectionHeader@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PlainTableViewSectionHeader@2x.png"; sourceTree = "<group>"; };
 		834714281441048F00F4ADC5 /* bkk_logo_bw.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bkk_logo_bw.jpeg; sourceTree = "<group>"; };
 		834A5A511465C1E800C87455 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		834DE11915DC83160050139B /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		8358DC93145B23A400FF0DD3 /* jumpinkettenicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jumpinkettenicon.png; sourceTree = "<group>"; };
 		8366C16F1340523000D2B518 /* CalendarDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarDetailViewController.h; sourceTree = "<group>"; };
 		8366C1701340523000D2B518 /* CalendarDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarDetailViewController.m; sourceTree = "<group>"; };
@@ -167,6 +170,7 @@
 		83B7C5CC1296E84700A52BD9 /* comment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comment.png; sourceTree = "<group>"; };
 		83B7C5CD1296E84700A52BD9 /* comment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "comment@2x.png"; sourceTree = "<group>"; };
 		83BFE0BA11C543140022D0CA /* baby ketten_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "baby ketten_Prefix.pch"; sourceTree = "<group>"; };
+		83D34B00160E5EC10065EF6A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		83DA5827121B7A87006804B8 /* LyricsWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LyricsWebViewController.h; sourceTree = "<group>"; };
 		83DA5828121B7A87006804B8 /* LyricsWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LyricsWebViewController.m; sourceTree = "<group>"; };
 		83DA5829121B7A87006804B8 /* LyricsWebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LyricsWebViewController.xib; sourceTree = "<group>"; };
@@ -249,6 +253,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				83D34B00160E5EC10065EF6A /* Default-568h@2x.png */,
+				834DE11915DC83160050139B /* Settings.bundle */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -383,7 +389,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0450;
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Baby Ketten" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -445,6 +451,8 @@
 				8358DC94145B23A400FF0DD3 /* jumpinkettenicon.png in Resources */,
 				839597A914A29D9900E8CB30 /* ketten_small_white@2x.png in Resources */,
 				839597AA14A29D9900E8CB30 /* ketten_small_white.png in Resources */,
+				834DE11A15DC83160050139B /* Settings.bundle in Resources */,
+				83D34B01160E5EC10065EF6A /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,6 +507,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "baby ketten_Prefix.pch";
 				INFOPLIST_FILE = "baby ketten-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "baby ketten";
 				PROVISIONING_PROFILE = "7792BF38-73CB-4293-91EA-746839753F97";
@@ -518,6 +527,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "baby ketten_Prefix.pch";
 				INFOPLIST_FILE = "baby ketten-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "baby ketten";
 				PROVISIONING_PROFILE = "7792BF38-73CB-4293-91EA-746839753F97";
@@ -537,6 +547,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "";
 				PROVISIONING_PROFILE = "7792BF38-73CB-4293-91EA-746839753F97";
@@ -556,6 +567,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "baby ketten_Prefix.pch";
 				INFOPLIST_FILE = "baby ketten-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "baby ketten";
 				PROVISIONING_PROFILE = "7792BF38-73CB-4293-91EA-746839753F97";
@@ -574,6 +586,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "";
 				PROVISIONING_PROFILE = "7792BF38-73CB-4293-91EA-746839753F97";
@@ -593,6 +606,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "baby ketten_Prefix.pch";
 				INFOPLIST_FILE = "baby ketten-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "baby ketten";
 				PROVISIONING_PROFILE = "7792BF38-73CB-4293-91EA-746839753F97";
@@ -612,6 +626,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				PROVISIONING_PROFILE = "7792BF38-73CB-4293-91EA-746839753F97";
@@ -630,6 +645,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "";
 				PROVISIONING_PROFILE = "7792BF38-73CB-4293-91EA-746839753F97";
