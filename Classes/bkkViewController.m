@@ -8,7 +8,7 @@
 
 #import "bkkViewController.h"
 #import "SongListViewController.h"
-#import "JSON.h"
+#import "AFJSONRequestOperation.h"
 
 @implementation bkkViewController
 
@@ -32,7 +32,6 @@
 	
 	self.navigationController.navigationBar.hidden = NO;
 	[self.navigationController pushViewController:songListViewController animated:YES];
-	[songListViewController release];
 }
 
 /*
@@ -64,55 +63,45 @@
     recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
     [recognizer setDirection:UISwipeGestureRecognizerDirectionDown];
     [[self view] addGestureRecognizer:recognizer];
-    [recognizer release]; 
-    
-    [self loadTweetInBackground];
-    
-    [super viewDidLoad];
-}
-
-- (void)loadTweetInBackground {
-    [tweetSpinner startAnimating];
-    latestTweet.text = @"";
-    
-    [NSThread detachNewThreadSelector:@selector(loadTweet) toTarget:self withObject:nil];    
-}
-
-- (void)dismissKeyboard:(id)sender {
-    [searchTextField resignFirstResponder];
-}
-
-- (void)loadTweet {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    
-    [NSThread sleepForTimeInterval:1];
     
     NSString *urlString;
     NSString *city = [[NSUserDefaults standardUserDefaults] stringForKey:@"city"];
     if ([city isEqualToString:@"1"]) {
         urlString = @"http://api.twitter.com/1/statuses/user_timeline.json?count=1&screen_name=babykettenWA";
     } else {
-        urlString = @"http://api.twitter.com/1/statuses/user_timeline.json?count=1&screen_name=babykettenOR";        
+        urlString = @"http://api.twitter.com/1/statuses/user_timeline.json?count=1&screen_name=babykettenOR";
     }
-
+    
 	NSURL *url = [NSURL URLWithString:urlString];
-	NSString *jsonString = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-	
-    if (jsonString != nil) {
-        id jsonValue = [jsonString JSONValue];
-        self.tweet = [[jsonValue objectAtIndex:0] valueForKey:@"text"];
-    } else {
-        self.tweet = @"Can't reach the internetz! Sing pretty!";
-    }
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    //default UI
+    [tweetSpinner startAnimating];
+    latestTweet.text = @"";
 
-	[self performSelectorOnMainThread:@selector(didFinishLoadingTweet) withObject:nil waitUntilDone:NO];
-	[jsonString release];
-	[pool release];
+    //update tweet
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
+    success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        self.tweet = [[JSON objectAtIndex:0] valueForKey:@"text"];
+        [tweetSpinner stopAnimating];
+        latestTweet.text = tweet;
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        NSLog(@"Failed loading JSON.");
+        self.tweet = @"Can't reach the internetz! Sing pretty!";
+    }];
+
+    [operation start];
+    
+    [super viewDidLoad];
 }
 
-- (void)didFinishLoadingTweet {
-	[tweetSpinner stopAnimating];
-    latestTweet.text = tweet;
+- (void)loadTweetInBackground {
+    
+    [NSThread detachNewThreadSelector:@selector(loadTweet) toTarget:self withObject:nil];    
+}
+
+- (void)dismissKeyboard:(id)sender {
+    [searchTextField resignFirstResponder];
 }
 
 /*
@@ -135,14 +124,5 @@
 	// e.g. self.myOutlet = nil;
 }
 
-- (void)dealloc {
-    [searchTextField release];
-	[segmented release];
-	[latestTweet release];
-    [tweetSpinner release];
-    [tweet release];
-    
-    [super dealloc];
-}
 
 @end

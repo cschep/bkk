@@ -26,10 +26,10 @@
 - (void)toggleFavorite;
 - (void)setCheckmarkForFavorite;
 
-@property (nonatomic, retain) Song *song;
+@property (nonatomic, strong) Song *song;
 
-@property (nonatomic, retain) IBOutlet UIView *headerView;
-@property (nonatomic, retain) IBOutlet UILabel *titleLabel;
-@property (nonatomic, retain) IBOutlet UILabel *artistLabel;
+@property (nonatomic, strong) IBOutlet UIView *headerView;
+@property (nonatomic, strong) IBOutlet UILabel *titleLabel;
+@property (nonatomic, strong) IBOutlet UILabel *artistLabel;
 
 @end

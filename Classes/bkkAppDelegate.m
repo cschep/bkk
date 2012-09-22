@@ -9,7 +9,6 @@
 #import "bkkAppDelegate.h"
 #import "bkkViewController.h"
 #import "CalendarViewController.h"
-#import "TwitterViewController.h"
 #import "FavoritesListViewController.h"
 #import "KamikazeViewController.h"
 
@@ -34,21 +33,18 @@
 	navControllerCalendar = [[UINavigationController alloc] initWithRootViewController:calendarViewController];
 	navControllerCalendar.navigationBar.tintColor = [UIColor blackColor];
 	navControllerCalendar.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"calendar" image:[UIImage imageNamed:@"calendar"]  tag:2];
-	[calendarViewController release];
 
 	//favorites list
 	FavoritesListViewController *favoritesViewController = [[FavoritesListViewController alloc] initWithNibName:@"FavoritesListViewController" bundle:nil];
 	navControllerFaves = [[UINavigationController alloc] initWithRootViewController:favoritesViewController];
     navControllerFaves.navigationBar.tintColor = [UIColor blackColor];
     navControllerFaves.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"faves" image:[UIImage imageNamed:@"inbox"] tag:3];
-    [favoritesViewController release];
 	
     //kamz
 	KamikazeViewController *kamikazeViewController = [[KamikazeViewController alloc] initWithNibName:@"KamikazeViewController" bundle:nil];
 	navControllerKamikaze = [[UINavigationController alloc] initWithRootViewController:kamikazeViewController];
 	navControllerKamikaze.navigationBar.tintColor = [UIColor blackColor];
 	navControllerKamikaze.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"kamikaze!" image:[UIImage imageNamed:@"question"] tag:4];
-    [kamikazeViewController release];
     
 	[tabBarController setViewControllers: [NSArray arrayWithObjects:navControllerSearch, navControllerCalendar, navControllerFaves, navControllerKamikaze, nil]];
 	
@@ -63,7 +59,6 @@
     if (favorites == nil) {
         favorites = [[NSArray alloc] init];
         [defaults setObject:favorites forKey:@"favorites"];
-        [favorites release];
     }
 	
 	return YES;
@@ -75,16 +70,6 @@
 }
 
 
-- (void)dealloc {
-    [mainViewController release];
-    
-	[navControllerSearch release];
-	[navControllerCalendar release];
-	
-	[tabBarController release];
-	[window release];
-    [super dealloc];
-}
 
 
 @end

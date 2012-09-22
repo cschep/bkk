@@ -11,7 +11,7 @@
 
 @implementation CalendarDetailViewController
 
-@synthesize date, forwardGeocoder, descText;
+@synthesize date, descText;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,11 +29,6 @@
 	return self;
 }
 
-- (void)dealloc
-{
-    [forwardGeocoder release];
-    [super dealloc];
-}
 
 - (void)didReceiveMemoryWarning
 {
@@ -59,16 +54,10 @@
     descText.text = date.description;
     
     
-    if(forwardGeocoder == nil)
-	{
-		forwardGeocoder = [[BSForwardGeocoder alloc] initWithDelegate:self];
-	}
-    
 	// Forward geocode! - "pdx" makes the airport come up.. hrm..
     NSString *searchTerm = [self.date.where stringByReplacingOccurrencesOfString:@"pdx" withString:@"Portland, OR"];
     searchTerm = [searchTerm stringByReplacingOccurrencesOfString:@"the woods 6637 milwauke ave" withString:@"6637 SE Milwaukie Avenue"];    
     //NSLog(@"searching for term: %@", searchTerm);
-	[forwardGeocoder findLocation:searchTerm];
 }
 
 - (void)viewDidUnload
@@ -112,31 +101,31 @@
     NSLog(@"%@", addr);
     NSURL* url = [[NSURL alloc] initWithString:[addr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     [[UIApplication sharedApplication] openURL:url];
-    [url release];
 }
 
 #pragma mark - BSForwardGeocode
 
-- (void)forwardGeocoderFoundLocation:(BSForwardGeocoder*)geocoder;
-{
-	if(forwardGeocoder.status == G_GEO_SUCCESS)
-	{
-		if([forwardGeocoder.results count] == 1)
-		{
-			BSKmlResult *place = [forwardGeocoder.results objectAtIndex:0];
-            
-            MKPointAnnotation *pa = [[MKPointAnnotation alloc] init];
-            pa.coordinate = place.coordinate;
-            pa.title = date.title;
-            
-            [mapView addAnnotation:pa];	
-            
-			// Zoom into the location		
-            MKCoordinateRegion zoom = MKCoordinateRegionMake(place.coordinate, MKCoordinateSpanMake(place.coordinateSpan.latitudeDelta * .9, place.coordinateSpan.longitudeDelta * .9));
-            
-			[mapView setRegion:zoom animated:NO];
-		}
-	}
-}
+
+//- (void)forwardGeocodingDidSucceed:(BSForwardGeocoder *)geocoder withResults:(NSArray *)results
+//{
+//	if(forwardGeocoder.status == G_GEO_SUCCESS)
+//	{
+//		if([forwardGeocoder.results count] == 1)
+//		{
+//			BSKmlResult *place = [forwardGeocoder.results objectAtIndex:0];
+//            
+//            MKPointAnnotation *pa = [[MKPointAnnotation alloc] init];
+//            pa.coordinate = place.coordinate;
+//            pa.title = date.title;
+//            
+//            [mapView addAnnotation:pa];	
+//            
+//			// Zoom into the location		
+//            MKCoordinateRegion zoom = MKCoordinateRegionMake(place.coordinate, MKCoordinateSpanMake(place.coordinateSpan.latitudeDelta * .9, place.coordinateSpan.longitudeDelta * .9));
+//            
+//			[mapView setRegion:zoom animated:NO];
+//		}
+//	}
+//}
 
 @end

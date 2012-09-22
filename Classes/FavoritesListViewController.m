@@ -80,7 +80,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
     // Configure the cell...
@@ -138,9 +138,7 @@
     song.artist = [[self.favorites objectAtIndex:indexPath.row] objectForKey:@"artist"];
 
    	SongDetailViewController *songDetailViewController = [[SongDetailViewController alloc] initWithSong:song];
-    [song release];
 	[self.navigationController pushViewController:songDetailViewController animated:YES];
-	[songDetailViewController release];	
 }
 
 
@@ -160,9 +158,6 @@
 }
 
 
-- (void)dealloc {
-    [super dealloc];
-}
 
 
 @end

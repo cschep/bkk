@@ -13,6 +13,6 @@
 	NSMutableArray *dateList;
 }
 
-@property (retain) NSMutableArray *dateList;
+@property (strong) NSMutableArray *dateList;
 
 @end

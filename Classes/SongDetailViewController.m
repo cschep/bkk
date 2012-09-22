@@ -7,8 +7,6 @@
 //
 
 #import "SongDetailViewController.h"
-#import "VCTitleCase.h"
-#import "LyricsWebViewController.h"
 #import "SongListViewController.h"
 
 @implementation SongDetailViewController
@@ -45,7 +43,6 @@
     NSDictionary *song_dict = [[NSDictionary alloc] initWithObjectsAndKeys:self.song.artist, @"artist", self.song.title, @"title",  nil];
     
     isFavorite = [favorites containsObject:song_dict];
-    [song_dict release];
 
     [self.tableView reloadData];
         
@@ -85,7 +82,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     //menu stuff
@@ -216,18 +213,10 @@
 }
 
 - (void)artistSearch {
-//    [self.navigationController popToRootViewControllerAnimated:NO];
-//    [self.navigationController.tabBarController setSelectedIndex:0];
-    
-//    bkkViewController *bkkVC = (bkkViewController *)[[self.navigationController.tabBarController.viewControllers objectAtIndex:0] topViewController];
-//    [bkkVC searchFor:song.artist By:@"artist" UsingRandom:NO];  
-    
     SongListViewController *artistSearchVC = [[SongListViewController alloc] 
                                                 initWithSearchTerm:song.artist SearchBy:@"artist" Random:NO Style:UITableViewStylePlain];
     
     [self.navigationController pushViewController:artistSearchVC animated:YES];
-    [artistSearchVC release];
-    
 }
 
 - (void)toggleFavorite {
@@ -245,7 +234,6 @@
         [favorites addObject:song_dict];
     }
 
-    [song_dict release];
 
     [defaults setObject:favorites forKey:@"favorites"];
     [defaults synchronize];
@@ -260,15 +248,6 @@
 
 }
 
-- (void)dealloc {
-    [artistLabel release];
-    [titleLabel release];
-    [headerView release];
-
-    [song release];
-
-    [super dealloc];
-}
 
 
 @end

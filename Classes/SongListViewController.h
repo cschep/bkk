@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-
 @interface SongListViewController : UITableViewController {
 	NSMutableArray *songList;
 	NSString *searchTerm;
@@ -17,15 +16,12 @@
 	UIActivityIndicatorView *activityIndicator;
 }
 
-- (id)initWithStyle:(UITableViewStyle)style;
 - (id)initWithSearchTerm:(NSString *)searchTermIn SearchBy:(NSString *)searchByIn Random:(BOOL)_isRandom Style:(UITableViewStyle)style;
-- (void)loadSongs;
-- (void)startLoadingSongs;
 
-@property (retain) NSMutableArray *songList;
-@property (retain) NSString *searchTerm;
-@property (retain) NSString *searchBy;
-@property (nonatomic, retain) UIActivityIndicatorView *activityIndicator;
+@property (strong) NSMutableArray *songList;
+@property (strong) NSString *searchTerm;
+@property (strong) NSString *searchBy;
+@property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
 @property BOOL isRandom;
 
 @end

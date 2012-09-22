@@ -15,9 +15,9 @@
 	NSString *songID;
 }
 
-@property (retain) NSString *artist;
-@property (retain) NSString *title;
-@property (retain) NSString *lyrics;
-@property (retain) NSString *songID;
+@property (strong) NSString *artist;
+@property (strong) NSString *title;
+@property (strong) NSString *lyrics;
+@property (strong) NSString *songID;
 
 @end

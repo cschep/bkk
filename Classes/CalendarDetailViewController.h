@@ -9,19 +9,16 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "Date.h"
-#import "BSForwardGeocoder.h"
 
-@interface CalendarDetailViewController : UIViewController <MKMapViewDelegate, BSForwardGeocoderDelegate> {
+@interface CalendarDetailViewController : UIViewController <MKMapViewDelegate> {
     IBOutlet MKMapView *mapView;
-    Date *date; 
-    BSForwardGeocoder *forwardGeocoder;    
+    Date *date;
     
     IBOutlet UITextView *descText;
 }
 
-@property (retain, nonatomic) Date *date;
-@property (retain, nonatomic) BSForwardGeocoder *forwardGeocoder;
-@property (retain, nonatomic) IBOutlet UITextView *descText;
+@property (strong, nonatomic) Date *date;
+@property (strong, nonatomic) IBOutlet UITextView *descText;
 
 - (id)initWithDate:(Date *)date;
 

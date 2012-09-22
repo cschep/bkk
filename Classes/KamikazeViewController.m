@@ -22,7 +22,6 @@
 }
 */
 
-
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -53,7 +52,6 @@
                                           cancelButtonTitle:@"OK" 
                                           otherButtonTitles:nil];
     [alert show];
-    [alert release];
     return NO;
 }
 
@@ -96,17 +94,8 @@
 	[self.navigationController pushViewController: songListViewController animated:NO]; 
 	[UIView setAnimationTransition:UIViewAnimationTransitionCurlDown forView:self.navigationController.view cache:NO]; 
 	[UIView commitAnimations];
-	
-    //	songListViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    //	[self presentModalViewController:songListViewController animated:YES];
-	
-	//[self.navigationController pushViewController:songListViewController animated:YES];
-	[songListViewController release];
 }
 
-- (void)dealloc {
-    [super dealloc];
-}
 
 
 @end

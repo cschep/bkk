@@ -21,7 +21,7 @@
 - (void)searchFor:(NSString *)searchTerm By:(NSString *)searchBy UsingRandom:(BOOL)random;
 - (void)dismissKeyboard:(id)sender;
 
-@property (retain) NSString *tweet;
+@property (strong) NSString *tweet;
 
 @end
 

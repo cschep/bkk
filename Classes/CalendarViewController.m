@@ -8,9 +8,8 @@
 
 #import "CalendarViewController.h"
 #import "CalendarDetailViewController.h"
-#import "JSON.h"
 #import "Date.h"
-
+#import "AFJSONRequestOperation.h"
 
 @implementation CalendarViewController
 
@@ -42,34 +41,38 @@
 	//Set the bar button the navigation bar
 	[self navigationItem].rightBarButtonItem = barButton;
 	
-	//Memory clean up
-	[activityIndicator release];
-	[barButton release];
-	
 	self.navigationItem.title = @"Loading...";
-	
-	[NSThread detachNewThreadSelector:@selector(loadDates) toTarget:self withObject:nil];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:[self getCalendarURL]];
+    
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
+    success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        [self loadDatesFromJSON:JSON];
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        self.navigationItem.title = @"not found!";
+        [(UIActivityIndicatorView *)self.navigationItem.rightBarButtonItem.customView  stopAnimating];
+    }];
+    
+    [operation start];
 }
 
-- (void)loadDates {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	dateList = [[NSMutableArray alloc] init];
-	
-	NSDate *minDate = [NSDate dateWithTimeIntervalSinceNow:-60*60*24*5]; //trailing 5 days...
+- (NSURL *)getCalendarURL {
+    NSDate *minDate = [NSDate dateWithTimeIntervalSinceNow:-60*60*24*5]; //trailing 5 days...
 	NSDate *maxDate = [NSDate dateWithTimeIntervalSinceNow:60*60*24*30*3]; //next 3 months'ish
 	NSDateFormatter *df = [[NSDateFormatter alloc] init];
-
+    
 	[df setDateFormat:@"yyyy-MM-dd"]; //AHHHHH!
 	NSString *urlString = [NSString stringWithFormat:@"http://www.google.com/calendar/feeds/9a434tnlm9mbo57r05rkodl6d0%%40group.calendar.google.com/public/full?alt=json&ctz=America/Los_Angeles&orderby=starttime&start-min=%@&start-max=%@&sortorder=a&singleevents=true", [df stringFromDate:minDate], [df stringFromDate:maxDate]];
-	NSLog(urlString);
-	[df release];
+    
+	return [NSURL URLWithString:urlString];
+}
 
-	NSURL *url = [NSURL URLWithString:urlString];
-	NSString *jsonString = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-	id jsonValue = [jsonString JSONValue];
+
+- (void)loadDatesFromJSON:(id)JSON {
+	dateList = [[NSMutableArray alloc] init];
 	
 	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-	for (NSDictionary *entry in [[jsonValue valueForKey:@"feed"] valueForKey:@"entry"] ) {
+	for (NSDictionary *entry in [[JSON valueForKey:@"feed"] valueForKey:@"entry"] ) {
 		Date *d = [[Date alloc] init];
 		d.title = [[entry valueForKey:@"title"] valueForKey:@"$t"];
 		d.where = [NSString stringWithString:[[[entry valueForKey:@"gd$where"] valueForKey:@"valueString"] objectAtIndex:0]];
@@ -88,58 +91,20 @@
 		}
 		
 		[dateList addObject:d];
-		//NSLog(@"title: %@", d.title);
-		//NSLog(@"when:  %@", d.when);
-        //NSLog(@"where: %@", d.where);
-		//NSLog(@"$t:    %@", [[entry valueForKey:@"content"] valueForKey:@"$t"]);
-		[d release];
+        
+        //done loading... sync up UI
+        if ([dateList count] == 0) {
+            self.navigationItem.title = @"not found!";
+        } else {
+            self.navigationItem.title = @"Calendar";
+        }
+        
+        //TODO: really?
+        [(UIActivityIndicatorView *)self.navigationItem.rightBarButtonItem.customView  stopAnimating];
+        [self.tableView reloadData];
+        [self.tableView flashScrollIndicators];
 	}
-	[dateFormatter release];
-	[jsonString release];
-	
-	[self performSelectorOnMainThread:@selector(didFinishLoadingDates) withObject:nil waitUntilDone:NO];
-	[pool release];
 }
-
-- (void)didFinishLoadingDates {
-	if ([dateList count] == 0) {
-		self.navigationItem.title = @"not found!";
-	} else {
-		self.navigationItem.title = @"Calendar";
-	}
-	
-	[(UIActivityIndicatorView *)self.navigationItem.rightBarButtonItem.customView  stopAnimating];
-	[self.tableView reloadData];
-    [self.tableView flashScrollIndicators];
-}
-
-/*
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-}
-*/
-/*
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-}
-*/
-/*
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-}
-*/
-/*
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-}
-*/
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
 
 
 #pragma mark -
@@ -173,7 +138,6 @@
     headerImage.contentMode = UIViewContentModeScaleAspectFit;
     
     [sectionHead addSubview:headerImage];
-    [headerImage release];
     
     UILabel *sectionText = [[UILabel alloc] initWithFrame:CGRectMake(10, 2, tbl.bounds.size.width - 10, 18)];
     sectionText.backgroundColor = [UIColor clearColor];
@@ -191,9 +155,8 @@
 
 
     [sectionHead addSubview:sectionText];
-    [sectionText release];
     
-    return [sectionHead autorelease];
+    return sectionHead;
 }
 
 // Customize the appearance of table view cells.
@@ -203,7 +166,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
  	cell.textLabel.text = [[dateList objectAtIndex:indexPath.section] title];
@@ -235,10 +198,7 @@
     } else {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"title" message:@"Not Sure Where?!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
-        [alert release];
     }
-    
-    
 }
 
 #pragma mark -
@@ -257,11 +217,6 @@
 }
 
 
-- (void)dealloc {
-    
-    [dateList release];
-    [super dealloc];
-}
 
 
 @end

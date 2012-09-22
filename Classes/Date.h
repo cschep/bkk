@@ -16,9 +16,9 @@
 	NSString *description;
 }
 
-@property (retain) NSString *title;
-@property (retain) NSString *where;
-@property (retain) NSString *when;
-@property (retain) NSString *description;
+@property (strong) NSString *title;
+@property (strong) NSString *where;
+@property (strong) NSString *when;
+@property (strong) NSString *description;
 
 @end
