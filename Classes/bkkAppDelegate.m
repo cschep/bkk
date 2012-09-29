@@ -3,7 +3,7 @@
 //  bkk
 //
 //  Created by Chris Schepman on 4/4/10.
-//  Copyright Apple Inc 2010. All rights reserved.
+//  Copyright Chris Schepman 2010. All rights reserved.
 //
 
 #import "bkkAppDelegate.h"
@@ -19,7 +19,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 
-	tabBarController = [[UITabBarController alloc] init];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+	
+    self.tabBarController = [[UITabBarController alloc] init];
 
     //searching
 	mainViewController = [[bkkViewController alloc] initWithNibName:@"bkkViewController" bundle:nil];
@@ -46,11 +48,11 @@
 	navControllerKamikaze.navigationBar.tintColor = [UIColor blackColor];
 	navControllerKamikaze.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"kamikaze!" image:[UIImage imageNamed:@"question"] tag:4];
     
-	[tabBarController setViewControllers: [NSArray arrayWithObjects:navControllerSearch, navControllerCalendar, navControllerFaves, navControllerKamikaze, nil]];
+	[self.tabBarController setViewControllers: [NSArray arrayWithObjects:navControllerSearch, navControllerCalendar, navControllerFaves, navControllerKamikaze, nil]];
 	
-	[window setBackgroundColor:[UIColor blackColor]];
-	[window addSubview:tabBarController.view];
-    [window makeKeyAndVisible];
+	[self.window setBackgroundColor:[UIColor blackColor]];
+    self.window.rootViewController = self.tabBarController;
+    [self.window makeKeyAndVisible];
     
     //if there is no favorites array in defaults then create an empty one
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

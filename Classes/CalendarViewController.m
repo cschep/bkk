@@ -3,7 +3,7 @@
 //  Baby Ketten
 //
 //  Created by Christopher Schepman on 6/7/10.
-//  Copyright 2010 schepsoft. All rights reserved.
+//  Copyright Chris Schepman 2010. All rights reserved.
 //
 
 #import "CalendarViewController.h"
@@ -18,6 +18,8 @@
 #pragma mark -
 #pragma mark View lifecycle
 
+NSString* const kSeattleCalendarURL = @"http://www.google.com/calendar/feeds/b73eparqatr3h2160l7i298tas@group.calendar.google.com/public/full?alt=json&ctz=America/Los_Angeles&orderby=starttime&start-min=%@&start-max=%@&sortorder=a&singleevents=true";
+NSString* const kPortlandCalendarURL = @"http://www.google.com/calendar/feeds/9a434tnlm9mbo57r05rkodl6d0%%40group.calendar.google.com/public/full?alt=json&ctz=America/Los_Angeles&orderby=starttime&start-min=%@&start-max=%@&sortorder=a&singleevents=true";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,14 +31,14 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 	
 	//Create an instance of activity indicator view
-	UIActivityIndicatorView * activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+	UIActivityIndicatorView* activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
 	
 	//set the initial property
 	[activityIndicator hidesWhenStopped];
 	[activityIndicator startAnimating];
 	
 	//Create an instance of Bar button item with custome view which is of activity indicator
-	UIBarButtonItem * barButton = [[UIBarButtonItem alloc] initWithCustomView:activityIndicator];
+	UIBarButtonItem* barButton = [[UIBarButtonItem alloc] initWithCustomView:activityIndicator];
 	
 	//Set the bar button the navigation bar
 	[self navigationItem].rightBarButtonItem = barButton;
@@ -62,7 +64,15 @@
 	NSDateFormatter *df = [[NSDateFormatter alloc] init];
     
 	[df setDateFormat:@"yyyy-MM-dd"]; //AHHHHH!
-	NSString *urlString = [NSString stringWithFormat:@"http://www.google.com/calendar/feeds/9a434tnlm9mbo57r05rkodl6d0%%40group.calendar.google.com/public/full?alt=json&ctz=America/Los_Angeles&orderby=starttime&start-min=%@&start-max=%@&sortorder=a&singleevents=true", [df stringFromDate:minDate], [df stringFromDate:maxDate]];
+    NSString *cityURL;
+    NSString *city = [[NSUserDefaults standardUserDefaults] stringForKey:@"city"];
+    if ([city isEqualToString:@"1"]) {
+        cityURL = kSeattleCalendarURL;
+    } else {
+        cityURL = kPortlandCalendarURL;
+    }
+    
+	NSString *urlString = [NSString stringWithFormat:cityURL, [df stringFromDate:minDate], [df stringFromDate:maxDate]];
     
 	return [NSURL URLWithString:urlString];
 }
@@ -72,7 +82,7 @@
 	dateList = [[NSMutableArray alloc] init];
 	
 	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-	for (NSDictionary *entry in [[JSON valueForKey:@"feed"] valueForKey:@"entry"] ) {
+	for (NSDictionary *entry in [[JSON valueForKey:@"feed"] valueForKey:@"entry"]) {
 		Date *d = [[Date alloc] init];
 		d.title = [[entry valueForKey:@"title"] valueForKey:@"$t"];
 		d.where = [NSString stringWithString:[[[entry valueForKey:@"gd$where"] valueForKey:@"valueString"] objectAtIndex:0]];
@@ -184,17 +194,12 @@
     Date *d = [dateList objectAtIndex:indexPath.section];
     if (![d.where isEqualToString:@""]) {
         CalendarDetailViewController *calendarDetailViewController = [[CalendarDetailViewController alloc] initWithDate:d];
-        // ...
-        // Pass the selected object to the new view controller.
         
         [UIView beginAnimations:@"animation" context:nil];
         [UIView setAnimationDuration:1.0];
         [self.navigationController pushViewController:calendarDetailViewController animated:NO];
         [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.navigationController.view cache:NO]; 
         [UIView commitAnimations];
-        
-        /*[self.navigationController pushViewController:calendarDetailViewController animated:YES];
-         [calendarDetailViewController release];*/    
     } else {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"title" message:@"Not Sure Where?!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
@@ -215,9 +220,6 @@
     // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
     // For example: self.myOutlet = nil;
 }
-
-
-
 
 @end
 

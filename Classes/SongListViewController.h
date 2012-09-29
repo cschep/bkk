@@ -3,7 +3,7 @@
 //  bkk
 //
 //  Created by Chris Schepman on 4/4/10.
-//  Copyright 2010 Apple Inc. All rights reserved.
+//  Copyright Chris Schepman 2010. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

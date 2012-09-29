@@ -3,7 +3,7 @@
 //  Baby Ketten
 //
 //  Created by Christopher Schepman on 6/7/10.
-//  Copyright 2010 schepsoft. All rights reserved.
+//  Copyright Chris Schepman 2010. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

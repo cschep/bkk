@@ -3,7 +3,7 @@
 //  bkk
 //
 //  Created by Chris Schepman on 4/3/10.
-//  Copyright Apple Inc 2010. All rights reserved.
+//  Copyright Chris Schepman 2010. All rights reserved.
 //
 
 #import "bkkViewController.h"
@@ -64,6 +64,12 @@
     [recognizer setDirection:UISwipeGestureRecognizerDirectionDown];
     [[self view] addGestureRecognizer:recognizer];
     
+    [self loadTweetInBackground];
+    
+    [super viewDidLoad];
+}
+
+- (void)loadTweetInBackground {
     NSString *urlString;
     NSString *city = [[NSUserDefaults standardUserDefaults] stringForKey:@"city"];
     if ([city isEqualToString:@"1"]) {
@@ -78,7 +84,7 @@
     //default UI
     [tweetSpinner startAnimating];
     latestTweet.text = @"";
-
+    
     //update tweet
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
     success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
@@ -87,17 +93,12 @@
         latestTweet.text = tweet;
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
         NSLog(@"Failed loading JSON.");
+        [tweetSpinner stopAnimating];
         self.tweet = @"Can't reach the internetz! Sing pretty!";
+        latestTweet.text = tweet;
     }];
-
+    
     [operation start];
-    
-    [super viewDidLoad];
-}
-
-- (void)loadTweetInBackground {
-    
-    [NSThread detachNewThreadSelector:@selector(loadTweet) toTarget:self withObject:nil];    
 }
 
 - (void)dismissKeyboard:(id)sender {

@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+#import "bkkAppDelegate.h"
+
 int main(int argc, char *argv[]) {
     
     @autoreleasepool {
-        int retVal = UIApplicationMain(argc, argv, nil, nil);
+        int retVal = UIApplicationMain(argc, argv, nil, NSStringFromClass([bkkAppDelegate class]));
         return retVal;
     }
     

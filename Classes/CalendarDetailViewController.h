@@ -3,7 +3,7 @@
 //  Baby Ketten
 //
 //  Created by Christopher Schepman on 3/27/11.
-//  Copyright 2011 Schepsoft. All rights reserved.
+//  Copyright Chris Schepman 2011. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -17,6 +17,8 @@
     IBOutlet UITextView *descText;
 }
 
+@property (strong, nonatomic) CLGeocoder *geocoder;
+@property (strong, nonatomic) MKPlacemark *currentPlacemark;
 @property (strong, nonatomic) Date *date;
 @property (strong, nonatomic) IBOutlet UITextView *descText;
 

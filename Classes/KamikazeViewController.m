@@ -3,7 +3,7 @@
 //  Baby Ketten
 //
 //  Created by Christopher Schepman on 1/29/11.
-//  Copyright 2011 schepsoft. All rights reserved.
+//  Copyright Chris Schepman 2011. All rights reserved.
 //
 
 #import "KamikazeViewController.h"
