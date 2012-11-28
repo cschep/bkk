@@ -23,6 +23,18 @@ NSString* const kPortlandCalendarURL = @"http://www.google.com/calendar/feeds/9a
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    if (_refreshHeaderView == nil) {
+		
+		EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, self.view.frame.size.width, self.tableView.bounds.size.height)];
+		view.delegate = self;
+		[self.tableView addSubview:view];
+		_refreshHeaderView = view;
+		
+	}
+	
+	//  update the last update date
+	[_refreshHeaderView refreshLastUpdatedDate];
 
     // Uncomment the following line to preserve selection between presentations.
     //self.clearsSelectionOnViewWillAppear = NO;
@@ -31,31 +43,37 @@ NSString* const kPortlandCalendarURL = @"http://www.google.com/calendar/feeds/9a
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 	
 	//Create an instance of activity indicator view
-	UIActivityIndicatorView* activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+	self.activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
 	
 	//set the initial property
-	[activityIndicator hidesWhenStopped];
-	[activityIndicator startAnimating];
+	[self.activityIndicator hidesWhenStopped];
 	
 	//Create an instance of Bar button item with custome view which is of activity indicator
-	UIBarButtonItem* barButton = [[UIBarButtonItem alloc] initWithCustomView:activityIndicator];
+	UIBarButtonItem* barButton = [[UIBarButtonItem alloc] initWithCustomView:self.activityIndicator];
 	
 	//Set the bar button the navigation bar
 	[self navigationItem].rightBarButtonItem = barButton;
-	
+    
+    [self loadDates];
+}
+
+- (void)loadDates {
+    [self.activityIndicator startAnimating];
 	self.navigationItem.title = @"Loading...";
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[self getCalendarURL]];
     
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
-    success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        [self loadDatesFromJSON:JSON];
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-        self.navigationItem.title = @"not found!";
-        [(UIActivityIndicatorView *)self.navigationItem.rightBarButtonItem.customView  stopAnimating];
-    }];
+                                                                                        success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                                                                                            [self loadDatesFromJSON:JSON];
+                                                                                        }
+                                                                                        failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+                                                                                            self.navigationItem.title = @"not found!";
+                                                                                            [self.activityIndicator stopAnimating];
+                                                                                        }];
     
     [operation start];
+    
 }
 
 - (NSURL *)getCalendarURL {
@@ -109,10 +127,12 @@ NSString* const kPortlandCalendarURL = @"http://www.google.com/calendar/feeds/9a
             self.navigationItem.title = @"Calendar";
         }
         
-        //TODO: really?
-        [(UIActivityIndicatorView *)self.navigationItem.rightBarButtonItem.customView  stopAnimating];
+        [self.activityIndicator stopAnimating];
         [self.tableView reloadData];
         [self.tableView flashScrollIndicators];
+
+        //pull to refresh thing
+        [self doneLoadingTableViewData];
 	}
 }
 
@@ -204,6 +224,58 @@ NSString* const kPortlandCalendarURL = @"http://www.google.com/calendar/feeds/9a
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"title" message:@"Not Sure Where?!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
     }
+}
+
+#pragma mark -
+#pragma mark Data Source Loading / Reloading Methods
+
+- (void)reloadTableViewDataSource{
+	
+	//  should be calling your tableviews data source model to reload
+	//  put here just for demo
+    [self loadDates];
+}
+
+- (void)doneLoadingTableViewData{
+	
+	//  model should call this when its done loading
+	[_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
+	
+}
+
+#pragma mark -
+#pragma mark UIScrollViewDelegate Methods
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+	
+	[_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
+    
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+	
+	[_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
+	
+}
+
+#pragma mark -
+#pragma mark EGORefreshTableHeaderDelegate Methods
+
+- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view{
+	
+	[self reloadTableViewDataSource];
+}
+
+- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view{
+	
+    return [self.activityIndicator isAnimating];
+	
+}
+
+- (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view{
+	
+	return [NSDate date]; // should return date data source was last changed
+	
 }
 
 #pragma mark -

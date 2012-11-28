@@ -43,22 +43,40 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    if (isRandom) {
+        if (_refreshHeaderView == nil) {
+            
+            EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, self.view.frame.size.width, self.tableView.bounds.size.height)];
+            view.delegate = self;
+            [self.tableView addSubview:view];
+            _refreshHeaderView = view;
+            
+        }
+        
+        //  update the last update date
+        [_refreshHeaderView refreshLastUpdatedDate];
+    }
 
 	//Create an instance of activity indicator view
-	activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+	self.activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
 	//set the initial property
-	[activityIndicator hidesWhenStopped];
+	[self.activityIndicator hidesWhenStopped];
 	
 	//Create an instance of Bar button item with custome view which is of activity indicator
-	UIBarButtonItem * barButton = [[UIBarButtonItem alloc] initWithCustomView:activityIndicator];
+	UIBarButtonItem * barButton = [[UIBarButtonItem alloc] initWithCustomView:self.activityIndicator];
 	
 	//Set the bar button the navigation bar
 	[self navigationItem].rightBarButtonItem = barButton;
 	
-    //let the user know
-	[activityIndicator startAnimating];
-	self.title = @"Loading...";
+    [self loadSongs];
+}
 
+- (void)loadSongs {
+    //let the user know
+	[self.activityIndicator startAnimating];
+	self.title = @"Loading...";
+    
     //figure out the URL
     NSString *urlString;
     if (isRandom) {
@@ -69,18 +87,18 @@
     
     NSString* escapedUrlString = [[urlString lowercaseString] stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
     NSURL *url = [NSURL URLWithString:escapedUrlString];
-
+    
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
-    success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        [self loadSongsFromJSON:JSON];
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-        NSLog(@"Failed with error: %@", [error description]);
-        self.title = @"Not Found!";
-        [(UIActivityIndicatorView *)self.navigationItem.rightBarButtonItem.customView  stopAnimating];
-    }];
-
+                                                                                        success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                                                                                            [self loadSongsFromJSON:JSON];
+                                                                                        } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+                                                                                            NSLog(@"Failed with error: %@", [error description]);
+                                                                                            self.title = @"Not Found!";
+                                                                                            [self.activityIndicator stopAnimating];
+                                                                                        }];
+    
     [operation start];
 }
 
@@ -109,6 +127,9 @@
 	[(UIActivityIndicatorView *)self.navigationItem.rightBarButtonItem.customView  stopAnimating];
 	[self.tableView reloadData];
     [self.tableView flashScrollIndicators];
+    
+    //pull to refresh thing
+    [self doneLoadingTableViewData];
 }
 
 
@@ -224,6 +245,57 @@
 	[self.navigationController pushViewController:songDetailViewController animated:YES];
 }
 
+#pragma mark -
+#pragma mark Data Source Loading / Reloading Methods
+
+- (void)reloadTableViewDataSource{
+	
+	//  should be calling your tableviews data source model to reload
+	//  put here just for demo
+    [self loadSongs];
+}
+
+- (void)doneLoadingTableViewData{
+	
+	//  model should call this when its done loading
+	[_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
+	
+}
+
+#pragma mark -
+#pragma mark UIScrollViewDelegate Methods
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+	
+	[_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
+    
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+	
+	[_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
+	
+}
+
+#pragma mark -
+#pragma mark EGORefreshTableHeaderDelegate Methods
+
+- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view{
+	
+	[self reloadTableViewDataSource];
+}
+
+- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view{
+	
+    return [self.activityIndicator isAnimating];
+	
+}
+
+- (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view{
+	
+	return [NSDate date]; // should return date data source was last changed
+	
+}
 
 
 #pragma mark -

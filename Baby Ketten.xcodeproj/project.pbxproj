@@ -17,8 +17,7 @@
 		830F939112959BD100282FC6 /* mic.png in Resources */ = {isa = PBXBuildFile; fileRef = 830F939012959BD100282FC6 /* mic.png */; };
 		830F939312959BE600282FC6 /* mic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 830F939212959BE600282FC6 /* mic@2x.png */; };
 		8311CA9912DA8641009093D9 /* latest_mews.png in Resources */ = {isa = PBXBuildFile; fileRef = 8311CA9812DA8641009093D9 /* latest_mews.png */; };
-		831BAF0A121EE00400A7AD86 /* kamikaze_ketten_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 831BAF09121EE00400A7AD86 /* kamikaze_ketten_background.png */; };
-		831BAF20121EE22900A7AD86 /* kamikaze_ketten_back_light.png in Resources */ = {isa = PBXBuildFile; fileRef = 831BAF1F121EE22900A7AD86 /* kamikaze_ketten_back_light.png */; };
+		831BAF0A121EE00400A7AD86 /* kamikaze_ketten_background_old.png in Resources */ = {isa = PBXBuildFile; fileRef = 831BAF09121EE00400A7AD86 /* kamikaze_ketten_background_old.png */; };
 		831BAF3E121EE79200A7AD86 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 831BAF3D121EE79200A7AD86 /* Icon.png */; };
 		831BAF40121EE7A300A7AD86 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 831BAF3F121EE7A300A7AD86 /* Icon@2x.png */; };
 		83305335137F28C9007943E8 /* PlainTableViewSectionHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = 83305333137F28C9007943E8 /* PlainTableViewSectionHeader.png */; };
@@ -45,6 +44,11 @@
 		83B7C5BA1296E6E500A52BD9 /* FavoritesListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83B7C5B81296E6E500A52BD9 /* FavoritesListViewController.xib */; };
 		83B7C5CE1296E84700A52BD9 /* comment.png in Resources */ = {isa = PBXBuildFile; fileRef = 83B7C5CC1296E84700A52BD9 /* comment.png */; };
 		83B7C5CF1296E84700A52BD9 /* comment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83B7C5CD1296E84700A52BD9 /* comment@2x.png */; };
+		83CD08751666737F00BEAB0D /* kamikaze_ketten_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CD08731666737F00BEAB0D /* kamikaze_ketten_background@2x.png */; };
+		83CD08761666737F00BEAB0D /* kamikaze_ketten_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CD08741666737F00BEAB0D /* kamikaze_ketten_background.png */; };
+		83CD0878166674B900BEAB0D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CD0877166674B900BEAB0D /* Default-568h@2x.png */; };
+		83CD087E1666762200BEAB0D /* bkkViewController_iPhone5.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83CD087D1666762200BEAB0D /* bkkViewController_iPhone5.xib */; };
+		83CD08801666782700BEAB0D /* latest_mews_taller.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CD087F1666782700BEAB0D /* latest_mews_taller.png */; };
 		83D34B61160E74370065EF6A /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D34B14160E6E8B0065EF6A /* AFHTTPClient.m */; };
 		83D34B62160E74370065EF6A /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D34B16160E6E8B0065EF6A /* AFHTTPRequestOperation.m */; };
 		83D34B63160E74370065EF6A /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D34B18160E6E8B0065EF6A /* AFImageRequestOperation.m */; };
@@ -66,6 +70,15 @@
 		83D34B73160E74370065EF6A /* CalendarDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8366C1701340523000D2B518 /* CalendarDetailViewController.m */; };
 		83D34B74160E74370065EF6A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		83DA58AA121B96DD006804B8 /* kamikaze_ketten.png in Resources */ = {isa = PBXBuildFile; fileRef = 83DA58A9121B96DD006804B8 /* kamikaze_ketten.png */; };
+		83F023B01658189300467FFB /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F023AF1658189300467FFB /* EGORefreshTableHeaderView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		83F023BA16581BC900467FFB /* grayArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 83F023B216581BC900467FFB /* grayArrow.png */; };
+		83F023BB16581BC900467FFB /* grayArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83F023B316581BC900467FFB /* grayArrow@2x.png */; };
+		83F023BC16581BC900467FFB /* blackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 83F023B416581BC900467FFB /* blackArrow.png */; };
+		83F023BD16581BC900467FFB /* blackArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83F023B516581BC900467FFB /* blackArrow@2x.png */; };
+		83F023BE16581BC900467FFB /* blueArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 83F023B616581BC900467FFB /* blueArrow.png */; };
+		83F023BF16581BC900467FFB /* blueArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83F023B716581BC900467FFB /* blueArrow@2x.png */; };
+		83F023C016581BC900467FFB /* whiteArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 83F023B816581BC900467FFB /* whiteArrow.png */; };
+		83F023C116581BC900467FFB /* whiteArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83F023B916581BC900467FFB /* whiteArrow@2x.png */; };
 		83F3CA5A11780BE00033611B /* bkk_vert_realcat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 83F3CA5511780BE00033611B /* bkk_vert_realcat.jpg */; };
 /* End PBXBuildFile section */
 
@@ -84,8 +97,7 @@
 		830F939012959BD100282FC6 /* mic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mic.png; sourceTree = "<group>"; };
 		830F939212959BE600282FC6 /* mic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mic@2x.png"; sourceTree = "<group>"; };
 		8311CA9812DA8641009093D9 /* latest_mews.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = latest_mews.png; sourceTree = "<group>"; };
-		831BAF09121EE00400A7AD86 /* kamikaze_ketten_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kamikaze_ketten_background.png; sourceTree = "<group>"; };
-		831BAF1F121EE22900A7AD86 /* kamikaze_ketten_back_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kamikaze_ketten_back_light.png; sourceTree = "<group>"; };
+		831BAF09121EE00400A7AD86 /* kamikaze_ketten_background_old.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kamikaze_ketten_background_old.png; sourceTree = "<group>"; };
 		831BAF29121EE71600A7AD86 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		831BAF2A121EE71600A7AD86 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
 		831BAF2B121EE71600A7AD86 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
@@ -135,6 +147,11 @@
 		83B7C5CC1296E84700A52BD9 /* comment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comment.png; sourceTree = "<group>"; };
 		83B7C5CD1296E84700A52BD9 /* comment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "comment@2x.png"; sourceTree = "<group>"; };
 		83BFE0BA11C543140022D0CA /* baby ketten_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "baby ketten_Prefix.pch"; sourceTree = "<group>"; };
+		83CD08731666737F00BEAB0D /* kamikaze_ketten_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kamikaze_ketten_background@2x.png"; sourceTree = "<group>"; };
+		83CD08741666737F00BEAB0D /* kamikaze_ketten_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kamikaze_ketten_background.png; sourceTree = "<group>"; };
+		83CD0877166674B900BEAB0D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		83CD087D1666762200BEAB0D /* bkkViewController_iPhone5.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = bkkViewController_iPhone5.xib; sourceTree = SOURCE_ROOT; };
+		83CD087F1666782700BEAB0D /* latest_mews_taller.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = latest_mews_taller.png; sourceTree = "<group>"; };
 		83D34B13160E6E8B0065EF6A /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		83D34B14160E6E8B0065EF6A /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		83D34B15160E6E8B0065EF6A /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -155,6 +172,16 @@
 		83D34B24160E6E8B0065EF6A /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		83D34B25160E6E8B0065EF6A /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		83DA58A9121B96DD006804B8 /* kamikaze_ketten.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kamikaze_ketten.png; sourceTree = "<group>"; };
+		83F023AE1658189300467FFB /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
+		83F023AF1658189300467FFB /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
+		83F023B216581BC900467FFB /* grayArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grayArrow.png; sourceTree = "<group>"; };
+		83F023B316581BC900467FFB /* grayArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grayArrow@2x.png"; sourceTree = "<group>"; };
+		83F023B416581BC900467FFB /* blackArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackArrow.png; sourceTree = "<group>"; };
+		83F023B516581BC900467FFB /* blackArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackArrow@2x.png"; sourceTree = "<group>"; };
+		83F023B616581BC900467FFB /* blueArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueArrow.png; sourceTree = "<group>"; };
+		83F023B716581BC900467FFB /* blueArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueArrow@2x.png"; sourceTree = "<group>"; };
+		83F023B816581BC900467FFB /* whiteArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteArrow.png; sourceTree = "<group>"; };
+		83F023B916581BC900467FFB /* whiteArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteArrow@2x.png"; sourceTree = "<group>"; };
 		83F3CA5511780BE00033611B /* bkk_vert_realcat.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bkk_vert_realcat.jpg; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* baby ketten-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "baby ketten-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -183,8 +210,6 @@
 				83D34B03160E66F00065EF6A /* Models */,
 				83D34B02160E66900065EF6A /* Controllers */,
 				83FD5CA4160F9DDB007F28D4 /* Views */,
-				1D3623240D0F684500981E51 /* bkkAppDelegate.h */,
-				1D3623250D0F684500981E51 /* bkkAppDelegate.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -200,6 +225,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				83CD0877166674B900BEAB0D /* Default-568h@2x.png */,
 				834DE11915DC83160050139B /* Settings.bundle */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -222,6 +248,14 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				83F023B216581BC900467FFB /* grayArrow.png */,
+				83F023B316581BC900467FFB /* grayArrow@2x.png */,
+				83F023B416581BC900467FFB /* blackArrow.png */,
+				83F023B516581BC900467FFB /* blackArrow@2x.png */,
+				83F023B616581BC900467FFB /* blueArrow.png */,
+				83F023B716581BC900467FFB /* blueArrow@2x.png */,
+				83F023B816581BC900467FFB /* whiteArrow.png */,
+				83F023B916581BC900467FFB /* whiteArrow@2x.png */,
 				8300C3EA137F73BA00E45770 /* ketten_small.jpg */,
 				839597A714A29D9900E8CB30 /* ketten_small_white@2x.png */,
 				839597A814A29D9900E8CB30 /* ketten_small_white.png */,
@@ -234,6 +268,7 @@
 				8397063712F4A9BD00050E9E /* question@2x.png */,
 				8397062612F4A20B00050E9E /* kamizake_icon@2x.png */,
 				8397062712F4A20B00050E9E /* kamizake_icon.png */,
+				83CD087F1666782700BEAB0D /* latest_mews_taller.png */,
 				8311CA9812DA8641009093D9 /* latest_mews.png */,
 				83B7C5CC1296E84700A52BD9 /* comment.png */,
 				83B7C5CD1296E84700A52BD9 /* comment@2x.png */,
@@ -249,8 +284,9 @@
 				831BAF2A121EE71600A7AD86 /* Icon-Small-50.png */,
 				831BAF2B121EE71600A7AD86 /* Icon-Small.png */,
 				831BAF2C121EE71600A7AD86 /* Icon-Small@2x.png */,
-				831BAF1F121EE22900A7AD86 /* kamikaze_ketten_back_light.png */,
-				831BAF09121EE00400A7AD86 /* kamikaze_ketten_background.png */,
+				83CD08731666737F00BEAB0D /* kamikaze_ketten_background@2x.png */,
+				83CD08741666737F00BEAB0D /* kamikaze_ketten_background.png */,
+				831BAF09121EE00400A7AD86 /* kamikaze_ketten_background_old.png */,
 				83DA58A9121B96DD006804B8 /* kamikaze_ketten.png */,
 				83F3CA5511780BE00033611B /* bkk_vert_realcat.jpg */,
 				83ADD5FB1169939A00BF3809 /* bkklogobwtouchup.jpg */,
@@ -275,6 +311,8 @@
 		83D34B02160E66900065EF6A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1D3623240D0F684500981E51 /* bkkAppDelegate.h */,
+				1D3623250D0F684500981E51 /* bkkAppDelegate.m */,
 				83ADD5FD116993AB00BF3809 /* bkkViewController.h */,
 				83ADD5FE116993AB00BF3809 /* bkkViewController.m */,
 				8366C16F1340523000D2B518 /* CalendarDetailViewController.h */,
@@ -307,6 +345,8 @@
 		83D34B04160E69610065EF6A /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				83F023AE1658189300467FFB /* EGORefreshTableHeaderView.h */,
+				83F023AF1658189300467FFB /* EGORefreshTableHeaderView.m */,
 				83D34B12160E6E8B0065EF6A /* AFNetworking */,
 			);
 			name = Vendor;
@@ -341,6 +381,7 @@
 		83FD5CA4160F9DDB007F28D4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				83CD087D1666762200BEAB0D /* bkkViewController_iPhone5.xib */,
 				83ADD600116993E800BF3809 /* bkkViewController.xib */,
 				8366C1711340523000D2B518 /* CalendarDetailViewController.xib */,
 				83B7C5B81296E6E500A52BD9 /* FavoritesListViewController.xib */,
@@ -407,8 +448,7 @@
 				83829842116C69F600EE8539 /* SongDetailViewController.xib in Resources */,
 				83F3CA5A11780BE00033611B /* bkk_vert_realcat.jpg in Resources */,
 				83DA58AA121B96DD006804B8 /* kamikaze_ketten.png in Resources */,
-				831BAF0A121EE00400A7AD86 /* kamikaze_ketten_background.png in Resources */,
-				831BAF20121EE22900A7AD86 /* kamikaze_ketten_back_light.png in Resources */,
+				831BAF0A121EE00400A7AD86 /* kamikaze_ketten_background_old.png in Resources */,
 				831BAF3E121EE79200A7AD86 /* Icon.png in Resources */,
 				831BAF40121EE7A300A7AD86 /* Icon@2x.png in Resources */,
 				830F9355129597CF00282FC6 /* calendar@2x.png in Resources */,
@@ -436,6 +476,19 @@
 				839597A914A29D9900E8CB30 /* ketten_small_white@2x.png in Resources */,
 				839597AA14A29D9900E8CB30 /* ketten_small_white.png in Resources */,
 				834DE11A15DC83160050139B /* Settings.bundle in Resources */,
+				83F023BA16581BC900467FFB /* grayArrow.png in Resources */,
+				83F023BB16581BC900467FFB /* grayArrow@2x.png in Resources */,
+				83F023BC16581BC900467FFB /* blackArrow.png in Resources */,
+				83F023BD16581BC900467FFB /* blackArrow@2x.png in Resources */,
+				83F023BE16581BC900467FFB /* blueArrow.png in Resources */,
+				83F023BF16581BC900467FFB /* blueArrow@2x.png in Resources */,
+				83F023C016581BC900467FFB /* whiteArrow.png in Resources */,
+				83F023C116581BC900467FFB /* whiteArrow@2x.png in Resources */,
+				83CD08751666737F00BEAB0D /* kamikaze_ketten_background@2x.png in Resources */,
+				83CD08761666737F00BEAB0D /* kamikaze_ketten_background.png in Resources */,
+				83CD0878166674B900BEAB0D /* Default-568h@2x.png in Resources */,
+				83CD087E1666762200BEAB0D /* bkkViewController_iPhone5.xib in Resources */,
+				83CD08801666782700BEAB0D /* latest_mews_taller.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,6 +519,7 @@
 				83D34B72160E74370065EF6A /* KamikazeViewController.m in Sources */,
 				83D34B73160E74370065EF6A /* CalendarDetailViewController.m in Sources */,
 				83D34B74160E74370065EF6A /* main.m in Sources */,
+				83F023B01658189300467FFB /* EGORefreshTableHeaderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,7 +531,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Christopher Schepman";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -489,7 +543,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "baby ketten";
-				PROVISIONING_PROFILE = "7792BF38-73CB-4293-91EA-746839753F97";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -500,8 +554,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Christopher Schepman";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Christopher Schepman (9UY2RV34LS)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -510,8 +564,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "baby ketten";
-				PROVISIONING_PROFILE = "7792BF38-73CB-4293-91EA-746839753F97";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "115E8248-9317-486E-BD0E-FF6841D23045";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -530,8 +582,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "";
-				PROVISIONING_PROFILE = "7792BF38-73CB-4293-91EA-746839753F97";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7792BF38-73CB-4293-91EA-746839753F97";
+				PROVISIONING_PROFILE = "249BEC10-3F91-40E5-B826-EA01919E3712";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "249BEC10-3F91-40E5-B826-EA01919E3712";
 				SDKROOT = iphoneos;
 			};
 			name = "Ad Hoc";
@@ -541,7 +593,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Christopher Schepman";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Christopher Schepman";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -551,8 +603,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "baby ketten";
-				PROVISIONING_PROFILE = "7792BF38-73CB-4293-91EA-746839753F97";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7792BF38-73CB-4293-91EA-746839753F97";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -562,16 +612,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Christopher Schepman";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Christopher Schepman (9UY2RV34LS)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "";
-				PROVISIONING_PROFILE = "7792BF38-73CB-4293-91EA-746839753F97";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E687FEB1-BCEF-4906-9A24-228F06C521CC";
 				SDKROOT = iphoneos;
 			};
 			name = Distribution;
@@ -581,8 +629,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Christopher Schepman";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Christopher Schepman";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -591,8 +639,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "baby ketten";
-				PROVISIONING_PROFILE = "7792BF38-73CB-4293-91EA-746839753F97";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4B562FA2-9230-4C53-BEEC-81442DD808FE";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -602,8 +648,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Christopher Schepman";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -611,8 +657,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
-				PROVISIONING_PROFILE = "7792BF38-73CB-4293-91EA-746839753F97";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -621,8 +665,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Christopher Schepman";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Christopher Schepman (9UY2RV34LS)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -630,8 +674,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "";
-				PROVISIONING_PROFILE = "7792BF38-73CB-4293-91EA-746839753F97";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E687FEB1-BCEF-4906-9A24-228F06C521CC";
 				SDKROOT = iphoneos;
 			};
 			name = Release;

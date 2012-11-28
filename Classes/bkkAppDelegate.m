@@ -24,8 +24,15 @@
     self.tabBarController = [[UITabBarController alloc] init];
 
     //searching
-	mainViewController = [[bkkViewController alloc] initWithNibName:@"bkkViewController" bundle:nil];
-	navControllerSearch = [[UINavigationController alloc] initWithRootViewController:mainViewController];
+	
+	
+    if([UIScreen mainScreen].bounds.size.height == 568) {
+        mainViewController = [[bkkViewController alloc] initWithNibName:@"bkkViewController_iPhone5" bundle:nil];    
+    } else {
+        mainViewController = [[bkkViewController alloc] initWithNibName:@"bkkViewController" bundle:nil];
+    }
+    
+    navControllerSearch = [[UINavigationController alloc] initWithRootViewController:mainViewController];
 	[navControllerSearch navigationBar].hidden = YES;
 	navControllerSearch.navigationBar.tintColor = [UIColor blackColor];
 	navControllerSearch.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"search" image:[UIImage imageNamed:@"mic"] tag:1];
@@ -41,8 +48,8 @@
 	navControllerFaves = [[UINavigationController alloc] initWithRootViewController:favoritesViewController];
     navControllerFaves.navigationBar.tintColor = [UIColor blackColor];
     navControllerFaves.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"faves" image:[UIImage imageNamed:@"inbox"] tag:3];
-	
-    //kamz
+
+	//randoms
 	KamikazeViewController *kamikazeViewController = [[KamikazeViewController alloc] initWithNibName:@"KamikazeViewController" bundle:nil];
 	navControllerKamikaze = [[UINavigationController alloc] initWithRootViewController:kamikazeViewController];
 	navControllerKamikaze.navigationBar.tintColor = [UIColor blackColor];

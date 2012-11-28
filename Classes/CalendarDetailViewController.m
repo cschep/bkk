@@ -53,7 +53,7 @@
     NSString *city = [[NSUserDefaults standardUserDefaults] stringForKey:@"city"];
     if ([city isEqualToString:@"1"]) {
         //seattle
-        // Forward geocode! - "pdx" makes the airport come up.. hrm..
+
         //NSString *searchTerm = [self.date.where stringByReplacingOccurrencesOfString:@"pdx" withString:@"Portland, OR"];
         NSString *searchTerm = [NSString stringWithFormat:@"%@, Seattle, WA", self.date.where];
         //searchTerm = [searchTerm stringByReplacingOccurrencesOfString:@"the woods 6637 milwauke ave" withString:@"6637 SE Milwaukie Avenue"];

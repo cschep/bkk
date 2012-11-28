@@ -13,6 +13,7 @@
 @implementation bkkViewController
 
 @synthesize tweet;
+@synthesize tweetView;
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [self searchFor:textField.text
@@ -83,19 +84,19 @@
     
     //default UI
     [tweetSpinner startAnimating];
-    latestTweet.text = @"";
+    self.tweetView.text = @"";
     
     //update tweet
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
     success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         self.tweet = [[JSON objectAtIndex:0] valueForKey:@"text"];
         [tweetSpinner stopAnimating];
-        latestTweet.text = tweet;
+        self.tweetView.text = tweet;
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
         NSLog(@"Failed loading JSON.");
         [tweetSpinner stopAnimating];
         self.tweet = @"Can't reach the internetz! Sing pretty!";
-        latestTweet.text = tweet;
+        self.tweetView.text = tweet;
     }];
     
     [operation start];

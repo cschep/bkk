@@ -11,7 +11,6 @@
 @interface bkkViewController : UIViewController <UITextFieldDelegate> {
 	IBOutlet UITextField *searchTextField;
 	IBOutlet UISegmentedControl *segmented;
-	IBOutlet UITextView *latestTweet;
     
     IBOutlet UIActivityIndicatorView *tweetSpinner;
 	NSString *tweet;
@@ -22,6 +21,7 @@
 - (void)dismissKeyboard:(id)sender;
 
 @property (strong) NSString *tweet;
+@property (nonatomic, strong) IBOutlet UITextView *tweetView;
 
 @end
 
