@@ -59,6 +59,19 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
+    if (_refreshHeaderView == nil) {
+		
+		EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tweetView.bounds.size.height, self.tweetView.frame.size.width, self.tweetView.bounds.size.height) andSmallVersionEnabled:YES];
+        view.delegate = self;
+		[self.tweetView addSubview:view];
+        self.tweetView.delegate = self;
+		_refreshHeaderView = view;
+		
+	}
+	
+	//  update the last update date
+	[_refreshHeaderView refreshLastUpdatedDate];
+    
     UISwipeGestureRecognizer *recognizer;
     
     recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
@@ -83,20 +96,27 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
     //default UI
-    [tweetSpinner startAnimating];
+    [self.tweetSpinner startAnimating];
     self.tweetView.text = @"";
     
     //update tweet
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
     success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         self.tweet = [[JSON objectAtIndex:0] valueForKey:@"text"];
-        [tweetSpinner stopAnimating];
+        [self.tweetSpinner stopAnimating];
         self.tweetView.text = tweet;
+
+        //pull to refresh thing
+        [self doneLoadingTableViewData];
+
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
         NSLog(@"Failed loading JSON.");
-        [tweetSpinner stopAnimating];
+        [self.tweetSpinner stopAnimating];
         self.tweet = @"Can't reach the internetz! Sing pretty!";
         self.tweetView.text = tweet;
+        
+        //pull to refresh thing
+        [self doneLoadingTableViewData];
     }];
     
     [operation start];
@@ -113,6 +133,58 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 */
+
+#pragma mark -
+#pragma mark Data Source Loading / Reloading Methods
+
+- (void)reloadTableViewDataSource{
+	
+	//  should be calling your tableviews data source model to reload
+	//  put here just for demo
+    [self loadTweetInBackground];
+}
+
+- (void)doneLoadingTableViewData{
+	
+	//  model should call this when its done loading
+	[_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tweetView];
+	
+}
+
+#pragma mark -
+#pragma mark UIScrollViewDelegate Methods
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+	
+	[_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
+    
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+	
+	[_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
+	
+}
+
+#pragma mark -
+#pragma mark EGORefreshTableHeaderDelegate Methods
+
+- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view{
+	
+	[self reloadTableViewDataSource];
+}
+
+- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view{
+	
+    return [self.tweetSpinner isAnimating];
+	
+}
+
+- (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view{
+	
+	return [NSDate date]; // should return date data source was last changed
+	
+}
 
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.

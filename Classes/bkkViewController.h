@@ -7,13 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EGORefreshTableHeaderView.h"
 
-@interface bkkViewController : UIViewController <UITextFieldDelegate> {
+@interface bkkViewController : UIViewController <UITextViewDelegate, EGORefreshTableHeaderDelegate> {
 	IBOutlet UITextField *searchTextField;
 	IBOutlet UISegmentedControl *segmented;
-    
-    IBOutlet UIActivityIndicatorView *tweetSpinner;
+
 	NSString *tweet;
+    
+    EGORefreshTableHeaderView *_refreshHeaderView;
 }
 
 - (void)loadTweetInBackground;
@@ -22,6 +24,7 @@
 
 @property (strong) NSString *tweet;
 @property (nonatomic, strong) IBOutlet UITextView *tweetView;
+@property IBOutlet UIActivityIndicatorView *tweetSpinner;
 
 @end
 

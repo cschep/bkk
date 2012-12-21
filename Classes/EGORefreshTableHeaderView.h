@@ -43,16 +43,18 @@ typedef enum{
 	UILabel *_statusLabel;
 	CALayer *_arrowImage;
 	UIActivityIndicatorView *_activityView;
-	
 
 }
 
-@property(nonatomic,assign) id <EGORefreshTableHeaderDelegate> delegate;
+@property (nonatomic, assign) id <EGORefreshTableHeaderDelegate> delegate;
+@property (nonatomic, assign) BOOL smallVersionEnabled;
 
 - (void)refreshLastUpdatedDate;
 - (void)egoRefreshScrollViewDidScroll:(UIScrollView *)scrollView;
 - (void)egoRefreshScrollViewDidEndDragging:(UIScrollView *)scrollView;
 - (void)egoRefreshScrollViewDataSourceDidFinishedLoading:(UIScrollView *)scrollView;
+
+- (id)initWithFrame:(CGRect)frame andSmallVersionEnabled:(BOOL)smallVersionEnabled;
 
 @end
 @protocol EGORefreshTableHeaderDelegate

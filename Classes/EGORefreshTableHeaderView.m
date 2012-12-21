@@ -39,57 +39,106 @@
 
 @synthesize delegate=_delegate;
 
-
-- (id)initWithFrame:(CGRect)frame {
+- (id)initWithFrame:(CGRect)frame andSmallVersionEnabled:(BOOL)smallVersionEnabled {
     if (self = [super initWithFrame:frame]) {
 		
-		self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-		self.backgroundColor = [UIColor colorWithRed:226.0/255.0 green:231.0/255.0 blue:237.0/255.0 alpha:1.0];
-
-		UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, frame.size.height - 30.0f, self.frame.size.width, 20.0f)];
-		label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-		label.font = [UIFont systemFontOfSize:12.0f];
-		label.textColor = TEXT_COLOR;
-		label.shadowColor = [UIColor colorWithWhite:0.9f alpha:1.0f];
-		label.shadowOffset = CGSizeMake(0.0f, 1.0f);
-		label.backgroundColor = [UIColor clearColor];
-		label.textAlignment = UITextAlignmentCenter;
-		[self addSubview:label];
-		_lastUpdatedLabel=label;
-		[label release];
-		
-		label = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, frame.size.height - 48.0f, self.frame.size.width, 20.0f)];
-		label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-		label.font = [UIFont boldSystemFontOfSize:13.0f];
-		label.textColor = TEXT_COLOR;
-		label.shadowColor = [UIColor colorWithWhite:0.9f alpha:1.0f];
-		label.shadowOffset = CGSizeMake(0.0f, 1.0f);
-		label.backgroundColor = [UIColor clearColor];
-		label.textAlignment = UITextAlignmentCenter;
-		[self addSubview:label];
-		_statusLabel=label;
-		[label release];
-		
-		CALayer *layer = [CALayer layer];
-		layer.frame = CGRectMake(25.0f, frame.size.height - 65.0f, 30.0f, 55.0f);
-		layer.contentsGravity = kCAGravityResizeAspect;
-		layer.contents = (id)[UIImage imageNamed:@"blueArrow.png"].CGImage;
-		
+        self.smallVersionEnabled = smallVersionEnabled;
+        if (self.smallVersionEnabled) {
+            self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+            self.backgroundColor = [UIColor clearColor]; //[UIColor colorWithRed:226.0/255.0 green:231.0/255.0 blue:237.0/255.0 alpha:1.0];
+            
+//            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, frame.size.height - 30.0f, self.frame.size.width, 20.0f)];
+//            label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+//            label.font = [UIFont systemFontOfSize:12.0f];
+//            label.textColor = TEXT_COLOR;
+//            label.shadowColor = [UIColor colorWithWhite:0.9f alpha:1.0f];
+//            label.shadowOffset = CGSizeMake(0.0f, 1.0f);
+//            label.backgroundColor = [UIColor clearColor];
+//            label.textAlignment = UITextAlignmentCenter;
+//            [self addSubview:label];
+//            _lastUpdatedLabel=label;
+//            [label release];
+//            
+//            label = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, frame.size.height - 48.0f, self.frame.size.width, 20.0f)];
+//            label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+//            label.font = [UIFont boldSystemFontOfSize:13.0f];
+//            label.textColor = TEXT_COLOR;
+//            label.shadowColor = [UIColor colorWithWhite:0.9f alpha:1.0f];
+//            label.shadowOffset = CGSizeMake(0.0f, 1.0f);
+//            label.backgroundColor = [UIColor clearColor];
+//            label.textAlignment = UITextAlignmentCenter;
+//            [self addSubview:label];
+//            _statusLabel=label;
+//            [label release];
+            
+            CALayer *layer = [CALayer layer];
+            layer.frame = CGRectMake(0.0f, frame.size.height - 65.0f, frame.size.width, 55.0f);
+            layer.contentsGravity = kCAGravityResizeAspect;
+            layer.contents = (id)[UIImage imageNamed:@"ketten_small_white"].CGImage;
+            
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 40000
-		if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)]) {
-			layer.contentsScale = [[UIScreen mainScreen] scale];
-		}
+            if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)]) {
+                layer.contentsScale = [[UIScreen mainScreen] scale];
+            }
 #endif
-		
-		[[self layer] addSublayer:layer];
-		_arrowImage=layer;
-		
-		UIActivityIndicatorView *view = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-		view.frame = CGRectMake(25.0f, frame.size.height - 38.0f, 20.0f, 20.0f);
-		[self addSubview:view];
-		_activityView = view;
-		[view release];
-		
+            
+            [[self layer] addSublayer:layer];
+            _arrowImage=layer;
+            
+            UIActivityIndicatorView *view = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+            view.frame = CGRectMake(25.0f, frame.size.height - 38.0f, 20.0f, 20.0f);
+            [self addSubview:view];
+            _activityView = view;
+            [view release];
+            
+        } else {
+            self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+            self.backgroundColor = [UIColor colorWithRed:226.0/255.0 green:231.0/255.0 blue:237.0/255.0 alpha:1.0];
+
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, frame.size.height - 30.0f, self.frame.size.width, 20.0f)];
+            label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+            label.font = [UIFont systemFontOfSize:12.0f];
+            label.textColor = TEXT_COLOR;
+            label.shadowColor = [UIColor colorWithWhite:0.9f alpha:1.0f];
+            label.shadowOffset = CGSizeMake(0.0f, 1.0f);
+            label.backgroundColor = [UIColor clearColor];
+            label.textAlignment = UITextAlignmentCenter;
+            [self addSubview:label];
+            _lastUpdatedLabel=label;
+            [label release];
+            
+            label = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, frame.size.height - 48.0f, self.frame.size.width, 20.0f)];
+            label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+            label.font = [UIFont boldSystemFontOfSize:13.0f];
+            label.textColor = TEXT_COLOR;
+            label.shadowColor = [UIColor colorWithWhite:0.9f alpha:1.0f];
+            label.shadowOffset = CGSizeMake(0.0f, 1.0f);
+            label.backgroundColor = [UIColor clearColor];
+            label.textAlignment = UITextAlignmentCenter;
+            [self addSubview:label];
+            _statusLabel=label;
+            [label release];
+            
+            CALayer *layer = [CALayer layer];
+            layer.frame = CGRectMake(25.0f, frame.size.height - 65.0f, 30.0f, 55.0f);
+            layer.contentsGravity = kCAGravityResizeAspect;
+            layer.contents = (id)[UIImage imageNamed:@"blueArrow.png"].CGImage;
+            
+    #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 40000
+            if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)]) {
+                layer.contentsScale = [[UIScreen mainScreen] scale];
+            }
+    #endif
+            
+            [[self layer] addSublayer:layer];
+            _arrowImage=layer;
+            
+            UIActivityIndicatorView *view = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+            view.frame = CGRectMake(25.0f, frame.size.height - 38.0f, 20.0f, 20.0f);
+            [self addSubview:view];
+            _activityView = view;
+            [view release];
+        }
 		
 		[self setState:EGOOPullRefreshNormal];
 		
@@ -160,13 +209,22 @@
 			break;
 		case EGOOPullRefreshLoading:
 			
-			_statusLabel.text = NSLocalizedString(@"Loading...", @"Loading Status");
-			[_activityView startAnimating];
-			[CATransaction begin];
-			[CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions]; 
-			_arrowImage.hidden = YES;
-			[CATransaction commit];
-			
+			if (self.smallVersionEnabled) {
+                _statusLabel.text = NSLocalizedString(@"Loading...", @"Loading Status");
+                [CATransaction begin];
+                [CATransaction setAnimationDuration:0.8f];
+                _arrowImage.transform = CATransform3DMakeRotation((M_PI / 180.0) * 0.0f, 0.0f, 0.0f, 1.0f);
+                [CATransaction commit];
+            } else {
+                _statusLabel.text = NSLocalizedString(@"Loading...", @"Loading Status");
+                [_activityView startAnimating];
+                [CATransaction begin];
+                [CATransaction setAnimationDuration:0.8f];
+                [CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
+                _arrowImage.hidden = YES;
+                [CATransaction commit];
+			}
+            
 			break;
 		default:
 			break;
