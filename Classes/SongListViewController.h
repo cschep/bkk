@@ -7,22 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EGORefreshTableHeaderView.h"
 
-@interface SongListViewController : UITableViewController <EGORefreshTableHeaderDelegate> {
-	EGORefreshTableHeaderView *_refreshHeaderView;
-	
-    NSMutableArray *songList;
-	NSString *searchTerm;
-	NSString *searchBy;
-	BOOL isRandom;
-	UIActivityIndicatorView *activityIndicator;
-}
+@interface SongListViewController : UITableViewController
 
 - (id)initWithSearchTerm:(NSString *)searchTermIn SearchBy:(NSString *)searchByIn Random:(BOOL)_isRandom Style:(UITableViewStyle)style;
-
-- (void)reloadTableViewDataSource;
-- (void)doneLoadingTableViewData;
 
 @property (strong) NSMutableArray *songList;
 @property (strong) NSString *searchTerm;

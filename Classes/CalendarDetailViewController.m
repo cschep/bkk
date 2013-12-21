@@ -128,15 +128,15 @@
         MKPointAnnotation *pa = [[MKPointAnnotation alloc] init];
         pa.coordinate = self.currentPlacemark.location.coordinate;
         pa.title = date.title;
-        [mapView addAnnotation:pa];
+        [self.mapView addAnnotation:pa];
         
         // Zoom into the location
         // hacky.. 1000 looks good?
         MKCoordinateRegion zoom = MKCoordinateRegionMakeWithDistance(self.currentPlacemark.region.center, 1000, 1000);
-        [mapView setRegion:zoom animated:NO];
+        [self.mapView setRegion:zoom animated:NO];
     }];
     
-    NSLog(@"%@", string);
+    //NSLog(@"%@", string);
 }
 
 @end

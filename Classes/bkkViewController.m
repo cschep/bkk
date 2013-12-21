@@ -12,12 +12,9 @@
 
 @implementation bkkViewController
 
-@synthesize tweet;
-@synthesize tweetView;
-
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [self searchFor:textField.text
-                 By:[segmented titleForSegmentAtIndex:[segmented selectedSegmentIndex]]  
+                 By:[self.segmented titleForSegmentAtIndex:[self.segmented selectedSegmentIndex]]
         UsingRandom:NO];
 	
 	return YES;
@@ -35,87 +32,61 @@
 	[self.navigationController pushViewController:songListViewController animated:YES];
 }
 
-/*
-// The designated initializer. Override to perform setup that is required before the view is loaded.
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
-        // Custom initialization
-    }
-    return self;
-}
-*/
-
 - (void)viewWillAppear:(BOOL)animated {
 	self.navigationController.navigationBar.hidden = YES;
     
     [super viewWillAppear:animated];
 }
 
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView {
-}
-*/
-
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-    if (_refreshHeaderView == nil) {
-		
-		EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tweetView.bounds.size.height, self.tweetView.frame.size.width, self.tweetView.bounds.size.height) andSmallVersionEnabled:YES];
+    
+    if (self.refreshMessageView == nil) {
+        EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.messageView.bounds.size.height, self.messageView.frame.size.width, self.messageView.bounds.size.height) andSmallVersionEnabled:YES];
         view.delegate = self;
-		[self.tweetView addSubview:view];
-        self.tweetView.delegate = self;
-		_refreshHeaderView = view;
-		
-	}
-	
-	//  update the last update date
-	[_refreshHeaderView refreshLastUpdatedDate];
+        [self.messageView addSubview:view];
+        self.messageView.delegate = self;
+        self.refreshMessageView = view;
+    }
     
-    UISwipeGestureRecognizer *recognizer;
+    //update the last update date
+    [self.refreshMessageView refreshLastUpdatedDate];
     
-    recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
+    UISwipeGestureRecognizer *recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
     [recognizer setDirection:UISwipeGestureRecognizerDirectionDown];
     [[self view] addGestureRecognizer:recognizer];
     
-    [self loadTweetInBackground];
-    
+    [self loadMessageInBackground];
+        
     [super viewDidLoad];
 }
 
-- (void)loadTweetInBackground {
+- (void)loadMessageInBackground {
     NSString *urlString;
     NSString *city = [[NSUserDefaults standardUserDefaults] stringForKey:@"city"];
     if ([city isEqualToString:@"1"]) {
-        urlString = @"http://api.twitter.com/1/statuses/user_timeline.json?count=1&screen_name=babykettenWA";
+        urlString = @"http://bkk.schepman.org/live_message_wa";
     } else {
-        urlString = @"http://api.twitter.com/1/statuses/user_timeline.json?count=1&screen_name=babykettenOR";
+        urlString = @"http://bkk.schepman.org/live_message_or";
     }
     
 	NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
     //default UI
-    [self.tweetSpinner startAnimating];
-    self.tweetView.text = @"";
+    [self.messageLoadingSpinner startAnimating];
+    self.messageView.text = @"";
     
     //update tweet
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
     success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        self.tweet = [[JSON objectAtIndex:0] valueForKey:@"text"];
-        [self.tweetSpinner stopAnimating];
-        self.tweetView.text = tweet;
-
-        //pull to refresh thing
+        self.message = [JSON objectForKey:@"message"];
+        [self.messageLoadingSpinner stopAnimating];
+        self.messageView.text = self.message;
         [self doneLoadingTableViewData];
-
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-        NSLog(@"Failed loading JSON.");
-        [self.tweetSpinner stopAnimating];
-        self.tweet = @"Can't reach the internetz! Sing pretty!";
-        self.tweetView.text = tweet;
-        
-        //pull to refresh thing
+        [self.messageLoadingSpinner stopAnimating];
+        self.message = @"Can't reach the internetz! Sing pretty!";
+        self.messageView.text = self.message;
         [self doneLoadingTableViewData];
     }];
     
@@ -123,80 +94,49 @@
 }
 
 - (void)dismissKeyboard:(id)sender {
-    [searchTextField resignFirstResponder];
+    [self.searchTextField resignFirstResponder];
 }
 
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
-
-#pragma mark -
-#pragma mark Data Source Loading / Reloading Methods
-
+//
 - (void)reloadTableViewDataSource{
-	
-	//  should be calling your tableviews data source model to reload
-	//  put here just for demo
-    [self loadTweetInBackground];
+    
+    //  should be calling your tableviews data source model to reload
+    //  put here just for demo
+    [self loadMessageInBackground];
 }
 
 - (void)doneLoadingTableViewData{
-	
-	//  model should call this when its done loading
-	[_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tweetView];
-	
+    [self.refreshMessageView egoRefreshScrollViewDataSourceDidFinishedLoading:self.messageView];
 }
 
 #pragma mark -
 #pragma mark UIScrollViewDelegate Methods
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-	
-	[_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
-    
+    [self.refreshMessageView egoRefreshScrollViewDidScroll:scrollView];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-	
-	[_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
-	
+    [self.refreshMessageView egoRefreshScrollViewDidEndDragging:scrollView];
 }
 
 #pragma mark -
 #pragma mark EGORefreshTableHeaderDelegate Methods
 
 - (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view{
-	
-	[self reloadTableViewDataSource];
+    [self reloadTableViewDataSource];
 }
 
 - (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view{
-	
-    return [self.tweetSpinner isAnimating];
-	
+    return [self.messageLoadingSpinner isAnimating];
 }
 
 - (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view{
-	
-	return [NSDate date]; // should return date data source was last changed
-	
+    return [NSDate date]; // should return date data source was last changed
 }
 
 - (void)didReceiveMemoryWarning {
-	// Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-	
-	// Release any cached data, images, etc that aren't in use.
 }
-
-- (void)viewDidUnload {
-	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
-}
-
 
 @end

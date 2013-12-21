@@ -7,17 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EGORefreshTableHeaderView.h"
 
-@interface CalendarViewController : UITableViewController <EGORefreshTableHeaderDelegate> {
-	EGORefreshTableHeaderView *_refreshHeaderView;
-    NSMutableArray *dateList;
-}
+@interface CalendarViewController : UITableViewController
 
 @property (strong) NSMutableArray *dateList;
 @property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
-
-- (void)reloadTableViewDataSource;
-- (void)doneLoadingTableViewData;
 
 @end

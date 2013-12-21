@@ -9,22 +9,19 @@
 #import <UIKit/UIKit.h>
 #import "EGORefreshTableHeaderView.h"
 
-@interface bkkViewController : UIViewController <UITextViewDelegate, EGORefreshTableHeaderDelegate> {
-	IBOutlet UITextField *searchTextField;
-	IBOutlet UISegmentedControl *segmented;
+@interface bkkViewController : UIViewController <UITextViewDelegate, EGORefreshTableHeaderDelegate>
 
-	NSString *tweet;
-    
-    EGORefreshTableHeaderView *_refreshHeaderView;
-}
+@property (nonatomic, strong) NSString *message;
+@property (nonatomic, weak) IBOutlet UITextView *messageView;
+@property (nonatomic, weak) IBOutlet UIActivityIndicatorView *messageLoadingSpinner;
+@property (nonatomic, weak)	IBOutlet UISegmentedControl *segmented;
+@property (nonatomic, weak)	IBOutlet UITextField *searchTextField;
 
-- (void)loadTweetInBackground;
+@property (nonatomic, strong) EGORefreshTableHeaderView *refreshMessageView;
+
+- (void)loadMessageInBackground;
 - (void)searchFor:(NSString *)searchTerm By:(NSString *)searchBy UsingRandom:(BOOL)random;
 - (void)dismissKeyboard:(id)sender;
-
-@property (strong) NSString *tweet;
-@property (nonatomic, strong) IBOutlet UITextView *tweetView;
-@property IBOutlet UIActivityIndicatorView *tweetSpinner;
 
 @end
 

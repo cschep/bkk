@@ -10,17 +10,13 @@
 #import <MapKit/MapKit.h>
 #import "Date.h"
 
-@interface CalendarDetailViewController : UIViewController <MKMapViewDelegate> {
-    IBOutlet MKMapView *mapView;
-    Date *date;
-    
-    IBOutlet UITextView *descText;
-}
+@interface CalendarDetailViewController : UIViewController <MKMapViewDelegate>
 
 @property (strong, nonatomic) CLGeocoder *geocoder;
 @property (strong, nonatomic) MKPlacemark *currentPlacemark;
 @property (strong, nonatomic) Date *date;
 @property (strong, nonatomic) IBOutlet UITextView *descText;
+@property (strong, nonatomic) IBOutlet MKMapView *mapView;
 
 - (id)initWithDate:(Date *)date;
 

@@ -9,24 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "Song.h"
 
-@interface SongDetailViewController : UITableViewController {
-	Song *song;
-    BOOL isFavorite;
-    
-    IBOutlet UIView *headerView;
-    IBOutlet UILabel *titleLabel;
-    IBOutlet UILabel *artistLabel;
-}
+@interface SongDetailViewController : UITableViewController
 
-- (id)initWithSong:(Song *)_song;
-
-- (void)lyricsSearch;
-- (void)artistSearch;
-- (void)youTubeSearch;
-- (void)toggleFavorite;
-- (void)setCheckmarkForFavorite;
+- (id)initWithSong:(Song *)song;
 
 @property (nonatomic, strong) Song *song;
+@property BOOL isFavorite;
 
 @property (nonatomic, strong) IBOutlet UIView *headerView;
 @property (nonatomic, strong) IBOutlet UILabel *titleLabel;

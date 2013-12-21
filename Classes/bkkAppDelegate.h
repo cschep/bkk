@@ -9,17 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "bkkViewController.h"
 
-@interface bkkAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
-    UINavigationController *navControllerSearch;
-	UINavigationController *navControllerCalendar;
-    UINavigationController *navControllerFaves;
-    UINavigationController *navControllerKamikaze;
-    
-    bkkViewController *mainViewController;
-}
+@interface bkkAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate>
 
 @property (nonatomic, strong) UIWindow *window;
 @property (nonatomic, strong) UITabBarController *tabBarController;
+
+@property (nonatomic, strong) UINavigationController *navControllerSearch;
+@property (nonatomic, strong) bkkViewController *mainViewController;
+
+@property (nonatomic, strong) UINavigationController *navControllerCalendar;
+@property (nonatomic, strong) UINavigationController *navControllerFaves;
+@property (nonatomic, strong) UINavigationController *navControllerKamikaze;
 
 @end
 

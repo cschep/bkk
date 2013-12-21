@@ -22,40 +22,38 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	
     self.tabBarController = [[UITabBarController alloc] init];
+    [self.tabBarController.tabBar setTintColor:[UIColor redColor]];
+    [self.tabBarController.tabBar setBarTintColor:[UIColor blackColor]];
 
-    //searching
-	
-	
     if([UIScreen mainScreen].bounds.size.height == 568) {
-        mainViewController = [[bkkViewController alloc] initWithNibName:@"bkkViewController_iPhone5" bundle:nil];    
+        NSLog(@"loading 4 inch");
+        self.mainViewController = [[bkkViewController alloc] initWithNibName:@"bkkViewController_iPhone5" bundle:nil];
     } else {
-        mainViewController = [[bkkViewController alloc] initWithNibName:@"bkkViewController" bundle:nil];
+        NSLog(@"loading 3.5 inch");
+        self.mainViewController = [[bkkViewController alloc] initWithNibName:@"bkkViewController" bundle:nil];
     }
     
-    navControllerSearch = [[UINavigationController alloc] initWithRootViewController:mainViewController];
-	[navControllerSearch navigationBar].hidden = YES;
-	navControllerSearch.navigationBar.tintColor = [UIColor blackColor];
-	navControllerSearch.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"search" image:[UIImage imageNamed:@"mic"] tag:1];
+    self.navControllerSearch = [[UINavigationController alloc] initWithRootViewController:self.mainViewController];
+	[self.navControllerSearch navigationBar].hidden = YES;
+	self.navControllerSearch.navigationBar.tintColor = [UIColor redColor];
+	self.navControllerSearch.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"search" image:[UIImage imageNamed:@"mic"] tag:1];
 
-	//calendaring
 	CalendarViewController *calendarViewController = [[CalendarViewController alloc] init];
-	navControllerCalendar = [[UINavigationController alloc] initWithRootViewController:calendarViewController];
-	navControllerCalendar.navigationBar.tintColor = [UIColor blackColor];
-	navControllerCalendar.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"calendar" image:[UIImage imageNamed:@"calendar"]  tag:2];
+	self.navControllerCalendar = [[UINavigationController alloc] initWithRootViewController:calendarViewController];
+	self.navControllerCalendar.navigationBar.tintColor = [UIColor redColor];
+	self.navControllerCalendar.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"calendar" image:[UIImage imageNamed:@"calendar"]  tag:2];
 
-	//favorites list
 	FavoritesListViewController *favoritesViewController = [[FavoritesListViewController alloc] initWithNibName:@"FavoritesListViewController" bundle:nil];
-	navControllerFaves = [[UINavigationController alloc] initWithRootViewController:favoritesViewController];
-    navControllerFaves.navigationBar.tintColor = [UIColor blackColor];
-    navControllerFaves.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"faves" image:[UIImage imageNamed:@"inbox"] tag:3];
+	self.navControllerFaves = [[UINavigationController alloc] initWithRootViewController:favoritesViewController];
+    self.navControllerFaves.navigationBar.tintColor = [UIColor redColor];
+    self.navControllerFaves.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"faves" image:[UIImage imageNamed:@"inbox"] tag:3];
 
-	//randoms
 	KamikazeViewController *kamikazeViewController = [[KamikazeViewController alloc] initWithNibName:@"KamikazeViewController" bundle:nil];
-	navControllerKamikaze = [[UINavigationController alloc] initWithRootViewController:kamikazeViewController];
-	navControllerKamikaze.navigationBar.tintColor = [UIColor blackColor];
-	navControllerKamikaze.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"kamikaze!" image:[UIImage imageNamed:@"question"] tag:4];
+	self.navControllerKamikaze = [[UINavigationController alloc] initWithRootViewController:kamikazeViewController];
+	self.navControllerKamikaze.navigationBar.tintColor = [UIColor redColor];
+	self.navControllerKamikaze.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"kamikaze!" image:[UIImage imageNamed:@"question"] tag:4];
     
-	[self.tabBarController setViewControllers: [NSArray arrayWithObjects:navControllerSearch, navControllerCalendar, navControllerFaves, navControllerKamikaze, nil]];
+	[self.tabBarController setViewControllers: [NSArray arrayWithObjects:self.navControllerSearch, self.navControllerCalendar, self.navControllerFaves, self.navControllerKamikaze, nil]];
 	
 	[self.window setBackgroundColor:[UIColor blackColor]];
     self.window.rootViewController = self.tabBarController;
@@ -74,11 +72,7 @@
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-    //refresh the tweet dude.
-    [mainViewController loadTweetInBackground];
+    [self.mainViewController loadMessageInBackground];
 }
-
-
-
 
 @end

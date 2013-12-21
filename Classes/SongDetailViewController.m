@@ -11,9 +11,6 @@
 
 @implementation SongDetailViewController
 
-@synthesize song;
-@synthesize headerView, titleLabel, artistLabel;
-
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
@@ -22,9 +19,9 @@
     return self;
 }
 
-- (id)initWithSong:(Song *)_song {
+- (id)initWithSong:(Song *)song {
 	if ((self = [super initWithNibName:@"SongDetailViewController" bundle:nil])) {
-		self.song = _song;
+		self.song = song;
 	}
 	return self;
 }
@@ -34,19 +31,30 @@
 	[super viewDidLoad];
     
     self.title = @"Details";
-    self.clearsSelectionOnViewWillAppear = YES;
+    //self.clearsSelectionOnViewWillAppear = YES;
     
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    NSArray *favorites = [[NSUserDefaults standardUserDefaults] objectForKey:@"favorites"];
-    NSDictionary *song_dict = [[NSDictionary alloc] initWithObjectsAndKeys:self.song.artist, @"artist", self.song.title, @"title",  nil];
     
-    isFavorite = [favorites containsObject:song_dict];
+    self.isFavorite = [self songInFavorites];
 
     [self.tableView reloadData];
         
     [self setCheckmarkForFavorite];
+}
+
+- (BOOL)songInFavorites {
+    NSArray *favorites = [[NSUserDefaults standardUserDefaults] objectForKey:@"favorites"];
+    
+    BOOL favorite = NO;
+    for (id song in favorites) {
+        if ([[song objectForKey:@"artist"] isEqualToString:self.song.artist] && [[song objectForKey:@"title"] isEqualToString:self.song.title]) {
+            favorite = YES;
+        }
+    }
+
+    return favorite;
 }
 
 
@@ -90,7 +98,7 @@
         if (indexPath.row == 0) {
             cell.textLabel.text = @"Favorite";
 
-            if (isFavorite) {
+            if (self.isFavorite) {
                 cell.accessoryType = UITableViewCellAccessoryCheckmark;
             }
             
@@ -115,7 +123,7 @@
         if (indexPath.row == 0) {
             [self toggleFavorite];
             
-            isFavorite = !isFavorite;
+            self.isFavorite = !self.isFavorite;
             
             [self setCheckmarkForFavorite];            
 
@@ -160,10 +168,10 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     if (section == 0) {
-        artistLabel.text = self.song.artist;
-        titleLabel.text = self.song.title;  
+        self.artistLabel.text = self.song.artist;
+        self.titleLabel.text = self.song.title;
         
-        return headerView; 
+        return self.headerView;
     } else {
         return nil;
     }
@@ -179,11 +187,11 @@
 
 - (NSString *)getSearchString {
     NSMutableString *searchString = [NSMutableString string];
-    for (NSString *word in [song.artist componentsSeparatedByString:@" "]) {
+    for (NSString *word in [self.song.artist componentsSeparatedByString:@" "]) {
         [searchString appendString:[NSString stringWithFormat:@"%@+", word]];
     }
     
-    for (NSString *word in [song.title componentsSeparatedByString:@" "]) {
+    for (NSString *word in [self.song.title componentsSeparatedByString:@" "]) {
         [searchString appendString:[NSString stringWithFormat:@"%@+", word]];
     }
     
@@ -214,24 +222,29 @@
 
 - (void)artistSearch {
     SongListViewController *artistSearchVC = [[SongListViewController alloc] 
-                                                initWithSearchTerm:song.artist SearchBy:@"artist" Random:NO Style:UITableViewStylePlain];
+                                                initWithSearchTerm:self.song.artist SearchBy:@"artist" Random:NO Style:UITableViewStylePlain];
     
     [self.navigationController pushViewController:artistSearchVC animated:YES];
 }
 
 - (void)toggleFavorite {
-
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSMutableArray *favorites = [[defaults arrayForKey:@"favorites"] mutableCopy];
     
-    NSDictionary *song_dict = [[NSDictionary alloc] initWithObjectsAndKeys:self.song.artist, @"artist", self.song.title, @"title", nil];
-    
-    if ([favorites containsObject:song_dict]) {
+    NSMutableArray *songsToDelete = [NSMutableArray array];
+    if ([self songInFavorites]) {
         //remove
-        [favorites removeObject:song_dict];
+        for (id song in favorites) {
+            if ([[song objectForKey:@"artist"] isEqualToString:self.song.artist] && [[song objectForKey:@"title"] isEqualToString:self.song.title]) {
+                [songsToDelete addObject:song];
+            }
+        }
+        
+        [favorites removeObjectsInArray:songsToDelete];
     } else {
         //store
-        [favorites addObject:song_dict];
+        NSDictionary *songDict = [[NSDictionary alloc] initWithObjectsAndKeys:self.song.artist, @"artist", self.song.title, @"title", nil];
+        [favorites addObject:songDict];
     }
 
 
@@ -240,7 +253,7 @@
 }
 
 - (void)setCheckmarkForFavorite {
-    if (isFavorite) {
+    if (self.isFavorite) {
         [[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]] setAccessoryType:UITableViewCellAccessoryCheckmark];
     } else {
         [[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]] setAccessoryType:UITableViewCellAccessoryNone];
