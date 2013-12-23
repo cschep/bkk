@@ -26,12 +26,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
- 
+    self.running = NO;
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 
     self.navigationController.navigationBar.hidden = YES;
 }
@@ -79,23 +81,62 @@
 }
 
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
-	if (event.type == UIEventSubtypeMotionShake) {
+	if (event.type == UIEventSubtypeMotionShake && !self.running) {
 		[self kamikazeKetten];
 	}
 }
 
 - (void)kamikazeKetten {
-	SongListViewController *songListViewController = [[SongListViewController alloc] initWithSearchTerm:@"none" SearchBy:@"none" Random:YES Style:UITableViewStylePlain];
-	
-	self.navigationController.navigationBar.hidden = NO;
-	
-	[UIView beginAnimations:@"animation" context:nil];
-	[UIView setAnimationDuration:2.0];
-	[self.navigationController pushViewController: songListViewController animated:NO]; 
-	[UIView setAnimationTransition:UIViewAnimationTransitionCurlDown forView:self.navigationController.view cache:NO]; 
-	[UIView commitAnimations];
+    self.running = YES;
+    
+    CABasicAnimation *scale = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    scale.fromValue = @0.5;
+    scale.toValue = @3.0;
+    scale.duration = 1.0;
+    scale.removedOnCompletion = NO;
+    scale.fillMode = kCAFillModeForwards;
+    scale.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    
+    CAKeyframeAnimation *rotate = [CAKeyframeAnimation animationWithKeyPath:@"transform.rotation.z"];
+    rotate.values = @[@0.0, @(2 * M_PI), @0.0];
+    rotate.duration = 1.0;
+    rotate.removedOnCompletion = NO;
+    rotate.fillMode = kCAFillModeForwards;
+    rotate.timingFunctions = @[[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+                               [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+    
+    CABasicAnimation *alphaDown = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    alphaDown.fromValue = @1.0;
+    alphaDown.toValue = @0.0;
+    alphaDown.duration = 1.0;
+    alphaDown.delegate = self;
+    alphaDown.removedOnCompletion = NO;
+    alphaDown.fillMode = kCAFillModeForwards;
+    alphaDown.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+
+    
+    [self.kamikazeImage.layer addAnimation:scale forKey:@"move forward by scaling"];
+    [self.kamikazeImage.layer addAnimation:rotate forKey:@"rotate back and forth"];
+    [self.kamikazeImage.layer addAnimation:alphaDown forKey:@"alpha fade out"];
+//    self.kamikazeImage.transform = CGAffineTransformIdentity;
 }
 
-
+- (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag {
+    self.navigationController.view.alpha = 0.0;
+    self.navigationController.navigationBar.hidden = NO;
+    
+    SongListViewController *songListViewController = [[SongListViewController alloc] initWithSearchTerm:@"none" SearchBy:@"none" Random:YES Style:UITableViewStylePlain];
+    [self.navigationController pushViewController:songListViewController animated:NO];
+    
+    [UIView animateWithDuration:.7
+                          delay:.1
+                        options:UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                         self.navigationController.view.alpha = 1.0;
+                     } completion:^(BOOL finished) {
+                         [self.kamikazeImage.layer removeAllAnimations];
+                         self.running = NO;
+                     }];
+}
 
 @end

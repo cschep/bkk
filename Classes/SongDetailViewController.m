@@ -29,18 +29,18 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	[super viewDidLoad];
-    
     self.title = @"Details";
-    //self.clearsSelectionOnViewWillAppear = YES;
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
-    self.isFavorite = [self songInFavorites];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 
+    self.isFavorite = [self songInFavorites];
+    
     [self.tableView reloadData];
-        
+    
     [self setCheckmarkForFavorite];
 }
 

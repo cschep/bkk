@@ -34,12 +34,12 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	self.navigationController.navigationBar.hidden = YES;
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     [super viewWillAppear:animated];
 }
 
 - (void)viewDidLoad {
-    
     if (self.refreshMessageView == nil) {
         EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.messageView.bounds.size.height, self.messageView.frame.size.width, self.messageView.bounds.size.height) andSmallVersionEnabled:YES];
         view.delegate = self;
@@ -56,7 +56,9 @@
     [[self view] addGestureRecognizer:recognizer];
     
     [self loadMessageInBackground];
-        
+    
+    [self setNeedsStatusBarAppearanceUpdate];
+    
     [super viewDidLoad];
 }
 

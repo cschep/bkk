@@ -31,6 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 
 	self.activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
 	[self.activityIndicator hidesWhenStopped];
@@ -41,14 +42,34 @@
 	
 	//Set the bar button the navigation bar
 	[self navigationItem].rightBarButtonItem = barButton;
+    
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self
+                       action:@selector(loadSongs)
+             forControlEvents:UIControlEventValueChanged];
+    
+    self.refreshControl = refreshControl;
 	
+    [self startLoadingUI];
     [self loadSongs];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+}
+
+- (void)startLoadingUI {
+    [self.activityIndicator startAnimating];
+	self.navigationItem.title = @"Loading...";
+}
+
+- (void)stopLoadingUI {
+    [self.activityIndicator stopAnimating];
+    [self.refreshControl endRefreshing];
+}
+
 - (void)loadSongs {
-	[self.activityIndicator startAnimating];
-	self.title = @"Loading...";
-    
     NSString *urlString;
     if (isRandom) {
         urlString = [NSString stringWithFormat:@"http://bkk.schepman.org/random"];
@@ -67,15 +88,11 @@
                                     [self loadSongsFromJSON:JSON];
                                 } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
                                     NSLog(@"Failed with error: %@", [error description]);
-                                    self.title = @"Not Found!";
-                                    [self.activityIndicator stopAnimating];
+                                    self.navigationItem.title = @"Not Found!";
+                                    [self stopLoadingUI];
                                 }];
     
     [operation start];
-    
-//    NSDictionary *song = [NSDictionary dictionaryWithObjectsAndKeys:@"baby", @"title", @"bieber, justin", @"artist", nil];
-//    NSDictionary *song2 = [NSDictionary dictionaryWithObjectsAndKeys:@"song 2", @"title", @"blur", @"artist", nil];
-//    [self loadSongsFromJSON:[NSArray arrayWithObjects:song, song2, nil]];
 }
 
 - (void)loadSongsFromJSON:(id)JSON {
@@ -91,16 +108,16 @@
 	}
     
     if ([songList count] == 0) {
-		self.title = @"Not Found!";
+		self.navigationItem.title = @"Not Found!";
 	} else {
 		if (isRandom) {
-			self.title = @"Kamikaze!";
+			self.navigationItem.title = @"Kamikaze!";
 		} else {
-			self.title = @"Results";
+			self.navigationItem.title = @"Results";
 		}
 	}
     
-	[(UIActivityIndicatorView *)self.navigationItem.rightBarButtonItem.customView  stopAnimating];
+    [self stopLoadingUI];
 	[self.tableView reloadData];
     [self.tableView flashScrollIndicators];
 

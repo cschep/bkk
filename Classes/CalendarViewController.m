@@ -21,7 +21,7 @@ NSString* const kPortlandCalendarURL = @"http://www.google.com/calendar/feeds/9a
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
+    
 	//Create an instance of activity indicator view
 	self.activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
     self.activityIndicator.color = [UIColor blackColor];
@@ -44,6 +44,12 @@ NSString* const kPortlandCalendarURL = @"http://www.google.com/calendar/feeds/9a
     
     [self startLoadingUI];
     [self loadDates];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }
 
 - (void)startLoadingUI {
@@ -75,9 +81,8 @@ NSString* const kPortlandCalendarURL = @"http://www.google.com/calendar/feeds/9a
 
 - (NSURL *)getCalendarURL {
     
-    //TODO: FIGURE OUT WHY THIS IS NEEDED??????
-    //NSDate *now = [NSDate date];
-    NSDate *now = [NSDate dateWithTimeIntervalSinceNow:60*60*12]; //12 hours?
+    //TODO: figure out maybe there is a timezone thing happening, still seeing "before" events
+    NSDate *now = [NSDate date];
 	NSDate *maxDate = [NSDate dateWithTimeIntervalSinceNow:60*60*24*30*3]; //next 3 months'ish
 	NSDateFormatter *df = [[NSDateFormatter alloc] init];
     
