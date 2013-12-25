@@ -9,6 +9,8 @@
 #import "bkkViewController.h"
 #import "SongListViewController.h"
 #import "AFJSONRequestOperation.h"
+#import "STTwitter.h"
+#import "NSString+HTML.h"
 
 @implementation bkkViewController
 
@@ -63,36 +65,45 @@
 }
 
 - (void)loadMessageInBackground {
-    NSString *urlString;
+    NSString *twitterAccountName;
     NSString *city = [[NSUserDefaults standardUserDefaults] stringForKey:@"city"];
     if ([city isEqualToString:@"1"]) {
-        urlString = @"http://bkk.schepman.org/live_message_wa";
+        twitterAccountName = @"babykettenwa";
     } else {
-        urlString = @"http://bkk.schepman.org/live_message_or";
+        twitterAccountName = @"babykettenor";
     }
     
-	NSURL *url = [NSURL URLWithString:urlString];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    
-    //default UI
     [self.messageLoadingSpinner startAnimating];
     self.messageView.text = @"";
     
-    //update tweet
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
-    success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        self.message = [JSON objectForKey:@"message"];
-        [self.messageLoadingSpinner stopAnimating];
-        self.messageView.text = self.message;
-        [self doneLoadingTableViewData];
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+    STTwitterAPI *twitter = [STTwitterAPI twitterAPIAppOnlyWithConsumerKey:@"pZE6rz7h4tT8ZU99FJKPA"
+                                                            consumerSecret:@"XXQC8FdFrf0r9OumRewXtZLPU2OsWXqDBxDRDSqM"];
+    
+    [twitter verifyCredentialsWithSuccessBlock:^(NSString *bearerToken) {
+        
+        [twitter getUserTimelineWithScreenName:twitterAccountName
+                                         count:10
+                                  successBlock:^(NSArray *statuses) {
+                                      id latest = [statuses objectAtIndex:1];
+                                      NSString *text = [[latest objectForKey:@"text"] kv_decodeHTMLCharacterEntities];
+                                      self.message = text;
+                                      
+                                      [self.messageLoadingSpinner stopAnimating];
+                                      self.messageView.text = self.message;
+                                      [self doneLoadingTableViewData];
+                                  } errorBlock:^(NSError *error) {
+                                      [self.messageLoadingSpinner stopAnimating];
+                                      self.message = @"Can't reach the internetz! Sing pretty!";
+                                      self.messageView.text = self.message;
+                                      [self doneLoadingTableViewData];
+                                  }];
+        
+    } errorBlock:^(NSError *error) {
         [self.messageLoadingSpinner stopAnimating];
         self.message = @"Can't reach the internetz! Sing pretty!";
         self.messageView.text = self.message;
         [self doneLoadingTableViewData];
     }];
-    
-    [operation start];
 }
 
 - (void)dismissKeyboard:(id)sender {

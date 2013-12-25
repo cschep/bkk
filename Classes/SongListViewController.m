@@ -87,7 +87,6 @@
                                 success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
                                     [self loadSongsFromJSON:JSON];
                                 } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-                                    NSLog(@"Failed with error: %@", [error description]);
                                     self.navigationItem.title = @"Not Found!";
                                     [self stopLoadingUI];
                                 }];

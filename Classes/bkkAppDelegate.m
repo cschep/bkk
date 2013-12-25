@@ -26,10 +26,8 @@
     [self.tabBarController.tabBar setBarTintColor:[UIColor blackColor]];
 
     if([UIScreen mainScreen].bounds.size.height == 568) {
-        NSLog(@"loading 4 inch");
         self.mainViewController = [[bkkViewController alloc] initWithNibName:@"bkkViewController_iPhone5" bundle:nil];
     } else {
-        NSLog(@"loading 3.5 inch");
         self.mainViewController = [[bkkViewController alloc] initWithNibName:@"bkkViewController" bundle:nil];
     }
     

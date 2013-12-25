@@ -139,8 +139,6 @@
         MKCoordinateRegion zoom = MKCoordinateRegionMakeWithDistance(self.currentPlacemark.region.center, 1000, 1000);
         [self.mapView setRegion:zoom animated:NO];
     }];
-    
-    //NSLog(@"%@", string);
 }
 
 @end
