@@ -59,8 +59,6 @@
     
     [self loadMessageInBackground];
     
-    [self setNeedsStatusBarAppearanceUpdate];
-    
     [super viewDidLoad];
 }
 
@@ -82,9 +80,9 @@
     [twitter verifyCredentialsWithSuccessBlock:^(NSString *bearerToken) {
         
         [twitter getUserTimelineWithScreenName:twitterAccountName
-                                         count:10
+                                         count:1
                                   successBlock:^(NSArray *statuses) {
-                                      id latest = [statuses objectAtIndex:1];
+                                      id latest = [statuses objectAtIndex:0];
                                       NSString *text = [[latest objectForKey:@"text"] kv_decodeHTMLCharacterEntities];
                                       self.message = text;
                                       
@@ -93,15 +91,23 @@
                                       [self doneLoadingTableViewData];
                                   } errorBlock:^(NSError *error) {
                                       [self.messageLoadingSpinner stopAnimating];
-                                      self.message = @"Can't reach the internetz! Sing pretty!";
-                                      self.messageView.text = self.message;
+        
+                                      if ([self.messageView.text isEqualToString:@""]) {
+                                          self.message = @"Can't reach the internetz! Sing pretty!";
+                                          self.messageView.text = self.message;
+                                      }
+
                                       [self doneLoadingTableViewData];
                                   }];
         
     } errorBlock:^(NSError *error) {
         [self.messageLoadingSpinner stopAnimating];
-        self.message = @"Can't reach the internetz! Sing pretty!";
-        self.messageView.text = self.message;
+        
+        if ([self.messageView.text isEqualToString:@""]) {
+            self.message = @"Can't reach the internetz! Sing pretty!";
+            self.messageView.text = self.message;
+        }
+        
         [self doneLoadingTableViewData];
     }];
 }
@@ -110,11 +116,7 @@
     [self.searchTextField resignFirstResponder];
 }
 
-//
 - (void)reloadTableViewDataSource{
-    
-    //  should be calling your tableviews data source model to reload
-    //  put here just for demo
     [self loadMessageInBackground];
 }
 

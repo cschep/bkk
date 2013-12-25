@@ -7,7 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="bkkViewController">
             <connections>
                 <outlet property="messageLoadingSpinner" destination="64" id="Q1g-Hs-sCN"/>
-                <outlet property="messageView" destination="60" id="YrV-Uu-pgj"/>
+                <outlet property="messageView" destination="60" id="MBF-8o-53f"/>
                 <outlet property="searchTextField" destination="9" id="66"/>
                 <outlet property="segmented" destination="11" id="18"/>
                 <outlet property="view" destination="6" id="7"/>
@@ -47,10 +47,11 @@
                     <rect key="frame" x="0.0" y="230" width="311" height="200"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                 </imageView>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" id="60">
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" editable="NO" id="60">
                     <rect key="frame" x="145" y="250" width="152" height="159"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                    <color key="tintColor" red="1" green="0.0" blue="0.1172990127" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     <dataDetectorType key="dataDetectorTypes" link="YES"/>
