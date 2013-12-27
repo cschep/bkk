@@ -92,10 +92,11 @@
                                   } errorBlock:^(NSError *error) {
                                       [self.messageLoadingSpinner stopAnimating];
         
-                                      if ([self.messageView.text isEqualToString:@""]) {
+                                      if ([self.message isEqualToString:@""]) {
                                           self.message = @"Can't reach the internetz! Sing pretty!";
-                                          self.messageView.text = self.message;
                                       }
+
+                                      self.messageView.text = self.message;
 
                                       [self doneLoadingTableViewData];
                                   }];
@@ -103,10 +104,11 @@
     } errorBlock:^(NSError *error) {
         [self.messageLoadingSpinner stopAnimating];
         
-        if ([self.messageView.text isEqualToString:@""]) {
+        if ([self.message isEqualToString:@""]) {
             self.message = @"Can't reach the internetz! Sing pretty!";
-            self.messageView.text = self.message;
         }
+
+        self.messageView.text = self.message;
         
         [self doneLoadingTableViewData];
     }];
