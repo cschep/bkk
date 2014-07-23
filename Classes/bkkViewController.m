@@ -23,10 +23,10 @@
 
 - (void)searchFor:(NSString *)searchTerm By:(NSString *)searchBy UsingRandom:(BOOL)random  {
     SongListViewController *songListViewController = [[SongListViewController alloc] 
-                                                      initWithSearchTerm:searchTerm 
-                                                      SearchBy:searchBy 
-                                                      Random:random 
-                                                      Style:UITableViewStylePlain];
+                                                          initWithSearchTerm:searchTerm
+                                                                    SearchBy:searchBy
+                                                                      Random:random
+                                                                       Style:UITableViewStylePlain];
 	songListViewController.title = @"Results";
 	
 	self.navigationController.navigationBar.hidden = NO;
