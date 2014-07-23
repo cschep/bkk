@@ -8,6 +8,7 @@
 
 #import "SongDetailViewController.h"
 #import "SongListViewController.h"
+#import "AFHTTPRequestOperationManager.h"
 
 @implementation SongDetailViewController
 
@@ -80,7 +81,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 2;
+    if (section == 0) {
+        return 2;
+    } else {
+        return 3;
+    }
 }
 
 // Customize the appearance of table view cells.
@@ -107,8 +112,10 @@
         }  
     } else if (indexPath.section == 1) { 
         if (indexPath.row == 0) {
-            cell.textLabel.text = @"Lyrics Search";
+            cell.textLabel.text = @"Genius App";
         } else if (indexPath.row == 1) {
+            cell.textLabel.text = @"Lyrics Search";
+        } else if (indexPath.row == 2) {
             cell.textLabel.text = @"YouTube Search";
         }
     }
@@ -135,9 +142,10 @@
     } else if (indexPath.section == 1) {
         
         if (indexPath.row == 0) {
-            [self lyricsSearch];
-            
+            [self geniusSearch];
         } else if (indexPath.row == 1) {
+            [self lyricsSearch];
+        } else if (indexPath.row == 2) {
             [self youTubeSearch];
             
         }
@@ -145,18 +153,6 @@
     
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-
-/*
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    //return [NSString stringWithFormat:@"%@ - %@", song.artist, song.title];
-    if (section == 1) {
-        return @"Elsewhere..";
-    } else {
-        return nil;
-    }
-}
-*/
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
     if (section == 1) {
@@ -196,6 +192,15 @@
     }
     
     return searchString;
+}
+
+- (void)geniusSearch {
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:@"" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"trying to find song in genius");
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error fetching search results: %@", error);
+    }];
 }
 
 - (void)lyricsSearch {
