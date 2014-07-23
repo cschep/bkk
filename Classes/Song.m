@@ -15,4 +15,17 @@
 @synthesize lyrics;
 @synthesize songID;
 
+- (NSString *)reversedArtist {
+    
+    id parts = [self.artist componentsSeparatedByString:@", "];
+    
+    NSString *result = @"";
+    for (int i = (int)[parts count] - 1; i >= 0; i--) {
+        id part = [parts objectAtIndex:i];
+        result = [result stringByAppendingString:[NSString stringWithFormat:@" %@", part]];
+    }
+    
+    return result;
+}
+
 @end

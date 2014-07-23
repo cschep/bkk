@@ -196,8 +196,27 @@
 
 - (void)geniusSearch {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:@"" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"trying to find song in genius");
+    
+    NSDictionary *parameters = @{@"queries": @[ @{@"title": self.song.title}, @{@"artist": [self.song reversedArtist]} ] };
+    
+    [manager POST:@"http://api.genius.com/songs/lookup" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"trying to find %@, %@ (artist - title) in genius", self.song.title, [self.song reversedArtist]);
+        NSLog(@"success response: %@", responseObject);
+        
+        NSArray *hits = [[responseObject objectForKey:@"response"] objectForKey:@"hits"];
+                     
+        if ([hits count] > 0) {
+            id geniusID =  [[[hits objectAtIndex:0] objectForKey:@"song"] objectForKey:@"id"];
+            NSString *urlString = [NSString stringWithFormat:@"genius://songs/%@", geniusID];
+            
+            NSURL *myURL = [NSURL URLWithString:urlString];
+            if ([[UIApplication sharedApplication] canOpenURL:myURL]) {
+                [[UIApplication sharedApplication] openURL:myURL];
+            } else {
+                NSLog(@"genius not installed");
+            }
+        }
+
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error fetching search results: %@", error);
     }];

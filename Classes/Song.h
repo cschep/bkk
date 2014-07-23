@@ -20,4 +20,6 @@
 @property (strong) NSString *lyrics;
 @property (strong) NSString *songID;
 
+- (NSString *)reversedArtist;
+
 @end
