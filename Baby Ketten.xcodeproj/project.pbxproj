@@ -72,7 +72,6 @@
 		95715BCB186F6BEB0009961C /* Icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 95715BCA186F6BEB0009961C /* Icon-120.png */; };
 		95715BCD186F6CAD0009961C /* Icon-80.png in Resources */ = {isa = PBXBuildFile; fileRef = 95715BCC186F6CAD0009961C /* Icon-80.png */; };
 		95715BCF186F7B5D0009961C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95715BCE186F7B5D0009961C /* Images.xcassets */; };
-		9579503E1869408A00987198 /* NSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 9579503D1869408A00987198 /* NSString+HTML.m */; };
 		95795051186966BA00987198 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95795050186966BA00987198 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		95795078186B519100987198 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95795077186B519100987198 /* Accounts.framework */; };
 		95795079186B519B00987198 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9579504D186965A200987198 /* Twitter.framework */; };
@@ -167,8 +166,6 @@
 		95715BCA186F6BEB0009961C /* Icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-120.png"; sourceTree = "<group>"; };
 		95715BCC186F6CAD0009961C /* Icon-80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-80.png"; sourceTree = "<group>"; };
 		95715BCE186F7B5D0009961C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "baby ketten/Images.xcassets"; sourceTree = "<group>"; };
-		9579503C1869408A00987198 /* NSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HTML.h"; sourceTree = "<group>"; };
-		9579503D1869408A00987198 /* NSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HTML.m"; sourceTree = "<group>"; };
 		9579504D186965A200987198 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		95795050186966BA00987198 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		95795077186B519100987198 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
@@ -355,8 +352,6 @@
 		83D34B04160E69610065EF6A /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				9579503C1869408A00987198 /* NSString+HTML.h */,
-				9579503D1869408A00987198 /* NSString+HTML.m */,
 				9586D3EB18664CA400601F3F /* EGORefreshTableHeaderView */,
 			);
 			name = Vendor;
@@ -539,7 +534,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9586D3E718637FE500601F3F /* FolderPickerTableViewController.m in Sources */,
-				9579503E1869408A00987198 /* NSString+HTML.m in Sources */,
 				83D34B6A160E74370065EF6A /* Song.m in Sources */,
 				83D34B6B160E74370065EF6A /* Date.m in Sources */,
 				83D34B6C160E74370065EF6A /* SongDetailViewController.m in Sources */,
