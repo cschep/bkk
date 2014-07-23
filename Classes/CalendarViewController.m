@@ -8,7 +8,7 @@
 
 #import "CalendarViewController.h"
 #import "CalendarDetailViewController.h"
-#import "AFJSONRequestOperation.h"
+#import "AFHTTPRequestOperationManager.h"
 #import "Date.h"
 
 @implementation CalendarViewController
@@ -63,23 +63,17 @@ NSString* const kPortlandCalendarURL = @"http://www.google.com/calendar/feeds/9a
 }
 
 - (void)loadDates {
-    NSURLRequest *request = [NSURLRequest requestWithURL:[self getCalendarURL]];
-    
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation
-        JSONRequestOperationWithRequest:request
-                                success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-                                    [self loadDatesFromJSON:JSON];
-                                }
-                                failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-                                    self.navigationItem.title = @"not found!";
-                                    [self stopLoadingUI];
-                                }];
-
-    [operation start];
-    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:[self getCalendarURL] parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
+        [self loadDatesFromJSON:JSON];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error fetching search results: %@", error);
+        self.navigationItem.title = @"Not Found!";
+        [self stopLoadingUI];
+    }];
 }
 
-- (NSURL *)getCalendarURL {
+- (NSString *)getCalendarURL {
     
     //TODO: figure out maybe there is a timezone thing happening, still seeing "before" events
     NSDate *now = [NSDate date];
@@ -89,15 +83,14 @@ NSString* const kPortlandCalendarURL = @"http://www.google.com/calendar/feeds/9a
 	[df setDateFormat:@"yyyy-MM-dd"]; //AHHHHH!
     NSString *cityURL;
     NSString *city = [[NSUserDefaults standardUserDefaults] stringForKey:@"city"];
+
     if ([city isEqualToString:@"1"]) {
         cityURL = kSeattleCalendarURL;
     } else {
         cityURL = kPortlandCalendarURL;
     }
     
-	NSString *urlString = [NSString stringWithFormat:cityURL, [df stringFromDate:now], [df stringFromDate:maxDate]];
-    
-	return [NSURL URLWithString:urlString];
+    return [NSString stringWithFormat:cityURL, [df stringFromDate:now], [df stringFromDate:maxDate]];
 }
 
 
@@ -127,7 +120,7 @@ NSString* const kPortlandCalendarURL = @"http://www.google.com/calendar/feeds/9a
 	}
     
     if ([dateList count] == 0) {
-        self.navigationItem.title = @"not found!";
+        self.navigationItem.title = @"Not Found!";
     } else {
         self.navigationItem.title = @"Calendar";
     }

@@ -9,7 +9,7 @@
 #import "SongListViewController.h"
 #import "SongDetailViewController.h"
 #import "Song.h"
-#import "AFJSONRequestOperation.h"
+#import "AFHTTPRequestOperationManager.h"
 
 @implementation SongListViewController
 
@@ -78,20 +78,15 @@
     }
     
     NSString* escapedUrlString = [[urlString lowercaseString] stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
-    NSURL *url = [NSURL URLWithString:escapedUrlString];
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation
-        JSONRequestOperationWithRequest:request
-                                success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-                                    [self loadSongsFromJSON:JSON];
-                                } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-                                    self.navigationItem.title = @"Not Found!";
-                                    [self stopLoadingUI];
-                                }];
-    
-    [operation start];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:escapedUrlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self loadSongsFromJSON:responseObject];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"error fetching search results: %@", error);
+        self.navigationItem.title = @"Not Found!";
+        [self stopLoadingUI];
+    }];
 }
 
 - (void)loadSongsFromJSON:(id)JSON {
