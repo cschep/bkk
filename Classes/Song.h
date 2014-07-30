@@ -13,12 +13,14 @@
 	NSString *title;
 	NSString *lyrics;
 	NSString *songID;
+    NSString *geniusID;
 }
 
 @property (strong) NSString *artist;
 @property (strong) NSString *title;
 @property (strong) NSString *lyrics;
 @property (strong) NSString *songID;
+@property (strong) NSString *geniusID;
 
 - (NSString *)reversedArtist;
 

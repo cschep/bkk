@@ -98,6 +98,8 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
     //menu stuff
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
@@ -113,6 +115,12 @@
     } else if (indexPath.section == 1) { 
         if (indexPath.row == 0) {
             cell.textLabel.text = @"Genius App";
+            
+            if (!self.song.geniusID) {
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                [self checkGeniusForIDForCell:cell];
+            }
+            
         } else if (indexPath.row == 1) {
             cell.textLabel.text = @"Lyrics Search";
         } else if (indexPath.row == 2) {
@@ -122,6 +130,32 @@
     
     return cell;
 }
+
+// cells lacking UITableViewCellAccessoryDisclosureIndicator will not be selectable
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+//    UITableViewCell *cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
+//    if (cell.accessoryType != UITableViewCellAccessoryDisclosureIndicator) {
+//        return nil;
+//    }
+//    return indexPath;
+
+    //genius button
+    if (indexPath.section == 1 && indexPath.row == 0 && !self.song.geniusID) {
+        return nil;
+    }
+    
+    return indexPath;
+}
+
+// disabled cells will still have userinteraction enabled for their subviews
+//- (void)setEnabled:(BOOL)enabled forTableViewCell:(UITableViewCell *)tableViewCell
+//{
+//    tableViewCell.accessoryType = (enabled) ? UITableViewCellAccessoryDisclosureIndicator : UITableViewCellAccessoryNone;
+//    
+//    // if you dont want the blue selection on tap, comment out the following line
+//    tableViewCell.selectionStyle = (enabled) ? UITableViewCellSelectionStyleBlue : UITableViewCellSelectionStyleNone;
+//}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   
@@ -195,30 +229,67 @@
 }
 
 - (void)geniusSearch {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    if (self.song.geniusID) {
+        NSString *urlString = [NSString stringWithFormat:@"genius://songs/%@", self.song.geniusID];
+        
+        NSURL *myURL = [NSURL URLWithString:urlString];
+        if ([[UIApplication sharedApplication] canOpenURL:myURL]) {
+            [[UIApplication sharedApplication] openURL:myURL];
+        } else {
+            NSLog(@"genius not installed");
+        }
+    } else {
+        NSLog(@"no geniusID");
+    }
+}
+
+-(void)checkGeniusForIDForCell: (UITableViewCell *)cell {
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    spinner.frame = CGRectMake(0, 0, 24, 24);
+    cell.accessoryView = spinner;
+    [spinner startAnimating];
     
-    NSDictionary *parameters = @{@"queries": @[ @{@"title": self.song.title}, @{@"artist": [self.song reversedArtist]} ] };
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSDictionary *parameters = @{@"queries": @[ @{@"title": self.song.title}, @{@"artist": self.song.artist} ] };
     
     [manager POST:@"http://api.genius.com/songs/lookup" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"trying to find %@, %@ (artist - title) in genius", self.song.title, [self.song reversedArtist]);
+        NSLog(@"trying to find %@ - %@ (artist - title) in genius", [[[parameters objectForKey:@"queries"] objectAtIndex:1] objectForKey:@"artist"], [[[parameters objectForKey:@"queries"] objectAtIndex:0] objectForKey:@"title"]);
         NSLog(@"success response: %@", responseObject);
         
         NSArray *hits = [[responseObject objectForKey:@"response"] objectForKey:@"hits"];
-                     
+        
         if ([hits count] > 0) {
-            id geniusID =  [[[hits objectAtIndex:0] objectForKey:@"song"] objectForKey:@"id"];
-            NSString *urlString = [NSString stringWithFormat:@"genius://songs/%@", geniusID];
+            NSString *geniusID =  [[[hits objectAtIndex:0] objectForKey:@"song"] objectForKey:@"id"];
+            self.song.geniusID = geniusID;
+            cell.accessoryView = nil;
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.selectionStyle = UITableViewCellSelectionStyleDefault;
+        } else {
+            //try again with reversed artist?
+            NSDictionary *parameters = @{@"queries": @[ @{@"title": self.song.title}, @{@"artist": [self.song reversedArtist]} ] };
+            AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
             
-            NSURL *myURL = [NSURL URLWithString:urlString];
-            if ([[UIApplication sharedApplication] canOpenURL:myURL]) {
-                [[UIApplication sharedApplication] openURL:myURL];
-            } else {
-                NSLog(@"genius not installed");
-            }
+            [manager POST:@"http://api.genius.com/songs/lookup" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                NSLog(@"trying to find %@ - %@ (artist - title) in genius", [[[parameters objectForKey:@"queries"] objectAtIndex:1] objectForKey:@"artist"], [[[parameters objectForKey:@"queries"] objectAtIndex:0] objectForKey:@"title"]);
+                NSLog(@"success response: %@", responseObject);
+                
+                NSArray *hits = [[responseObject objectForKey:@"response"] objectForKey:@"hits"];
+                
+                if ([hits count] > 0) {
+                    NSString *geniusID =  [[[hits objectAtIndex:0] objectForKey:@"song"] objectForKey:@"id"];
+                    self.song.geniusID = geniusID;
+                    cell.accessoryView = nil;
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                    cell.selectionStyle = UITableViewCellSelectionStyleDefault;
+                }
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                NSLog(@"error fetching search results: %@", error);
+                cell.accessoryType = UITableViewCellAccessoryNone;
+            }];
         }
-
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error fetching search results: %@", error);
+        cell.accessoryType = UITableViewCellAccessoryNone;
     }];
 }
 

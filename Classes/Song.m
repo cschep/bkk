@@ -14,6 +14,7 @@
 @synthesize title;
 @synthesize lyrics;
 @synthesize songID;
+@synthesize geniusID;
 
 - (NSString *)reversedArtist {
     
