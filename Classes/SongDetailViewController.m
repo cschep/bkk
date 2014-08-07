@@ -31,6 +31,11 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
     self.title = @"Details";
+    
+    //if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) //should check version to prevent force closed
+    //{
+        //self.tableView.separatorInset = UIEdgeInsetsZero;
+    //}
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -114,7 +119,8 @@
         }  
     } else if (indexPath.section == 1) { 
         if (indexPath.row == 0) {
-            cell.textLabel.text = @"Genius App";
+            cell.textLabel.text = @"Genius";
+            cell.imageView.image = [UIImage imageNamed:@"genius_logo"];
             
             if (!self.song.geniusID) {
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -237,6 +243,10 @@
             [[UIApplication sharedApplication] openURL:myURL];
         } else {
             NSLog(@"genius not installed");
+            
+            NSString *urlString = [NSString stringWithFormat:@"http://www.genius.com/songs/%@", self.song.geniusID];
+            NSURL *myURL = [NSURL URLWithString:urlString];
+            [[UIApplication sharedApplication] openURL:myURL];
         }
     } else {
         NSLog(@"no geniusID");
@@ -342,7 +352,6 @@
         [favorites addObject:songDict];
     }
 
-
     [defaults setObject:favorites forKey:@"favorites"];
     [defaults synchronize];
 }
@@ -353,9 +362,6 @@
     } else {
         [[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]] setAccessoryType:UITableViewCellAccessoryNone];
     }
-
 }
-
-
 
 @end
