@@ -1,0 +1,6 @@
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AFNetworking" "${PODS_ROOT}/Headers/Public/NSString-HTML" "${PODS_ROOT}/Headers/Public/STTwitter"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/AFNetworking" -isystem "${PODS_ROOT}/Headers/Public/NSString-HTML" -isystem "${PODS_ROOT}/Headers/Public/STTwitter"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"Pods-baby ketten-AFNetworking" -l"Pods-baby ketten-NSString-HTML" -l"Pods-baby ketten-STTwitter" -framework "Accounts" -framework "CoreGraphics" -framework "Foundation" -framework "MobileCoreServices" -framework "QuartzCore" -framework "Security" -framework "SystemConfiguration" -framework "Twitter" -framework "UIKit" -weak_framework "Social"
+OTHER_LIBTOOLFLAGS = $(OTHER_LDFLAGS)
+PODS_ROOT = ${SRCROOT}/Pods
