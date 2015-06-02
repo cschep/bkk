@@ -15,9 +15,9 @@
 
 @synthesize dateList;
 
-NSString* const kSeattleCalendarURL = @"http://www.google.com/calendar/feeds/b73eparqatr3h2160l7i298tas@group.calendar.google.com/public/full?alt=json&ctz=America/Los_Angeles&orderby=starttime&start-min=%@&start-max=%@&sortorder=a&singleevents=true";
-
-NSString* const kPortlandCalendarURL = @"http://www.google.com/calendar/feeds/9a434tnlm9mbo57r05rkodl6d0%%40group.calendar.google.com/public/full?alt=json&ctz=America/Los_Angeles&orderby=starttime&start-min=%@&start-max=%@&sortorder=a&singleevents=true";
+NSString* const kSeattleCalendarId = @"b73eparqatr3h2160l7i298tas@group.calendar.google.com";
+NSString* const kPortlandCalendarId = @"9a434tnlm9mbo57r05rkodl6d0@group.calendar.google.com";
+NSString* const kGoogleCalendarAPIKey = @"AIzaSyBQgTWNFmBcR-omkycjHQRGiTtL2DUEm60";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -66,6 +66,7 @@ NSString* const kPortlandCalendarURL = @"http://www.google.com/calendar/feeds/9a
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:[self getCalendarURL] parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
         [self loadDatesFromJSON:JSON];
+
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"error fetching search results: %@", error);
         self.navigationItem.title = @"Not Found!";
@@ -74,57 +75,70 @@ NSString* const kPortlandCalendarURL = @"http://www.google.com/calendar/feeds/9a
 }
 
 - (NSString *)getCalendarURL {
-    
     //TODO: figure out maybe there is a timezone thing happening, still seeing "before" events
     NSDate *now = [NSDate date];
 	NSDate *maxDate = [NSDate dateWithTimeIntervalSinceNow:60*60*24*30*3]; //next 3 months'ish
-	NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    
-	[df setDateFormat:@"yyyy-MM-dd"]; //AHHHHH!
-    NSString *cityURL;
-    NSString *city = [[NSUserDefaults standardUserDefaults] stringForKey:@"city"];
 
+    //NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    //[df setDateFormat:@"yyyy-MM-dd"]; //AHHHHH!
+    
+    NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
+    timeFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZZZZZ";
+    
+    NSString *calendarId;
+    NSString *city = [[NSUserDefaults standardUserDefaults] stringForKey:@"city"];
     if ([city isEqualToString:@"1"]) {
-        cityURL = kSeattleCalendarURL;
+        calendarId = kSeattleCalendarId;
     } else {
-        cityURL = kPortlandCalendarURL;
+        calendarId = kPortlandCalendarId;
     }
     
-    return [NSString stringWithFormat:cityURL, [df stringFromDate:now], [df stringFromDate:maxDate]];
+    NSString *urlFormat = @"https://www.googleapis.com/calendar/v3/calendars/%@/events?key=%@&singleEvents=true&orderBy=startTime&timeMin=%@&timeMax=%@&timeZone=America/Los_Angeles&fields=items(id,start,summary,status,location,description)";
+    NSString *calendarUrl = [NSString stringWithFormat:urlFormat, calendarId, kGoogleCalendarAPIKey, [timeFormatter stringFromDate:now], [timeFormatter stringFromDate:maxDate]];
+
+    return calendarUrl;
 }
 
 
 - (void)loadDatesFromJSON:(id)JSON {
 	dateList = [[NSMutableArray alloc] init];
-	
-	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-	for (NSDictionary *entry in [[JSON valueForKey:@"feed"] valueForKey:@"entry"]) {
+
+    static NSDateFormatter *dayFormatter, *timeFormatter, *printDateFormatter;
+    if (!dayFormatter || !timeFormatter || !printDateFormatter) {
+        dayFormatter = [[NSDateFormatter alloc] init];
+        dayFormatter.dateFormat = @"yyyy-MM-dd";
+        timeFormatter = [[NSDateFormatter alloc] init];
+        timeFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZZZZZ";
+        printDateFormatter = [[NSDateFormatter alloc] init];
+        printDateFormatter.dateFormat = @"EEE, MMM d";
+    }
+
+	for (NSDictionary *entry in JSON[@"items"]) {
 		Date *d = [[Date alloc] init];
-		d.title = [[entry valueForKey:@"title"] valueForKey:@"$t"];
-		d.where = [NSString stringWithString:[[[entry valueForKey:@"gd$where"] valueForKey:@"valueString"] objectAtIndex:0]];
-        d.description = [[entry valueForKey:@"content"] valueForKey:@"$t"];
+		d.title = entry[@"summary"];
+        d.where = entry[@"location"];
+        d.description = entry[@"description"];
+
+        NSDate *date;
+        if (entry[@"start"][@"date"]) {
+            date = [dayFormatter dateFromString:entry[@"start"][@"date"]];
+            d.when = [printDateFormatter stringFromDate:date];
+        } else if (entry[@"start"][@"dateTime"]) {
+            date = [timeFormatter dateFromString:entry[@"start"][@"dateTime"]];
+            d.when = [printDateFormatter stringFromDate:date];
+        } else {
+            d.when = @"no date!";
+        }
         
-		NSArray *when = [[entry valueForKey:@"gd$when"] valueForKey:@"startTime"];
-		if (when) {
-			[dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"]; //.SSSZ"]; //2010-11-23T21:00:00.000-08:00
-			
-            //mother of hacks!
-			NSDate *date = [dateFormatter dateFromString:[[[when objectAtIndex:0] componentsSeparatedByString:@"."] objectAtIndex:0]];
-			[dateFormatter setDateFormat:@"EEE, MMM d"];
-			d.when = [dateFormatter stringFromDate:date];;
-		} else {
-			d.when = @"no date!";
-		}
-		
 		[dateList addObject:d];
 	}
-    
+
     if ([dateList count] == 0) {
         self.navigationItem.title = @"Not Found!";
     } else {
         self.navigationItem.title = @"Calendar";
     }
-    
+
     [self stopLoadingUI];
     [self.tableView reloadData];
     [self.tableView flashScrollIndicators];
@@ -140,41 +154,10 @@ NSString* const kPortlandCalendarURL = @"http://www.google.com/calendar/feeds/9a
 	return 1;
 }
 
-//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-//    return [[dateList objectAtIndex:section] when];
-//}
-
-- (UIView *)tableView:(UITableView *)tbl viewForHeaderInSection:(NSInteger)section
-{
-    NSDate *now = [NSDate date];
-    //NSDate *now = [NSDate dateWithTimeIntervalSinceNow:60*60*24];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"EEE, MMM d"];
-
-    UIView* sectionHead = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tbl.bounds.size.width, 18)];
-    sectionHead.backgroundColor = [UIColor grayColor]; //[UIColor colorWithWhite:0 alpha:0];
-    sectionHead.userInteractionEnabled = YES;
-    sectionHead.tag = section;
-    
-    UILabel *sectionText = [[UILabel alloc] initWithFrame:CGRectMake(10, 2, tbl.bounds.size.width - 10, 18)];
-    sectionText.backgroundColor = [UIColor clearColor];
-    sectionText.shadowOffset = CGSizeMake(0,.6);
-    sectionText.font = [UIFont boldSystemFontOfSize:18];
-    sectionText.text = [[dateList objectAtIndex:section] when];
-    sectionText.textColor = [UIColor whiteColor];
-    sectionText.shadowColor = [UIColor darkGrayColor];
-    
-    if ([[dateFormatter stringFromDate:now] isEqualToString:[[dateList objectAtIndex:section] when]]) {
-        sectionHead.backgroundColor = [UIColor darkGrayColor];
-        sectionText.text = [NSString stringWithFormat:@"%@                             TODAY!", sectionText.text];
-    }
-
-    [sectionHead addSubview:sectionText];
-    
-    return sectionHead;
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return [[dateList objectAtIndex:section] when];
 }
 
-// Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"Cell";
@@ -205,15 +188,8 @@ NSString* const kPortlandCalendarURL = @"http://www.google.com/calendar/feeds/9a
 }
 
 - (void)didReceiveMemoryWarning {
-    // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
     
-    // Relinquish ownership any cached data, images, etc that aren't in use.
-}
-
-- (void)viewDidUnload {
-    // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
-    // For example: self.myOutlet = nil;
 }
 
 @end
