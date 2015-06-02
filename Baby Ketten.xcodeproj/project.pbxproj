@@ -67,6 +67,10 @@
 		83F023C116581BC900467FFB /* whiteArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83F023B916581BC900467FFB /* whiteArrow@2x.png */; };
 		83F3CA5A11780BE00033611B /* bkk_vert_realcat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 83F3CA5511780BE00033611B /* bkk_vert_realcat.jpg */; };
 		952C4259184991B4008BA0B0 /* bkkViewController_iPhone5.xib in Resources */ = {isa = PBXBuildFile; fileRef = 952C4258184991B4008BA0B0 /* bkkViewController_iPhone5.xib */; };
+		952D459D1B1DFE27001AC720 /* YTSearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D459B1B1DFE27001AC720 /* YTSearchTableViewController.m */; };
+		952D459E1B1DFE27001AC720 /* YTSearchTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 952D459C1B1DFE27001AC720 /* YTSearchTableViewController.xib */; };
+		952D45A21B1E2D29001AC720 /* YTTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 952D45A11B1E2D29001AC720 /* YTTableViewCell.xib */; };
+		952D45A51B1E2E36001AC720 /* YTTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D45A41B1E2E36001AC720 /* YTTableViewCell.m */; };
 		954FC13A18488CF3001750CE /* FavoritesListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 954FC13918488CF3001750CE /* FavoritesListViewController.xib */; };
 		954FC13C18488D0B001750CE /* SongDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 954FC13B18488D0B001750CE /* SongDetailViewController.xib */; };
 		95715BCB186F6BEB0009961C /* Icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 95715BCA186F6BEB0009961C /* Icon-120.png */; };
@@ -162,6 +166,12 @@
 		8D1107310486CEB800E47090 /* baby ketten-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "baby ketten-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		8F3BE823FF4BEA3458FBE131 /* Pods-baby ketten.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-baby ketten.debug.xcconfig"; path = "Pods/Target Support Files/Pods-baby ketten/Pods-baby ketten.debug.xcconfig"; sourceTree = "<group>"; };
 		952C4258184991B4008BA0B0 /* bkkViewController_iPhone5.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = bkkViewController_iPhone5.xib; sourceTree = "<group>"; };
+		952D459A1B1DFE27001AC720 /* YTSearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTSearchTableViewController.h; sourceTree = "<group>"; };
+		952D459B1B1DFE27001AC720 /* YTSearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTSearchTableViewController.m; sourceTree = "<group>"; };
+		952D459C1B1DFE27001AC720 /* YTSearchTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YTSearchTableViewController.xib; sourceTree = "<group>"; };
+		952D45A11B1E2D29001AC720 /* YTTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YTTableViewCell.xib; sourceTree = "<group>"; };
+		952D45A31B1E2E36001AC720 /* YTTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTTableViewCell.h; sourceTree = "<group>"; };
+		952D45A41B1E2E36001AC720 /* YTTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTTableViewCell.m; sourceTree = "<group>"; };
 		954FC13918488CF3001750CE /* FavoritesListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavoritesListViewController.xib; sourceTree = "<group>"; };
 		954FC13B18488D0B001750CE /* SongDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SongDetailViewController.xib; sourceTree = "<group>"; };
 		95715BCA186F6BEB0009961C /* Icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-120.png"; sourceTree = "<group>"; };
@@ -348,6 +358,10 @@
 				8382983F116C69F600EE8539 /* SongDetailViewController.m */,
 				83ADD62D116997AD00BF3809 /* SongListViewController.h */,
 				83ADD62E116997AD00BF3809 /* SongListViewController.m */,
+				952D459A1B1DFE27001AC720 /* YTSearchTableViewController.h */,
+				952D459B1B1DFE27001AC720 /* YTSearchTableViewController.m */,
+				952D45A31B1E2E36001AC720 /* YTTableViewCell.h */,
+				952D45A41B1E2E36001AC720 /* YTTableViewCell.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -381,6 +395,8 @@
 				9586D3E618637FE500601F3F /* FolderPickerTableViewController.xib */,
 				8397065312F4AA6C00050E9E /* KamikazeViewController.xib */,
 				954FC13B18488D0B001750CE /* SongDetailViewController.xib */,
+				952D459C1B1DFE27001AC720 /* YTSearchTableViewController.xib */,
+				952D45A11B1E2D29001AC720 /* YTTableViewCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -482,6 +498,7 @@
 				8300C3EB137F73BB00E45770 /* ketten_small.jpg in Resources */,
 				834714291441048F00F4ADC5 /* bkk_logo_bw.jpeg in Resources */,
 				8358DC94145B23A400FF0DD3 /* jumpinkettenicon.png in Resources */,
+				952D45A21B1E2D29001AC720 /* YTTableViewCell.xib in Resources */,
 				839597A914A29D9900E8CB30 /* ketten_small_white@2x.png in Resources */,
 				839597AA14A29D9900E8CB30 /* ketten_small_white.png in Resources */,
 				834DE11A15DC83160050139B /* Settings.bundle in Resources */,
@@ -495,6 +512,7 @@
 				952C4259184991B4008BA0B0 /* bkkViewController_iPhone5.xib in Resources */,
 				83F023BF16581BC900467FFB /* blueArrow@2x.png in Resources */,
 				83F023C016581BC900467FFB /* whiteArrow.png in Resources */,
+				952D459E1B1DFE27001AC720 /* YTSearchTableViewController.xib in Resources */,
 				83F023C116581BC900467FFB /* whiteArrow@2x.png in Resources */,
 				954FC13A18488CF3001750CE /* FavoritesListViewController.xib in Resources */,
 				83CD08751666737F00BEAB0D /* kamikaze_ketten_background@2x.png in Resources */,
@@ -547,6 +565,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				952D45A51B1E2E36001AC720 /* YTTableViewCell.m in Sources */,
 				9586D3E718637FE500601F3F /* FolderPickerTableViewController.m in Sources */,
 				83D34B6A160E74370065EF6A /* Song.m in Sources */,
 				83D34B6B160E74370065EF6A /* Date.m in Sources */,
@@ -559,6 +578,7 @@
 				9586D3EE18664CB500601F3F /* EGORefreshTableHeaderView.m in Sources */,
 				83D34B72160E74370065EF6A /* KamikazeViewController.m in Sources */,
 				83D34B73160E74370065EF6A /* CalendarDetailViewController.m in Sources */,
+				952D459D1B1DFE27001AC720 /* YTSearchTableViewController.m in Sources */,
 				83D34B74160E74370065EF6A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,6 +8,7 @@
 
 #import "SongDetailViewController.h"
 #import "SongListViewController.h"
+#import "YTSearchTableViewController.h"
 
 @implementation SongDetailViewController
 
@@ -188,14 +189,14 @@
 - (NSString *)getSearchString {
     NSMutableString *searchString = [NSMutableString string];
     for (NSString *word in [self.song.artist componentsSeparatedByString:@" "]) {
-        [searchString appendString:[NSString stringWithFormat:@"%@+", word]];
+        [searchString appendString:[NSString stringWithFormat:@"%@ ", word]];
     }
     
     for (NSString *word in [self.song.title componentsSeparatedByString:@" "]) {
-        [searchString appendString:[NSString stringWithFormat:@"%@+", word]];
+        [searchString appendString:[NSString stringWithFormat:@"%@ ", word]];
     }
     
-    return searchString;
+    return [searchString stringByReplacingOccurrencesOfString:@"," withString:@""];
 }
 
 - (void)lyricsSearch {
@@ -211,14 +212,14 @@
 
 - (void)youTubeSearch {
     NSString *searchString = [self getSearchString];
+
+    YTSearchTableViewController *vc = [[YTSearchTableViewController alloc] initWithNibName:@"YTSearchTableViewController" bundle:nil];
+    vc.searchString = searchString;
     
-    NSString *urlString = [NSString stringWithFormat:@"http://m.youtube.com/results?q=%@", searchString];
-    
-    NSString* escapedUrlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
-	NSURL *url = [NSURL URLWithString:escapedUrlString];
-    
-    [[UIApplication sharedApplication] openURL:url];
+    [self.navigationController pushViewController:vc animated:YES];
 }
+
+
 
 - (void)artistSearch {
     SongListViewController *artistSearchVC = [[SongListViewController alloc] 
