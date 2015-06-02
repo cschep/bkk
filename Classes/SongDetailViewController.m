@@ -195,8 +195,15 @@
     for (NSString *word in [self.song.title componentsSeparatedByString:@" "]) {
         [searchString appendString:[NSString stringWithFormat:@"%@ ", word]];
     }
-    
-    return [searchString stringByReplacingOccurrencesOfString:@"," withString:@""];
+
+    NSMutableCharacterSet *URLQueryPartAllowedCharacterSet;
+
+    URLQueryPartAllowedCharacterSet = [[NSCharacterSet URLQueryAllowedCharacterSet] mutableCopy];
+    [URLQueryPartAllowedCharacterSet removeCharactersInRange:NSMakeRange('&', 1)]; // %26
+    [URLQueryPartAllowedCharacterSet removeCharactersInRange:NSMakeRange('=', 1)]; // %3D
+    [URLQueryPartAllowedCharacterSet removeCharactersInRange:NSMakeRange('?', 1)]; // %3F
+
+    return [searchString stringByAddingPercentEncodingWithAllowedCharacters:URLQueryPartAllowedCharacterSet];
 }
 
 - (void)lyricsSearch {
@@ -204,8 +211,7 @@
     
     NSString *urlString = [NSString stringWithFormat:@"http://www.songlyrics.com/index.php?section=search&searchW=%@&submit=Search&searchIn1=artist&searchIn2=album&searchIn3=song&searchIn4=lyrics", searchString];
 
-    NSString* escapedUrlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
-	NSURL *url = [NSURL URLWithString:escapedUrlString];
+	NSURL *url = [NSURL URLWithString:urlString];
 
     [[UIApplication sharedApplication] openURL:url];
 }
@@ -218,8 +224,6 @@
     
     [self.navigationController pushViewController:vc animated:YES];
 }
-
-
 
 - (void)artistSearch {
     SongListViewController *artistSearchVC = [[SongListViewController alloc] 
