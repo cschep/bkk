@@ -47,30 +47,6 @@
             self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
             self.backgroundColor = [UIColor clearColor]; //[UIColor colorWithRed:226.0/255.0 green:231.0/255.0 blue:237.0/255.0 alpha:1.0];
             
-//            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, frame.size.height - 30.0f, self.frame.size.width, 20.0f)];
-//            label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-//            label.font = [UIFont systemFontOfSize:12.0f];
-//            label.textColor = TEXT_COLOR;
-//            label.shadowColor = [UIColor colorWithWhite:0.9f alpha:1.0f];
-//            label.shadowOffset = CGSizeMake(0.0f, 1.0f);
-//            label.backgroundColor = [UIColor clearColor];
-//            label.textAlignment = UITextAlignmentCenter;
-//            [self addSubview:label];
-//            _lastUpdatedLabel=label;
-//            [label release];
-//            
-//            label = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, frame.size.height - 48.0f, self.frame.size.width, 20.0f)];
-//            label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-//            label.font = [UIFont boldSystemFontOfSize:13.0f];
-//            label.textColor = TEXT_COLOR;
-//            label.shadowColor = [UIColor colorWithWhite:0.9f alpha:1.0f];
-//            label.shadowOffset = CGSizeMake(0.0f, 1.0f);
-//            label.backgroundColor = [UIColor clearColor];
-//            label.textAlignment = UITextAlignmentCenter;
-//            [self addSubview:label];
-//            _statusLabel=label;
-//            [label release];
-            
             CALayer *layer = [CALayer layer];
             layer.frame = CGRectMake(0.0f, frame.size.height - 65.0f, frame.size.width, 55.0f);
             layer.contentsGravity = kCAGravityResizeAspect;
