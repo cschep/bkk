@@ -14,9 +14,6 @@
 
 @implementation bkkAppDelegate
 
-@synthesize window;
-
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -25,12 +22,14 @@
     [self.tabBarController.tabBar setTintColor:[UIColor redColor]];
     [self.tabBarController.tabBar setBarTintColor:[UIColor blackColor]];
 
-    if([UIScreen mainScreen].bounds.size.height == 568) {
-        self.mainViewController = [[bkkViewController alloc] initWithNibName:@"bkkViewController_iPhone5" bundle:nil];
-    } else {
-        self.mainViewController = [[bkkViewController alloc] initWithNibName:@"bkkViewController" bundle:nil];
-    }
-    
+//    if([UIScreen mainScreen].bounds.size.height >= 568) {
+//        self.mainViewController = [[bkkViewController alloc] initWithNibName:@"bkkViewController_iPhone5" bundle:nil];
+//    } else {
+//        self.mainViewController = [[bkkViewController alloc] initWithNibName:@"bkkViewController" bundle:nil];
+//    }
+
+    self.mainViewController = [[bkkViewController alloc] init];
+
     self.navControllerSearch = [[UINavigationController alloc] initWithRootViewController:self.mainViewController];
 	[self.navControllerSearch navigationBar].hidden = YES;
 	self.navControllerSearch.navigationBar.tintColor = [UIColor redColor];

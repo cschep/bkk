@@ -40,7 +40,163 @@
     [super viewWillAppear:animated];
 }
 
+- (void)loadView {
+    self.view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
+    self.view.backgroundColor = [UIColor blackColor];
+
+    self.backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bkk_cat_mews_background.png"]];
+    self.backgroundImageView.translatesAutoresizingMaskIntoConstraints = NO;
+
+    [self.view addSubview:self.backgroundImageView];
+
+    self.headerImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bkklogobwtouchup.jpg"]];
+    self.headerImageView.translatesAutoresizingMaskIntoConstraints = NO;
+
+    [self.view addSubview:self.headerImageView];
+
+    self.messageView = [[UITextView alloc] initWithFrame:CGRectZero];
+    self.messageView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.messageView.delegate = self;
+    self.messageView.font = [UIFont systemFontOfSize:16];
+    self.messageView.editable = NO;
+    self.messageView.dataDetectorTypes = UIDataDetectorTypeLink;
+    self.messageView.tintColor = [UIColor redColor];
+    self.messageView.userInteractionEnabled = YES;
+    self.messageView.scrollEnabled = YES;
+    self.messageView.clipsToBounds = YES;
+    self.messageView.layer.cornerRadius = 15.0f;
+    [self.view addSubview:self.messageView];
+
+    self.messageLoadingSpinner = [[UIActivityIndicatorView alloc] initWithFrame:CGRectZero];
+    self.messageLoadingSpinner.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:self.messageLoadingSpinner];
+
+    self.segmented = [[UISegmentedControl alloc] initWithItems:@[@"artist", @"title"]];
+    self.segmented.translatesAutoresizingMaskIntoConstraints = NO;
+    self.segmented.tintColor = [UIColor grayColor];
+    self.segmented.selectedSegmentIndex = 0;
+    [self.view addSubview:self.segmented];
+
+    self.searchTextField = [[UITextField alloc] initWithFrame:CGRectZero];
+    self.searchTextField.translatesAutoresizingMaskIntoConstraints = NO;
+
+    self.searchTextField.borderStyle = UITextBorderStyleRoundedRect;
+    self.searchTextField.font = [UIFont systemFontOfSize:15];
+    self.searchTextField.placeholder = @"search!";
+    self.searchTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+    self.searchTextField.keyboardType = UIKeyboardTypeDefault;
+    self.searchTextField.returnKeyType = UIReturnKeyDone;
+    self.searchTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    self.searchTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    self.searchTextField.delegate = self;
+    
+    [self.view addSubview:self.searchTextField];
+}
+
+- (void)viewWillLayoutSubviews {
+    NSLog(@"view will layout subviews called");
+
+}
+
 - (void)viewDidLoad {
+    NSDictionary *views = @{
+                            @"messageView": self.messageView,
+                            @"messageLoadingSpinner": self.messageLoadingSpinner,
+                            @"segmented": self.segmented,
+                            @"searchTextField": self.searchTextField,
+                            @"headerImageView": self.headerImageView,
+                            @"backgroundImageView": self.backgroundImageView,
+                            };
+
+    NSMutableArray *allConstraints = [NSMutableArray array];
+
+    NSArray *headerVerticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-20-[headerImageView]"
+                                                                                            options:nil
+                                                                                            metrics:nil
+                                                                                              views:views];
+
+    [allConstraints addObjectsFromArray:headerVerticalConstraints];
+
+    NSArray *headerHorizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-15-[headerImageView]-15-|"
+                                                                                   options:nil
+                                                                                   metrics:nil
+                                                                                     views:views];
+
+
+
+    [allConstraints addObjectsFromArray:headerHorizontalConstraints];
+
+    NSLayoutConstraint *headerAspectConstraint =[NSLayoutConstraint constraintWithItem:self.headerImageView
+                                                                             attribute:NSLayoutAttributeWidth
+                                                                             relatedBy:NSLayoutRelationEqual
+                                                                                toItem:self.headerImageView
+                                                                             attribute:NSLayoutAttributeHeight
+                                                                            multiplier:2.95/1.0  //aspect ratio: 2.95:1
+                                                                              constant:0.0f];
+
+    [allConstraints addObject:headerAspectConstraint];
+
+    NSArray *searchTextVerticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[headerImageView]-[searchTextField]"
+                                                                                     options:nil
+                                                                                     metrics:nil
+                                                                                       views:views];
+
+    [allConstraints addObjectsFromArray:searchTextVerticalConstraints];
+
+    NSArray *searchTextHorizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[searchTextField]-|"
+                                                                                       options:nil
+                                                                                       metrics:nil
+                                                                                         views:views];
+
+    [allConstraints addObjectsFromArray:searchTextHorizontalConstraints];
+
+    NSArray *segmentedVerticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[searchTextField]-[segmented]"
+                                                                                    options:nil
+                                                                                    metrics:nil
+                                                                                      views:views];
+
+    [allConstraints addObjectsFromArray:segmentedVerticalConstraints];
+
+    NSArray *segmentedHorizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[segmented]-|"
+                                                                                      options:nil
+                                                                                      metrics:nil
+                                                                                        views:views];
+
+    [allConstraints addObjectsFromArray:segmentedHorizontalConstraints];
+
+    //TODO: tab bar in ios 8/9 is 49 pixels high. will this come back to bite me?
+    NSArray *backgroundImageVerticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[backgroundImageView]-49-|"
+                                                                                          options:nil
+                                                                                          metrics:nil
+                                                                                            views:views];
+
+    [allConstraints addObjectsFromArray:backgroundImageVerticalConstraints];
+
+    NSArray *backgroundImageHorizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[backgroundImageView]-|"
+                                                                                            options:nil
+                                                                                            metrics:nil
+                                                                                              views:views];
+
+    [allConstraints addObjectsFromArray:backgroundImageHorizontalConstraints];
+
+    NSArray *messageViewVerticalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[segmented]-60-[messageView]-200-|"
+                                                                                      options:nil
+                                                                                      metrics:nil
+                                                                                        views:views];
+
+    [allConstraints addObjectsFromArray:messageViewVerticalConstraints];
+
+    NSArray *messageViewHorizontalConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-200-[messageView(>=150)]-20-|"
+                                                                                        options:nil
+                                                                                        metrics:nil
+                                                                                          views:views];
+
+    [allConstraints addObjectsFromArray:messageViewHorizontalConstraints];
+
+    [NSLayoutConstraint activateConstraints:allConstraints];
+
+
+    NSLog(@"%@", NSStringFromCGRect(self.messageView.bounds));
     if (self.refreshMessageView == nil) {
         EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.messageView.bounds.size.height, self.messageView.frame.size.width, self.messageView.bounds.size.height) andSmallVersionEnabled:YES];
         view.delegate = self;
@@ -54,7 +210,7 @@
     
     UISwipeGestureRecognizer *recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
     [recognizer setDirection:UISwipeGestureRecognizerDirectionDown];
-    [[self view] addGestureRecognizer:recognizer];
+    [self.view addGestureRecognizer:recognizer];
     
     [self loadMessageInBackground];
     

@@ -9,13 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "EGORefreshTableHeaderView.h"
 
-@interface bkkViewController : UIViewController <UITextViewDelegate, EGORefreshTableHeaderDelegate>
+@interface bkkViewController : UIViewController <UITextViewDelegate, UITextFieldDelegate, EGORefreshTableHeaderDelegate>
 
 @property (nonatomic, strong) NSString *message;
-@property (nonatomic, weak) IBOutlet UITextView *messageView;
-@property (nonatomic, weak) IBOutlet UIActivityIndicatorView *messageLoadingSpinner;
-@property (nonatomic, weak)	IBOutlet UISegmentedControl *segmented;
-@property (nonatomic, weak)	IBOutlet UITextField *searchTextField;
+@property (nonatomic, strong) UITextView *messageView;
+@property (nonatomic, strong) UIActivityIndicatorView *messageLoadingSpinner;
+@property (nonatomic, strong) UISegmentedControl *segmented;
+@property (nonatomic, strong) UITextField *searchTextField;
+@property (nonatomic, strong) UIImageView *headerImageView;
+@property (nonatomic, strong) UIImageView *backgroundImageView;
 
 @property (nonatomic, strong) EGORefreshTableHeaderView *refreshMessageView;
 
