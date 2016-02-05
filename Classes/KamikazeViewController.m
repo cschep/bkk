@@ -118,7 +118,6 @@
     [self.kamikazeImage.layer addAnimation:scale forKey:@"move forward by scaling"];
     [self.kamikazeImage.layer addAnimation:rotate forKey:@"rotate back and forth"];
     [self.kamikazeImage.layer addAnimation:alphaDown forKey:@"alpha fade out"];
-//    self.kamikazeImage.transform = CGAffineTransformIdentity;
 }
 
 - (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag {
