@@ -65,6 +65,7 @@
     self.messageView.scrollEnabled = YES;
     self.messageView.clipsToBounds = YES;
     self.messageView.layer.cornerRadius = 15.0f;
+    self.messageView.bounces = YES;
     [self.view addSubview:self.messageView];
 
     self.messageLoadingSpinner = [[UIActivityIndicatorView alloc] initWithFrame:CGRectZero];
@@ -91,11 +92,6 @@
     self.searchTextField.delegate = self;
     
     [self.view addSubview:self.searchTextField];
-}
-
-- (void)viewWillLayoutSubviews {
-    NSLog(@"view will layout subviews called");
-
 }
 
 - (void)viewDidLoad {
@@ -195,11 +191,15 @@
 
     [NSLayoutConstraint activateConstraints:allConstraints];
 
+    [self.messageView layoutIfNeeded];
 
     NSLog(@"%@", NSStringFromCGRect(self.messageView.bounds));
     if (self.refreshMessageView == nil) {
         EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.messageView.bounds.size.height, self.messageView.frame.size.width, self.messageView.bounds.size.height) andSmallVersionEnabled:YES];
         view.delegate = self;
+
+        NSLog(@"%@", NSStringFromCGRect(view.bounds));
+
         [self.messageView addSubview:view];
         self.messageView.delegate = self;
         self.refreshMessageView = view;

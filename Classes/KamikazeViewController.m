@@ -123,7 +123,7 @@
 - (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag {
     self.navigationController.view.alpha = 0.0;
     self.navigationController.navigationBar.hidden = NO;
-    
+
     SongListViewController *songListViewController = [[SongListViewController alloc] initWithSearchTerm:@"none" SearchBy:@"none" Random:YES Style:UITableViewStylePlain];
     [self.navigationController pushViewController:songListViewController animated:NO];
     

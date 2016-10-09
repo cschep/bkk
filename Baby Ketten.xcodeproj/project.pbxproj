@@ -84,6 +84,8 @@
 		9586D3E818637FE500601F3F /* FolderPickerTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9586D3E618637FE500601F3F /* FolderPickerTableViewController.xib */; };
 		9586D3EA18653EBF00601F3F /* calendar_detail_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 9586D3E918653EBF00601F3F /* calendar_detail_bg.png */; };
 		9586D3EE18664CB500601F3F /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9586D3ED18664CB500601F3F /* EGORefreshTableHeaderView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		95CA8FDE1C654F830050CD4B /* bkkViewController_iPhone5.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95CA8FDC1C654F830050CD4B /* bkkViewController_iPhone5.xib */; };
+		95CA8FDF1C654F830050CD4B /* bkkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95CA8FDD1C654F830050CD4B /* bkkViewController.xib */; };
 		C59A50CD43564092A1292835 /* libPods-baby ketten.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F4E10EA46C7647C79523DFDA /* libPods-baby ketten.a */; };
 /* End PBXBuildFile section */
 
@@ -188,6 +190,8 @@
 		9586D3E918653EBF00601F3F /* calendar_detail_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar_detail_bg.png; sourceTree = "<group>"; };
 		9586D3EC18664CB500601F3F /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
 		9586D3ED18664CB500601F3F /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
+		95CA8FDC1C654F830050CD4B /* bkkViewController_iPhone5.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = bkkViewController_iPhone5.xib; sourceTree = "<group>"; };
+		95CA8FDD1C654F830050CD4B /* bkkViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = bkkViewController.xib; sourceTree = "<group>"; };
 		AA81D2AD1DB95B4BFC3A6405 /* Pods-baby ketten.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-baby ketten.release.xcconfig"; path = "Pods/Target Support Files/Pods-baby ketten/Pods-baby ketten.release.xcconfig"; sourceTree = "<group>"; };
 		B32320798D082F2E4F80261A /* Pods-baby ketten.ad hoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-baby ketten.ad hoc.xcconfig"; path = "Pods/Target Support Files/Pods-baby ketten/Pods-baby ketten.ad hoc.xcconfig"; sourceTree = "<group>"; };
 		E17D33BA2A71AD4B39FCF3C6 /* Pods-baby ketten.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-baby ketten.distribution.xcconfig"; path = "Pods/Target Support Files/Pods-baby ketten/Pods-baby ketten.distribution.xcconfig"; sourceTree = "<group>"; };
@@ -393,6 +397,8 @@
 		83FD5CA4160F9DDB007F28D4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				95CA8FDC1C654F830050CD4B /* bkkViewController_iPhone5.xib */,
+				95CA8FDD1C654F830050CD4B /* bkkViewController.xib */,
 				8366C1711340523000D2B518 /* CalendarDetailViewController.xib */,
 				954FC13918488CF3001750CE /* FavoritesListViewController.xib */,
 				9586D3E618637FE500601F3F /* FolderPickerTableViewController.xib */,
@@ -477,6 +483,7 @@
 				83F3CA5A11780BE00033611B /* bkk_vert_realcat.jpg in Resources */,
 				83DA58AA121B96DD006804B8 /* kamikaze_ketten.png in Resources */,
 				831BAF0A121EE00400A7AD86 /* kamikaze_ketten_background_old.png in Resources */,
+				95CA8FDE1C654F830050CD4B /* bkkViewController_iPhone5.xib in Resources */,
 				831BAF3E121EE79200A7AD86 /* Icon.png in Resources */,
 				831BAF40121EE7A300A7AD86 /* Icon@2x.png in Resources */,
 				830F9355129597CF00282FC6 /* calendar@2x.png in Resources */,
@@ -493,6 +500,7 @@
 				8397062812F4A20B00050E9E /* kamizake_icon@2x.png in Resources */,
 				8397062912F4A20B00050E9E /* kamizake_icon.png in Resources */,
 				8397063812F4A9BD00050E9E /* question.png in Resources */,
+				95CA8FDF1C654F830050CD4B /* bkkViewController.xib in Resources */,
 				8397063912F4A9BD00050E9E /* question@2x.png in Resources */,
 				8397065512F4AA6C00050E9E /* KamikazeViewController.xib in Resources */,
 				8366C1731340523000D2B518 /* CalendarDetailViewController.xib in Resources */,
