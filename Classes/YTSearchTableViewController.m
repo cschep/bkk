@@ -22,14 +22,6 @@ NSString* const kYouTubeAPIKey = @"AIzaSyBQgTWNFmBcR-omkycjHQRGiTtL2DUEm60";
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-//    [manager GET:[self getYouTubeSearchURL] parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
-//        [self loadVideosFromJSON:JSON];
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        NSLog(@"error fetching search results: %@", error);
-//        self.title = @"Not Found!";
-//    }];
-
     [NetworkManager GET:[self getYouTubeSearchURL] completionHandler:^(id JSON) {
         NSLog(@"%@", JSON);
         [self loadVideosFromJSON:JSON];
@@ -101,13 +93,6 @@ NSString* const kYouTubeAPIKey = @"AIzaSyBQgTWNFmBcR-omkycjHQRGiTtL2DUEm60";
         [cell.myImageView setImageWithURLRequest:request placeholderImage:[UIImage imageNamed:@"ketten_small_white"] success:^(NSURLRequest *request, NSURLResponse *response, UIImage *image) {
             _cell.myImageView.image = image;
         }];
-
-//        [cell.myImageView setImageWithURLRequest:request placeholderImage:[UIImage imageNamed:@"ketten_small_white"] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-//            _cell.myImageView.image = image;
-//        } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
-//            NSLog(@"failed to log image with error: %@", error);
-//        }];
-
     }
     
     return cell;
