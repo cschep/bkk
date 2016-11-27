@@ -45,12 +45,9 @@
 		83CD0878166674B900BEAB0D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CD0877166674B900BEAB0D /* Default-568h@2x.png */; };
 		83CD087E1666762200BEAB0D /* bkkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83CD087D1666762200BEAB0D /* bkkViewController.xib */; };
 		83CD08801666782700BEAB0D /* latest_mews_taller.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CD087F1666782700BEAB0D /* latest_mews_taller.png */; };
-		83D34B6A160E74370065EF6A /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 8381B60F1169C65500B545AB /* Song.m */; };
 		83D34B6B160E74370065EF6A /* Date.m in Sources */ = {isa = PBXBuildFile; fileRef = 832FB83C11BE200B0084909E /* Date.m */; };
-		83D34B6C160E74370065EF6A /* SongDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8382983F116C69F600EE8539 /* SongDetailViewController.m */; };
-		83D34B6D160E74370065EF6A /* SongListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83ADD62E116997AD00BF3809 /* SongListViewController.m */; };
-		83D34B6E160E74370065EF6A /* bkkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83ADD5FE116993AB00BF3809 /* bkkViewController.m */; };
-		83D34B6F160E74370065EF6A /* bkkAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* bkkAppDelegate.m */; };
+		83D34B6E160E74370065EF6A /* BKKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83ADD5FE116993AB00BF3809 /* BKKViewController.m */; };
+		83D34B6F160E74370065EF6A /* BKKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* BKKAppDelegate.m */; };
 		83D34B70160E74370065EF6A /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 832FB7A411BE0CCA0084909E /* CalendarViewController.m */; };
 		83D34B71160E74370065EF6A /* FavoritesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B7C5B71296E6E500A52BD9 /* FavoritesListViewController.m */; };
 		83D34B72160E74370065EF6A /* KamikazeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8397065212F4AA6C00050E9E /* KamikazeViewController.m */; };
@@ -66,6 +63,15 @@
 		83F023C016581BC900467FFB /* whiteArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 83F023B816581BC900467FFB /* whiteArrow.png */; };
 		83F023C116581BC900467FFB /* whiteArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83F023B916581BC900467FFB /* whiteArrow@2x.png */; };
 		83F3CA5A11780BE00033611B /* bkk_vert_realcat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 83F3CA5511780BE00033611B /* bkk_vert_realcat.jpg */; };
+		9524B4DF1DB07D86006BE644 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9524B4DD1DB07D86006BE644 /* Interface.storyboard */; };
+		9524B4E11DB07D86006BE644 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9524B4E01DB07D86006BE644 /* Assets.xcassets */; };
+		9524B4E81DB07D86006BE644 /* watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9524B4E71DB07D86006BE644 /* watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		9524B4EF1DB07D87006BE644 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9524B4EE1DB07D87006BE644 /* InterfaceController.swift */; };
+		9524B4F11DB07D87006BE644 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9524B4F01DB07D87006BE644 /* ExtensionDelegate.swift */; };
+		9524B4F31DB07D87006BE644 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9524B4F21DB07D87006BE644 /* NotificationController.swift */; };
+		9524B4F51DB07D87006BE644 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9524B4F41DB07D87006BE644 /* ComplicationController.swift */; };
+		9524B4F71DB07D87006BE644 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9524B4F61DB07D87006BE644 /* Assets.xcassets */; };
+		9524B4FB1DB07D87006BE644 /* watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 9524B4DB1DB07D86006BE644 /* watch.app */; };
 		952C4259184991B4008BA0B0 /* bkkViewController_iPhone5.xib in Resources */ = {isa = PBXBuildFile; fileRef = 952C4258184991B4008BA0B0 /* bkkViewController_iPhone5.xib */; };
 		952D459D1B1DFE27001AC720 /* YTSearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D459B1B1DFE27001AC720 /* YTSearchTableViewController.m */; };
 		952D459E1B1DFE27001AC720 /* YTSearchTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 952D459C1B1DFE27001AC720 /* YTSearchTableViewController.xib */; };
@@ -79,16 +85,78 @@
 		95795051186966BA00987198 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95795050186966BA00987198 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		95795078186B519100987198 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95795077186B519100987198 /* Accounts.framework */; };
 		95795079186B519B00987198 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9579504D186965A200987198 /* Twitter.framework */; };
+		957CC0501DE8C1C5006C9014 /* SongDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957CC04F1DE8C1C5006C9014 /* SongDetailTableViewController.swift */; };
+		957CC1C21DE8F93E006C9014 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 957CC1B61DE8F93E006C9014 /* AFHTTPSessionManager.m */; };
+		957CC1C31DE8F93E006C9014 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 957CC1B91DE8F93E006C9014 /* AFNetworkReachabilityManager.m */; };
+		957CC1C41DE8F93E006C9014 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 957CC1BB1DE8F93E006C9014 /* AFSecurityPolicy.m */; };
+		957CC1C51DE8F93E006C9014 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 957CC1BD1DE8F93E006C9014 /* AFURLRequestSerialization.m */; };
+		957CC1C61DE8F93E006C9014 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 957CC1BF1DE8F93E006C9014 /* AFURLResponseSerialization.m */; };
+		957CC1C71DE8F93E006C9014 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 957CC1C11DE8F93E006C9014 /* AFURLSessionManager.m */; };
+		957CC1DD1DE8F94A006C9014 /* AFAutoPurgingImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 957CC1CA1DE8F94A006C9014 /* AFAutoPurgingImageCache.m */; };
+		957CC1DE1DE8F94A006C9014 /* AFImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 957CC1CC1DE8F94A006C9014 /* AFImageDownloader.m */; };
+		957CC1DF1DE8F94A006C9014 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 957CC1CE1DE8F94A006C9014 /* AFNetworkActivityIndicatorManager.m */; };
+		957CC1E01DE8F94A006C9014 /* UIActivityIndicatorView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 957CC1D01DE8F94A006C9014 /* UIActivityIndicatorView+AFNetworking.m */; };
+		957CC1E11DE8F94A006C9014 /* UIButton+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 957CC1D21DE8F94A006C9014 /* UIButton+AFNetworking.m */; };
+		957CC1E21DE8F94A006C9014 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 957CC1D51DE8F94A006C9014 /* UIImageView+AFNetworking.m */; };
+		957CC1E31DE8F94A006C9014 /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 957CC1D81DE8F94A006C9014 /* UIProgressView+AFNetworking.m */; };
+		957CC1E41DE8F94A006C9014 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 957CC1DA1DE8F94A006C9014 /* UIRefreshControl+AFNetworking.m */; };
+		957CC1E51DE8F94A006C9014 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 957CC1DC1DE8F94A006C9014 /* UIWebView+AFNetworking.m */; };
+		957CC1E71DEA4476006C9014 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957CC1E61DEA4476006C9014 /* NetworkManager.swift */; };
 		9586D3E718637FE500601F3F /* FolderPickerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9586D3E518637FE500601F3F /* FolderPickerTableViewController.m */; };
 		9586D3E818637FE500601F3F /* FolderPickerTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9586D3E618637FE500601F3F /* FolderPickerTableViewController.xib */; };
 		9586D3EA18653EBF00601F3F /* calendar_detail_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 9586D3E918653EBF00601F3F /* calendar_detail_bg.png */; };
 		9586D3EE18664CB500601F3F /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9586D3ED18664CB500601F3F /* EGORefreshTableHeaderView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		95D95E971DAAC2D2000421AB /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D95E961DAAC2D2000421AB /* Song.swift */; };
+		95D95E991DAACE74000421AB /* SongListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D95E981DAACE74000421AB /* SongListTableViewController.swift */; };
+		95D95E9C1DABD649000421AB /* CGRect+Sanity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D95E9B1DABD649000421AB /* CGRect+Sanity.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9524B4E91DB07D86006BE644 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9524B4E61DB07D86006BE644;
+			remoteInfo = "watch Extension";
+		};
+		9524B4F91DB07D87006BE644 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9524B4DA1DB07D86006BE644;
+			remoteInfo = watch;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9524B5051DB07D87006BE644 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				9524B4E81DB07D86006BE644 /* watch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9524B5071DB07D87006BE644 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				9524B4FB1DB07D87006BE644 /* watch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		1D3623240D0F684500981E51 /* bkkAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bkkAppDelegate.h; sourceTree = "<group>"; };
-		1D3623250D0F684500981E51 /* bkkAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = bkkAppDelegate.m; sourceTree = "<group>"; };
+		1D3623240D0F684500981E51 /* BKKAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKKAppDelegate.h; sourceTree = "<group>"; };
+		1D3623250D0F684500981E51 /* BKKAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKKAppDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* baby ketten.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "baby ketten.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -122,8 +190,6 @@
 		8366C1711340523000D2B518 /* CalendarDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarDetailViewController.xib; sourceTree = "<group>"; };
 		8366C1751340F8DB00D2B518 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		8366C1771341012000D2B518 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		8381B60E1169C65500B545AB /* Song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Song.h; sourceTree = "<group>"; };
-		8381B60F1169C65500B545AB /* Song.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Song.m; sourceTree = "<group>"; };
 		8382983E116C69F600EE8539 /* SongDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongDetailViewController.h; sourceTree = "<group>"; };
 		8382983F116C69F600EE8539 /* SongDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongDetailViewController.m; sourceTree = "<group>"; };
 		839597A714A29D9900E8CB30 /* ketten_small_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ketten_small_white@2x.png"; sourceTree = "<group>"; };
@@ -136,8 +202,8 @@
 		8397065212F4AA6C00050E9E /* KamikazeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KamikazeViewController.m; sourceTree = "<group>"; };
 		8397065312F4AA6C00050E9E /* KamikazeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KamikazeViewController.xib; sourceTree = "<group>"; };
 		83ADD5FB1169939A00BF3809 /* bkklogobwtouchup.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bkklogobwtouchup.jpg; sourceTree = "<group>"; };
-		83ADD5FD116993AB00BF3809 /* bkkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bkkViewController.h; sourceTree = "<group>"; };
-		83ADD5FE116993AB00BF3809 /* bkkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = bkkViewController.m; sourceTree = "<group>"; };
+		83ADD5FD116993AB00BF3809 /* BKKViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKKViewController.h; sourceTree = "<group>"; };
+		83ADD5FE116993AB00BF3809 /* BKKViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKKViewController.m; sourceTree = "<group>"; };
 		83ADD62D116997AD00BF3809 /* SongListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongListViewController.h; sourceTree = "<group>"; };
 		83ADD62E116997AD00BF3809 /* SongListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongListViewController.m; sourceTree = "<group>"; };
 		83B7C5B11296E3D500A52BD9 /* inbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inbox.png; sourceTree = "<group>"; };
@@ -163,6 +229,18 @@
 		83F023B916581BC900467FFB /* whiteArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteArrow@2x.png"; sourceTree = "<group>"; };
 		83F3CA5511780BE00033611B /* bkk_vert_realcat.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bkk_vert_realcat.jpg; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* baby ketten-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "baby ketten-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		9524B4DB1DB07D86006BE644 /* watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = watch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9524B4DE1DB07D86006BE644 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		9524B4E01DB07D86006BE644 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9524B4E21DB07D86006BE644 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9524B4E71DB07D86006BE644 /* watch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "watch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9524B4ED1DB07D86006BE644 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		9524B4EE1DB07D87006BE644 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		9524B4F01DB07D87006BE644 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		9524B4F21DB07D87006BE644 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		9524B4F41DB07D87006BE644 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		9524B4F61DB07D87006BE644 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9524B4F81DB07D87006BE644 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		952C4258184991B4008BA0B0 /* bkkViewController_iPhone5.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = bkkViewController_iPhone5.xib; sourceTree = "<group>"; };
 		952D459A1B1DFE27001AC720 /* YTSearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTSearchTableViewController.h; sourceTree = "<group>"; };
 		952D459B1B1DFE27001AC720 /* YTSearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTSearchTableViewController.m; sourceTree = "<group>"; };
@@ -178,12 +256,51 @@
 		9579504D186965A200987198 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		95795050186966BA00987198 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		95795077186B519100987198 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		957CC04F1DE8C1C5006C9014 /* SongDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongDetailTableViewController.swift; sourceTree = "<group>"; };
+		957CC1B51DE8F93E006C9014 /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
+		957CC1B61DE8F93E006C9014 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
+		957CC1B71DE8F93E006C9014 /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
+		957CC1B81DE8F93E006C9014 /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		957CC1B91DE8F93E006C9014 /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
+		957CC1BA1DE8F93E006C9014 /* AFSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSecurityPolicy.h; sourceTree = "<group>"; };
+		957CC1BB1DE8F93E006C9014 /* AFSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSecurityPolicy.m; sourceTree = "<group>"; };
+		957CC1BC1DE8F93E006C9014 /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLRequestSerialization.h; sourceTree = "<group>"; };
+		957CC1BD1DE8F93E006C9014 /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLRequestSerialization.m; sourceTree = "<group>"; };
+		957CC1BE1DE8F93E006C9014 /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLResponseSerialization.h; sourceTree = "<group>"; };
+		957CC1BF1DE8F93E006C9014 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
+		957CC1C01DE8F93E006C9014 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
+		957CC1C11DE8F93E006C9014 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		957CC1C91DE8F94A006C9014 /* AFAutoPurgingImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFAutoPurgingImageCache.h; sourceTree = "<group>"; };
+		957CC1CA1DE8F94A006C9014 /* AFAutoPurgingImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFAutoPurgingImageCache.m; sourceTree = "<group>"; };
+		957CC1CB1DE8F94A006C9014 /* AFImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFImageDownloader.h; sourceTree = "<group>"; };
+		957CC1CC1DE8F94A006C9014 /* AFImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFImageDownloader.m; sourceTree = "<group>"; };
+		957CC1CD1DE8F94A006C9014 /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
+		957CC1CE1DE8F94A006C9014 /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
+		957CC1CF1DE8F94A006C9014 /* UIActivityIndicatorView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIActivityIndicatorView+AFNetworking.h"; sourceTree = "<group>"; };
+		957CC1D01DE8F94A006C9014 /* UIActivityIndicatorView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIActivityIndicatorView+AFNetworking.m"; sourceTree = "<group>"; };
+		957CC1D11DE8F94A006C9014 /* UIButton+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+AFNetworking.h"; sourceTree = "<group>"; };
+		957CC1D21DE8F94A006C9014 /* UIButton+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+AFNetworking.m"; sourceTree = "<group>"; };
+		957CC1D31DE8F94A006C9014 /* UIImage+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+AFNetworking.h"; sourceTree = "<group>"; };
+		957CC1D41DE8F94A006C9014 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
+		957CC1D51DE8F94A006C9014 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		957CC1D61DE8F94A006C9014 /* UIKit+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIKit+AFNetworking.h"; sourceTree = "<group>"; };
+		957CC1D71DE8F94A006C9014 /* UIProgressView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIProgressView+AFNetworking.h"; sourceTree = "<group>"; };
+		957CC1D81DE8F94A006C9014 /* UIProgressView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIProgressView+AFNetworking.m"; sourceTree = "<group>"; };
+		957CC1D91DE8F94A006C9014 /* UIRefreshControl+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIRefreshControl+AFNetworking.h"; sourceTree = "<group>"; };
+		957CC1DA1DE8F94A006C9014 /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
+		957CC1DB1DE8F94A006C9014 /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
+		957CC1DC1DE8F94A006C9014 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
+		957CC1E61DEA4476006C9014 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		9586D3E418637FE500601F3F /* FolderPickerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderPickerTableViewController.h; sourceTree = "<group>"; };
 		9586D3E518637FE500601F3F /* FolderPickerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderPickerTableViewController.m; sourceTree = "<group>"; };
 		9586D3E618637FE500601F3F /* FolderPickerTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FolderPickerTableViewController.xib; sourceTree = "<group>"; };
 		9586D3E918653EBF00601F3F /* calendar_detail_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar_detail_bg.png; sourceTree = "<group>"; };
 		9586D3EC18664CB500601F3F /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
 		9586D3ED18664CB500601F3F /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
+		95D95E921DAAB1C1000421AB /* baby ketten-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "baby ketten-Bridging-Header.h"; sourceTree = "<group>"; };
+		95D95E961DAAC2D2000421AB /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		95D95E981DAACE74000421AB /* SongListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongListTableViewController.swift; sourceTree = "<group>"; };
+		95D95E9B1DABD649000421AB /* CGRect+Sanity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Sanity.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,24 +319,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9524B4E41DB07D86006BE644 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		080E96DDFE201D6D7F000001 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				83D34B04160E69610065EF6A /* Vendor */,
-				83D34B03160E66F00065EF6A /* Models */,
-				83D34B02160E66900065EF6A /* Controllers */,
-				83FD5CA4160F9DDB007F28D4 /* Views */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				1D6058910D05DD3D006BFB54 /* baby ketten.app */,
+				9524B4DB1DB07D86006BE644 /* watch.app */,
+				9524B4E71DB07D86006BE644 /* watch Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -229,11 +344,18 @@
 			children = (
 				83CD0877166674B900BEAB0D /* Default-568h@2x.png */,
 				834DE11915DC83160050139B /* Settings.bundle */,
-				080E96DDFE201D6D7F000001 /* Classes */,
+				83D34B04160E69610065EF6A /* Vendor */,
+				83D34B03160E66F00065EF6A /* Models */,
+				83D34B02160E66900065EF6A /* Controllers */,
+				83FD5CA4160F9DDB007F28D4 /* Views */,
+				95D95E9A1DABD62A000421AB /* Utility */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
+				9524B4DC1DB07D86006BE644 /* watch */,
+				9524B4EB1DB07D86006BE644 /* watch Extension */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				95D95E921DAAB1C1000421AB /* baby ketten-Bridging-Header.h */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -320,10 +442,10 @@
 		83D34B02160E66900065EF6A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				1D3623240D0F684500981E51 /* bkkAppDelegate.h */,
-				1D3623250D0F684500981E51 /* bkkAppDelegate.m */,
-				83ADD5FD116993AB00BF3809 /* bkkViewController.h */,
-				83ADD5FE116993AB00BF3809 /* bkkViewController.m */,
+				1D3623240D0F684500981E51 /* BKKAppDelegate.h */,
+				1D3623250D0F684500981E51 /* BKKAppDelegate.m */,
+				83ADD5FD116993AB00BF3809 /* BKKViewController.h */,
+				83ADD5FE116993AB00BF3809 /* BKKViewController.m */,
 				8366C16F1340523000D2B518 /* CalendarDetailViewController.h */,
 				8366C1701340523000D2B518 /* CalendarDetailViewController.m */,
 				832FB7A311BE0CCA0084909E /* CalendarViewController.h */,
@@ -336,33 +458,39 @@
 				8397065212F4AA6C00050E9E /* KamikazeViewController.m */,
 				8382983E116C69F600EE8539 /* SongDetailViewController.h */,
 				8382983F116C69F600EE8539 /* SongDetailViewController.m */,
+				957CC04F1DE8C1C5006C9014 /* SongDetailTableViewController.swift */,
 				83ADD62D116997AD00BF3809 /* SongListViewController.h */,
 				83ADD62E116997AD00BF3809 /* SongListViewController.m */,
 				952D459A1B1DFE27001AC720 /* YTSearchTableViewController.h */,
 				952D459B1B1DFE27001AC720 /* YTSearchTableViewController.m */,
 				952D45A31B1E2E36001AC720 /* YTTableViewCell.h */,
 				952D45A41B1E2E36001AC720 /* YTTableViewCell.m */,
+				95D95E981DAACE74000421AB /* SongListTableViewController.swift */,
 			);
 			name = Controllers;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		83D34B03160E66F00065EF6A /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				8381B60E1169C65500B545AB /* Song.h */,
-				8381B60F1169C65500B545AB /* Song.m */,
 				832FB83B11BE200B0084909E /* Date.h */,
 				832FB83C11BE200B0084909E /* Date.m */,
+				95D95E961DAAC2D2000421AB /* Song.swift */,
 			);
 			name = Models;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		83D34B04160E69610065EF6A /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				957CC1C81DE8F94A006C9014 /* UIKit+AFNetworking */,
+				957CC1B41DE8F93E006C9014 /* AFNetworking */,
 				9586D3EB18664CA400601F3F /* EGORefreshTableHeaderView */,
 			);
 			name = Vendor;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		83FD5CA4160F9DDB007F28D4 /* Views */ = {
@@ -379,6 +507,88 @@
 				952D45A11B1E2D29001AC720 /* YTTableViewCell.xib */,
 			);
 			name = Views;
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		9524B4DC1DB07D86006BE644 /* watch */ = {
+			isa = PBXGroup;
+			children = (
+				9524B4DD1DB07D86006BE644 /* Interface.storyboard */,
+				9524B4E01DB07D86006BE644 /* Assets.xcassets */,
+				9524B4E21DB07D86006BE644 /* Info.plist */,
+			);
+			path = watch;
+			sourceTree = "<group>";
+		};
+		9524B4EB1DB07D86006BE644 /* watch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				9524B4EE1DB07D87006BE644 /* InterfaceController.swift */,
+				9524B4F01DB07D87006BE644 /* ExtensionDelegate.swift */,
+				9524B4F21DB07D87006BE644 /* NotificationController.swift */,
+				9524B4F41DB07D87006BE644 /* ComplicationController.swift */,
+				9524B4F61DB07D87006BE644 /* Assets.xcassets */,
+				9524B4F81DB07D87006BE644 /* Info.plist */,
+				9524B4EC1DB07D86006BE644 /* Supporting Files */,
+			);
+			path = "watch Extension";
+			sourceTree = "<group>";
+		};
+		9524B4EC1DB07D86006BE644 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9524B4ED1DB07D86006BE644 /* PushNotificationPayload.apns */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		957CC1B41DE8F93E006C9014 /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				957CC1B51DE8F93E006C9014 /* AFHTTPSessionManager.h */,
+				957CC1B61DE8F93E006C9014 /* AFHTTPSessionManager.m */,
+				957CC1B71DE8F93E006C9014 /* AFNetworking.h */,
+				957CC1B81DE8F93E006C9014 /* AFNetworkReachabilityManager.h */,
+				957CC1B91DE8F93E006C9014 /* AFNetworkReachabilityManager.m */,
+				957CC1BA1DE8F93E006C9014 /* AFSecurityPolicy.h */,
+				957CC1BB1DE8F93E006C9014 /* AFSecurityPolicy.m */,
+				957CC1BC1DE8F93E006C9014 /* AFURLRequestSerialization.h */,
+				957CC1BD1DE8F93E006C9014 /* AFURLRequestSerialization.m */,
+				957CC1BE1DE8F93E006C9014 /* AFURLResponseSerialization.h */,
+				957CC1BF1DE8F93E006C9014 /* AFURLResponseSerialization.m */,
+				957CC1C01DE8F93E006C9014 /* AFURLSessionManager.h */,
+				957CC1C11DE8F93E006C9014 /* AFURLSessionManager.m */,
+			);
+			name = AFNetworking;
+			path = AFNetworking/AFNetworking;
+			sourceTree = "<group>";
+		};
+		957CC1C81DE8F94A006C9014 /* UIKit+AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				957CC1C91DE8F94A006C9014 /* AFAutoPurgingImageCache.h */,
+				957CC1CA1DE8F94A006C9014 /* AFAutoPurgingImageCache.m */,
+				957CC1CB1DE8F94A006C9014 /* AFImageDownloader.h */,
+				957CC1CC1DE8F94A006C9014 /* AFImageDownloader.m */,
+				957CC1CD1DE8F94A006C9014 /* AFNetworkActivityIndicatorManager.h */,
+				957CC1CE1DE8F94A006C9014 /* AFNetworkActivityIndicatorManager.m */,
+				957CC1CF1DE8F94A006C9014 /* UIActivityIndicatorView+AFNetworking.h */,
+				957CC1D01DE8F94A006C9014 /* UIActivityIndicatorView+AFNetworking.m */,
+				957CC1D11DE8F94A006C9014 /* UIButton+AFNetworking.h */,
+				957CC1D21DE8F94A006C9014 /* UIButton+AFNetworking.m */,
+				957CC1D31DE8F94A006C9014 /* UIImage+AFNetworking.h */,
+				957CC1D41DE8F94A006C9014 /* UIImageView+AFNetworking.h */,
+				957CC1D51DE8F94A006C9014 /* UIImageView+AFNetworking.m */,
+				957CC1D61DE8F94A006C9014 /* UIKit+AFNetworking.h */,
+				957CC1D71DE8F94A006C9014 /* UIProgressView+AFNetworking.h */,
+				957CC1D81DE8F94A006C9014 /* UIProgressView+AFNetworking.m */,
+				957CC1D91DE8F94A006C9014 /* UIRefreshControl+AFNetworking.h */,
+				957CC1DA1DE8F94A006C9014 /* UIRefreshControl+AFNetworking.m */,
+				957CC1DB1DE8F94A006C9014 /* UIWebView+AFNetworking.h */,
+				957CC1DC1DE8F94A006C9014 /* UIWebView+AFNetworking.m */,
+			);
+			name = "UIKit+AFNetworking";
+			path = "AFNetworking/UIKit+AFNetworking";
 			sourceTree = "<group>";
 		};
 		9586D3EB18664CA400601F3F /* EGORefreshTableHeaderView */ = {
@@ -388,6 +598,15 @@
 				9586D3ED18664CB500601F3F /* EGORefreshTableHeaderView.m */,
 			);
 			name = EGORefreshTableHeaderView;
+			sourceTree = "<group>";
+		};
+		95D95E9A1DABD62A000421AB /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				95D95E9B1DABD649000421AB /* CGRect+Sanity.swift */,
+				957CC1E61DEA4476006C9014 /* NetworkManager.swift */,
+			);
+			name = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -400,15 +619,51 @@
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
 				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+				9524B5071DB07D87006BE644 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				9524B4FA1DB07D87006BE644 /* PBXTargetDependency */,
 			);
 			name = "baby ketten";
 			productName = bkk;
 			productReference = 1D6058910D05DD3D006BFB54 /* baby ketten.app */;
 			productType = "com.apple.product-type.application";
+		};
+		9524B4DA1DB07D86006BE644 /* watch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9524B5061DB07D87006BE644 /* Build configuration list for PBXNativeTarget "watch" */;
+			buildPhases = (
+				9524B4D91DB07D86006BE644 /* Resources */,
+				9524B5051DB07D87006BE644 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9524B4EA1DB07D86006BE644 /* PBXTargetDependency */,
+			);
+			name = watch;
+			productName = watch;
+			productReference = 9524B4DB1DB07D86006BE644 /* watch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		9524B4E61DB07D86006BE644 /* watch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9524B5041DB07D87006BE644 /* Build configuration list for PBXNativeTarget "watch Extension" */;
+			buildPhases = (
+				9524B4E31DB07D86006BE644 /* Sources */,
+				9524B4E41DB07D86006BE644 /* Frameworks */,
+				9524B4E51DB07D86006BE644 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "watch Extension";
+			productName = "watch Extension";
+			productReference = 9524B4E71DB07D86006BE644 /* watch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -416,9 +671,21 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0800;
 				LastUpgradeCheck = 0800;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
+						DevelopmentTeam = 78FKA3KWWM;
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
+					};
+					9524B4DA1DB07D86006BE644 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 78FKA3KWWM;
+						ProvisioningStyle = Automatic;
+					};
+					9524B4E61DB07D86006BE644 = {
+						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 78FKA3KWWM;
 						ProvisioningStyle = Automatic;
 					};
@@ -433,12 +700,16 @@
 				Japanese,
 				French,
 				German,
+				Base,
+				en,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				1D6058900D05DD3D006BFB54 /* baby ketten */,
+				9524B4DA1DB07D86006BE644 /* watch */,
+				9524B4E61DB07D86006BE644 /* watch Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -504,6 +775,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9524B4D91DB07D86006BE644 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9524B4E11DB07D86006BE644 /* Assets.xcassets in Resources */,
+				9524B4DF1DB07D86006BE644 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9524B4E51DB07D86006BE644 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9524B4F71DB07D87006BE644 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -513,23 +801,75 @@
 			files = (
 				952D45A51B1E2E36001AC720 /* YTTableViewCell.m in Sources */,
 				9586D3E718637FE500601F3F /* FolderPickerTableViewController.m in Sources */,
-				83D34B6A160E74370065EF6A /* Song.m in Sources */,
+				957CC1E41DE8F94A006C9014 /* UIRefreshControl+AFNetworking.m in Sources */,
+				957CC1E11DE8F94A006C9014 /* UIButton+AFNetworking.m in Sources */,
 				83D34B6B160E74370065EF6A /* Date.m in Sources */,
-				83D34B6C160E74370065EF6A /* SongDetailViewController.m in Sources */,
-				83D34B6D160E74370065EF6A /* SongListViewController.m in Sources */,
-				83D34B6E160E74370065EF6A /* bkkViewController.m in Sources */,
-				83D34B6F160E74370065EF6A /* bkkAppDelegate.m in Sources */,
+				95D95E9C1DABD649000421AB /* CGRect+Sanity.swift in Sources */,
+				83D34B6E160E74370065EF6A /* BKKViewController.m in Sources */,
+				83D34B6F160E74370065EF6A /* BKKAppDelegate.m in Sources */,
 				83D34B70160E74370065EF6A /* CalendarViewController.m in Sources */,
+				957CC1DD1DE8F94A006C9014 /* AFAutoPurgingImageCache.m in Sources */,
+				957CC1C51DE8F93E006C9014 /* AFURLRequestSerialization.m in Sources */,
 				83D34B71160E74370065EF6A /* FavoritesListViewController.m in Sources */,
+				957CC1E31DE8F94A006C9014 /* UIProgressView+AFNetworking.m in Sources */,
+				957CC1C41DE8F93E006C9014 /* AFSecurityPolicy.m in Sources */,
+				95D95E991DAACE74000421AB /* SongListTableViewController.swift in Sources */,
+				957CC1E01DE8F94A006C9014 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				9586D3EE18664CB500601F3F /* EGORefreshTableHeaderView.m in Sources */,
+				957CC1C31DE8F93E006C9014 /* AFNetworkReachabilityManager.m in Sources */,
 				83D34B72160E74370065EF6A /* KamikazeViewController.m in Sources */,
 				83D34B73160E74370065EF6A /* CalendarDetailViewController.m in Sources */,
+				957CC1E71DEA4476006C9014 /* NetworkManager.swift in Sources */,
+				957CC1C71DE8F93E006C9014 /* AFURLSessionManager.m in Sources */,
+				957CC1E21DE8F94A006C9014 /* UIImageView+AFNetworking.m in Sources */,
+				95D95E971DAAC2D2000421AB /* Song.swift in Sources */,
+				957CC0501DE8C1C5006C9014 /* SongDetailTableViewController.swift in Sources */,
 				952D459D1B1DFE27001AC720 /* YTSearchTableViewController.m in Sources */,
+				957CC1C21DE8F93E006C9014 /* AFHTTPSessionManager.m in Sources */,
+				957CC1C61DE8F93E006C9014 /* AFURLResponseSerialization.m in Sources */,
 				83D34B74160E74370065EF6A /* main.m in Sources */,
+				957CC1E51DE8F94A006C9014 /* UIWebView+AFNetworking.m in Sources */,
+				957CC1DE1DE8F94A006C9014 /* AFImageDownloader.m in Sources */,
+				957CC1DF1DE8F94A006C9014 /* AFNetworkActivityIndicatorManager.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9524B4E31DB07D86006BE644 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9524B4F31DB07D87006BE644 /* NotificationController.swift in Sources */,
+				9524B4F51DB07D87006BE644 /* ComplicationController.swift in Sources */,
+				9524B4F11DB07D87006BE644 /* ExtensionDelegate.swift in Sources */,
+				9524B4EF1DB07D87006BE644 /* InterfaceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9524B4EA1DB07D86006BE644 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9524B4E61DB07D86006BE644 /* watch Extension */;
+			targetProxy = 9524B4E91DB07D86006BE644 /* PBXContainerItemProxy */;
+		};
+		9524B4FA1DB07D87006BE644 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9524B4DA1DB07D86006BE644 /* watch */;
+			targetProxy = 9524B4F91DB07D87006BE644 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9524B4DD1DB07D86006BE644 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9524B4DE1DB07D86006BE644 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
@@ -538,6 +878,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -550,11 +891,15 @@
 				GCC_PREFIX_HEADER = "baby ketten_Prefix.pch";
 				INFOPLIST_FILE = "baby ketten-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = org.schepman.babyketten;
 				PRODUCT_NAME = "baby ketten";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "baby ketten-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -565,6 +910,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Christopher Schepman (78FKA3KWWM)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -575,10 +921,13 @@
 				GCC_PREFIX_HEADER = "baby ketten_Prefix.pch";
 				INFOPLIST_FILE = "baby ketten-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = org.schepman.babyketten;
 				PRODUCT_NAME = "baby ketten";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "baby ketten-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -615,6 +964,7 @@
 				PROVISIONING_PROFILE = "249BEC10-3F91-40E5-B826-EA01919E3712";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "249BEC10-3F91-40E5-B826-EA01919E3712";
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 3.0;
 			};
 			name = "Ad Hoc";
 		};
@@ -624,6 +974,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -634,10 +985,13 @@
 				GCC_PREFIX_HEADER = "baby ketten_Prefix.pch";
 				INFOPLIST_FILE = "baby ketten-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = org.schepman.babyketten;
 				PRODUCT_NAME = "baby ketten";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "baby ketten-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -671,6 +1025,7 @@
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Distribution;
 		};
@@ -680,6 +1035,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -690,13 +1046,326 @@
 				GCC_PREFIX_HEADER = "baby ketten_Prefix.pch";
 				INFOPLIST_FILE = "baby ketten-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = org.schepman.babyketten;
 				PRODUCT_NAME = "baby ketten";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "baby ketten-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
+			};
+			name = Distribution;
+		};
+		9524B4FC1DB07D87006BE644 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 78FKA3KWWM;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				IBSC_MODULE = watch_Extension;
+				INFOPLIST_FILE = watch/Info.plist;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.schepman.babyketten.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
+			};
+			name = Debug;
+		};
+		9524B4FD1DB07D87006BE644 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Christopher Schepman (78FKA3KWWM)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 78FKA3KWWM;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				IBSC_MODULE = watch_Extension;
+				INFOPLIST_FILE = watch/Info.plist;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = org.schepman.babyketten.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
+			};
+			name = Release;
+		};
+		9524B4FE1DB07D87006BE644 /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 78FKA3KWWM;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				IBSC_MODULE = watch_Extension;
+				INFOPLIST_FILE = watch/Info.plist;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = org.schepman.babyketten.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
+			};
+			name = "Ad Hoc";
+		};
+		9524B4FF1DB07D87006BE644 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 78FKA3KWWM;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				IBSC_MODULE = watch_Extension;
+				INFOPLIST_FILE = watch/Info.plist;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = org.schepman.babyketten.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
+			};
+			name = Distribution;
+		};
+		9524B5001DB07D87006BE644 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 78FKA3KWWM;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "watch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.schepman.babyketten.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
+			};
+			name = Debug;
+		};
+		9524B5011DB07D87006BE644 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 78FKA3KWWM;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "watch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = org.schepman.babyketten.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
+			};
+			name = Release;
+		};
+		9524B5021DB07D87006BE644 /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 78FKA3KWWM;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "watch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = org.schepman.babyketten.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
+			};
+			name = "Ad Hoc";
+		};
+		9524B5031DB07D87006BE644 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 78FKA3KWWM;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "watch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = org.schepman.babyketten.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Distribution;
 		};
@@ -731,6 +1400,7 @@
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -763,6 +1433,7 @@
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -776,6 +1447,28 @@
 				1D6058950D05DD3E006BFB54 /* Release */,
 				8319EF811454B28F001B45CD /* Ad Hoc */,
 				83326A0D118939F50012C57C /* Distribution */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9524B5041DB07D87006BE644 /* Build configuration list for PBXNativeTarget "watch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9524B5001DB07D87006BE644 /* Debug */,
+				9524B5011DB07D87006BE644 /* Release */,
+				9524B5021DB07D87006BE644 /* Ad Hoc */,
+				9524B5031DB07D87006BE644 /* Distribution */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9524B5061DB07D87006BE644 /* Build configuration list for PBXNativeTarget "watch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9524B4FC1DB07D87006BE644 /* Debug */,
+				9524B4FD1DB07D87006BE644 /* Release */,
+				9524B4FE1DB07D87006BE644 /* Ad Hoc */,
+				9524B4FF1DB07D87006BE644 /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

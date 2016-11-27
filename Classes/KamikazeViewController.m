@@ -7,7 +7,7 @@
 //
 
 #import "KamikazeViewController.h"
-#import "SongListViewController.h"
+#import "baby_ketten-Swift.h"
 
 @implementation KamikazeViewController
 
@@ -22,6 +22,10 @@
 }
 */
 
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,12 +33,8 @@
     self.running = NO;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-
     self.navigationController.navigationBar.hidden = YES;
 }
 
@@ -125,8 +125,15 @@
     self.navigationController.view.alpha = 0.0;
     self.navigationController.navigationBar.hidden = NO;
     
-    SongListViewController *songListViewController = [[SongListViewController alloc] initWithSearchTerm:@"none" SearchBy:@"none" Random:YES Style:UITableViewStylePlain];
-    [self.navigationController pushViewController:songListViewController animated:NO];
+//    SongListViewController *songListViewController = [[SongListViewController alloc] initWithSearchTerm:@"none" SearchBy:@"none" Random:YES Style:UITableViewStylePlain];
+
+    SongListTableViewController *songList = [[SongListTableViewController alloc]
+                                                initWithStyle:UITableViewStylePlain];
+    songList.searchTerm = @"none";
+    songList.searchBy = @"none";
+    songList.random = true;
+
+    [self.navigationController pushViewController:songList animated:NO];
     
     [UIView animateWithDuration:.7
                           delay:.1

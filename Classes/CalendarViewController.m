@@ -8,7 +8,6 @@
 
 #import "CalendarViewController.h"
 #import "CalendarDetailViewController.h"
-#import "AFHTTPRequestOperationManager.h"
 #import "Date.h"
 
 @implementation CalendarViewController
@@ -18,6 +17,10 @@
 NSString* const kSeattleCalendarId = @"b73eparqatr3h2160l7i298tas@group.calendar.google.com";
 NSString* const kPortlandCalendarId = @"9a434tnlm9mbo57r05rkodl6d0@group.calendar.google.com";
 NSString* const kGoogleCalendarAPIKey = @"AIzaSyBQgTWNFmBcR-omkycjHQRGiTtL2DUEm60";
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleDefault;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -46,12 +49,6 @@ NSString* const kGoogleCalendarAPIKey = @"AIzaSyBQgTWNFmBcR-omkycjHQRGiTtL2DUEm6
     [self loadDates];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
-}
-
 - (void)startLoadingUI {
     [self.activityIndicator startAnimating];
 	self.navigationItem.title = @"Loading...";
@@ -63,15 +60,15 @@ NSString* const kGoogleCalendarAPIKey = @"AIzaSyBQgTWNFmBcR-omkycjHQRGiTtL2DUEm6
 }
 
 - (void)loadDates {
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:[self getCalendarURL] parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
-        [self loadDatesFromJSON:JSON];
-
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"error fetching search results: %@", error);
-        self.navigationItem.title = @"Not Found!";
-        [self stopLoadingUI];
-    }];
+//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+//    [manager GET:[self getCalendarURL] parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
+//        [self loadDatesFromJSON:JSON];
+//
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        NSLog(@"error fetching search results: %@", error);
+//        self.navigationItem.title = @"Not Found!";
+//        [self stopLoadingUI];
+//    }];
 }
 
 - (NSString *)getCalendarURL {
@@ -183,6 +180,8 @@ NSString* const kGoogleCalendarAPIKey = @"AIzaSyBQgTWNFmBcR-omkycjHQRGiTtL2DUEm6
         [self.navigationController pushViewController:calendarDetailViewController animated:YES];
     } else {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"title" message:@"Not Sure Where?!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+
+
         [alert show];
     }
 }

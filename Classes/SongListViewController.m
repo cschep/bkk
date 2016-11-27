@@ -8,8 +8,7 @@
 
 #import "SongListViewController.h"
 #import "SongDetailViewController.h"
-#import "Song.h"
-#import "AFHTTPRequestOperationManager.h"
+//#import "Song.h"
 
 @implementation SongListViewController
 
@@ -30,8 +29,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 
 	self.activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
 	[self.activityIndicator hidesWhenStopped];
@@ -54,9 +51,8 @@
     [self loadSongs];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleDefault;
 }
 
 - (void)startLoadingUI {
@@ -79,14 +75,14 @@
     
     NSString* escapedUrlString = [[urlString lowercaseString] stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
     
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:escapedUrlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self loadSongsFromJSON:responseObject];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"error fetching search results: %@", error);
-        self.navigationItem.title = @"Not Found!";
-        [self stopLoadingUI];
-    }];
+//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+//    [manager GET:escapedUrlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//        [self loadSongsFromJSON:responseObject];
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        NSLog(@"error fetching search results: %@", error);
+//        self.navigationItem.title = @"Not Found!";
+//        [self stopLoadingUI];
+//    }];
 }
 
 - (void)loadSongsFromJSON:(id)JSON {

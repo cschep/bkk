@@ -7,9 +7,9 @@
 //
 
 #import "YTSearchTableViewController.h"
-#import "AFHTTPRequestOperationManager.h"
 #import "UIImageView+AFNetworking.h"
 #import "YTTableViewCell.h"
+#import "baby_ketten-Swift.h"
 
 @interface YTSearchTableViewController ()
 
@@ -22,19 +22,26 @@ NSString* const kYouTubeAPIKey = @"AIzaSyBQgTWNFmBcR-omkycjHQRGiTtL2DUEm60";
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:[self getYouTubeSearchURL] parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
+//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+//    [manager GET:[self getYouTubeSearchURL] parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
+//        [self loadVideosFromJSON:JSON];
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        NSLog(@"error fetching search results: %@", error);
+//        self.title = @"Not Found!";
+//    }];
+
+    [NetworkManager GET:[self getYouTubeSearchURL] completionHandler:^(id _Nonnull JSON) {
+        NSLog(@"%@", JSON);
         [self loadVideosFromJSON:JSON];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"error fetching search results: %@", error);
-        self.title = @"Not Found!";
     }];
 }
 
 - (NSString *)getYouTubeSearchURL {
     NSString *urlFormat = @"https://www.googleapis.com/youtube/v3/search?part=snippet&q=%@&maxResults=15&type=video&key=%@";
 
-    NSString *youTubeSearchUrl = [NSString stringWithFormat:urlFormat, self.searchString, kYouTubeAPIKey];
+    NSString *escapedSearchString = [self.searchString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
+
+    NSString *youTubeSearchUrl = [NSString stringWithFormat:urlFormat, escapedSearchString, kYouTubeAPIKey];
 
     return youTubeSearchUrl;
 }
@@ -106,44 +113,8 @@ NSString* const kYouTubeAPIKey = @"AIzaSyBQgTWNFmBcR-omkycjHQRGiTtL2DUEm60";
     return 75;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-
 #pragma mark - Table view delegate
 
-// In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *video = [self.videos objectAtIndex:indexPath.row];
     NSString *videoId = video[@"id"][@"videoId"];
@@ -158,16 +129,5 @@ NSString* const kYouTubeAPIKey = @"AIzaSyBQgTWNFmBcR-omkycjHQRGiTtL2DUEm60";
         [[UIApplication sharedApplication] openURL:url];
     }
 }
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

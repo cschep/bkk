@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface KamikazeViewController : UIViewController {
+@interface KamikazeViewController : UIViewController <CAAnimationDelegate> {
 	IBOutlet UITextView *numSongs;
 }
 
