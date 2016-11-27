@@ -7,7 +7,7 @@
 //
 
 #import "YTSearchTableViewController.h"
-#import "UIImageView+AFNetworking.h"
+//#import "UIImageView+AFNetworking.h"
 #import "YTTableViewCell.h"
 #import "baby_ketten-Swift.h"
 
@@ -30,7 +30,7 @@ NSString* const kYouTubeAPIKey = @"AIzaSyBQgTWNFmBcR-omkycjHQRGiTtL2DUEm60";
 //        self.title = @"Not Found!";
 //    }];
 
-    [NetworkManager GET:[self getYouTubeSearchURL] completionHandler:^(id _Nonnull JSON) {
+    [NetworkManager GET:[self getYouTubeSearchURL] completionHandler:^(id JSON) {
         NSLog(@"%@", JSON);
         [self loadVideosFromJSON:JSON];
     }];
@@ -98,11 +98,15 @@ NSString* const kYouTubeAPIKey = @"AIzaSyBQgTWNFmBcR-omkycjHQRGiTtL2DUEm60";
                                                  cachePolicy:NSURLRequestReturnCacheDataElseLoad
                                              timeoutInterval:60];
 
-        [cell.myImageView setImageWithURLRequest:request placeholderImage:[UIImage imageNamed:@"ketten_small_white"] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+        [cell.myImageView setImageWithURLRequest:request placeholderImage:[UIImage imageNamed:@"ketten_small_white"] success:^(NSURLRequest *request, NSURLResponse *response, UIImage *image) {
             _cell.myImageView.image = image;
-        } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
-            NSLog(@"failed to log image with error: %@", error);
         }];
+
+//        [cell.myImageView setImageWithURLRequest:request placeholderImage:[UIImage imageNamed:@"ketten_small_white"] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+//            _cell.myImageView.image = image;
+//        } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+//            NSLog(@"failed to log image with error: %@", error);
+//        }];
 
     }
     
