@@ -179,10 +179,10 @@ NSString* const kGoogleCalendarAPIKey = @"AIzaSyBQgTWNFmBcR-omkycjHQRGiTtL2DUEm6
         CalendarDetailViewController *calendarDetailViewController = [[CalendarDetailViewController alloc] initWithDate:d];
         [self.navigationController pushViewController:calendarDetailViewController animated:YES];
     } else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"title" message:@"Not Sure Where?!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"title" message:@"Not Sure Where?!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertController *alert2 = [UIAlertController alertControllerWithTitle:@"title" message:@"Not Sure WHere?!" preferredStyle:UIAlertControllerStyleAlert];
 
-
-        [alert show];
+        [self presentViewController:alert2 animated:YES completion:nil];
     }
 }
 

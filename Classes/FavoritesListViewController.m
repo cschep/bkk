@@ -35,8 +35,11 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
     [self refreshDisplayList];
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleDefault;
 }
 
 - (void)addAction {
@@ -323,7 +326,7 @@
         {
             //find it in favorites
             id itemToMove = [self.displayList objectAtIndex:selectionIndex.row];
-            int indexOfItemToMove = [self.favorites indexOfObjectIdenticalTo:itemToMove];
+            NSUInteger indexOfItemToMove = [self.favorites indexOfObjectIdenticalTo:itemToMove];
 
             //change it
             NSMutableDictionary *song = [[self.favorites objectAtIndex:indexOfItemToMove] mutableCopy];

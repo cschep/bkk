@@ -90,9 +90,9 @@ NSString* const kYouTubeAPIKey = @"AIzaSyBQgTWNFmBcR-omkycjHQRGiTtL2DUEm60";
                                                  cachePolicy:NSURLRequestReturnCacheDataElseLoad
                                              timeoutInterval:60];
 
-        [cell.myImageView setImageWithURLRequest:request placeholderImage:[UIImage imageNamed:@"ketten_small_white"] success:^(NSURLRequest *request, NSURLResponse *response, UIImage *image) {
-            _cell.myImageView.image = image;
-        }];
+//        [cell.myImageView setImageWithURLRequest:request placeholderImage:[UIImage imageNamed:@"ketten_small_white"] success:^(NSURLRequest *request, NSURLResponse *response, UIImage *image) {
+//            _cell.myImageView.image = image;
+//        }];
     }
     
     return cell;
@@ -112,7 +112,7 @@ NSString* const kYouTubeAPIKey = @"AIzaSyBQgTWNFmBcR-omkycjHQRGiTtL2DUEm60";
         NSString *urlString = [NSString stringWithFormat:@"http://youtube.com/watch?v=%@", videoId];
 
         NSLog(@"%@", urlString);
-        NSString* escapedUrlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
+        NSString* escapedUrlString = [urlString stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLHostAllowedCharacterSet];
         NSURL *url = [NSURL URLWithString:escapedUrlString];
 
         [[UIApplication sharedApplication] openURL:url];

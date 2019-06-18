@@ -127,8 +127,7 @@
     
 //    SongListViewController *songListViewController = [[SongListViewController alloc] initWithSearchTerm:@"none" SearchBy:@"none" Random:YES Style:UITableViewStylePlain];
 
-    SongListTableViewController *songList = [[SongListTableViewController alloc]
-                                                initWithStyle:UITableViewStylePlain];
+    SongListTableViewController *songList = [[SongListTableViewController alloc] initWithStyle:UITableViewStylePlain];
     songList.searchTerm = @"none";
     songList.searchBy = @"none";
     songList.random = true;

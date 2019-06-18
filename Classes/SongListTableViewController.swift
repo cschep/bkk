@@ -10,9 +10,10 @@ import UIKit
 
 class SongListTableViewController: UITableViewController {
 
-    public var searchTerm: String = ""
-    public var searchBy: String = ""
-    public var random: Bool = false
+
+    @objc public var searchTerm: String = ""
+    @objc public var searchBy: String = ""
+    @objc public var random: Bool = false
 
     private var songs: [Song] = []
     private var activityIndicator = UIActivityIndicatorView(frame: CGRect(0, 0, 20, 20))
@@ -98,7 +99,7 @@ class SongListTableViewController: UITableViewController {
     }
 
     ////////
-    func refreshSongs() {
+    @objc func refreshSongs() {
         loadSongs(updateUI: false)
     }
 
@@ -107,7 +108,7 @@ class SongListTableViewController: UITableViewController {
             startLoadingUI()
         }
 
-        Song.songs(for: searchTerm, searchBy: searchBy, isRandom: random) { (songs) in
+        Song.songs(for: searchTerm, searchBy: searchBy, isRandom: random) { songs in
             DispatchQueue.main.async {
                 self.songs = songs
                 self.tableView.reloadData()

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "bkkViewController.h"
+#import "BKKViewController.h"
 
 @interface BKKAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate>
 
