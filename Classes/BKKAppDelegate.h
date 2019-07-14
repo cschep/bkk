@@ -1,15 +1,15 @@
 //
-//  bkkAppDelegate.h
-//  bkk
+//  BKKAppDelegate.h
+//  BKK
 //
 //  Created by Chris Schepman on 4/4/10.
 //  Copyright Chris Schepman 2010. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "bkkViewController.h"
+#import "BKKViewController.h"
 
-@interface BKKAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate>
+@interface BKKAppDelegate_Old : NSObject <UIApplicationDelegate, UITabBarControllerDelegate>
 
 @property (nonatomic, strong) UIWindow *window;
 @property (nonatomic, strong) UITabBarController *tabBarController;

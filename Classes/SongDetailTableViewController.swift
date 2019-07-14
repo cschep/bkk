@@ -158,11 +158,11 @@ class SongDetailTableViewController: UITableViewController {
     }
 
     func youTubeSearch() {
-        let searchString = "\(song.artist) \(song.title)"
-
-        let vc = YTSearchTableViewController(nibName:"YTSearchTableViewController", bundle:nil)
-        vc.searchString = searchString
-
-        navigationController?.pushViewController(vc, animated: true)
+//        let searchString = "\(song.artist) \(song.title)"
+//
+//        let vc = YTSearchTableViewController(nibName:"YTSearchTableViewController", bundle:nil)
+//        vc.searchString = searchString
+//
+//        navigationController?.pushViewController(vc, animated: true)
     }
 }

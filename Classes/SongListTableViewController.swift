@@ -10,9 +10,9 @@ import UIKit
 
 class SongListTableViewController: UITableViewController {
 
-    public var searchTerm: String = ""
-    public var searchBy: String = ""
-    public var random: Bool = false
+    @objc public var searchTerm: String = ""
+    @objc public var searchBy: String = ""
+    @objc public var random: Bool = false
 
     private var songs: [Song] = []
     private var activityIndicator = UIActivityIndicatorView(frame: CGRect(0, 0, 20, 20))
@@ -48,7 +48,7 @@ class SongListTableViewController: UITableViewController {
 
         if random {
             refreshControl = UIRefreshControl()
-            refreshControl?.addTarget(self, action: #selector(refreshSongs), for: UIControlEvents.valueChanged)
+            refreshControl?.addTarget(self, action: #selector(refreshSongs), for: .valueChanged)
         }
 
 //        [self startLoadingUI];
@@ -76,14 +76,14 @@ class SongListTableViewController: UITableViewController {
         var cell = tableView.dequeueReusableCell(withIdentifier: "SongCell")
 
         if (cell == nil) {
-            cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "SongCell")
+            cell = UITableViewCell(style: .subtitle, reuseIdentifier: "SongCell")
         }
 
         if let cell = cell {
             let song = songs[indexPath.row]
             cell.textLabel!.text = song.title
             cell.detailTextLabel!.text = song.artist
-            cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator;
+            cell.accessoryType = .disclosureIndicator;
         }
 
         return cell!
@@ -96,9 +96,8 @@ class SongListTableViewController: UITableViewController {
         self.navigationController?.pushViewController(detailVC, animated: true)
 
     }
-
-    ////////
-    func refreshSongs() {
+    
+    @objc func refreshSongs() {
         loadSongs(updateUI: false)
     }
 

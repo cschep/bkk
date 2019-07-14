@@ -47,12 +47,11 @@ extension Song {
             var songs: [Song] = []
 
             if let data = data,
-            let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [[String: String]] {
-                if let json = json {
-                    for result in json {
-                        if let song = Song(json: result) {
-                            songs.append(song)
-                        }
+                let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [[String: String]] {
+
+                for result in json {
+                    if let song = Song(json: result) {
+                        songs.append(song)
                     }
                 }
             }

@@ -12,21 +12,21 @@ public class NetworkManager : NSObject {
     static let defaultSession = URLSession(configuration: .default)
     static var dataTask: URLSessionDataTask?
 
-    static func GET(_ urlString: String, completionHandler: @escaping (Any) -> ()) {
+    @objc static func GET(_ urlString: String, completionHandler: @escaping (Any) -> ()) {
 
         if dataTask != nil {
             dataTask?.cancel()
         }
 
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+//        UIApplication.shared.isNetworkActivityIndicatorVisible = true
 
         let url = URL(string: urlString)
         dataTask = defaultSession.dataTask(with: url!) {
             data, response, error in
 
-            DispatchQueue.main.async {
-                UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            }
+//            DispatchQueue.main.async {
+//                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+//            }
 
             if let error = error {
                 print(error.localizedDescription)
