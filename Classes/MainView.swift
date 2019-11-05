@@ -18,26 +18,28 @@ struct FooView : View {
 
 struct MainView : View {
     var body: some View {
-        
-            TabbedView {
-                SearchView().tabItem {
-                    Image(systemName: "music.mic")
-                    Text("search")
-                }.tag(0)
-                
-                FooView().tabItem {
-                    Image(systemName: "circle")
-                    Text("Second")
-                }.tag(1)
-            }
-        
+        TabView {
+            SearchView().tabItem {
+                Image(systemName: "music.mic")
+                Text("search")
+            }.tag(0)
+
+            FooView().tabItem {
+                Image(systemName: "circle")
+                Text("Second")
+            }.tag(1)
+        }
     }
 }
 
 #if DEBUG
 struct MainView_Previews : PreviewProvider {
     static var previews: some View {
-        MainView().environment(\.colorScheme, .dark)
+        Group {
+            MainView().environment(\.colorScheme, .dark)
+            MainView().environment(\.colorScheme, .light)
+        }
+
     }
 }
 #endif

@@ -16,22 +16,20 @@ struct SearchView : View {
 
     var body: some View {
         VStack {
-            Group {
-                Image("SearchLogo")
-                    .cornerRadius(5)
+            Image("SearchLogo")
+                .cornerRadius(5)
 
-                TextField("search!", text: $searchString) {
-                    self.delegate?.searchCompleted(with: self.searchString, searchBy: self.searchBy)
-                }
-                .textFieldStyle(.roundedBorder)
-                .font(.largeTitle)
-                .padding(.top, 5).padding(.bottom, 5)
+            TextField("search!", text: $searchString) {
+                self.delegate?.searchCompleted(with: self.searchString, searchBy: self.searchBy)
+            }
+            .textFieldStyle(RoundedBorderTextFieldStyle())
+            .font(.largeTitle)
+            .padding(.top, 5).padding(.bottom, 5)
 
-                SegmentedControl(selection: $searchBy) {
-                    Text("artist").tag("artist")
-                    Text("title").tag("title")
-                }
-            }.padding(.leading, 20).padding(.trailing, 20)
+            Picker(selection: $searchBy, label: Text("picker")) {
+                Text("artist").tag("artist")
+                Text("title").tag("title")
+            }.pickerStyle(SegmentedPickerStyle())
 
             Spacer()
         }
@@ -43,7 +41,12 @@ struct SearchView : View {
 #if DEBUG
 struct SearchView_Previews : PreviewProvider {
     static var previews: some View {
-        SearchView()
+        Group {
+            SearchView().environment(\.colorScheme, .light)
+
+            SearchView().environment(\.colorScheme, .dark)
+        }
+
     }
 }
 #endif
