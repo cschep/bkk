@@ -10,6 +10,10 @@ import UIKit
 @UIApplicationMain
 class BKKAppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+
+        UINavigationBar.appearance().tintColor = .systemRed
+        UITabBar.appearance().tintColor = .systemRed
+        
         return true
     }
     

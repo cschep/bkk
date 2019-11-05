@@ -49,17 +49,6 @@
 }
 
 - (void)viewDidLoad {
-    if (self.refreshMessageView == nil) {
-        EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.messageView.bounds.size.height, self.messageView.frame.size.width, self.messageView.bounds.size.height) andSmallVersionEnabled:YES];
-        view.delegate = self;
-        [self.messageView addSubview:view];
-        self.messageView.delegate = self;
-        self.refreshMessageView = view;
-    }
-    
-    //update the last update date
-    [self.refreshMessageView refreshLastUpdatedDate];
-    
     UISwipeGestureRecognizer *recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
     [recognizer setDirection:UISwipeGestureRecognizerDirectionDown];
     [[self view] addGestureRecognizer:recognizer];
@@ -129,36 +118,6 @@
 
 - (void)reloadTableViewDataSource{
     [self loadMessageInBackground];
-}
-
-- (void)doneLoadingTableViewData{
-    [self.refreshMessageView egoRefreshScrollViewDataSourceDidFinishedLoading:self.messageView];
-}
-
-#pragma mark -
-#pragma mark UIScrollViewDelegate Methods
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    [self.refreshMessageView egoRefreshScrollViewDidScroll:scrollView];
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-    [self.refreshMessageView egoRefreshScrollViewDidEndDragging:scrollView];
-}
-
-#pragma mark -
-#pragma mark EGORefreshTableHeaderDelegate Methods
-
-- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view{
-    [self reloadTableViewDataSource];
-}
-
-- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view{
-    return [self.messageLoadingSpinner isAnimating];
-}
-
-- (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view{
-    return [NSDate date]; // should return date data source was last changed
 }
 
 - (void)didReceiveMemoryWarning {

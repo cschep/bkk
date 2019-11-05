@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct Song {
     let artist: String
@@ -60,3 +61,9 @@ extension Song {
         }).resume()
     }
 }
+
+#if DEBUG
+extension Song {
+    static var fighter = Song(artist: "Joseph", title: "Fighter")
+}
+#endif

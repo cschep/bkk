@@ -12,7 +12,7 @@
 #import "FavoritesListViewController.h"
 #import "KamikazeViewController.h"
 
-#import "Baby_Ketten-Swift.h"
+#import "baby_ketten-Swift.h"
 
 @implementation BKKAppDelegate_Old
 
