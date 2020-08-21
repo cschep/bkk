@@ -17,7 +17,6 @@ protocol SearchListDelegate: class {
 }
 
 protocol SongDetailDelegate: class {
-    func favoriteToggled(for song: Song)
     func artistSearchRequested(for song: Song)
     func lyricsSearchRequested(for song: Song)
     func youtubeSearchRequested(for song: Song)
@@ -63,10 +62,6 @@ extension SearchCoordinator: SearchListDelegate {
 }
 
 extension SearchCoordinator: SongDetailDelegate {
-    func favoriteToggled(for: Song) {
-        print("favorite!")
-    }
-    
     func artistSearchRequested(for song: Song) {
         self.navigationController.popViewController(animated: false)
 

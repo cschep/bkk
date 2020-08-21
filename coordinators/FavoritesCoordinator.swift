@@ -17,8 +17,7 @@ final class FavoritesCoordinator {
     }
     
     func start() {
-        let vc = UIViewController()
-        vc.view.backgroundColor = .systemPink
-        navigationController.pushViewController(vc, animated: false)
+        let favoriteListView = FavoritesListView()
+        navigationController.pushViewController(UIHostingController(rootView: favoriteListView), animated: false)
     }
 }

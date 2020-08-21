@@ -14,6 +14,16 @@ struct Song {
     let title: String
 }
 
+extension Song: FavoriteItem {
+    var id: String {
+        "\(artist)-\(title)"
+    }
+
+    var isFolder: Bool {
+        false
+    }
+}
+
 extension Song {
     init?(json: [String: Any]) {
         guard let artist = json["artist"] as? String,
@@ -61,6 +71,8 @@ extension Song {
         }).resume()
     }
 }
+
+extension Song: Equatable {}
 
 #if DEBUG
 extension Song {

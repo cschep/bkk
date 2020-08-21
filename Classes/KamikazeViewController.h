@@ -9,11 +9,10 @@
 #import <UIKit/UIKit.h>
 
 
-@interface KamikazeViewController : UIViewController <CAAnimationDelegate> {
-	IBOutlet UITextView *numSongs;
-}
+@interface KamikazeViewController : UIViewController <CAAnimationDelegate>
 
-@property (nonatomic, weak) IBOutlet UIImageView *kamikazeImage;
+@property (nonatomic, strong) UIImageView *kamikazeImageView;
+
 @property BOOL running;
 
 - (void)kamikazeKetten;

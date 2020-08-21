@@ -13,7 +13,12 @@ class BKKAppDelegate: UIResponder, UIApplicationDelegate {
 
         UINavigationBar.appearance().tintColor = .systemRed
         UITabBar.appearance().tintColor = .systemRed
-        
+
+        //if there is no favorites array in defaults then create an empty one
+        if UserDefaults.standard.array(forKey: "favorites") == nil {
+            UserDefaults.standard.set(NSMutableArray(), forKey: "favorites")
+        }
+
         return true
     }
     

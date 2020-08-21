@@ -11,40 +11,33 @@
 
 @implementation KamikazeViewController
 
-// The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-/*
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization.
+- (instancetype)init {
+    if (self = [super initWithNibName:nil bundle:nil]) {
+        self.kamikazeImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"KamikazeKettenBackground"]];
+        self.kamikazeImageView.contentMode = UIViewContentModeScaleToFill;
     }
     return self;
 }
-*/
 
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
-}
-
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    [self.view setBackgroundColor:UIColor.systemBackgroundColor];
+
+    [self.view addSubview:self.kamikazeImageView];
+    self.kamikazeImageView.translatesAutoresizingMaskIntoConstraints = NO;
+    [[self.kamikazeImageView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor] setActive:YES];
+    [[self.kamikazeImageView.widthAnchor constraintEqualToAnchor:self.view.widthAnchor multiplier:0.9] setActive:YES];
+    [[self.kamikazeImageView.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor] setActive:YES];
     
     self.running = NO;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+
     self.navigationController.navigationBar.hidden = YES;
 }
-
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations.
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
 
 - (BOOL)textViewShouldBeginEditing:(UITextField *)textField
 {
@@ -55,19 +48,6 @@
                                           otherButtonTitles:nil];
     [alert show];
     return NO;
-}
-
-- (void)didReceiveMemoryWarning {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc. that aren't in use.
-}
-
-- (void)viewDidUnload {
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)canBecomeFirstResponder {
@@ -115,9 +95,9 @@
     alphaDown.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
 
     
-    [self.kamikazeImage.layer addAnimation:scale forKey:@"move forward by scaling"];
-    [self.kamikazeImage.layer addAnimation:rotate forKey:@"rotate back and forth"];
-    [self.kamikazeImage.layer addAnimation:alphaDown forKey:@"alpha fade out"];
+    [self.kamikazeImageView.layer addAnimation:scale forKey:@"move forward by scaling"];
+    [self.kamikazeImageView.layer addAnimation:rotate forKey:@"rotate back and forth"];
+    [self.kamikazeImageView.layer addAnimation:alphaDown forKey:@"alpha fade out"];
 //    self.kamikazeImage.transform = CGAffineTransformIdentity;
 }
 
@@ -125,8 +105,6 @@
     self.navigationController.view.alpha = 0.0;
     self.navigationController.navigationBar.hidden = NO;
     
-//    SongListViewController *songListViewController = [[SongListViewController alloc] initWithSearchTerm:@"none" SearchBy:@"none" Random:YES Style:UITableViewStylePlain];
-
     SongListTableViewController *songList = [[SongListTableViewController alloc]
                                                 initWithStyle:UITableViewStylePlain];
     songList.searchTerm = @"none";
@@ -141,7 +119,7 @@
                      animations:^{
                          self.navigationController.view.alpha = 1.0;
                      } completion:^(BOOL finished) {
-                         [self.kamikazeImage.layer removeAllAnimations];
+                         [self.kamikazeImageView.layer removeAllAnimations];
                          self.running = NO;
                      }];
 }

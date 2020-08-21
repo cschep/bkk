@@ -16,5 +16,7 @@ final class KamikazeCoordinator {
     }
     
     func start() {
+        let vc = KamikazeViewController()
+        navigationController.pushViewController(vc, animated: false)
     }
 }

@@ -8,17 +8,15 @@
 import SwiftUI
 
 struct SongDetailView: View {
+    @ObservedObject var favoritesList: FavoritesList = .shared
+
     let song: Song
-    
     weak var delegate: SongDetailDelegate?
     
-    @State var isFavorite = true
-    
     func addFavoriteTapped() {
-        self.delegate?.favoriteToggled(for: song)
 
         withAnimation {
-            self.isFavorite.toggle()
+            self.favoritesList.toggle(song: song)
         }
     }
     
@@ -46,7 +44,7 @@ struct SongDetailView: View {
                         HStack {
                             Text("Favorite")
                             Spacer()
-                            if isFavorite {
+                            if favoritesList.contains(item: song) {
                                 Image(systemName: "checkmark")
                                     .foregroundColor(.red)
                                     .animation(.linear(duration: 0.2))

@@ -17,6 +17,8 @@ struct SearchView : View {
     var body: some View {
         VStack {
             Image("SearchLogo")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
                 .cornerRadius(5)
 
             TextField("search!", text: $searchString) {
@@ -33,6 +35,7 @@ struct SearchView : View {
 
             Spacer()
         }
+        .padding()
         .navigationBarTitle(Text("Search"))
         .navigationBarHidden(true)
     }
@@ -43,10 +46,8 @@ struct SearchView_Previews : PreviewProvider {
     static var previews: some View {
         Group {
             SearchView().environment(\.colorScheme, .light)
-
             SearchView().environment(\.colorScheme, .dark)
         }
-
     }
 }
 #endif

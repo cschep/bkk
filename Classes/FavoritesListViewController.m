@@ -35,22 +35,34 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
     [self refreshDisplayList];
 }
 
 - (void)addAction {
-    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"New Folder" message:@"name of the new folder?" delegate:self cancelButtonTitle:@"cancel" otherButtonTitles:@"create", nil];
-    av.alertViewStyle = UIAlertViewStylePlainTextInput;
-    [av show];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"New Folder" message:@"name of the new folder?" preferredStyle:UIAlertControllerStyleAlert];
+    [alert addTextFieldWithConfigurationHandler:nil];
+    [alert addAction:[UIAlertAction actionWithTitle:@"cancel" style:UIAlertActionStyleCancel handler:nil]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSString *folderTitle = alert.textFields.firstObject.text;
+        if (folderTitle != NULL) {
+            NSDictionary *folder = [NSDictionary dictionaryWithObjectsAndKeys:folderTitle, @"title", @"true", @"isFolder", nil];
+
+            [self.favorites addObject:folder];
+
+            [self saveFavorites];
+            [self refreshDisplayList];
+        }
+    }]];
+    [self presentViewController:alert animated:YES completion: nil];
 }
 
 - (void)moveAction {
     NSArray *selectedRows = [self.tableView indexPathsForSelectedRows];
     
     if ([selectedRows count] == 0) {
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Whoops!" message:@"No songs selected!" delegate:self cancelButtonTitle:@"cancel" otherButtonTitles:nil];
-        [av show];
+
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Whoops!" message:@"No songs selected!" preferredStyle:UIAlertControllerStyleAlert];
+        [self presentViewController:alert animated:YES completion:nil];
     } else {
         BOOL okToMove = YES;
         for (NSIndexPath *selectionIndex in selectedRows)
@@ -148,7 +160,7 @@
         [self.tableView deleteRowsAtIndexPaths:selectedRows withRowAnimation:UITableViewRowAnimationLeft];
 
         [self setEditing:NO animated:YES];
-        [self syncFavorites];
+        [self saveFavorites];
         [self updateButtonsToMatchTableState];
 	}
 }
@@ -189,7 +201,7 @@
 
         [self.favorites addObject:folder];
 
-        [self syncFavorites];
+        [self saveFavorites];
         [self refreshDisplayList];
     }
 }
@@ -258,7 +270,7 @@
     
     [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 
-    [self syncFavorites];
+    [self saveFavorites];
     [self updateButtonsToMatchTableState];
 
 }
@@ -289,9 +301,8 @@
     [self updateButtonsToMatchTableState];
 }
 
-- (void)syncFavorites {
+- (void)saveFavorites {
     [[NSUserDefaults standardUserDefaults] setObject:self.favorites forKey:@"favorites"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -299,7 +310,7 @@
         id tapped = [self.displayList objectAtIndex:indexPath.row];
         
         if ([[tapped objectForKey:@"isFolder"] isEqualToString:@"true"]) {
-            FavoritesListViewController *vc = [[FavoritesListViewController alloc] initWithNibName:@"FavoritesListViewController" bundle:nil];
+            FavoritesListViewController *vc = [[FavoritesListViewController alloc] init];
             vc.currentFolder = [tapped objectForKey:@"title"];
             [self.navigationController pushViewController:vc animated:YES];
         } else {
@@ -341,7 +352,7 @@
         [self.displayList removeObjectsAtIndexes:indicesOfItemsToMove];
         
         [self setEditing:NO animated:YES];
-        [self syncFavorites];
+        [self saveFavorites];
         [self updateButtonsToMatchTableState];
     } else {
         [self setEditing:NO animated:YES];
