@@ -44,7 +44,7 @@ struct SongDetailView: View {
                         HStack {
                             Text("Favorite")
                             Spacer()
-                            if favoritesList.contains(item: song) {
+                            if favoritesList.contains(item: .song(song)) {
                                 Image(systemName: "checkmark")
                                     .foregroundColor(.red)
                                     .animation(.linear(duration: 0.2))

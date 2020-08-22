@@ -80,6 +80,7 @@
 		95FD622A24F04C48006A0833 /* FavoritesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD622924F04C48006A0833 /* FavoritesList.swift */; };
 		95FD622C24F04FFB006A0833 /* FavoritesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD622B24F04FFB006A0833 /* FavoritesListView.swift */; };
 		95FD622E24F073BA006A0833 /* TextAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD622D24F073BA006A0833 /* TextAlert.swift */; };
+		95FD623024F0AE97006A0833 /* SongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FD622F24F0AE97006A0833 /* SongCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -188,6 +189,7 @@
 		95FD622924F04C48006A0833 /* FavoritesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesList.swift; sourceTree = "<group>"; };
 		95FD622B24F04FFB006A0833 /* FavoritesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListView.swift; sourceTree = "<group>"; };
 		95FD622D24F073BA006A0833 /* TextAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAlert.swift; sourceTree = "<group>"; };
+		95FD622F24F0AE97006A0833 /* SongCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -343,6 +345,7 @@
 				9514F64322DBDCAB00D93DF5 /* SongListView.swift */,
 				95FD622B24F04FFB006A0833 /* FavoritesListView.swift */,
 				95FD622D24F073BA006A0833 /* TextAlert.swift */,
+				95FD622F24F0AE97006A0833 /* SongCell.swift */,
 			);
 			name = views;
 			path = Classes;
@@ -520,6 +523,7 @@
 				9514F64422DBDCAB00D93DF5 /* SongListView.swift in Sources */,
 				958BA86F24EF43B900527BE5 /* FavoritesCoordinator.swift in Sources */,
 				958BA87124EF441C00527BE5 /* SongDetailView.swift in Sources */,
+				95FD623024F0AE97006A0833 /* SongCell.swift in Sources */,
 				95FD622A24F04C48006A0833 /* FavoritesList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

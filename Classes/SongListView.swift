@@ -7,19 +7,6 @@
 
 import SwiftUI
 
-struct SongCell : View {
-    let song: Song
-
-    var body: some View {
-        VStack(alignment: .leading) {
-            Text(song.title)
-                .font(.headline)
-            Text(song.artist)
-                .font(.subheadline)
-        }
-    }
-}
-
 struct SongListView : View {
     let searchTerm: String
     let songs: [Song]
@@ -35,7 +22,8 @@ struct SongListView : View {
                     SongCell(song: song)
                 })
             }
-        }.navigationBarTitle(Text(searchTerm))
+        }
+        .navigationBarTitle(Text(searchTerm), displayMode: .inline)
     }
 }
 

@@ -14,13 +14,9 @@ struct Song {
     let title: String
 }
 
-extension Song: FavoriteItem {
+extension Song {
     var id: String {
         "\(artist)-\(title)"
-    }
-
-    var isFolder: Bool {
-        false
     }
 }
 

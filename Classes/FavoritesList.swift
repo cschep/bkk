@@ -7,19 +7,29 @@
 
 import Foundation
 
-protocol FavoriteItem {
-    var id: String { get }
-    var title: String { get }
-    var isFolder: Bool { get }
+//protocol FavoriteItem {
+//    var id: String { get }
+//    var title: String { get }
+//    var artist: String { get }
+//    var isFolder: Bool { get }
+//}
+
+enum FavoriteItem {
+    case folder(FavoritesFolder)
+    case song(Song)
+
+    var id: String {
+        switch self {
+        case .song(let song):
+            return song.id
+        case .folder(let folder):
+            return folder.name
+        }
+    }
 }
 
-struct FavoritesFolder: FavoriteItem {
-    var id: String {
-        title
-    }
-
-    let title: String
-    let isFolder = true
+struct FavoritesFolder {
+    let name: String
 }
 
 class FavoritesList: ObservableObject {
@@ -31,10 +41,10 @@ class FavoritesList: ObservableObject {
     @Published var favorites: [FavoriteItem] = []
 
     func toggle(song: Song) {
-        if contains(item: song) {
-            remove(item: song)
+        if contains(item: .song(song)) {
+            remove(item: .song(song))
         } else {
-            add(item: song)
+            add(item: .song(song))
         }
     }
 
