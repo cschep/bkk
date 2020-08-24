@@ -4,6 +4,7 @@
 //  Created by Chris Eidhof on 20.04.20.
 //  Copyright © 2020 objc.io. All rights reserved.
 //
+
 import SwiftUI
 import UIKit
 
@@ -42,9 +43,9 @@ struct AlertWrapper<Content: View>: UIViewControllerRepresentable {
         return Coordinator()
     }
 
-
     func updateUIViewController(_ uiViewController: UIHostingController<Content>, context: UIViewControllerRepresentableContext<AlertWrapper>) {
         uiViewController.rootView = content
+
         if isPresented && uiViewController.presentedViewController == nil {
             var alert = self.alert
             alert.action = {
@@ -54,6 +55,7 @@ struct AlertWrapper<Content: View>: UIViewControllerRepresentable {
             context.coordinator.alertController = UIAlertController(alert: alert)
             uiViewController.present(context.coordinator.alertController!, animated: true)
         }
+
         if !isPresented && uiViewController.presentedViewController == context.coordinator.alertController {
             uiViewController.dismiss(animated: true)
         }

@@ -7,38 +7,43 @@
 
 import Foundation
 
-//protocol FavoriteItem {
-//    var id: String { get }
-//    var title: String { get }
-//    var artist: String { get }
-//    var isFolder: Bool { get }
-//}
-
 enum FavoriteItem {
-    case folder(FavoritesFolder)
-    case song(Song)
+    case folder(name: String, folder: String? = nil)
+    case song(Song, folder: String? = nil)
 
     var id: String {
         switch self {
-        case .song(let song):
+        case .song(let song, _):
             return song.id
-        case .folder(let folder):
-            return folder.name
+        case .folder(let name, _):
+            return name
+        }
+    }
+
+    var inFolderName: String {
+        switch self {
+        case .song(_, let folder):
+            return folder ?? ""
+        case .folder(_, let folder):
+            return folder ?? ""
         }
     }
 }
 
-struct FavoritesFolder {
-    let name: String
-}
-
 class FavoritesList: ObservableObject {
-
-    private init() { }
-
     static let shared = FavoritesList()
 
-    @Published var favorites: [FavoriteItem] = []
+    private init() {
+        self.sort()
+    }
+
+    @Published var favorites: [FavoriteItem] = [
+        .folder(name: "Folder 1"),
+        .song(Song(artist: "coheed", title: "awesome")),
+        .song(Song(artist: "coheed", title: "awesome again")),
+        .song(Song(artist: "coheed", title: "awesome three")),
+        .song(Song(artist: "coheed", title: "awesome in folder"), folder: "Folder 1")
+    ]
 
     func toggle(song: Song) {
         if contains(item: .song(song)) {
@@ -49,14 +54,19 @@ class FavoritesList: ObservableObject {
     }
 
     func add(item: FavoriteItem) {
-        // TODO: check for dupes
-        self.favorites.append(item)
+        if !contains(item: item) {
+            favorites.append(item)
+            sort()
+        }
+
+        //TODO: return result for failure?
     }
 
     func remove(item: FavoriteItem) {
         favorites.removeAll { i in
             i.id == item.id
         }
+        sort()
 
         //TODO: and remove all the folder's contents
     }
@@ -70,6 +80,28 @@ class FavoritesList: ObservableObject {
     func contains(item: FavoriteItem) -> Bool {
         return self.favorites.contains { i in
             i.id == item.id
+        }
+    }
+
+    private func sort() {
+        self.favorites.sort { (lhs, rhs) -> Bool in
+            switch (lhs, rhs) {
+            case (.folder(let lName, _), .folder(let rName, _)):
+                return lName.caseInsensitiveCompare(rName) == .orderedAscending
+            case (.folder, .song):
+                return true
+            case (.song, .folder):
+                return false
+            case (.song(let lSong, _), .song(let rSong, _)):
+                switch lSong.artist.caseInsensitiveCompare(rSong.artist) {
+                case .orderedAscending:
+                    return true
+                case .orderedSame:
+                    return lSong.title.caseInsensitiveCompare(rSong.title) == .orderedAscending
+                case .orderedDescending:
+                    return false
+                }
+            }
         }
     }
  }
