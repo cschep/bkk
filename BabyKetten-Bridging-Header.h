@@ -10,5 +10,6 @@
 
 #import "FavoritesListViewController.h"
 #import "KamikazeViewController.h"
+#import "BKKViewController.h"
 
 #endif /* BabyKetten_Bridging_Header_h */

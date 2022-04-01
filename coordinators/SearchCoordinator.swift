@@ -5,7 +5,6 @@
 //  Created by Christopher Schepman on 7/19/19.
 //
 
-import SwiftUI
 import UIKit
 
 protocol SearchDelegate: class {
@@ -33,20 +32,24 @@ final class SearchCoordinator {
     }
     
     func start() {
-        var searchView = SearchView()
-        searchView.delegate = self
-        navigationController.pushViewController(UIHostingController(rootView: searchView), animated: false)
+//        var searchView = SearchView()
+//        searchView.delegate = self
+
+        let bkkVC = BKKViewController(nibName: "bkkViewController_iPhone5", bundle: .main)
+        navigationController.pushViewController(bkkVC, animated: false)
     }
 }
 
 extension SearchCoordinator: SearchDelegate {
     func searchCompleted(with searchTerm: String, searchBy: String) {
         Song.songs(for: searchTerm, searchBy: searchBy, isRandom: false) { songs in
-            var songListView = SongListView(searchTerm: searchTerm, songs: songs)
-            songListView.delegate = self
+//            var songListView = SongListView(searchTerm: searchTerm, songs: songs)
+//            songListView.delegate = self
+
+            let vc = SongListTableViewController()
 
             DispatchQueue.main.async {
-                self.navigationController.pushViewController(UIHostingController(rootView: songListView), animated: true)
+                self.navigationController.pushViewController(vc, animated: true)
             }
         }
     }
@@ -54,10 +57,11 @@ extension SearchCoordinator: SearchDelegate {
 
 extension SearchCoordinator: SearchListDelegate {
     func selected(_ song: Song) {
-        var songDetailView = SongDetailView(song: song)
-        songDetailView.delegate = self
+//        var songDetailView = SongDetailView(song: song)
+//        songDetailView.delegate = self
 
-        self.navigationController.pushViewController(UIHostingController(rootView: songDetailView), animated: true)
+        let vc = SongDetailTableViewController(song: song)
+        self.navigationController.pushViewController(vc, animated: true)
     }
 }
 
@@ -68,9 +72,13 @@ extension SearchCoordinator: SongDetailDelegate {
         Song.songs(for: song.artist, searchBy: "artist", isRandom: false) { songs in
             var songListView = SongListView(searchTerm: song.artist, songs: songs)
             songListView.delegate = self
-            
+
+            let songListVC = SongListTableViewController()
+            songListVC.searchTerm = song.artist
+            songListVC.searchBy = "artist"
+
             DispatchQueue.main.async {
-                self.navigationController.pushViewController(UIHostingController(rootView: songListView), animated: true)
+                self.navigationController.pushViewController(songListVC, animated: true)
             }
         }
     }
