@@ -7,7 +7,6 @@
 //
 
 #import "YTSearchTableViewController.h"
-//#import "UIImageView+AFNetworking.h"
 #import "YTTableViewCell.h"
 #import "baby_ketten-Swift.h"
 
@@ -22,20 +21,22 @@ NSString* const kYouTubeAPIKey = @"AIzaSyBQgTWNFmBcR-omkycjHQRGiTtL2DUEm60";
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    // Whoever wrote this network manager didn't do a single ounce of error handling did they?
     [NetworkManager GET:[self getYouTubeSearchURL] completionHandler:^(id JSON) {
-        NSLog(@"%@", JSON);
-        [self loadVideosFromJSON:JSON];
+        if (JSON != nil) {
+            NSLog(@"%@", JSON);
+            [self loadVideosFromJSON:JSON];
+        } else {
+            // this is not good
+            [self loadVideosFromJSON:@{@"items": @[]}];
+        }
     }];
 }
 
 - (NSString *)getYouTubeSearchURL {
     NSString *urlFormat = @"https://www.googleapis.com/youtube/v3/search?part=snippet&q=%@&maxResults=15&type=video&key=%@";
-
     NSString *escapedSearchString = [self.searchString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
-
-    NSString *youTubeSearchUrl = [NSString stringWithFormat:urlFormat, escapedSearchString, kYouTubeAPIKey];
-
-    return youTubeSearchUrl;
+    return [NSString stringWithFormat:urlFormat, escapedSearchString, kYouTubeAPIKey];
 }
 
 - (void)loadVideosFromJSON:(id)JSON {
@@ -45,19 +46,17 @@ NSString* const kYouTubeAPIKey = @"AIzaSyBQgTWNFmBcR-omkycjHQRGiTtL2DUEm60";
         [videos addObject:entry];
     }
 
-    if ([videos count] == 0) {
-        self.navigationItem.title = @"Not Found!";
-    } else {
-        self.navigationItem.title = @"Results";
-    }
-
     self.videos = videos;
-    [self.tableView reloadData];
-    [self.tableView flashScrollIndicators];
-}
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if ([videos count] == 0) {
+            self.navigationItem.title = @"Not Found!";
+        } else {
+            self.navigationItem.title = @"Results";
+        }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+        [self.tableView reloadData];
+    });
 }
 
 #pragma mark - Table view data source
@@ -85,10 +84,10 @@ NSString* const kYouTubeAPIKey = @"AIzaSyBQgTWNFmBcR-omkycjHQRGiTtL2DUEm60";
         cell.titleLabel.text = video[@"snippet"][@"title"];
         cell.descriptionLabel.text = video[@"snippet"][@"description"];
 
-        __weak YTTableViewCell *_cell = cell;
-        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:video[@"snippet"][@"thumbnails"][@"default"][@"url"]]
-                                                 cachePolicy:NSURLRequestReturnCacheDataElseLoad
-                                             timeoutInterval:60];
+//        __weak YTTableViewCell *_cell = cell;
+//        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:video[@"snippet"][@"thumbnails"][@"default"][@"url"]]
+//                                                 cachePolicy:NSURLRequestReturnCacheDataElseLoad
+//                                             timeoutInterval:60];
 
 //        [cell.myImageView setImageWithURLRequest:request placeholderImage:[UIImage imageNamed:@"ketten_small_white"] success:^(NSURLRequest *request, NSURLResponse *response, UIImage *image) {
 //            _cell.myImageView.image = image;
@@ -115,7 +114,7 @@ NSString* const kYouTubeAPIKey = @"AIzaSyBQgTWNFmBcR-omkycjHQRGiTtL2DUEm60";
         NSString* escapedUrlString = [urlString stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLHostAllowedCharacterSet];
         NSURL *url = [NSURL URLWithString:escapedUrlString];
 
-        [[UIApplication sharedApplication] openURL:url];
+        [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
     }
 }
 

@@ -20,11 +20,6 @@
 }
 
 - (void)searchFor:(NSString *)searchTerm By:(NSString *)searchBy UsingRandom:(BOOL)random  {
-//    SongListViewController *songListViewController = [[SongListViewController alloc]
-//                                                          initWithSearchTerm:searchTerm
-//                                                                    SearchBy:searchBy
-//                                                                      Random:random
-//                                                                       Style:UITableViewStylePlain];
     SongListTableViewController *vc = [[SongListTableViewController alloc]
                                           initWithStyle:UITableViewStylePlain];
 
@@ -49,6 +44,23 @@
 }
 
 - (void)viewDidLoad {
+
+    self.imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bkklogobwtouchup.jpg"]];
+    self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+//    self.imageView.layer.borderColor = [[UIColor redColor] CGColor];
+//    self.imageView.layer.borderWidth = 2;
+    [self.view addSubview:self.imageView];
+
+    id constraints = @[
+        [self.imageView.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor],
+        [self.imageView.widthAnchor constraintEqualToAnchor:self.view.widthAnchor],
+        [self.imageView.heightAnchor constraintEqualToAnchor:self.view.heightAnchor multiplier: 0.15],
+        [self.imageView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor],
+    ];
+
+    [NSLayoutConstraint activateConstraints:constraints];
+
     if (self.refreshMessageView == nil) {
         EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.messageView.bounds.size.height, self.messageView.frame.size.width, self.messageView.bounds.size.height) andSmallVersionEnabled:YES];
         view.delegate = self;

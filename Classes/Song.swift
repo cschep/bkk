@@ -27,7 +27,7 @@ extension Song {
 }
 
 extension Song {
-    private static let urlComponents = URLComponents(string: "http://bkk.schepman.org")
+    private static let urlComponents = URLComponents(string: "https://bkk.schepman.org")
     private static let session = URLSession.shared
 
     static func songs(for term: String, searchBy: String, isRandom: Bool, completion: @escaping ([Song]) -> Void) {
@@ -48,11 +48,9 @@ extension Song {
 
             if let data = data,
             let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [[String: String]] {
-                if let json = json {
-                    for result in json {
-                        if let song = Song(json: result) {
-                            songs.append(song)
-                        }
+                for result in json {
+                    if let song = Song(json: result) {
+                        songs.append(song)
                     }
                 }
             }

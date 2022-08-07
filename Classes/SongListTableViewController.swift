@@ -49,7 +49,7 @@ class SongListTableViewController: UITableViewController {
 
         if random {
             refreshControl = UIRefreshControl()
-            refreshControl?.addTarget(self, action: #selector(refreshSongs), for: UIControlEvents.valueChanged)
+            refreshControl?.addTarget(self, action: #selector(refreshSongs), for: UIControl.Event.valueChanged)
         }
 
 //        [self startLoadingUI];
@@ -77,14 +77,14 @@ class SongListTableViewController: UITableViewController {
         var cell = tableView.dequeueReusableCell(withIdentifier: "SongCell")
 
         if (cell == nil) {
-            cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "SongCell")
+            cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "SongCell")
         }
 
         if let cell = cell {
             let song = songs[indexPath.row]
             cell.textLabel!.text = song.title
             cell.detailTextLabel!.text = song.artist
-            cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator;
+            cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator;
         }
 
         return cell!

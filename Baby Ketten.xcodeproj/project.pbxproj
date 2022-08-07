@@ -62,13 +62,10 @@
 		83F023C016581BC900467FFB /* whiteArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 83F023B816581BC900467FFB /* whiteArrow.png */; };
 		83F023C116581BC900467FFB /* whiteArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83F023B916581BC900467FFB /* whiteArrow@2x.png */; };
 		83F3CA5A11780BE00033611B /* bkk_vert_realcat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 83F3CA5511780BE00033611B /* bkk_vert_realcat.jpg */; };
-		952C4259184991B4008BA0B0 /* bkkViewController_iPhone5.xib in Resources */ = {isa = PBXBuildFile; fileRef = 952C4258184991B4008BA0B0 /* bkkViewController_iPhone5.xib */; };
 		952D459D1B1DFE27001AC720 /* YTSearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D459B1B1DFE27001AC720 /* YTSearchTableViewController.m */; };
-		952D459E1B1DFE27001AC720 /* YTSearchTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 952D459C1B1DFE27001AC720 /* YTSearchTableViewController.xib */; };
 		952D45A21B1E2D29001AC720 /* YTTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 952D45A11B1E2D29001AC720 /* YTTableViewCell.xib */; };
 		952D45A51B1E2E36001AC720 /* YTTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D45A41B1E2E36001AC720 /* YTTableViewCell.m */; };
 		954FC13A18488CF3001750CE /* FavoritesListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 954FC13918488CF3001750CE /* FavoritesListViewController.xib */; };
-		954FC13C18488D0B001750CE /* SongDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 954FC13B18488D0B001750CE /* SongDetailViewController.xib */; };
 		95715BCB186F6BEB0009961C /* Icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 95715BCA186F6BEB0009961C /* Icon-120.png */; };
 		95715BCD186F6CAD0009961C /* Icon-80.png in Resources */ = {isa = PBXBuildFile; fileRef = 95715BCC186F6CAD0009961C /* Icon-80.png */; };
 		95715BCF186F7B5D0009961C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95715BCE186F7B5D0009961C /* Images.xcassets */; };
@@ -86,6 +83,7 @@
 		95D95E991DAACE74000421AB /* SongListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D95E981DAACE74000421AB /* SongListTableViewController.swift */; };
 		95D95E9C1DABD649000421AB /* CGRect+Sanity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D95E9B1DABD649000421AB /* CGRect+Sanity.swift */; };
 		95FF817D289F8C6400334A90 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95FF817C289F8C6400334A90 /* LaunchScreen.storyboard */; };
+		95FF817F289F943700334A90 /* SongDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95FF817E289F943700334A90 /* SongDetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -163,15 +161,12 @@
 		83F023B916581BC900467FFB /* whiteArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteArrow@2x.png"; sourceTree = "<group>"; };
 		83F3CA5511780BE00033611B /* bkk_vert_realcat.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bkk_vert_realcat.jpg; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* baby ketten-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "baby ketten-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
-		952C4258184991B4008BA0B0 /* bkkViewController_iPhone5.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = bkkViewController_iPhone5.xib; sourceTree = "<group>"; };
 		952D459A1B1DFE27001AC720 /* YTSearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTSearchTableViewController.h; sourceTree = "<group>"; };
 		952D459B1B1DFE27001AC720 /* YTSearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTSearchTableViewController.m; sourceTree = "<group>"; };
-		952D459C1B1DFE27001AC720 /* YTSearchTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YTSearchTableViewController.xib; sourceTree = "<group>"; };
 		952D45A11B1E2D29001AC720 /* YTTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YTTableViewCell.xib; sourceTree = "<group>"; };
 		952D45A31B1E2E36001AC720 /* YTTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTTableViewCell.h; sourceTree = "<group>"; };
 		952D45A41B1E2E36001AC720 /* YTTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTTableViewCell.m; sourceTree = "<group>"; };
 		954FC13918488CF3001750CE /* FavoritesListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavoritesListViewController.xib; sourceTree = "<group>"; };
-		954FC13B18488D0B001750CE /* SongDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SongDetailViewController.xib; sourceTree = "<group>"; };
 		95715BCA186F6BEB0009961C /* Icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-120.png"; sourceTree = "<group>"; };
 		95715BCC186F6CAD0009961C /* Icon-80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-80.png"; sourceTree = "<group>"; };
 		95715BCE186F7B5D0009961C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "baby ketten/Images.xcassets"; sourceTree = "<group>"; };
@@ -192,6 +187,7 @@
 		95D95E981DAACE74000421AB /* SongListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongListTableViewController.swift; sourceTree = "<group>"; };
 		95D95E9B1DABD649000421AB /* CGRect+Sanity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Sanity.swift"; sourceTree = "<group>"; };
 		95FF817C289F8C6400334A90 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		95FF817E289F943700334A90 /* SongDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SongDetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -373,14 +369,12 @@
 		83FD5CA4160F9DDB007F28D4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				952C4258184991B4008BA0B0 /* bkkViewController_iPhone5.xib */,
+				95FF817E289F943700334A90 /* SongDetailViewController.xib */,
 				83CD087D1666762200BEAB0D /* bkkViewController.xib */,
 				8366C1711340523000D2B518 /* CalendarDetailViewController.xib */,
 				954FC13918488CF3001750CE /* FavoritesListViewController.xib */,
 				9586D3E618637FE500601F3F /* FolderPickerTableViewController.xib */,
 				8397065312F4AA6C00050E9E /* KamikazeViewController.xib */,
-				954FC13B18488D0B001750CE /* SongDetailViewController.xib */,
-				952D459C1B1DFE27001AC720 /* YTSearchTableViewController.xib */,
 				952D45A11B1E2D29001AC720 /* YTTableViewCell.xib */,
 				95FF817C289F8C6400334A90 /* LaunchScreen.storyboard */,
 			);
@@ -508,11 +502,9 @@
 				83F023BD16581BC900467FFB /* blackArrow@2x.png in Resources */,
 				95FF817D289F8C6400334A90 /* LaunchScreen.storyboard in Resources */,
 				83F023BE16581BC900467FFB /* blueArrow.png in Resources */,
-				954FC13C18488D0B001750CE /* SongDetailViewController.xib in Resources */,
-				952C4259184991B4008BA0B0 /* bkkViewController_iPhone5.xib in Resources */,
 				83F023BF16581BC900467FFB /* blueArrow@2x.png in Resources */,
+				95FF817F289F943700334A90 /* SongDetailViewController.xib in Resources */,
 				83F023C016581BC900467FFB /* whiteArrow.png in Resources */,
-				952D459E1B1DFE27001AC720 /* YTSearchTableViewController.xib in Resources */,
 				83F023C116581BC900467FFB /* whiteArrow@2x.png in Resources */,
 				954FC13A18488CF3001750CE /* FavoritesListViewController.xib in Resources */,
 				83CD08751666737F00BEAB0D /* kamikaze_ketten_background@2x.png in Resources */,
@@ -561,7 +553,6 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -595,7 +586,6 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Christopher Schepman (78FKA3KWWM)";
@@ -670,7 +660,6 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -742,7 +731,6 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

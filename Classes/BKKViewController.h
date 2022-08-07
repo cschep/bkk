@@ -12,10 +12,11 @@
 @interface BKKViewController : UIViewController <UITextViewDelegate, EGORefreshTableHeaderDelegate>
 
 @property (nonatomic, strong) NSString *message;
-@property (nonatomic, weak) IBOutlet UITextView *messageView;
-@property (nonatomic, weak) IBOutlet UIActivityIndicatorView *messageLoadingSpinner;
-@property (nonatomic, weak)	IBOutlet UISegmentedControl *segmented;
-@property (nonatomic, weak)	IBOutlet UITextField *searchTextField;
+@property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, weak) UITextView *messageView;
+@property (nonatomic, weak) UIActivityIndicatorView *messageLoadingSpinner;
+@property (nonatomic, weak)	UISegmentedControl *segmented;
+@property (nonatomic, weak)	UITextField *searchTextField;
 
 @property (nonatomic, strong) EGORefreshTableHeaderView *refreshMessageView;
 

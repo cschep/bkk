@@ -13,7 +13,7 @@ public class NetworkManager : NSObject {
     static var dataTask: URLSessionDataTask?
 
     @objc
-    static func GET(_ urlString: String, completionHandler: @escaping (Any) -> ()) {
+    static func GET(_ urlString: String, completionHandler: @escaping (Any?) -> ()) {
 
         if dataTask != nil {
             dataTask?.cancel()
@@ -40,6 +40,8 @@ public class NetworkManager : NSObject {
                             completionHandler(json)
                         }
                     }
+                } else {
+                    completionHandler(nil)
                 }
             }
         }

@@ -8,40 +8,84 @@
 
 import UIKit
 
+class SongDetailHeaderView: UIView {
+    let imageView: UIImageView = {
+        return UIImageView(image: UIImage(named:"ketten_small_white.png"))
+    }()
+    let titleLabel: UILabel = {
+        let l = UILabel()
+        l.font = UIFont.systemFont(ofSize: 36)
+        l.adjustsFontSizeToFitWidth = true
+        return l
+    }()
+    let artistLabel: UILabel = {
+        let l = UILabel()
+        l.font = UIFont.systemFont(ofSize: 14)
+        return l
+    }()
+
+    override init(frame: CGRect) {
+        super.init(frame: .zero)
+
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        artistLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        imageView.layer.borderColor = UIColor.red.cgColor
+        imageView.layer.borderWidth = 2
+
+        let labelStack = UIStackView(arrangedSubviews: [titleLabel, artistLabel])
+        labelStack.translatesAutoresizingMaskIntoConstraints = false
+        labelStack.axis = .vertical
+
+        addSubview(imageView)
+        addSubview(labelStack)
+
+        let constraints = [
+            imageView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
+            imageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.20),
+
+            labelStack.topAnchor.constraint(equalTo: imageView.topAnchor),
+            labelStack.leadingAnchor.constraint(equalTo: imageView.trailingAnchor),
+            labelStack.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
+        ]
+        NSLayoutConstraint.activate(constraints)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
+}
+
 class SongDetailTableViewController: UITableViewController {
+    let headerView: SongDetailHeaderView = {
+        return SongDetailHeaderView()
+    }()
 
-    @IBOutlet var headerView: UIView!
-    @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var artistLabel: UILabel!
-
-    var song: Song
+    let song: Song
     var isFavorite: Bool = false
     var favoriteCell: UITableViewCell?
 
     init(song: Song) {
         self.song = song
-        super.init(nibName: "SongDetailViewController", bundle: nil)
+        super.init(style: .grouped)
     }
 
     required init?(coder: NSCoder) {
-        return nil
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        favoriteCell = tableView.cellForRow(at: IndexPath(row: 0, section: 0))
-        setCheckmarkForFavorite()
+        fatalError()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        favoriteCell = tableView.cellForRow(at: IndexPath(row: 0, section: 0))
+        setCheckmarkForFavorite()
 
         title = "Details"
     }
 
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
@@ -120,10 +164,8 @@ class SongDetailTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if (section == 0) {
-
-            self.artistLabel.text = song.artist;
-            self.titleLabel.text = song.title;
-
+            self.headerView.titleLabel.text = song.title;
+            self.headerView.artistLabel.text = "-" + song.artist;
 
             return self.headerView;
         } else {
@@ -160,7 +202,7 @@ class SongDetailTableViewController: UITableViewController {
     func youTubeSearch() {
         let searchString = "\(song.artist) \(song.title)"
 
-        let vc = YTSearchTableViewController(nibName:"YTSearchTableViewController", bundle:nil)
+        let vc = YTSearchTableViewController()
         vc.searchString = searchString
 
         navigationController?.pushViewController(vc, animated: true)

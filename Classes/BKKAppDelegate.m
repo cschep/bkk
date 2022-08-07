@@ -25,11 +25,7 @@
     [self.tabBarController.tabBar setTintColor:[UIColor redColor]];
     [self.tabBarController.tabBar setBarTintColor:[UIColor blackColor]];
 
-    if([UIScreen mainScreen].bounds.size.height == 568) {
-        self.mainViewController = [[BKKViewController alloc] initWithNibName:@"bkkViewController_iPhone5" bundle:nil];
-    } else {
-        self.mainViewController = [[BKKViewController alloc] initWithNibName:@"bkkViewController" bundle:nil];
-    }
+    self.mainViewController = [[BKKViewController alloc] init];
     
     self.navControllerSearch = [[UINavigationController alloc] initWithRootViewController:self.mainViewController];
 	[self.navControllerSearch navigationBar].hidden = YES;
