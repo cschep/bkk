@@ -9,6 +9,7 @@
 #import "CalendarViewController.h"
 #import "CalendarDetailViewController.h"
 #import "Date.h"
+#import "baby_ketten-Swift.h"
 
 @implementation CalendarViewController
 
@@ -60,15 +61,15 @@ NSString* const kGoogleCalendarAPIKey = @"AIzaSyBQgTWNFmBcR-omkycjHQRGiTtL2DUEm6
 }
 
 - (void)loadDates {
-//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-//    [manager GET:[self getCalendarURL] parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
-//        [self loadDatesFromJSON:JSON];
-//
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        NSLog(@"error fetching search results: %@", error);
-//        self.navigationItem.title = @"Not Found!";
-//        [self stopLoadingUI];
-//    }];
+    [NetworkManager GET:[self getCalendarURL] completionHandler:^(id JSON) {
+        if (JSON != nil) {
+            NSLog(@"%@", JSON);
+            [self loadDatesFromJSON:JSON];
+        } else {
+            // this is not good
+            [self loadDatesFromJSON:@{}];
+        }
+    }];
 }
 
 - (NSString *)getCalendarURL {
