@@ -7,9 +7,7 @@
 //
 
 #import "FavoritesListViewController.h"
-#import "SongDetailViewController.h"
 #import "FolderPickerTableViewController.h"
-#import "Song.h"
 
 @implementation FavoritesListViewController
 
@@ -37,8 +35,11 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
     [self refreshDisplayList];
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleDefault;
 }
 
 - (void)addAction {
@@ -229,7 +230,7 @@
         }
         
         NSPredicate *pred = [NSPredicate predicateWithFormat:@"folder == %@", [current objectForKey:@"title"]];
-        int count = [[self.favorites filteredArrayUsingPredicate:pred] count];
+        int count = (int)[[self.favorites filteredArrayUsingPredicate:pred] count];
         
         cell.textLabel.text = [NSString stringWithFormat:@"📁 %@", [current objectForKey:@"title"]];
         cell.textLabel.font = [UIFont boldSystemFontOfSize:18.0];
@@ -305,12 +306,12 @@
             vc.currentFolder = [tapped objectForKey:@"title"];
             [self.navigationController pushViewController:vc animated:YES];
         } else {
-            Song *song = [[Song alloc] init];
-            song.title = [tapped objectForKey:@"title"];
-            song.artist = [tapped objectForKey:@"artist"];
-            
-            SongDetailViewController *songDetailViewController = [[SongDetailViewController alloc] initWithSong:song];
-            [self.navigationController pushViewController:songDetailViewController animated:YES];
+//            Song *song = [[Song alloc] init];
+//            song.title = [tapped objectForKey:@"title"];
+//            song.artist = [tapped objectForKey:@"artist"];
+//            
+//            SongDetailViewController *songDetailViewController = [[SongDetailViewController alloc] initWithSong:song];
+//            [self.navigationController pushViewController:songDetailViewController animated:YES];
         }
     }
 }
@@ -325,7 +326,7 @@
         {
             //find it in favorites
             id itemToMove = [self.displayList objectAtIndex:selectionIndex.row];
-            int indexOfItemToMove = [self.favorites indexOfObjectIdenticalTo:itemToMove];
+            NSUInteger indexOfItemToMove = [self.favorites indexOfObjectIdenticalTo:itemToMove];
 
             //change it
             NSMutableDictionary *song = [[self.favorites objectAtIndex:indexOfItemToMove] mutableCopy];

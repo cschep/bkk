@@ -42,15 +42,11 @@
 		83B7C5CF1296E84700A52BD9 /* comment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83B7C5CD1296E84700A52BD9 /* comment@2x.png */; };
 		83CD08751666737F00BEAB0D /* kamikaze_ketten_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CD08731666737F00BEAB0D /* kamikaze_ketten_background@2x.png */; };
 		83CD08761666737F00BEAB0D /* kamikaze_ketten_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CD08741666737F00BEAB0D /* kamikaze_ketten_background.png */; };
-		83CD0878166674B900BEAB0D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CD0877166674B900BEAB0D /* Default-568h@2x.png */; };
 		83CD087E1666762200BEAB0D /* bkkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83CD087D1666762200BEAB0D /* bkkViewController.xib */; };
 		83CD08801666782700BEAB0D /* latest_mews_taller.png in Resources */ = {isa = PBXBuildFile; fileRef = 83CD087F1666782700BEAB0D /* latest_mews_taller.png */; };
-		83D34B6A160E74370065EF6A /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 8381B60F1169C65500B545AB /* Song.m */; };
 		83D34B6B160E74370065EF6A /* Date.m in Sources */ = {isa = PBXBuildFile; fileRef = 832FB83C11BE200B0084909E /* Date.m */; };
-		83D34B6C160E74370065EF6A /* SongDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8382983F116C69F600EE8539 /* SongDetailViewController.m */; };
-		83D34B6D160E74370065EF6A /* SongListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83ADD62E116997AD00BF3809 /* SongListViewController.m */; };
-		83D34B6E160E74370065EF6A /* bkkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83ADD5FE116993AB00BF3809 /* bkkViewController.m */; };
-		83D34B6F160E74370065EF6A /* bkkAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* bkkAppDelegate.m */; };
+		83D34B6E160E74370065EF6A /* BKKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83ADD5FE116993AB00BF3809 /* BKKViewController.m */; };
+		83D34B6F160E74370065EF6A /* BKKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* BKKAppDelegate.m */; };
 		83D34B70160E74370065EF6A /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 832FB7A411BE0CCA0084909E /* CalendarViewController.m */; };
 		83D34B71160E74370065EF6A /* FavoritesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B7C5B71296E6E500A52BD9 /* FavoritesListViewController.m */; };
 		83D34B72160E74370065EF6A /* KamikazeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8397065212F4AA6C00050E9E /* KamikazeViewController.m */; };
@@ -66,30 +62,34 @@
 		83F023C016581BC900467FFB /* whiteArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 83F023B816581BC900467FFB /* whiteArrow.png */; };
 		83F023C116581BC900467FFB /* whiteArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83F023B916581BC900467FFB /* whiteArrow@2x.png */; };
 		83F3CA5A11780BE00033611B /* bkk_vert_realcat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 83F3CA5511780BE00033611B /* bkk_vert_realcat.jpg */; };
-		952C4259184991B4008BA0B0 /* bkkViewController_iPhone5.xib in Resources */ = {isa = PBXBuildFile; fileRef = 952C4258184991B4008BA0B0 /* bkkViewController_iPhone5.xib */; };
 		952D459D1B1DFE27001AC720 /* YTSearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D459B1B1DFE27001AC720 /* YTSearchTableViewController.m */; };
-		952D459E1B1DFE27001AC720 /* YTSearchTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 952D459C1B1DFE27001AC720 /* YTSearchTableViewController.xib */; };
 		952D45A21B1E2D29001AC720 /* YTTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 952D45A11B1E2D29001AC720 /* YTTableViewCell.xib */; };
 		952D45A51B1E2E36001AC720 /* YTTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D45A41B1E2E36001AC720 /* YTTableViewCell.m */; };
 		954FC13A18488CF3001750CE /* FavoritesListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 954FC13918488CF3001750CE /* FavoritesListViewController.xib */; };
-		954FC13C18488D0B001750CE /* SongDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 954FC13B18488D0B001750CE /* SongDetailViewController.xib */; };
 		95715BCB186F6BEB0009961C /* Icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 95715BCA186F6BEB0009961C /* Icon-120.png */; };
 		95715BCD186F6CAD0009961C /* Icon-80.png in Resources */ = {isa = PBXBuildFile; fileRef = 95715BCC186F6CAD0009961C /* Icon-80.png */; };
 		95715BCF186F7B5D0009961C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95715BCE186F7B5D0009961C /* Images.xcassets */; };
 		95795051186966BA00987198 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95795050186966BA00987198 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		95795078186B519100987198 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95795077186B519100987198 /* Accounts.framework */; };
 		95795079186B519B00987198 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9579504D186965A200987198 /* Twitter.framework */; };
+		957CC0501DE8C1C5006C9014 /* SongDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957CC04F1DE8C1C5006C9014 /* SongDetailTableViewController.swift */; };
+		957CC1E71DEA4476006C9014 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957CC1E61DEA4476006C9014 /* NetworkManager.swift */; };
 		9586D3E718637FE500601F3F /* FolderPickerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9586D3E518637FE500601F3F /* FolderPickerTableViewController.m */; };
 		9586D3E818637FE500601F3F /* FolderPickerTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9586D3E618637FE500601F3F /* FolderPickerTableViewController.xib */; };
 		9586D3EA18653EBF00601F3F /* calendar_detail_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 9586D3E918653EBF00601F3F /* calendar_detail_bg.png */; };
 		9586D3EE18664CB500601F3F /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9586D3ED18664CB500601F3F /* EGORefreshTableHeaderView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		C59A50CD43564092A1292835 /* libPods-baby ketten.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F4E10EA46C7647C79523DFDA /* libPods-baby ketten.a */; };
+		95BB77D81DEB71A600E189CA /* UIImageView+URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BB77D71DEB71A600E189CA /* UIImageView+URLRequest.swift */; };
+		95D95E971DAAC2D2000421AB /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D95E961DAAC2D2000421AB /* Song.swift */; };
+		95D95E991DAACE74000421AB /* SongListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D95E981DAACE74000421AB /* SongListTableViewController.swift */; };
+		95D95E9C1DABD649000421AB /* CGRect+Sanity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D95E9B1DABD649000421AB /* CGRect+Sanity.swift */; };
+		95FF817D289F8C6400334A90 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95FF817C289F8C6400334A90 /* LaunchScreen.storyboard */; };
+		95FF817F289F943700334A90 /* SongDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95FF817E289F943700334A90 /* SongDetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		1D3623240D0F684500981E51 /* bkkAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bkkAppDelegate.h; sourceTree = "<group>"; };
-		1D3623250D0F684500981E51 /* bkkAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = bkkAppDelegate.m; sourceTree = "<group>"; };
+		1D3623240D0F684500981E51 /* BKKAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKKAppDelegate.h; sourceTree = "<group>"; };
+		1D3623250D0F684500981E51 /* BKKAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKKAppDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* baby ketten.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "baby ketten.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -123,8 +123,6 @@
 		8366C1711340523000D2B518 /* CalendarDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarDetailViewController.xib; sourceTree = "<group>"; };
 		8366C1751340F8DB00D2B518 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		8366C1771341012000D2B518 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		8381B60E1169C65500B545AB /* Song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Song.h; sourceTree = "<group>"; };
-		8381B60F1169C65500B545AB /* Song.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Song.m; sourceTree = "<group>"; };
 		8382983E116C69F600EE8539 /* SongDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongDetailViewController.h; sourceTree = "<group>"; };
 		8382983F116C69F600EE8539 /* SongDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongDetailViewController.m; sourceTree = "<group>"; };
 		839597A714A29D9900E8CB30 /* ketten_small_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ketten_small_white@2x.png"; sourceTree = "<group>"; };
@@ -137,8 +135,8 @@
 		8397065212F4AA6C00050E9E /* KamikazeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KamikazeViewController.m; sourceTree = "<group>"; };
 		8397065312F4AA6C00050E9E /* KamikazeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KamikazeViewController.xib; sourceTree = "<group>"; };
 		83ADD5FB1169939A00BF3809 /* bkklogobwtouchup.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bkklogobwtouchup.jpg; sourceTree = "<group>"; };
-		83ADD5FD116993AB00BF3809 /* bkkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bkkViewController.h; sourceTree = "<group>"; };
-		83ADD5FE116993AB00BF3809 /* bkkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = bkkViewController.m; sourceTree = "<group>"; };
+		83ADD5FD116993AB00BF3809 /* BKKViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKKViewController.h; sourceTree = "<group>"; };
+		83ADD5FE116993AB00BF3809 /* BKKViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKKViewController.m; sourceTree = "<group>"; };
 		83ADD62D116997AD00BF3809 /* SongListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongListViewController.h; sourceTree = "<group>"; };
 		83ADD62E116997AD00BF3809 /* SongListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongListViewController.m; sourceTree = "<group>"; };
 		83B7C5B11296E3D500A52BD9 /* inbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inbox.png; sourceTree = "<group>"; };
@@ -150,7 +148,6 @@
 		83BFE0BA11C543140022D0CA /* baby ketten_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "baby ketten_Prefix.pch"; sourceTree = "<group>"; };
 		83CD08731666737F00BEAB0D /* kamikaze_ketten_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kamikaze_ketten_background@2x.png"; sourceTree = "<group>"; };
 		83CD08741666737F00BEAB0D /* kamikaze_ketten_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kamikaze_ketten_background.png; sourceTree = "<group>"; };
-		83CD0877166674B900BEAB0D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		83CD087D1666762200BEAB0D /* bkkViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = bkkViewController.xib; sourceTree = SOURCE_ROOT; };
 		83CD087F1666782700BEAB0D /* latest_mews_taller.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = latest_mews_taller.png; sourceTree = "<group>"; };
 		83DA58A9121B96DD006804B8 /* kamikaze_ketten.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kamikaze_ketten.png; sourceTree = "<group>"; };
@@ -164,32 +161,33 @@
 		83F023B916581BC900467FFB /* whiteArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteArrow@2x.png"; sourceTree = "<group>"; };
 		83F3CA5511780BE00033611B /* bkk_vert_realcat.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bkk_vert_realcat.jpg; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* baby ketten-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "baby ketten-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
-		8F3BE823FF4BEA3458FBE131 /* Pods-baby ketten.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-baby ketten.debug.xcconfig"; path = "Pods/Target Support Files/Pods-baby ketten/Pods-baby ketten.debug.xcconfig"; sourceTree = "<group>"; };
-		952C4258184991B4008BA0B0 /* bkkViewController_iPhone5.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = bkkViewController_iPhone5.xib; sourceTree = "<group>"; };
 		952D459A1B1DFE27001AC720 /* YTSearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTSearchTableViewController.h; sourceTree = "<group>"; };
 		952D459B1B1DFE27001AC720 /* YTSearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTSearchTableViewController.m; sourceTree = "<group>"; };
-		952D459C1B1DFE27001AC720 /* YTSearchTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YTSearchTableViewController.xib; sourceTree = "<group>"; };
 		952D45A11B1E2D29001AC720 /* YTTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YTTableViewCell.xib; sourceTree = "<group>"; };
 		952D45A31B1E2E36001AC720 /* YTTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTTableViewCell.h; sourceTree = "<group>"; };
 		952D45A41B1E2E36001AC720 /* YTTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTTableViewCell.m; sourceTree = "<group>"; };
 		954FC13918488CF3001750CE /* FavoritesListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavoritesListViewController.xib; sourceTree = "<group>"; };
-		954FC13B18488D0B001750CE /* SongDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SongDetailViewController.xib; sourceTree = "<group>"; };
 		95715BCA186F6BEB0009961C /* Icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-120.png"; sourceTree = "<group>"; };
 		95715BCC186F6CAD0009961C /* Icon-80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-80.png"; sourceTree = "<group>"; };
 		95715BCE186F7B5D0009961C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "baby ketten/Images.xcassets"; sourceTree = "<group>"; };
 		9579504D186965A200987198 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		95795050186966BA00987198 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		95795077186B519100987198 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		957CC04F1DE8C1C5006C9014 /* SongDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongDetailTableViewController.swift; sourceTree = "<group>"; };
+		957CC1E61DEA4476006C9014 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		9586D3E418637FE500601F3F /* FolderPickerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderPickerTableViewController.h; sourceTree = "<group>"; };
 		9586D3E518637FE500601F3F /* FolderPickerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderPickerTableViewController.m; sourceTree = "<group>"; };
 		9586D3E618637FE500601F3F /* FolderPickerTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FolderPickerTableViewController.xib; sourceTree = "<group>"; };
 		9586D3E918653EBF00601F3F /* calendar_detail_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar_detail_bg.png; sourceTree = "<group>"; };
 		9586D3EC18664CB500601F3F /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
 		9586D3ED18664CB500601F3F /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
-		AA81D2AD1DB95B4BFC3A6405 /* Pods-baby ketten.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-baby ketten.release.xcconfig"; path = "Pods/Target Support Files/Pods-baby ketten/Pods-baby ketten.release.xcconfig"; sourceTree = "<group>"; };
-		B32320798D082F2E4F80261A /* Pods-baby ketten.ad hoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-baby ketten.ad hoc.xcconfig"; path = "Pods/Target Support Files/Pods-baby ketten/Pods-baby ketten.ad hoc.xcconfig"; sourceTree = "<group>"; };
-		E17D33BA2A71AD4B39FCF3C6 /* Pods-baby ketten.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-baby ketten.distribution.xcconfig"; path = "Pods/Target Support Files/Pods-baby ketten/Pods-baby ketten.distribution.xcconfig"; sourceTree = "<group>"; };
-		F4E10EA46C7647C79523DFDA /* libPods-baby ketten.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-baby ketten.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		95BB77D71DEB71A600E189CA /* UIImageView+URLRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+URLRequest.swift"; sourceTree = "<group>"; };
+		95D95E921DAAB1C1000421AB /* baby ketten-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "baby ketten-Bridging-Header.h"; sourceTree = "<group>"; };
+		95D95E961DAAC2D2000421AB /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		95D95E981DAACE74000421AB /* SongListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongListTableViewController.swift; sourceTree = "<group>"; };
+		95D95E9B1DABD649000421AB /* CGRect+Sanity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Sanity.swift"; sourceTree = "<group>"; };
+		95FF817C289F8C6400334A90 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		95FF817E289F943700334A90 /* SongDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SongDetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,24 +203,12 @@
 				8366C1761340F8DB00D2B518 /* MapKit.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
-				C59A50CD43564092A1292835 /* libPods-baby ketten.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		080E96DDFE201D6D7F000001 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				83D34B04160E69610065EF6A /* Vendor */,
-				83D34B03160E66F00065EF6A /* Models */,
-				83D34B02160E66900065EF6A /* Controllers */,
-				83FD5CA4160F9DDB007F28D4 /* Views */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -234,14 +220,17 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				83CD0877166674B900BEAB0D /* Default-568h@2x.png */,
 				834DE11915DC83160050139B /* Settings.bundle */,
-				080E96DDFE201D6D7F000001 /* Classes */,
+				83D34B04160E69610065EF6A /* Vendor */,
+				83D34B03160E66F00065EF6A /* Models */,
+				83D34B02160E66900065EF6A /* Controllers */,
+				83FD5CA4160F9DDB007F28D4 /* Views */,
+				95D95E9A1DABD62A000421AB /* Utility */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				7AAF071AA24EDBCC1368FD8A /* Pods */,
+				95D95E921DAAB1C1000421AB /* baby ketten-Bridging-Header.h */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -321,29 +310,17 @@
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
-				F4E10EA46C7647C79523DFDA /* libPods-baby ketten.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		7AAF071AA24EDBCC1368FD8A /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				8F3BE823FF4BEA3458FBE131 /* Pods-baby ketten.debug.xcconfig */,
-				AA81D2AD1DB95B4BFC3A6405 /* Pods-baby ketten.release.xcconfig */,
-				B32320798D082F2E4F80261A /* Pods-baby ketten.ad hoc.xcconfig */,
-				E17D33BA2A71AD4B39FCF3C6 /* Pods-baby ketten.distribution.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		83D34B02160E66900065EF6A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				1D3623240D0F684500981E51 /* bkkAppDelegate.h */,
-				1D3623250D0F684500981E51 /* bkkAppDelegate.m */,
-				83ADD5FD116993AB00BF3809 /* bkkViewController.h */,
-				83ADD5FE116993AB00BF3809 /* bkkViewController.m */,
+				1D3623240D0F684500981E51 /* BKKAppDelegate.h */,
+				1D3623250D0F684500981E51 /* BKKAppDelegate.m */,
+				83ADD5FD116993AB00BF3809 /* BKKViewController.h */,
+				83ADD5FE116993AB00BF3809 /* BKKViewController.m */,
 				8366C16F1340523000D2B518 /* CalendarDetailViewController.h */,
 				8366C1701340523000D2B518 /* CalendarDetailViewController.m */,
 				832FB7A311BE0CCA0084909E /* CalendarViewController.h */,
@@ -356,25 +333,28 @@
 				8397065212F4AA6C00050E9E /* KamikazeViewController.m */,
 				8382983E116C69F600EE8539 /* SongDetailViewController.h */,
 				8382983F116C69F600EE8539 /* SongDetailViewController.m */,
+				957CC04F1DE8C1C5006C9014 /* SongDetailTableViewController.swift */,
 				83ADD62D116997AD00BF3809 /* SongListViewController.h */,
 				83ADD62E116997AD00BF3809 /* SongListViewController.m */,
 				952D459A1B1DFE27001AC720 /* YTSearchTableViewController.h */,
 				952D459B1B1DFE27001AC720 /* YTSearchTableViewController.m */,
 				952D45A31B1E2E36001AC720 /* YTTableViewCell.h */,
 				952D45A41B1E2E36001AC720 /* YTTableViewCell.m */,
+				95D95E981DAACE74000421AB /* SongListTableViewController.swift */,
 			);
 			name = Controllers;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		83D34B03160E66F00065EF6A /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				8381B60E1169C65500B545AB /* Song.h */,
-				8381B60F1169C65500B545AB /* Song.m */,
 				832FB83B11BE200B0084909E /* Date.h */,
 				832FB83C11BE200B0084909E /* Date.m */,
+				95D95E961DAAC2D2000421AB /* Song.swift */,
 			);
 			name = Models;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		83D34B04160E69610065EF6A /* Vendor */ = {
@@ -383,22 +363,23 @@
 				9586D3EB18664CA400601F3F /* EGORefreshTableHeaderView */,
 			);
 			name = Vendor;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		83FD5CA4160F9DDB007F28D4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				952C4258184991B4008BA0B0 /* bkkViewController_iPhone5.xib */,
+				95FF817E289F943700334A90 /* SongDetailViewController.xib */,
 				83CD087D1666762200BEAB0D /* bkkViewController.xib */,
 				8366C1711340523000D2B518 /* CalendarDetailViewController.xib */,
 				954FC13918488CF3001750CE /* FavoritesListViewController.xib */,
 				9586D3E618637FE500601F3F /* FolderPickerTableViewController.xib */,
 				8397065312F4AA6C00050E9E /* KamikazeViewController.xib */,
-				954FC13B18488D0B001750CE /* SongDetailViewController.xib */,
-				952D459C1B1DFE27001AC720 /* YTSearchTableViewController.xib */,
 				952D45A11B1E2D29001AC720 /* YTTableViewCell.xib */,
+				95FF817C289F8C6400334A90 /* LaunchScreen.storyboard */,
 			);
 			name = Views;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		9586D3EB18664CA400601F3F /* EGORefreshTableHeaderView */ = {
@@ -410,6 +391,16 @@
 			name = EGORefreshTableHeaderView;
 			sourceTree = "<group>";
 		};
+		95D95E9A1DABD62A000421AB /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				95D95E9B1DABD649000421AB /* CGRect+Sanity.swift */,
+				957CC1E61DEA4476006C9014 /* NetworkManager.swift */,
+				95BB77D71DEB71A600E189CA /* UIImageView+URLRequest.swift */,
+			);
+			name = Utility;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -417,11 +408,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "baby ketten" */;
 			buildPhases = (
-				AEB2F6FA4BFD4865AE29F99A /* Check Pods Manifest.lock */,
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
 				1D60588F0D05DD3D006BFB54 /* Frameworks */,
-				484514AAE72548F29FA4A0D9 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -438,22 +427,26 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastSwiftUpdateCheck = 0800;
+				LastUpgradeCheck = 1340;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
 						DevelopmentTeam = 78FKA3KWWM;
+						LastSwiftMigration = 1340;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Baby Ketten" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 1;
 			knownRegions = (
-				English,
-				Japanese,
-				French,
-				German,
+				Base,
+				en,
+				de,
+				ja,
+				fr,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
@@ -507,58 +500,23 @@
 				83F023BB16581BC900467FFB /* grayArrow@2x.png in Resources */,
 				83F023BC16581BC900467FFB /* blackArrow.png in Resources */,
 				83F023BD16581BC900467FFB /* blackArrow@2x.png in Resources */,
+				95FF817D289F8C6400334A90 /* LaunchScreen.storyboard in Resources */,
 				83F023BE16581BC900467FFB /* blueArrow.png in Resources */,
-				954FC13C18488D0B001750CE /* SongDetailViewController.xib in Resources */,
-				952C4259184991B4008BA0B0 /* bkkViewController_iPhone5.xib in Resources */,
 				83F023BF16581BC900467FFB /* blueArrow@2x.png in Resources */,
+				95FF817F289F943700334A90 /* SongDetailViewController.xib in Resources */,
 				83F023C016581BC900467FFB /* whiteArrow.png in Resources */,
-				952D459E1B1DFE27001AC720 /* YTSearchTableViewController.xib in Resources */,
 				83F023C116581BC900467FFB /* whiteArrow@2x.png in Resources */,
 				954FC13A18488CF3001750CE /* FavoritesListViewController.xib in Resources */,
 				83CD08751666737F00BEAB0D /* kamikaze_ketten_background@2x.png in Resources */,
 				95715BCF186F7B5D0009961C /* Images.xcassets in Resources */,
 				83CD08761666737F00BEAB0D /* kamikaze_ketten_background.png in Resources */,
 				95715BCD186F6CAD0009961C /* Icon-80.png in Resources */,
-				83CD0878166674B900BEAB0D /* Default-568h@2x.png in Resources */,
 				83CD087E1666762200BEAB0D /* bkkViewController.xib in Resources */,
 				83CD08801666782700BEAB0D /* latest_mews_taller.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		484514AAE72548F29FA4A0D9 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-baby ketten/Pods-baby ketten-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AEB2F6FA4BFD4865AE29F99A /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1D60588E0D05DD3D006BFB54 /* Sources */ = {
@@ -567,17 +525,20 @@
 			files = (
 				952D45A51B1E2E36001AC720 /* YTTableViewCell.m in Sources */,
 				9586D3E718637FE500601F3F /* FolderPickerTableViewController.m in Sources */,
-				83D34B6A160E74370065EF6A /* Song.m in Sources */,
 				83D34B6B160E74370065EF6A /* Date.m in Sources */,
-				83D34B6C160E74370065EF6A /* SongDetailViewController.m in Sources */,
-				83D34B6D160E74370065EF6A /* SongListViewController.m in Sources */,
-				83D34B6E160E74370065EF6A /* bkkViewController.m in Sources */,
-				83D34B6F160E74370065EF6A /* bkkAppDelegate.m in Sources */,
+				95BB77D81DEB71A600E189CA /* UIImageView+URLRequest.swift in Sources */,
+				95D95E9C1DABD649000421AB /* CGRect+Sanity.swift in Sources */,
+				83D34B6E160E74370065EF6A /* BKKViewController.m in Sources */,
+				83D34B6F160E74370065EF6A /* BKKAppDelegate.m in Sources */,
 				83D34B70160E74370065EF6A /* CalendarViewController.m in Sources */,
 				83D34B71160E74370065EF6A /* FavoritesListViewController.m in Sources */,
+				95D95E991DAACE74000421AB /* SongListTableViewController.swift in Sources */,
 				9586D3EE18664CB500601F3F /* EGORefreshTableHeaderView.m in Sources */,
 				83D34B72160E74370065EF6A /* KamikazeViewController.m in Sources */,
 				83D34B73160E74370065EF6A /* CalendarDetailViewController.m in Sources */,
+				957CC1E71DEA4476006C9014 /* NetworkManager.swift in Sources */,
+				95D95E971DAAC2D2000421AB /* Song.swift in Sources */,
+				957CC0501DE8C1C5006C9014 /* SongDetailTableViewController.swift in Sources */,
 				952D459D1B1DFE27001AC720 /* YTSearchTableViewController.m in Sources */,
 				83D34B74160E74370065EF6A /* main.m in Sources */,
 			);
@@ -588,49 +549,62 @@
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8F3BE823FF4BEA3458FBE131 /* Pods-baby ketten.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 78FKA3KWWM;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "baby ketten_Prefix.pch";
 				INFOPLIST_FILE = "baby ketten-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = org.schepman.babyketten;
 				PRODUCT_NAME = "baby ketten";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "baby ketten-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		1D6058950D05DD3E006BFB54 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AA81D2AD1DB95B4BFC3A6405 /* Pods-baby ketten.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Christopher Schepman (78FKA3KWWM)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Christopher Schepman (78FKA3KWWM)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				DEVELOPMENT_TEAM = 78FKA3KWWM;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "baby ketten_Prefix.pch";
 				INFOPLIST_FILE = "baby ketten-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = org.schepman.babyketten;
 				PRODUCT_NAME = "baby ketten";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "baby ketten-Bridging-Header.h";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -639,40 +613,72 @@
 		8319EF801454B28F001B45CD /* Ad Hoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Christopher Schepman";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Christopher Schepman";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "";
 				PROVISIONING_PROFILE = "249BEC10-3F91-40E5-B826-EA01919E3712";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "249BEC10-3F91-40E5-B826-EA01919E3712";
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 3.0;
 			};
 			name = "Ad Hoc";
 		};
 		8319EF811454B28F001B45CD /* Ad Hoc */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B32320798D082F2E4F80261A /* Pods-baby ketten.ad hoc.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				DEVELOPMENT_TEAM = 78FKA3KWWM;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "baby ketten_Prefix.pch";
 				INFOPLIST_FILE = "baby ketten-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = org.schepman.babyketten;
 				PRODUCT_NAME = "baby ketten";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "baby ketten-Bridging-Header.h";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -681,38 +687,70 @@
 		83326A0C118939F50012C57C /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Distribution;
 		};
 		83326A0D118939F50012C57C /* Distribution */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E17D33BA2A71AD4B39FCF3C6 /* Pods-baby ketten.distribution.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				DEVELOPMENT_TEAM = 78FKA3KWWM;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "baby ketten_Prefix.pch";
 				INFOPLIST_FILE = "baby ketten-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = org.schepman.babyketten;
 				PRODUCT_NAME = "baby ketten";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "baby ketten-Bridging-Header.h";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -721,33 +759,87 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

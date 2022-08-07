@@ -219,7 +219,7 @@
 - (void)youTubeSearch {
     NSString *searchString = [self getSearchString];
 
-    YTSearchTableViewController *vc = [[YTSearchTableViewController alloc] initWithNibName:@"YTSearchTableViewController" bundle:nil];
+    YTSearchTableViewController *vc = [[YTSearchTableViewController alloc] init];
     vc.searchString = searchString;
     
     [self.navigationController pushViewController:vc animated:YES];

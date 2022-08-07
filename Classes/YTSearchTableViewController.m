@@ -7,9 +7,8 @@
 //
 
 #import "YTSearchTableViewController.h"
-#import "AFHTTPRequestOperationManager.h"
-#import "UIImageView+AFNetworking.h"
 #import "YTTableViewCell.h"
+#import "baby_ketten-Swift.h"
 
 @interface YTSearchTableViewController ()
 
@@ -22,21 +21,22 @@ NSString* const kYouTubeAPIKey = @"AIzaSyBQgTWNFmBcR-omkycjHQRGiTtL2DUEm60";
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:[self getYouTubeSearchURL] parameters:nil success:^(AFHTTPRequestOperation *operation, id JSON) {
-        [self loadVideosFromJSON:JSON];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"error fetching search results: %@", error);
-        self.title = @"Not Found!";
+    // Whoever wrote this network manager didn't do a single ounce of error handling did they?
+    [NetworkManager GET:[self getYouTubeSearchURL] completionHandler:^(id JSON) {
+        if (JSON != nil) {
+            NSLog(@"%@", JSON);
+            [self loadVideosFromJSON:JSON];
+        } else {
+            // this is not good
+            [self loadVideosFromJSON:@{@"items": @[]}];
+        }
     }];
 }
 
 - (NSString *)getYouTubeSearchURL {
     NSString *urlFormat = @"https://www.googleapis.com/youtube/v3/search?part=snippet&q=%@&maxResults=15&type=video&key=%@";
-
-    NSString *youTubeSearchUrl = [NSString stringWithFormat:urlFormat, self.searchString, kYouTubeAPIKey];
-
-    return youTubeSearchUrl;
+    NSString *escapedSearchString = [self.searchString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
+    return [NSString stringWithFormat:urlFormat, escapedSearchString, kYouTubeAPIKey];
 }
 
 - (void)loadVideosFromJSON:(id)JSON {
@@ -46,19 +46,17 @@ NSString* const kYouTubeAPIKey = @"AIzaSyBQgTWNFmBcR-omkycjHQRGiTtL2DUEm60";
         [videos addObject:entry];
     }
 
-    if ([videos count] == 0) {
-        self.navigationItem.title = @"Not Found!";
-    } else {
-        self.navigationItem.title = @"Results";
-    }
-
     self.videos = videos;
-    [self.tableView reloadData];
-    [self.tableView flashScrollIndicators];
-}
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if ([videos count] == 0) {
+            self.navigationItem.title = @"Not Found!";
+        } else {
+            self.navigationItem.title = @"Results";
+        }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+        [self.tableView reloadData];
+    });
 }
 
 #pragma mark - Table view data source
@@ -86,17 +84,14 @@ NSString* const kYouTubeAPIKey = @"AIzaSyBQgTWNFmBcR-omkycjHQRGiTtL2DUEm60";
         cell.titleLabel.text = video[@"snippet"][@"title"];
         cell.descriptionLabel.text = video[@"snippet"][@"description"];
 
-        __weak YTTableViewCell *_cell = cell;
-        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:video[@"snippet"][@"thumbnails"][@"default"][@"url"]]
-                                                 cachePolicy:NSURLRequestReturnCacheDataElseLoad
-                                             timeoutInterval:60];
+//        __weak YTTableViewCell *_cell = cell;
+//        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:video[@"snippet"][@"thumbnails"][@"default"][@"url"]]
+//                                                 cachePolicy:NSURLRequestReturnCacheDataElseLoad
+//                                             timeoutInterval:60];
 
-        [cell.myImageView setImageWithURLRequest:request placeholderImage:[UIImage imageNamed:@"ketten_small_white"] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-            _cell.myImageView.image = image;
-        } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
-            NSLog(@"failed to log image with error: %@", error);
-        }];
-
+//        [cell.myImageView setImageWithURLRequest:request placeholderImage:[UIImage imageNamed:@"ketten_small_white"] success:^(NSURLRequest *request, NSURLResponse *response, UIImage *image) {
+//            _cell.myImageView.image = image;
+//        }];
     }
     
     return cell;
@@ -106,44 +101,8 @@ NSString* const kYouTubeAPIKey = @"AIzaSyBQgTWNFmBcR-omkycjHQRGiTtL2DUEm60";
     return 75;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-
 #pragma mark - Table view delegate
 
-// In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *video = [self.videos objectAtIndex:indexPath.row];
     NSString *videoId = video[@"id"][@"videoId"];
@@ -152,22 +111,11 @@ NSString* const kYouTubeAPIKey = @"AIzaSyBQgTWNFmBcR-omkycjHQRGiTtL2DUEm60";
         NSString *urlString = [NSString stringWithFormat:@"http://youtube.com/watch?v=%@", videoId];
 
         NSLog(@"%@", urlString);
-        NSString* escapedUrlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
+        NSString* escapedUrlString = [urlString stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLHostAllowedCharacterSet];
         NSURL *url = [NSURL URLWithString:escapedUrlString];
 
-        [[UIApplication sharedApplication] openURL:url];
+        [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
     }
 }
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
