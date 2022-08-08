@@ -38,7 +38,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     
     self.title = date.title;
     descText.text = date.description;
@@ -46,11 +45,7 @@
     NSString *city = [[NSUserDefaults standardUserDefaults] stringForKey:@"city"];
     if ([city isEqualToString:@"1"]) {
         //seattle
-
-        //NSString *searchTerm = [self.date.where stringByReplacingOccurrencesOfString:@"pdx" withString:@"Portland, OR"];
         NSString *searchTerm = [NSString stringWithFormat:@"%@, Seattle, WA", self.date.where];
-        //searchTerm = [searchTerm stringByReplacingOccurrencesOfString:@"the woods 6637 milwauke ave" withString:@"6637 SE Milwaukie Avenue"];
-        
         [self performForwardGeocode:searchTerm];
     } else {
         //portland
@@ -118,13 +113,10 @@
         
         MKPointAnnotation *pa = [[MKPointAnnotation alloc] init];
         pa.coordinate = self.currentPlacemark.location.coordinate;
-        pa.title = date.title;
-        [self.mapView addAnnotation:pa];
-        
-        // Zoom into the location
-        // hacky.. 1000 looks good?
-        MKCoordinateRegion zoom = MKCoordinateRegionMakeWithDistance(self.currentPlacemark.region.center, 1000, 1000);
-        [self.mapView setRegion:zoom animated:NO];
+        pa.title = self.date.title;
+
+        [self.mapView showAnnotations:@[pa] animated:NO];
+        self.mapView.camera.altitude *= 2;
     }];
 }
 
