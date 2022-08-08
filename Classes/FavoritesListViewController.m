@@ -11,9 +11,6 @@
 
 @implementation FavoritesListViewController
 
-#pragma mark -
-#pragma mark View lifecycle
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -22,7 +19,10 @@
     self.cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelAction)];
     self.deleteButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(deleteAction)];
     self.moveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(moveAction)];
-    
+
+    self.deleteButton.enabled = NO;
+    self.moveButton.enabled = NO;
+
     self.navigationItem.rightBarButtonItem = self.editButton;
     
     if (self.currentFolder) {
@@ -38,52 +38,38 @@
     [self refreshDisplayList];
 }
 
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleDefault;
-}
-
 - (void)addAction {
-    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"New Folder" message:@"name of the new folder?" delegate:self cancelButtonTitle:@"cancel" otherButtonTitles:@"create", nil];
-    av.alertViewStyle = UIAlertViewStylePlainTextInput;
-    [av show];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"New Folder" message:@"name of the new folder?" preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addTextFieldWithConfigurationHandler:nil];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"create" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSString *folderTitle = [[alertController textFields][0] text];
+        NSDictionary *folder = [NSDictionary dictionaryWithObjectsAndKeys:folderTitle, @"title", @"true", @"isFolder", nil];
+
+        [self.favorites addObject:folder];
+
+        [self syncFavorites];
+        [self refreshDisplayList];
+    }]];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"cancel" style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (void)moveAction {
-    NSArray *selectedRows = [self.tableView indexPathsForSelectedRows];
-    
-    if ([selectedRows count] == 0) {
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Whoops!" message:@"No songs selected!" delegate:self cancelButtonTitle:@"cancel" otherButtonTitles:nil];
-        [av show];
-    } else {
-        BOOL okToMove = YES;
-        for (NSIndexPath *selectionIndex in selectedRows)
-        {
-            if ([[[self.displayList objectAtIndex:selectionIndex.row] objectForKey:@"isFolder"] isEqualToString:@"true"]) {
-                okToMove = NO;
-            }
-        }
+    FolderPickerTableViewController *vc = [[FolderPickerTableViewController alloc] initWithNibName:@"FolderPickerTableViewController" bundle:nil];
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"isFolder == %@", @"true"];
 
-        if (okToMove) {
-            FolderPickerTableViewController *vc = [[FolderPickerTableViewController alloc] initWithNibName:@"FolderPickerTableViewController" bundle:nil];
-            NSPredicate *pred = [NSPredicate predicateWithFormat:@"isFolder == %@", @"true"];
-            
-            NSMutableArray *folderList = [[self.favorites filteredArrayUsingPredicate:pred] mutableCopy];
-            [folderList sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-                return [[obj1 objectForKey:@"title"] compare:[obj2 objectForKey:@"title"] options:NSCaseInsensitiveSearch];
-            }];
+    NSMutableArray *folderList = [[self.favorites filteredArrayUsingPredicate:pred] mutableCopy];
+    [folderList sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        return [[obj1 objectForKey:@"title"] compare:[obj2 objectForKey:@"title"] options:NSCaseInsensitiveSearch];
+    }];
 
-            [folderList insertObject:@{@"title": @"🔙 to faves!"} atIndex:0];
-            vc.folderList = folderList;
-            
-            vc.delegate = self;
+    [folderList insertObject:@{@"title": @"🔙 to faves!"} atIndex:0];
+    vc.folderList = folderList;
 
-            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
-            [self presentViewController:nav animated:YES completion:nil];
-        } else {
-            UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Whoops!" message:@"Sorry about that. You can't move folders into other folders. Pick only songs next time!" delegate:self cancelButtonTitle:@"cancel" otherButtonTitles:nil];
-            [av show];
-        }
-    }
+    vc.delegate = self;
+
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 - (void)editFavesAction {
@@ -109,91 +95,69 @@
         
         NSString *cancelTitle = NSLocalizedString(@"Cancel", @"Cancel title for item removal action");
         NSString *okTitle = NSLocalizedString(@"OK", @"OK title for item removal action");
-        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:actionTitle delegate:self cancelButtonTitle:cancelTitle destructiveButtonTitle:okTitle otherButtonTitles:nil];
-        
-        actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
-        
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:okTitle style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            NSArray *selectedRows = [self.tableView indexPathsForSelectedRows];
 
-        [actionSheet showInView:self.view];
-    } else {
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Whoops!" message:@"No songs selected!" delegate:self cancelButtonTitle:@"cancel" otherButtonTitles:nil];
-        [av show];
-    }
-}
+            // Build an NSIndexSet of all the objects to delete, so they can all be removed at once.
+            NSMutableIndexSet *indicesOfItemsToDelete = [NSMutableIndexSet new];
+            for (NSIndexPath *selectionIndex in selectedRows)
+            {
+                id removed = [self.displayList objectAtIndex:selectionIndex.row];
 
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-	if (buttonIndex == 0)
-	{
-        NSArray *selectedRows = [self.tableView indexPathsForSelectedRows];
+                //if it's a folder, delete all songs in it as well
+                if ([[removed objectForKey:@"isFolder"] isEqualToString:@"true"]) {
+                    NSPredicate *pred = [NSPredicate predicateWithFormat:@"folder == %@", [removed objectForKey:@"title"]];
+                    NSArray *songsToDelete = [self.favorites filteredArrayUsingPredicate:pred];
 
-        // Build an NSIndexSet of all the objects to delete, so they can all be removed at once.
-        NSMutableIndexSet *indicesOfItemsToDelete = [NSMutableIndexSet new];
-        for (NSIndexPath *selectionIndex in selectedRows)
-        {
-            id removed = [self.displayList objectAtIndex:selectionIndex.row];
-            
-            //if it's a folder, delete all songs in it as well
-            if ([[removed objectForKey:@"isFolder"] isEqualToString:@"true"]) {
-                NSPredicate *pred = [NSPredicate predicateWithFormat:@"folder == %@", [removed objectForKey:@"title"]];
-                NSArray *songsToDelete = [self.favorites filteredArrayUsingPredicate:pred];
-                
-                [self.favorites removeObjectsInArray:songsToDelete];
+                    [self.favorites removeObjectsInArray:songsToDelete];
+                }
+
+                [self.favorites removeObjectIdenticalTo:removed];
+
+                [indicesOfItemsToDelete addIndex:selectionIndex.row];
             }
 
-            [self.favorites removeObjectIdenticalTo:removed];
+            [self.displayList removeObjectsAtIndexes:indicesOfItemsToDelete];
 
-            [indicesOfItemsToDelete addIndex:selectionIndex.row];
-        }
+            [self.tableView deleteRowsAtIndexPaths:selectedRows withRowAnimation:UITableViewRowAnimationLeft];
 
-        [self.displayList removeObjectsAtIndexes:indicesOfItemsToDelete];
-        
-        [self.tableView deleteRowsAtIndexPaths:selectedRows withRowAnimation:UITableViewRowAnimationLeft];
+            [self setEditing:NO animated:YES];
+            [self syncFavorites];
+            [self updateButtonsToMatchTableState];
+        }];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancelTitle style:UIAlertActionStyleCancel handler:nil];
 
-        [self setEditing:NO animated:YES];
-        [self syncFavorites];
-        [self updateButtonsToMatchTableState];
-	}
+        UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"" message:actionTitle preferredStyle:UIAlertControllerStyleActionSheet];
+        [actionSheet addAction:okAction];
+        [actionSheet addAction:cancelAction];
+
+        [self presentViewController:actionSheet animated:YES completion:nil];
+    }
 }
 
-- (void)updateButtonsToMatchTableState
-{
-    if (self.tableView.editing)
-    {
+- (void)updateButtonsToMatchTableState {
+    if (self.tableView.editing) {
         self.navigationItem.rightBarButtonItem = self.cancelButton;
         [self.navigationItem setLeftBarButtonItems:@[self.deleteButton, self.moveButton] animated:YES];
-    }
-    else
-    {
+
+        NSArray *selectedRows = [self.tableView indexPathsForSelectedRows];
+        BOOL okToMove = YES;
+        for (NSIndexPath *selectionIndex in selectedRows) {
+            if ([[[self.displayList objectAtIndex:selectionIndex.row] objectForKey:@"isFolder"] isEqualToString:@"true"]) {
+                okToMove = NO;
+            }
+        }
+        self.moveButton.enabled = selectedRows > 0 && okToMove;
+        self.deleteButton.enabled = selectedRows > 0;
+    } else {
         if (!self.currentFolder) {
             [self.navigationItem setLeftBarButtonItems:@[self.addButton] animated:YES];
         } else {
             self.navigationItem.leftBarButtonItems = nil;
         }
 
-        // Show the edit button, but disable the edit button if there's nothing to edit.
-        if (self.displayList.count > 0)
-        {
-            self.editButton.enabled = YES;
-        }
-        else
-        {
-            self.editButton.enabled = NO;
-        }
-        
+        self.editButton.enabled = self.displayList.count > 0;
         self.navigationItem.rightBarButtonItem = self.editButton;
-    }
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 1) {
-        NSString *folderTitle = [alertView textFieldAtIndex:0].text;
-        NSDictionary *folder = [NSDictionary dictionaryWithObjectsAndKeys:folderTitle, @"title", @"true", @"isFolder", nil];
-
-        [self.favorites addObject:folder];
-
-        [self syncFavorites];
-        [self refreshDisplayList];
     }
 }
 
@@ -263,7 +227,6 @@
 
     [self syncFavorites];
     [self updateButtonsToMatchTableState];
-
 }
 
 - (void)refreshDisplayList {
@@ -313,6 +276,15 @@
 //            SongDetailViewController *songDetailViewController = [[SongDetailViewController alloc] initWithSong:song];
 //            [self.navigationController pushViewController:songDetailViewController animated:YES];
         }
+    } else {
+        // while editing update the buttons depending on if anything is selected
+        [self updateButtonsToMatchTableState];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.tableView.editing) {
+        [self updateButtonsToMatchTableState];
     }
 }
 
@@ -359,14 +331,9 @@
     self.editButton.enabled = YES;
 }
 
-- (void)setEditing:(BOOL)editing animated:(BOOL)animated
-{
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
     self.tableView.allowsMultipleSelectionDuringEditing = editing;
     [super setEditing:editing animated:animated];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
 }
 
 @end

@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EGORefreshTableHeaderView.h"
 
-@interface BKKViewController : UIViewController <UITextViewDelegate, EGORefreshTableHeaderDelegate>
+@interface BKKViewController : UIViewController <UITextViewDelegate>
 
 @property (nonatomic, strong) NSString *message;
 @property (nonatomic, strong) UIImageView *imageView;
@@ -17,8 +16,6 @@
 @property (nonatomic, weak) UIActivityIndicatorView *messageLoadingSpinner;
 @property (nonatomic, weak)	UISegmentedControl *segmented;
 @property (nonatomic, weak)	UITextField *searchTextField;
-
-@property (nonatomic, strong) EGORefreshTableHeaderView *refreshMessageView;
 
 - (void)loadMessageInBackground;
 - (void)searchFor:(NSString *)searchTerm By:(NSString *)searchBy UsingRandom:(BOOL)random;

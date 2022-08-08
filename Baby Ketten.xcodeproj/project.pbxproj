@@ -77,7 +77,6 @@
 		9586D3E718637FE500601F3F /* FolderPickerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9586D3E518637FE500601F3F /* FolderPickerTableViewController.m */; };
 		9586D3E818637FE500601F3F /* FolderPickerTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9586D3E618637FE500601F3F /* FolderPickerTableViewController.xib */; };
 		9586D3EA18653EBF00601F3F /* calendar_detail_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 9586D3E918653EBF00601F3F /* calendar_detail_bg.png */; };
-		9586D3EE18664CB500601F3F /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9586D3ED18664CB500601F3F /* EGORefreshTableHeaderView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		95BB77D81DEB71A600E189CA /* UIImageView+URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BB77D71DEB71A600E189CA /* UIImageView+URLRequest.swift */; };
 		95D95E971DAAC2D2000421AB /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D95E961DAAC2D2000421AB /* Song.swift */; };
 		95D95E991DAACE74000421AB /* SongListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D95E981DAACE74000421AB /* SongListTableViewController.swift */; };
@@ -179,8 +178,6 @@
 		9586D3E518637FE500601F3F /* FolderPickerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderPickerTableViewController.m; sourceTree = "<group>"; };
 		9586D3E618637FE500601F3F /* FolderPickerTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FolderPickerTableViewController.xib; sourceTree = "<group>"; };
 		9586D3E918653EBF00601F3F /* calendar_detail_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar_detail_bg.png; sourceTree = "<group>"; };
-		9586D3EC18664CB500601F3F /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
-		9586D3ED18664CB500601F3F /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
 		95BB77D71DEB71A600E189CA /* UIImageView+URLRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+URLRequest.swift"; sourceTree = "<group>"; };
 		95D95E921DAAB1C1000421AB /* baby ketten-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "baby ketten-Bridging-Header.h"; sourceTree = "<group>"; };
 		95D95E961DAAC2D2000421AB /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
@@ -221,7 +218,6 @@
 			isa = PBXGroup;
 			children = (
 				834DE11915DC83160050139B /* Settings.bundle */,
-				83D34B04160E69610065EF6A /* Vendor */,
 				83D34B03160E66F00065EF6A /* Models */,
 				83D34B02160E66900065EF6A /* Controllers */,
 				83FD5CA4160F9DDB007F28D4 /* Views */,
@@ -357,15 +353,6 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		83D34B04160E69610065EF6A /* Vendor */ = {
-			isa = PBXGroup;
-			children = (
-				9586D3EB18664CA400601F3F /* EGORefreshTableHeaderView */,
-			);
-			name = Vendor;
-			path = Classes;
-			sourceTree = "<group>";
-		};
 		83FD5CA4160F9DDB007F28D4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -380,15 +367,6 @@
 			);
 			name = Views;
 			path = Classes;
-			sourceTree = "<group>";
-		};
-		9586D3EB18664CA400601F3F /* EGORefreshTableHeaderView */ = {
-			isa = PBXGroup;
-			children = (
-				9586D3EC18664CB500601F3F /* EGORefreshTableHeaderView.h */,
-				9586D3ED18664CB500601F3F /* EGORefreshTableHeaderView.m */,
-			);
-			name = EGORefreshTableHeaderView;
 			sourceTree = "<group>";
 		};
 		95D95E9A1DABD62A000421AB /* Utility */ = {
@@ -533,7 +511,6 @@
 				83D34B70160E74370065EF6A /* CalendarViewController.m in Sources */,
 				83D34B71160E74370065EF6A /* FavoritesListViewController.m in Sources */,
 				95D95E991DAACE74000421AB /* SongListTableViewController.swift in Sources */,
-				9586D3EE18664CB500601F3F /* EGORefreshTableHeaderView.m in Sources */,
 				83D34B72160E74370065EF6A /* KamikazeViewController.m in Sources */,
 				83D34B73160E74370065EF6A /* CalendarDetailViewController.m in Sources */,
 				957CC1E71DEA4476006C9014 /* NetworkManager.swift in Sources */,

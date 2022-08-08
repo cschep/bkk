@@ -63,7 +63,6 @@ NSString* const kGoogleCalendarAPIKey = @"AIzaSyBQgTWNFmBcR-omkycjHQRGiTtL2DUEm6
 - (void)loadDates {
     [NetworkManager GET:[self getCalendarURL] completionHandler:^(id JSON) {
         if (JSON != nil) {
-            NSLog(@"%@", JSON);
             [self loadDatesFromJSON:JSON];
         } else {
             // this is not good

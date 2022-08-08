@@ -9,8 +9,6 @@
 import UIKit
 
 class SongListTableViewController: UITableViewController {
-
-
     @objc public var searchTerm: String = ""
     @objc public var searchBy: String = ""
     @objc public var random: Bool = false

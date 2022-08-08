@@ -61,7 +61,7 @@
         favorites = [[NSArray alloc] init];
         [defaults setObject:favorites forKey:@"favorites"];
     }
-	
+
 	return YES;
 }
 

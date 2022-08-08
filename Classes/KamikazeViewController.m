@@ -38,38 +38,6 @@
     self.navigationController.navigationBar.hidden = YES;
 }
 
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations.
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
-
-- (BOOL)textViewShouldBeginEditing:(UITextField *)textField
-{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil 
-                                                    message:@"Bouh!"
-                                                   delegate:nil 
-                                          cancelButtonTitle:@"OK" 
-                                          otherButtonTitles:nil];
-    [alert show];
-    return NO;
-}
-
-- (void)didReceiveMemoryWarning {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc. that aren't in use.
-}
-
-- (void)viewDidUnload {
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
 - (BOOL)canBecomeFirstResponder {
     return YES;
 }
@@ -118,15 +86,12 @@
     [self.kamikazeImage.layer addAnimation:scale forKey:@"move forward by scaling"];
     [self.kamikazeImage.layer addAnimation:rotate forKey:@"rotate back and forth"];
     [self.kamikazeImage.layer addAnimation:alphaDown forKey:@"alpha fade out"];
-//    self.kamikazeImage.transform = CGAffineTransformIdentity;
 }
 
 - (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag {
     self.navigationController.view.alpha = 0.0;
     self.navigationController.navigationBar.hidden = NO;
     
-//    SongListViewController *songListViewController = [[SongListViewController alloc] initWithSearchTerm:@"none" SearchBy:@"none" Random:YES Style:UITableViewStylePlain];
-
     SongListTableViewController *songList = [[SongListTableViewController alloc] initWithStyle:UITableViewStylePlain];
     songList.searchTerm = @"none";
     songList.searchBy = @"none";
