@@ -19,15 +19,9 @@ public class NetworkManager : NSObject {
             dataTask?.cancel()
         }
 
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-
         let url = URL(string: urlString)
         dataTask = defaultSession.dataTask(with: url!) {
             data, response, error in
-
-            DispatchQueue.main.async {
-                UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            }
 
             if let error = error {
                 print(error.localizedDescription)

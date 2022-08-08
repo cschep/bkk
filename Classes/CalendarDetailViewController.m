@@ -86,9 +86,19 @@
         MKMapItem *from = [MKMapItem mapItemForCurrentLocation];
         [MKMapItem openMapsWithItems:@[from, to] launchOptions:@{MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving}];
     } else {
-        NSString* addr = [NSString stringWithFormat:@"http://maps.google.com/maps?saddr=Current Location&daddr=%f,%f",aView.annotation.coordinate.latitude,aView.annotation.coordinate.longitude];
-        NSURL* url = [[NSURL alloc] initWithString:[addr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-        [[UIApplication sharedApplication] openURL:url];
+        NSURLComponents *components = [[NSURLComponents alloc] init];
+        components.scheme = @"http";
+        components.host = @"maps.google.com";
+        components.path = @"/maps";
+
+        NSString *daddrString = [NSString stringWithFormat:@"%f,%f",
+                         aView.annotation.coordinate.latitude,
+                         aView.annotation.coordinate.longitude];
+        NSURLQueryItem *queryItem = [[NSURLQueryItem alloc] initWithName:@"saddr" value:@"Current Location"];
+        NSURLQueryItem *queryItem2 = [[NSURLQueryItem alloc] initWithName:@"daddr" value:daddrString];
+        components.queryItems = @[queryItem, queryItem2];
+
+        [[UIApplication sharedApplication] openURL:[components URL] options:@{} completionHandler:nil];
     }
 }
 
