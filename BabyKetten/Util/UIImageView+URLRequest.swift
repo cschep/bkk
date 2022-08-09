@@ -6,7 +6,7 @@
 //
 //
 
-import Foundation
+import UIKit
 
 extension UIImageView {
     func setImage(withURLRequest request: URLRequest, placeholderImage: UIImage, success: @escaping (URLRequest, URLResponse, UIImage) -> ()) {
