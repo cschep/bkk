@@ -13,7 +13,7 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [self searchFor:textField.text
-                 By:[self.segmented titleForSegmentAtIndex:[self.segmented selectedSegmentIndex]]
+                 By:[self.segmentedControl titleForSegmentAtIndex:[self.segmentedControl selectedSegmentIndex]]
         UsingRandom:NO];
 	
 	return YES;
@@ -44,19 +44,46 @@
 }
 
 - (void)viewDidLoad {
-
     self.imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bkklogobwtouchup.jpg"]];
     self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
     self.imageView.contentMode = UIViewContentModeScaleAspectFit;
 //    self.imageView.layer.borderColor = [[UIColor redColor] CGColor];
 //    self.imageView.layer.borderWidth = 2;
-    [self.view addSubview:self.imageView];
 
-    id constraints = @[
+    self.searchTextField = [[UITextField alloc] initWithFrame:CGRectZero];
+    [self.searchTextField setDelegate:self];
+    self.searchTextField.backgroundColor = [UIColor systemBackgroundColor];
+    self.searchTextField.borderStyle = UITextBorderStyleRoundedRect;
+    self.searchTextField.placeholder = @"search!";
+    self.searchTextField.font = [UIFont systemFontOfSize:24];
+    self.searchTextField.tintColor = [UIColor redColor];
+    self.searchTextField.keyboardAppearance = UIKeyboardAppearanceDark;
+    self.searchTextField.translatesAutoresizingMaskIntoConstraints = NO;
+
+    self.segmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"artist", @"title"]];
+    self.segmentedControl.translatesAutoresizingMaskIntoConstraints = NO;
+    self.segmentedControl.selectedSegmentIndex = 0;
+    self.segmentedControl.backgroundColor = [UIColor grayColor];
+
+    [self.view addSubview:self.imageView];
+    [self.view addSubview:self.searchTextField];
+    [self.view addSubview:self.segmentedControl];
+
+    NSArray *constraints = @[
         [self.imageView.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor],
         [self.imageView.widthAnchor constraintEqualToAnchor:self.view.widthAnchor],
         [self.imageView.heightAnchor constraintEqualToAnchor:self.view.heightAnchor multiplier: 0.15],
         [self.imageView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor],
+
+        [self.searchTextField.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor],
+        [self.searchTextField.topAnchor constraintEqualToAnchor:self.imageView.bottomAnchor constant:10],
+        [self.searchTextField.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor],
+        [self.searchTextField.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor],
+
+        [self.segmentedControl.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor],
+        [self.segmentedControl.topAnchor constraintEqualToAnchor:self.searchTextField.bottomAnchor constant:5],
+        [self.segmentedControl.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor],
+        [self.segmentedControl.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor],
     ];
 
     [NSLayoutConstraint activateConstraints:constraints];

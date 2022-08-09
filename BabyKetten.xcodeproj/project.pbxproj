@@ -15,7 +15,6 @@
 		950BE27428A2C13C00EE1D87 /* FolderPickerTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 950BE25728A2C13C00EE1D87 /* FolderPickerTableViewController.xib */; };
 		950BE27528A2C13C00EE1D87 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 950BE25828A2C13C00EE1D87 /* LaunchScreen.storyboard */; };
 		950BE27628A2C13C00EE1D87 /* KamikazeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 950BE25928A2C13C00EE1D87 /* KamikazeViewController.xib */; };
-		950BE27728A2C13C00EE1D87 /* bkkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 950BE25C28A2C13C00EE1D87 /* bkkViewController.xib */; };
 		950BE27A28A2C13C00EE1D87 /* FavoritesListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 950BE25F28A2C13C00EE1D87 /* FavoritesListViewController.xib */; };
 		950BE27B28A2C13C00EE1D87 /* SongDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 950BE26228A2C13C00EE1D87 /* SongDetailViewController.xib */; };
 		950BE27C28A2C13C00EE1D87 /* CalendarDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 950BE26328A2C13C00EE1D87 /* CalendarDetailViewController.xib */; };
@@ -33,7 +32,7 @@
 		950BE28C28A2C16D00EE1D87 /* UIImageView+URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950BE28928A2C16D00EE1D87 /* UIImageView+URLRequest.swift */; };
 		950BE29128A2C17E00EE1D87 /* Date.m in Sources */ = {isa = PBXBuildFile; fileRef = 950BE28F28A2C17E00EE1D87 /* Date.m */; };
 		950BE29228A2C17E00EE1D87 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950BE29028A2C17E00EE1D87 /* Song.swift */; };
-		950BE29428A2C20F00EE1D87 /* NewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950BE29328A2C20F00EE1D87 /* NewModel.swift */; };
+		950BE29928A2C7D300EE1D87 /* bkkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 950BE29828A2C7D300EE1D87 /* bkkViewController.xib */; };
 		953A473428A20288001F6449 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 953A473328A20288001F6449 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -52,7 +51,6 @@
 		950BE25928A2C13C00EE1D87 /* KamikazeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KamikazeViewController.xib; path = BabyKetten/ViewControllers/KamikazeViewController.xib; sourceTree = SOURCE_ROOT; };
 		950BE25A28A2C13C00EE1D87 /* YTTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YTTableViewCell.h; path = BabyKetten/ViewControllers/YTTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		950BE25B28A2C13C00EE1D87 /* KamikazeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KamikazeViewController.h; path = BabyKetten/ViewControllers/KamikazeViewController.h; sourceTree = SOURCE_ROOT; };
-		950BE25C28A2C13C00EE1D87 /* bkkViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = bkkViewController.xib; path = BabyKetten/ViewControllers/bkkViewController.xib; sourceTree = SOURCE_ROOT; };
 		950BE25D28A2C13C00EE1D87 /* SongListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SongListViewController.m; path = BabyKetten/ViewControllers/SongListViewController.m; sourceTree = SOURCE_ROOT; };
 		950BE25E28A2C13C00EE1D87 /* SongDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SongDetailViewController.m; path = BabyKetten/ViewControllers/SongDetailViewController.m; sourceTree = SOURCE_ROOT; };
 		950BE25F28A2C13C00EE1D87 /* FavoritesListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FavoritesListViewController.xib; path = BabyKetten/ViewControllers/FavoritesListViewController.xib; sourceTree = SOURCE_ROOT; };
@@ -80,8 +78,8 @@
 		950BE28E28A2C17E00EE1D87 /* Date.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Date.h; path = BabyKetten/Models/Date.h; sourceTree = SOURCE_ROOT; };
 		950BE28F28A2C17E00EE1D87 /* Date.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Date.m; path = BabyKetten/Models/Date.m; sourceTree = SOURCE_ROOT; };
 		950BE29028A2C17E00EE1D87 /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Song.swift; path = BabyKetten/Models/Song.swift; sourceTree = SOURCE_ROOT; };
-		950BE29328A2C20F00EE1D87 /* NewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewModel.swift; sourceTree = "<group>"; };
 		950BE29728A2C4E600EE1D87 /* BabyKetten_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyKetten_Prefix.pch; sourceTree = "<group>"; };
+		950BE29828A2C7D300EE1D87 /* bkkViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = bkkViewController.xib; sourceTree = "<group>"; };
 		9512834528A2BDE400809E1D /* baby ketten.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "baby ketten.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		953A473328A20288001F6449 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -135,9 +133,9 @@
 		950BE25328A2C11E00EE1D87 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				950BE29828A2C7D300EE1D87 /* bkkViewController.xib */,
 				950BE26928A2C13C00EE1D87 /* BKKViewController.h */,
 				950BE27028A2C13C00EE1D87 /* BKKViewController.m */,
-				950BE25C28A2C13C00EE1D87 /* bkkViewController.xib */,
 				950BE26828A2C13C00EE1D87 /* CalendarDetailViewController.h */,
 				950BE26C28A2C13C00EE1D87 /* CalendarDetailViewController.m */,
 				950BE26328A2C13C00EE1D87 /* CalendarDetailViewController.xib */,
@@ -185,7 +183,6 @@
 				950BE28E28A2C17E00EE1D87 /* Date.h */,
 				950BE28F28A2C17E00EE1D87 /* Date.m */,
 				950BE29028A2C17E00EE1D87 /* Song.swift */,
-				950BE29328A2C20F00EE1D87 /* NewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -263,13 +260,13 @@
 				953A473428A20288001F6449 /* Assets.xcassets in Resources */,
 				950BE27628A2C13C00EE1D87 /* KamikazeViewController.xib in Resources */,
 				950BE27528A2C13C00EE1D87 /* LaunchScreen.storyboard in Resources */,
+				950BE29928A2C7D300EE1D87 /* bkkViewController.xib in Resources */,
 				950BE27C28A2C13C00EE1D87 /* CalendarDetailViewController.xib in Resources */,
 				950BE27E28A2C13C00EE1D87 /* YTTableViewCell.xib in Resources */,
 				834DE11A15DC83160050139B /* Settings.bundle in Resources */,
 				950BE27A28A2C13C00EE1D87 /* FavoritesListViewController.xib in Resources */,
 				950BE27428A2C13C00EE1D87 /* FolderPickerTableViewController.xib in Resources */,
 				950BE27B28A2C13C00EE1D87 /* SongDetailViewController.xib in Resources */,
-				950BE27728A2C13C00EE1D87 /* bkkViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,7 +281,6 @@
 				950BE29128A2C17E00EE1D87 /* Date.m in Sources */,
 				950BE28428A2C13C00EE1D87 /* BKKViewController.m in Sources */,
 				950BE27228A2C13C00EE1D87 /* FolderPickerTableViewController.m in Sources */,
-				950BE29428A2C20F00EE1D87 /* NewModel.swift in Sources */,
 				950BE28328A2C13C00EE1D87 /* FavoritesListViewController.m in Sources */,
 				950BE25228A2C10600EE1D87 /* main.m in Sources */,
 				950BE28028A2C13C00EE1D87 /* SongListTableViewController.swift in Sources */,

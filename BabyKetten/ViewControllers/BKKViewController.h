@@ -8,14 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BKKViewController : UIViewController <UITextViewDelegate>
+@interface BKKViewController : UIViewController <UITextFieldDelegate>
 
 @property (nonatomic, strong) NSString *message;
 @property (nonatomic, strong) UIImageView *imageView;
-@property (nonatomic, weak) UITextView *messageView;
-@property (nonatomic, weak) UIActivityIndicatorView *messageLoadingSpinner;
-@property (nonatomic, weak)	UISegmentedControl *segmented;
-@property (nonatomic, weak)	UITextField *searchTextField;
+@property (nonatomic, strong) UITextView *messageView;
+@property (nonatomic, strong) UIActivityIndicatorView *messageLoadingSpinner;
+@property (nonatomic, strong) UISegmentedControl *segmentedControl;
+@property (nonatomic, strong) UITextField *searchTextField;
 
 - (void)loadMessageInBackground;
 - (void)searchFor:(NSString *)searchTerm By:(NSString *)searchBy UsingRandom:(BOOL)random;
