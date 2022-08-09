@@ -7,92 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
-		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
-		834A5A521465C1E800C87455 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 834A5A511465C1E800C87455 /* QuartzCore.framework */; };
 		834DE11A15DC83160050139B /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 834DE11915DC83160050139B /* Settings.bundle */; };
-		8366C1731340523000D2B518 /* CalendarDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8366C1711340523000D2B518 /* CalendarDetailViewController.xib */; };
-		8366C1761340F8DB00D2B518 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8366C1751340F8DB00D2B518 /* MapKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		8366C1781341012000D2B518 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8366C1771341012000D2B518 /* CoreLocation.framework */; };
-		8397065512F4AA6C00050E9E /* KamikazeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8397065312F4AA6C00050E9E /* KamikazeViewController.xib */; };
-		83CD087E1666762200BEAB0D /* bkkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83CD087D1666762200BEAB0D /* bkkViewController.xib */; };
-		83D34B6B160E74370065EF6A /* Date.m in Sources */ = {isa = PBXBuildFile; fileRef = 832FB83C11BE200B0084909E /* Date.m */; };
-		83D34B6E160E74370065EF6A /* BKKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83ADD5FE116993AB00BF3809 /* BKKViewController.m */; };
-		83D34B6F160E74370065EF6A /* BKKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* BKKAppDelegate.m */; };
-		83D34B70160E74370065EF6A /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 832FB7A411BE0CCA0084909E /* CalendarViewController.m */; };
-		83D34B71160E74370065EF6A /* FavoritesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B7C5B71296E6E500A52BD9 /* FavoritesListViewController.m */; };
-		83D34B72160E74370065EF6A /* KamikazeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8397065212F4AA6C00050E9E /* KamikazeViewController.m */; };
-		83D34B73160E74370065EF6A /* CalendarDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8366C1701340523000D2B518 /* CalendarDetailViewController.m */; };
-		83D34B74160E74370065EF6A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
-		952D459D1B1DFE27001AC720 /* YTSearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D459B1B1DFE27001AC720 /* YTSearchTableViewController.m */; };
-		952D45A21B1E2D29001AC720 /* YTTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 952D45A11B1E2D29001AC720 /* YTTableViewCell.xib */; };
-		952D45A51B1E2E36001AC720 /* YTTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 952D45A41B1E2E36001AC720 /* YTTableViewCell.m */; };
 		953A473428A20288001F6449 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 953A473328A20288001F6449 /* Assets.xcassets */; };
-		954FC13A18488CF3001750CE /* FavoritesListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 954FC13918488CF3001750CE /* FavoritesListViewController.xib */; };
-		957CC0501DE8C1C5006C9014 /* SongDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957CC04F1DE8C1C5006C9014 /* SongDetailTableViewController.swift */; };
-		957CC1E71DEA4476006C9014 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957CC1E61DEA4476006C9014 /* NetworkManager.swift */; };
-		9586D3E718637FE500601F3F /* FolderPickerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9586D3E518637FE500601F3F /* FolderPickerTableViewController.m */; };
-		9586D3E818637FE500601F3F /* FolderPickerTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9586D3E618637FE500601F3F /* FolderPickerTableViewController.xib */; };
-		95BB77D81DEB71A600E189CA /* UIImageView+URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BB77D71DEB71A600E189CA /* UIImageView+URLRequest.swift */; };
-		95D95E971DAAC2D2000421AB /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D95E961DAAC2D2000421AB /* Song.swift */; };
-		95D95E991DAACE74000421AB /* SongListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D95E981DAACE74000421AB /* SongListTableViewController.swift */; };
-		95D95E9C1DABD649000421AB /* CGRect+Sanity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D95E9B1DABD649000421AB /* CGRect+Sanity.swift */; };
-		95FF817D289F8C6400334A90 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95FF817C289F8C6400334A90 /* LaunchScreen.storyboard */; };
-		95FF817F289F943700334A90 /* SongDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95FF817E289F943700334A90 /* SongDetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		1D3623240D0F684500981E51 /* BKKAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKKAppDelegate.h; sourceTree = "<group>"; };
-		1D3623250D0F684500981E51 /* BKKAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKKAppDelegate.m; sourceTree = "<group>"; };
-		1D6058910D05DD3D006BFB54 /* baby ketten.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "baby ketten.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		832FB7A311BE0CCA0084909E /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
-		832FB7A411BE0CCA0084909E /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
-		832FB83B11BE200B0084909E /* Date.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Date.h; sourceTree = "<group>"; };
-		832FB83C11BE200B0084909E /* Date.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Date.m; sourceTree = "<group>"; };
-		834A5A511465C1E800C87455 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		834DE11915DC83160050139B /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
-		8366C16F1340523000D2B518 /* CalendarDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarDetailViewController.h; sourceTree = "<group>"; };
-		8366C1701340523000D2B518 /* CalendarDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarDetailViewController.m; sourceTree = "<group>"; };
-		8366C1711340523000D2B518 /* CalendarDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarDetailViewController.xib; sourceTree = "<group>"; };
-		8366C1751340F8DB00D2B518 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		8366C1771341012000D2B518 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		8382983E116C69F600EE8539 /* SongDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongDetailViewController.h; sourceTree = "<group>"; };
-		8382983F116C69F600EE8539 /* SongDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongDetailViewController.m; sourceTree = "<group>"; };
-		8397065112F4AA6C00050E9E /* KamikazeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KamikazeViewController.h; sourceTree = "<group>"; };
-		8397065212F4AA6C00050E9E /* KamikazeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KamikazeViewController.m; sourceTree = "<group>"; };
-		8397065312F4AA6C00050E9E /* KamikazeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KamikazeViewController.xib; sourceTree = "<group>"; };
-		83ADD5FD116993AB00BF3809 /* BKKViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BKKViewController.h; sourceTree = "<group>"; };
-		83ADD5FE116993AB00BF3809 /* BKKViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BKKViewController.m; sourceTree = "<group>"; };
-		83ADD62D116997AD00BF3809 /* SongListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongListViewController.h; sourceTree = "<group>"; };
-		83ADD62E116997AD00BF3809 /* SongListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongListViewController.m; sourceTree = "<group>"; };
-		83B7C5B61296E6E500A52BD9 /* FavoritesListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesListViewController.h; sourceTree = "<group>"; };
-		83B7C5B71296E6E500A52BD9 /* FavoritesListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesListViewController.m; sourceTree = "<group>"; };
-		83CD087D1666762200BEAB0D /* bkkViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = bkkViewController.xib; sourceTree = SOURCE_ROOT; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
-		952D459A1B1DFE27001AC720 /* YTSearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTSearchTableViewController.h; sourceTree = "<group>"; };
-		952D459B1B1DFE27001AC720 /* YTSearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTSearchTableViewController.m; sourceTree = "<group>"; };
-		952D45A11B1E2D29001AC720 /* YTTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YTTableViewCell.xib; sourceTree = "<group>"; };
-		952D45A31B1E2E36001AC720 /* YTTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTTableViewCell.h; sourceTree = "<group>"; };
-		952D45A41B1E2E36001AC720 /* YTTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTTableViewCell.m; sourceTree = "<group>"; };
+		9512834328A2BC2400809E1D /* src */ = {isa = PBXFileReference; lastKnownFileType = folder; path = src; sourceTree = "<group>"; };
+		9512834528A2BDE400809E1D /* baby ketten.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "baby ketten.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		953A473328A20288001F6449 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		954FC13918488CF3001750CE /* FavoritesListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavoritesListViewController.xib; sourceTree = "<group>"; };
-		957CC04F1DE8C1C5006C9014 /* SongDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongDetailTableViewController.swift; sourceTree = "<group>"; };
-		957CC1E61DEA4476006C9014 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		9586D3E418637FE500601F3F /* FolderPickerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FolderPickerTableViewController.h; sourceTree = "<group>"; };
-		9586D3E518637FE500601F3F /* FolderPickerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FolderPickerTableViewController.m; sourceTree = "<group>"; };
-		9586D3E618637FE500601F3F /* FolderPickerTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FolderPickerTableViewController.xib; sourceTree = "<group>"; };
-		95BB77D71DEB71A600E189CA /* UIImageView+URLRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+URLRequest.swift"; sourceTree = "<group>"; };
-		95C0CDE928A1FFB6007B4C79 /* BabyKetten_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyKetten_Prefix.pch; sourceTree = "<group>"; };
-		95D95E921DAAB1C1000421AB /* BabyKetten-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BabyKetten-Bridging-Header.h"; sourceTree = "<group>"; };
-		95D95E961DAAC2D2000421AB /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
-		95D95E981DAACE74000421AB /* SongListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongListTableViewController.swift; sourceTree = "<group>"; };
-		95D95E9B1DABD649000421AB /* CGRect+Sanity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Sanity.swift"; sourceTree = "<group>"; };
-		95FF817C289F8C6400334A90 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		95FF817E289F943700334A90 /* SongDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SongDetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,140 +24,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				834A5A521465C1E800C87455 /* QuartzCore.framework in Frameworks */,
-				8366C1781341012000D2B518 /* CoreLocation.framework in Frameworks */,
-				8366C1761340F8DB00D2B518 /* MapKit.framework in Frameworks */,
-				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
-				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		19C28FACFE9D520D11CA2CBB /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				1D6058910D05DD3D006BFB54 /* baby ketten.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
 				834DE11915DC83160050139B /* Settings.bundle */,
-				83D34B03160E66F00065EF6A /* Models */,
-				83D34B02160E66900065EF6A /* Controllers */,
-				83FD5CA4160F9DDB007F28D4 /* Views */,
-				95D95E9A1DABD62A000421AB /* Utility */,
-				29B97315FDCFA39411CA2CEA /* Other Sources */,
-				29B97317FDCFA39411CA2CEA /* Resources */,
-				29B97323FDCFA39411CA2CEA /* Frameworks */,
-				19C28FACFE9D520D11CA2CBB /* Products */,
+				8D1107310486CEB800E47090 /* Info.plist */,
+				953A473328A20288001F6449 /* Assets.xcassets */,
+				9512834328A2BC2400809E1D /* src */,
+				9512834628A2BDE400809E1D /* Products */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
 		};
-		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+		9512834628A2BDE400809E1D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				95D95E921DAAB1C1000421AB /* BabyKetten-Bridging-Header.h */,
-				95C0CDE928A1FFB6007B4C79 /* BabyKetten_Prefix.pch */,
-				29B97316FDCFA39411CA2CEA /* main.m */,
+				9512834528A2BDE400809E1D /* baby ketten.app */,
 			);
-			name = "Other Sources";
-			sourceTree = "<group>";
-		};
-		29B97317FDCFA39411CA2CEA /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				953A473328A20288001F6449 /* Assets.xcassets */,
-				8D1107310486CEB800E47090 /* Info.plist */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				834A5A511465C1E800C87455 /* QuartzCore.framework */,
-				8366C1771341012000D2B518 /* CoreLocation.framework */,
-				8366C1751340F8DB00D2B518 /* MapKit.framework */,
-				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
-				1D30AB110D05D00D00671497 /* Foundation.framework */,
-				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		83D34B02160E66900065EF6A /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				1D3623240D0F684500981E51 /* BKKAppDelegate.h */,
-				1D3623250D0F684500981E51 /* BKKAppDelegate.m */,
-				83ADD5FD116993AB00BF3809 /* BKKViewController.h */,
-				83ADD5FE116993AB00BF3809 /* BKKViewController.m */,
-				8366C16F1340523000D2B518 /* CalendarDetailViewController.h */,
-				8366C1701340523000D2B518 /* CalendarDetailViewController.m */,
-				832FB7A311BE0CCA0084909E /* CalendarViewController.h */,
-				832FB7A411BE0CCA0084909E /* CalendarViewController.m */,
-				83B7C5B61296E6E500A52BD9 /* FavoritesListViewController.h */,
-				83B7C5B71296E6E500A52BD9 /* FavoritesListViewController.m */,
-				9586D3E418637FE500601F3F /* FolderPickerTableViewController.h */,
-				9586D3E518637FE500601F3F /* FolderPickerTableViewController.m */,
-				8397065112F4AA6C00050E9E /* KamikazeViewController.h */,
-				8397065212F4AA6C00050E9E /* KamikazeViewController.m */,
-				8382983E116C69F600EE8539 /* SongDetailViewController.h */,
-				8382983F116C69F600EE8539 /* SongDetailViewController.m */,
-				957CC04F1DE8C1C5006C9014 /* SongDetailTableViewController.swift */,
-				83ADD62D116997AD00BF3809 /* SongListViewController.h */,
-				83ADD62E116997AD00BF3809 /* SongListViewController.m */,
-				952D459A1B1DFE27001AC720 /* YTSearchTableViewController.h */,
-				952D459B1B1DFE27001AC720 /* YTSearchTableViewController.m */,
-				952D45A31B1E2E36001AC720 /* YTTableViewCell.h */,
-				952D45A41B1E2E36001AC720 /* YTTableViewCell.m */,
-				95D95E981DAACE74000421AB /* SongListTableViewController.swift */,
-			);
-			name = Controllers;
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		83D34B03160E66F00065EF6A /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				832FB83B11BE200B0084909E /* Date.h */,
-				832FB83C11BE200B0084909E /* Date.m */,
-				95D95E961DAAC2D2000421AB /* Song.swift */,
-			);
-			name = Models;
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		83FD5CA4160F9DDB007F28D4 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				95FF817E289F943700334A90 /* SongDetailViewController.xib */,
-				83CD087D1666762200BEAB0D /* bkkViewController.xib */,
-				8366C1711340523000D2B518 /* CalendarDetailViewController.xib */,
-				954FC13918488CF3001750CE /* FavoritesListViewController.xib */,
-				9586D3E618637FE500601F3F /* FolderPickerTableViewController.xib */,
-				8397065312F4AA6C00050E9E /* KamikazeViewController.xib */,
-				952D45A11B1E2D29001AC720 /* YTTableViewCell.xib */,
-				95FF817C289F8C6400334A90 /* LaunchScreen.storyboard */,
-			);
-			name = Views;
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		95D95E9A1DABD62A000421AB /* Utility */ = {
-			isa = PBXGroup;
-			children = (
-				95D95E9B1DABD649000421AB /* CGRect+Sanity.swift */,
-				957CC1E61DEA4476006C9014 /* NetworkManager.swift */,
-				95BB77D71DEB71A600E189CA /* UIImageView+URLRequest.swift */,
-			);
-			name = Utility;
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,7 +67,7 @@
 			);
 			name = "baby ketten";
 			productName = bkk;
-			productReference = 1D6058910D05DD3D006BFB54 /* baby ketten.app */;
+			productReference = 9512834528A2BDE400809E1D /* baby ketten.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -284,6 +98,7 @@
 				fr,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			productRefGroup = 9512834628A2BDE400809E1D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -297,16 +112,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8397065512F4AA6C00050E9E /* KamikazeViewController.xib in Resources */,
-				8366C1731340523000D2B518 /* CalendarDetailViewController.xib in Resources */,
 				953A473428A20288001F6449 /* Assets.xcassets in Resources */,
-				952D45A21B1E2D29001AC720 /* YTTableViewCell.xib in Resources */,
 				834DE11A15DC83160050139B /* Settings.bundle in Resources */,
-				9586D3E818637FE500601F3F /* FolderPickerTableViewController.xib in Resources */,
-				95FF817D289F8C6400334A90 /* LaunchScreen.storyboard in Resources */,
-				95FF817F289F943700334A90 /* SongDetailViewController.xib in Resources */,
-				954FC13A18488CF3001750CE /* FavoritesListViewController.xib in Resources */,
-				83CD087E1666762200BEAB0D /* bkkViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,23 +124,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				952D45A51B1E2E36001AC720 /* YTTableViewCell.m in Sources */,
-				9586D3E718637FE500601F3F /* FolderPickerTableViewController.m in Sources */,
-				83D34B6B160E74370065EF6A /* Date.m in Sources */,
-				95BB77D81DEB71A600E189CA /* UIImageView+URLRequest.swift in Sources */,
-				95D95E9C1DABD649000421AB /* CGRect+Sanity.swift in Sources */,
-				83D34B6E160E74370065EF6A /* BKKViewController.m in Sources */,
-				83D34B6F160E74370065EF6A /* BKKAppDelegate.m in Sources */,
-				83D34B70160E74370065EF6A /* CalendarViewController.m in Sources */,
-				83D34B71160E74370065EF6A /* FavoritesListViewController.m in Sources */,
-				95D95E991DAACE74000421AB /* SongListTableViewController.swift in Sources */,
-				83D34B72160E74370065EF6A /* KamikazeViewController.m in Sources */,
-				83D34B73160E74370065EF6A /* CalendarDetailViewController.m in Sources */,
-				957CC1E71DEA4476006C9014 /* NetworkManager.swift in Sources */,
-				95D95E971DAAC2D2000421AB /* Song.swift in Sources */,
-				957CC0501DE8C1C5006C9014 /* SongDetailTableViewController.swift in Sources */,
-				952D459D1B1DFE27001AC720 /* YTSearchTableViewController.m in Sources */,
-				83D34B74160E74370065EF6A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,12 +153,6 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = org.schepman.babyketten;
 				PRODUCT_NAME = "baby ketten";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "BabyKetten-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -394,10 +178,6 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = org.schepman.babyketten;
 				PRODUCT_NAME = "baby ketten";
-				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "BabyKetten-Bridging-Header.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -468,10 +248,6 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = org.schepman.babyketten;
 				PRODUCT_NAME = "baby ketten";
-				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "BabyKetten-Bridging-Header.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -539,11 +315,6 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = org.schepman.babyketten;
 				PRODUCT_NAME = "baby ketten";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "BabyKetten-Bridging-Header.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};

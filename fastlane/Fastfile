@@ -19,7 +19,7 @@ platform :ios do
   desc "Generate App Icons"
   lane :icons do
     appicon(
-      appicon_image_file: 'icon/bkk-icon.png',
+      appicon_image_file: 'fastlane/icon/bkk-icon.png',
       appicon_devices: %i[iphone ios_marketing],
       appicon_path: 'Assets.xcassets'
     )
