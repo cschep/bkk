@@ -8,9 +8,19 @@
 
 import Foundation
 
-struct Song {
+struct Song: Codable, Equatable {
     let artist: String
     let title: String
+}
+
+extension Song {
+    var isFavorite: Bool {
+        Favorites.shared.isFavorite(self)
+    }
+
+    func toggleFavorite() {
+        Favorites.shared.toggleFavorite(self)
+    }
 }
 
 extension Song {

@@ -39,13 +39,13 @@ class SongDetailHeaderView: UIView {
         addSubview(labelStack)
 
         let constraints = [
-            imageView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
-            imageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.20),
+            imageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            imageView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.20),
 
             labelStack.topAnchor.constraint(equalTo: imageView.topAnchor),
             labelStack.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 10),
-            labelStack.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
+            labelStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
         ]
         NSLayoutConstraint.activate(constraints)
     }
@@ -62,10 +62,13 @@ class SongDetailTableViewController: UITableViewController {
 
     let song: Song
 
+    @objc convenience init(artist: String, title: String) {
+        self.init(song: Song(artist: artist, title: title))
+    }
+
     init(song: Song) {
         self.song = song
         super.init(style: .grouped)
-
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "SongDetailCell")
     }
 
@@ -75,13 +78,13 @@ class SongDetailTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         title = "Details"
     }
 
     func toggleFavorite() {
-        Favorites.shared.toggleFavorite(song: self.song)
-        self.tableView.reloadData()
+        song.toggleFavorite()
+        Favorites.shared.debugDump()
+        tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -101,7 +104,7 @@ class SongDetailTableViewController: UITableViewController {
             if (indexPath.row == 0) {
                 cell.textLabel!.text = "Favorite"
 
-                if Favorites.shared.isFavorite(song: self.song) {
+                if song.isFavorite {
                     cell.accessoryType = .checkmark
                 } else {
                     cell.accessoryType = .none
@@ -123,9 +126,9 @@ class SongDetailTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             if indexPath.row == 0 {
-                self.toggleFavorite()
+                toggleFavorite()
             } else if (indexPath.row == 1) {
-                self.artistSearch()
+                artistSearch()
             }
         } else if (indexPath.section == 1) {
             if (indexPath.row == 0) {
@@ -148,10 +151,10 @@ class SongDetailTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if (section == 0) {
-            self.headerView.titleLabel.text = song.title;
-            self.headerView.artistLabel.text = "-" + song.artist;
+            headerView.titleLabel.text = song.title;
+            headerView.artistLabel.text = "-" + song.artist;
 
-            return self.headerView;
+            return headerView;
         } else {
             return nil;
         }

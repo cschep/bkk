@@ -8,6 +8,7 @@
 
 #import "FavoritesListViewController.h"
 #import "FolderPickerTableViewController.h"
+#import "baby_ketten-Swift.h"
 
 @implementation FavoritesListViewController
 
@@ -172,7 +173,6 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
     id current = [self.displayList objectAtIndex:indexPath.row];
     UITableViewCell *cell;
     
@@ -232,7 +232,8 @@
 }
 
 - (void)refreshDisplayList {
-    self.favorites = [[[NSUserDefaults standardUserDefaults] objectForKey:@"favorites"] mutableCopy];
+//    self.favorites = [[[NSUserDefaults standardUserDefaults] objectForKey:@"favorites"] mutableCopy];
+    self.favorites = [[Favorites shared] favoritesAsDicts];
     
     if (self.currentFolder) {
         NSPredicate *pred = [NSPredicate predicateWithFormat:@"folder == %@", self.currentFolder];
@@ -271,12 +272,11 @@
             vc.currentFolder = [tapped objectForKey:@"title"];
             [self.navigationController pushViewController:vc animated:YES];
         } else {
-//            Song *song = [[Song alloc] init];
-//            song.title = [tapped objectForKey:@"title"];
-//            song.artist = [tapped objectForKey:@"artist"];
-//            
-//            SongDetailViewController *songDetailViewController = [[SongDetailViewController alloc] initWithSong:song];
-//            [self.navigationController pushViewController:songDetailViewController animated:YES];
+            NSString *title = [tapped objectForKey:@"title"];
+            NSString *artist = [tapped objectForKey:@"artist"];
+
+            SongDetailTableViewController *songDetailTableViewController = [[SongDetailTableViewController alloc] initWithArtist:artist title:title];
+            [self.navigationController pushViewController:songDetailTableViewController animated:YES];
         }
     } else {
         // while editing update the buttons depending on if anything is selected

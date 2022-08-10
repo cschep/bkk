@@ -106,10 +106,10 @@
 		950BE24B28A2C0E400EE1D87 /* BabyKetten */ = {
 			isa = PBXGroup;
 			children = (
+				950BE24C28A2C0F900EE1D87 /* App */,
 				950BE28D28A2C17600EE1D87 /* Models */,
 				950BE28628A2C16500EE1D87 /* Util */,
 				950BE25328A2C11E00EE1D87 /* ViewControllers */,
-				950BE24C28A2C0F900EE1D87 /* App */,
 			);
 			path = BabyKetten;
 			sourceTree = "<group>";

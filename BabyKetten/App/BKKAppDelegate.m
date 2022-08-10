@@ -11,6 +11,7 @@
 #import "CalendarViewController.h"
 #import "FavoritesListViewController.h"
 #import "KamikazeViewController.h"
+#import "baby_ketten-Swift.h"
 
 @implementation BKKAppDelegate
 
@@ -51,6 +52,7 @@
     [self.window makeKeyAndVisible];
     
     //if there is no favorites array in defaults then create an empty one
+    /*
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSArray *favorites = [defaults arrayForKey:@"favorites"];
     
@@ -58,6 +60,9 @@
         favorites = [[NSArray alloc] init];
         [defaults setObject:favorites forKey:@"favorites"];
     }
+    */
+
+    [[Favorites shared] load];
 
 	return YES;
 }
