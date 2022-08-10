@@ -16,33 +16,13 @@ class SongListTableViewController: UITableViewController {
     private var songs: [Song] = []
     private var activityIndicator = UIActivityIndicatorView(frame: CGRect(0, 0, 20, 20))
 
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return UIStatusBarStyle.lightContent
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-
-//        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "SongCell")
-
-//        let song = Song(artist: "beebs", title: "what do u mean")
-//        songs = [song]
 
         self.activityIndicator.hidesWhenStopped = true
         self.activityIndicator.color = UIColor.black
 
-        //Create an instance of Bar button item with custome view which is of activity indicator
-//        UIBarButtonItem * barButton = [[UIBarButtonItem alloc] initWithCustomView:self.activityIndicator];
         let activityBarButton = UIBarButtonItem(customView: self.activityIndicator)
-
-        //Set the bar button the navigation bar
-//        [self navigationItem].rightBarButtonItem = barButton;
         self.navigationItem.rightBarButtonItem = activityBarButton
 
         if random {
@@ -50,15 +30,7 @@ class SongListTableViewController: UITableViewController {
             refreshControl?.addTarget(self, action: #selector(refreshSongs), for: UIControl.Event.valueChanged)
         }
 
-//        [self startLoadingUI];
-//        [self loadSongs];
-
         loadSongs(updateUI: true)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
@@ -96,7 +68,6 @@ class SongListTableViewController: UITableViewController {
 
     }
 
-    ////////
     @objc func refreshSongs() {
         loadSongs(updateUI: false)
     }

@@ -16,35 +16,32 @@
 
 @synthesize window;
 
-
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
-
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	
     self.tabBarController = [[UITabBarController alloc] init];
-    [self.tabBarController.tabBar setTintColor:[UIColor redColor]];
-    [self.tabBarController.tabBar setBarTintColor:[UIColor blackColor]];
+    [self.tabBarController.tabBar setTintColor:[UIColor systemRedColor]];
 
     self.mainViewController = [[BKKViewController alloc] init];
     
     self.navControllerSearch = [[UINavigationController alloc] initWithRootViewController:self.mainViewController];
 	[self.navControllerSearch navigationBar].hidden = YES;
-	self.navControllerSearch.navigationBar.tintColor = [UIColor redColor];
+	self.navControllerSearch.navigationBar.tintColor = [UIColor systemRedColor];
 	self.navControllerSearch.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"search" image:[UIImage imageNamed:@"mic"] tag:1];
 
 	CalendarViewController *calendarViewController = [[CalendarViewController alloc] init];
 	self.navControllerCalendar = [[UINavigationController alloc] initWithRootViewController:calendarViewController];
-	self.navControllerCalendar.navigationBar.tintColor = [UIColor redColor];
+	self.navControllerCalendar.navigationBar.tintColor = [UIColor systemRedColor];
 	self.navControllerCalendar.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"calendar" image:[UIImage imageNamed:@"calendar"]  tag:2];
 
-	FavoritesListViewController *favoritesViewController = [[FavoritesListViewController alloc] initWithNibName:@"FavoritesListViewController" bundle:nil];
+    FavoritesListViewController *favoritesViewController = [[FavoritesListViewController alloc] initWithStyle:UITableViewStylePlain];
 	self.navControllerFaves = [[UINavigationController alloc] initWithRootViewController:favoritesViewController];
-    self.navControllerFaves.navigationBar.tintColor = [UIColor redColor];
+    self.navControllerFaves.navigationBar.tintColor = [UIColor systemRedColor];
     self.navControllerFaves.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"faves" image:[UIImage imageNamed:@"inbox"] tag:3];
 
 	KamikazeViewController *kamikazeViewController = [[KamikazeViewController alloc] initWithNibName:@"KamikazeViewController" bundle:nil];
 	self.navControllerKamikaze = [[UINavigationController alloc] initWithRootViewController:kamikazeViewController];
-	self.navControllerKamikaze.navigationBar.tintColor = [UIColor redColor];
+	self.navControllerKamikaze.navigationBar.tintColor = [UIColor systemRedColor];
 	self.navControllerKamikaze.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"kamikaze!" image:[UIImage imageNamed:@"question"] tag:4];
     
 	[self.tabBarController setViewControllers: [NSArray arrayWithObjects:self.navControllerSearch, self.navControllerCalendar, self.navControllerFaves, self.navControllerKamikaze, nil]];

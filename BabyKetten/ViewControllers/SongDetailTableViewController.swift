@@ -31,9 +31,6 @@ class SongDetailHeaderView: UIView {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         artistLabel.translatesAutoresizingMaskIntoConstraints = false
 
-        imageView.layer.borderColor = UIColor.red.cgColor
-        imageView.layer.borderWidth = 2
-
         let labelStack = UIStackView(arrangedSubviews: [titleLabel, artistLabel])
         labelStack.translatesAutoresizingMaskIntoConstraints = false
         labelStack.axis = .vertical
@@ -47,7 +44,7 @@ class SongDetailHeaderView: UIView {
             imageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.20),
 
             labelStack.topAnchor.constraint(equalTo: imageView.topAnchor),
-            labelStack.leadingAnchor.constraint(equalTo: imageView.trailingAnchor),
+            labelStack.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 10),
             labelStack.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
         ]
         NSLayoutConstraint.activate(constraints)
@@ -64,12 +61,12 @@ class SongDetailTableViewController: UITableViewController {
     }()
 
     let song: Song
-    var isFavorite: Bool = false
-    var favoriteCell: UITableViewCell?
 
     init(song: Song) {
         self.song = song
         super.init(style: .grouped)
+
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "SongDetailCell")
     }
 
     required init?(coder: NSCoder) {
@@ -79,10 +76,12 @@ class SongDetailTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        favoriteCell = tableView.cellForRow(at: IndexPath(row: 0, section: 0))
-        setCheckmarkForFavorite()
-
         title = "Details"
+    }
+
+    func toggleFavorite() {
+        Favorites.shared.toggleFavorite(song: self.song)
+        self.tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -95,55 +94,40 @@ class SongDetailTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SongDetailCell", for: indexPath)
+        cell.accessoryType = .none
 
-        let cellIdentifier: String = "SongDetailCell"
-        var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
+        if (indexPath.section == 0) {
+            if (indexPath.row == 0) {
+                cell.textLabel!.text = "Favorite"
 
-        if (cell == nil) {
-            cell = UITableViewCell(style: .default, reuseIdentifier: cellIdentifier)
-        }
-
-        if let cell = cell {
-            //menu stuff
-            if (indexPath.section == 0) {
-                if (indexPath.row == 0) {
-                    cell.textLabel!.text = "Favorite"
-
-                    if (self.isFavorite) {
-                        cell.accessoryType = .checkmark
-                    }
-
-                } else if (indexPath.row == 1) {
-                    cell.textLabel!.text = "More By This Artist"
+                if Favorites.shared.isFavorite(song: self.song) {
+                    cell.accessoryType = .checkmark
+                } else {
+                    cell.accessoryType = .none
                 }
-            } else if (indexPath.section == 1) {
-                if (indexPath.row == 0) {
-                    cell.textLabel!.text = "Lyrics Search"
-                } else if (indexPath.row == 1) {
-                    cell.textLabel!.text = "YouTube Search"
-                }
+            } else if (indexPath.row == 1) {
+                cell.textLabel!.text = "More By This Artist"
+            }
+        } else if (indexPath.section == 1) {
+            if (indexPath.row == 0) {
+                cell.textLabel!.text = "Lyrics Search"
+            } else if (indexPath.row == 1) {
+                cell.textLabel!.text = "YouTube Search"
             }
         }
 
-        return cell!
+        return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (indexPath.section == 0) {
-
-            if (indexPath.row == 0) {
-
-                //[self toggleFavorite];
-
-                isFavorite = !isFavorite;
-                setCheckmarkForFavorite()
-
+        if indexPath.section == 0 {
+            if indexPath.row == 0 {
+                self.toggleFavorite()
             } else if (indexPath.row == 1) {
                 self.artistSearch()
             }
-
         } else if (indexPath.section == 1) {
-            
             if (indexPath.row == 0) {
 //                [self lyricsSearch];
             } else if (indexPath.row == 1) {
@@ -181,15 +165,6 @@ class SongDetailTableViewController: UITableViewController {
         }
     }
 
-    func setCheckmarkForFavorite() {
-        if isFavorite {
-            favoriteCell?.accessoryType = .checkmark
-        } else {
-            favoriteCell?.accessoryType = .none
-        }
-    }
-
-    //actions
     func artistSearch() {
         let vc = SongListTableViewController(style: .plain)
         vc.searchTerm = song.artist

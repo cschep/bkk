@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "FolderPickerTableViewController.h"
 
-@interface FavoritesListViewController : UITableViewController <UIAlertViewDelegate, UIActionSheetDelegate, FolderPickerTableViewDelegate>
+@interface FavoritesListViewController : UITableViewController <FolderPickerTableViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *favorites;
 @property (nonatomic, strong) NSMutableArray *displayList;

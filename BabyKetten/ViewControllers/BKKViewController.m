@@ -47,23 +47,21 @@
     self.imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bkklogobwtouchup.jpg"]];
     self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
     self.imageView.contentMode = UIViewContentModeScaleAspectFit;
-//    self.imageView.layer.borderColor = [[UIColor redColor] CGColor];
-//    self.imageView.layer.borderWidth = 2;
 
     self.searchTextField = [[UITextField alloc] initWithFrame:CGRectZero];
     [self.searchTextField setDelegate:self];
-    self.searchTextField.backgroundColor = [UIColor systemBackgroundColor];
+    self.searchTextField.backgroundColor = [UIColor secondarySystemBackgroundColor];
     self.searchTextField.borderStyle = UITextBorderStyleRoundedRect;
     self.searchTextField.placeholder = @"search!";
     self.searchTextField.font = [UIFont systemFontOfSize:24];
-    self.searchTextField.tintColor = [UIColor redColor];
+    self.searchTextField.tintColor = [UIColor systemRedColor];
     self.searchTextField.keyboardAppearance = UIKeyboardAppearanceDark;
     self.searchTextField.translatesAutoresizingMaskIntoConstraints = NO;
 
     self.segmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"artist", @"title"]];
     self.segmentedControl.translatesAutoresizingMaskIntoConstraints = NO;
     self.segmentedControl.selectedSegmentIndex = 0;
-    self.segmentedControl.backgroundColor = [UIColor grayColor];
+    self.segmentedControl.backgroundColor = [UIColor secondarySystemBackgroundColor];
 
     [self.view addSubview:self.imageView];
     [self.view addSubview:self.searchTextField];

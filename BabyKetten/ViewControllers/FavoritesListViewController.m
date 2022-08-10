@@ -31,6 +31,8 @@
         self.navigationItem.title = @"Favorites!";        
         self.navigationItem.leftBarButtonItem = self.addButton;
     }
+
+    [self.tableView setBackgroundColor:[UIColor systemBackgroundColor]];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -55,7 +57,7 @@
 }
 
 - (void)moveAction {
-    FolderPickerTableViewController *vc = [[FolderPickerTableViewController alloc] initWithNibName:@"FolderPickerTableViewController" bundle:nil];
+    FolderPickerTableViewController *vc = [[FolderPickerTableViewController alloc] initWithStyle:UITableViewStylePlain];
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"isFolder == %@", @"true"];
 
     NSMutableArray *folderList = [[self.favorites filteredArrayUsingPredicate:pred] mutableCopy];
@@ -265,7 +267,7 @@
         id tapped = [self.displayList objectAtIndex:indexPath.row];
         
         if ([[tapped objectForKey:@"isFolder"] isEqualToString:@"true"]) {
-            FavoritesListViewController *vc = [[FavoritesListViewController alloc] initWithNibName:@"FavoritesListViewController" bundle:nil];
+            FavoritesListViewController *vc = [[FavoritesListViewController alloc] initWithStyle:UITableViewStylePlain];
             vc.currentFolder = [tapped objectForKey:@"title"];
             [self.navigationController pushViewController:vc animated:YES];
         } else {
