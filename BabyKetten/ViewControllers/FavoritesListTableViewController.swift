@@ -86,7 +86,7 @@ class FavoritesListTableViewController: UITableViewController {
         let vc = FolderPickerTableViewController()
 //        NSPredicate *pred = [NSPredicate predicateWithFormat:@"isFolder == %@", @"true"];
 //
-        var folderList = Favorites.shared.folders()
+        let folderList = Favorites.shared.folders()
 //        [folderList sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
 //            return [[obj1 objectForKey:@"title"] compare:[obj2 objectForKey:@"title"] options:NSCaseInsensitiveSearch];
 //        }];

@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		834DE11A15DC83160050139B /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 834DE11915DC83160050139B /* Settings.bundle */; };
-		950BE25128A2C10600EE1D87 /* BKKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 950BE24D28A2C10500EE1D87 /* BKKAppDelegate.m */; };
-		950BE25228A2C10600EE1D87 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 950BE24F28A2C10500EE1D87 /* main.m */; };
 		950BE27228A2C13C00EE1D87 /* FolderPickerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 950BE25528A2C13C00EE1D87 /* FolderPickerTableViewController.m */; };
 		950BE27328A2C13C00EE1D87 /* YTTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 950BE25628A2C13C00EE1D87 /* YTTableViewCell.m */; };
 		950BE27528A2C13C00EE1D87 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 950BE25828A2C13C00EE1D87 /* LaunchScreen.storyboard */; };
@@ -35,14 +33,13 @@
 		9571B9EA28A4AF4700DC66C7 /* FavoritesListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9571B9E928A4AF4700DC66C7 /* FavoritesListTableViewController.swift */; };
 		9571B9ED28A4B89100DC66C7 /* SubtitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9571B9EC28A4B89100DC66C7 /* SubtitleTableViewCell.swift */; };
 		9571B9EF28A4BCE700DC66C7 /* Value1TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9571B9EE28A4BCE700DC66C7 /* Value1TableViewCell.swift */; };
+		9571B9F128A6B28100DC66C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9571B9F028A6B28100DC66C7 /* AppDelegate.swift */; };
+		9571B9F328A6B74E00DC66C7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9571B9F228A6B74E00DC66C7 /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		834DE11915DC83160050139B /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
-		950BE24D28A2C10500EE1D87 /* BKKAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BKKAppDelegate.m; path = BabyKetten/App/BKKAppDelegate.m; sourceTree = SOURCE_ROOT; };
-		950BE24E28A2C10500EE1D87 /* BKKAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BKKAppDelegate.h; path = BabyKetten/App/BKKAppDelegate.h; sourceTree = SOURCE_ROOT; };
-		950BE24F28A2C10500EE1D87 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = BabyKetten/App/main.m; sourceTree = SOURCE_ROOT; };
 		950BE25028A2C10600EE1D87 /* BabyKetten-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "BabyKetten-Bridging-Header.h"; path = "BabyKetten/App/BabyKetten-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		950BE25428A2C13B00EE1D87 /* FavoritesListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FavoritesListViewController.h; path = BabyKetten/ViewControllers/FavoritesListViewController.h; sourceTree = SOURCE_ROOT; };
 		950BE25528A2C13C00EE1D87 /* FolderPickerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FolderPickerTableViewController.m; path = BabyKetten/ViewControllers/FolderPickerTableViewController.m; sourceTree = SOURCE_ROOT; };
@@ -77,13 +74,14 @@
 		950BE28E28A2C17E00EE1D87 /* Date.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Date.h; path = BabyKetten/Models/Date.h; sourceTree = SOURCE_ROOT; };
 		950BE28F28A2C17E00EE1D87 /* Date.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Date.m; path = BabyKetten/Models/Date.m; sourceTree = SOURCE_ROOT; };
 		950BE29028A2C17E00EE1D87 /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Song.swift; path = BabyKetten/Models/Song.swift; sourceTree = SOURCE_ROOT; };
-		950BE29728A2C4E600EE1D87 /* BabyKetten_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BabyKetten_Prefix.pch; sourceTree = "<group>"; };
 		950BE29A28A35D8700EE1D87 /* Favorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorites.swift; sourceTree = "<group>"; };
 		9512834528A2BDE400809E1D /* baby ketten.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "baby ketten.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		953A473328A20288001F6449 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9571B9E928A4AF4700DC66C7 /* FavoritesListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListTableViewController.swift; sourceTree = "<group>"; };
 		9571B9EC28A4B89100DC66C7 /* SubtitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitleTableViewCell.swift; sourceTree = "<group>"; };
 		9571B9EE28A4BCE700DC66C7 /* Value1TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Value1TableViewCell.swift; sourceTree = "<group>"; };
+		9571B9F028A6B28100DC66C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9571B9F228A6B74E00DC66C7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,12 +122,10 @@
 		950BE24C28A2C0F900EE1D87 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				9571B9F028A6B28100DC66C7 /* AppDelegate.swift */,
+				9571B9F228A6B74E00DC66C7 /* SceneDelegate.swift */,
 				950BE25828A2C13C00EE1D87 /* LaunchScreen.storyboard */,
 				950BE25028A2C10600EE1D87 /* BabyKetten-Bridging-Header.h */,
-				950BE29728A2C4E600EE1D87 /* BabyKetten_Prefix.pch */,
-				950BE24E28A2C10500EE1D87 /* BKKAppDelegate.h */,
-				950BE24D28A2C10500EE1D87 /* BKKAppDelegate.m */,
-				950BE24F28A2C10500EE1D87 /* main.m */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -285,15 +281,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9571B9F128A6B28100DC66C7 /* AppDelegate.swift in Sources */,
 				950BE27328A2C13C00EE1D87 /* YTTableViewCell.m in Sources */,
 				950BE29128A2C17E00EE1D87 /* Date.m in Sources */,
 				950BE28428A2C13C00EE1D87 /* BKKViewController.m in Sources */,
 				950BE27228A2C13C00EE1D87 /* FolderPickerTableViewController.m in Sources */,
 				950BE28328A2C13C00EE1D87 /* FavoritesListViewController.m in Sources */,
-				950BE25228A2C10600EE1D87 /* main.m in Sources */,
+				9571B9F328A6B74E00DC66C7 /* SceneDelegate.swift in Sources */,
 				950BE28028A2C13C00EE1D87 /* SongListTableViewController.swift in Sources */,
 				9571B9EA28A4AF4700DC66C7 /* FavoritesListTableViewController.swift in Sources */,
-				950BE25128A2C10600EE1D87 /* BKKAppDelegate.m in Sources */,
 				9571B9EF28A4BCE700DC66C7 /* Value1TableViewCell.swift in Sources */,
 				950BE28B28A2C16D00EE1D87 /* CGRect+Sanity.swift in Sources */,
 				950BE29B28A35D8700EE1D87 /* Favorites.swift in Sources */,
@@ -328,8 +324,6 @@
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = BabyKetten/App/BabyKetten_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
@@ -357,8 +351,6 @@
 				COPY_PHASE_STRIP = YES;
 				DEVELOPMENT_TEAM = 78FKA3KWWM;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = BabyKetten/App/BabyKetten_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
@@ -430,8 +422,6 @@
 				COPY_PHASE_STRIP = YES;
 				DEVELOPMENT_TEAM = 78FKA3KWWM;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = BabyKetten/App/BabyKetten_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
@@ -500,8 +490,6 @@
 				COPY_PHASE_STRIP = YES;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = BabyKetten/App/BabyKetten_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";

@@ -12,10 +12,9 @@ enum Favorite: Codable {
     case folder(title: String)
 }
 
-@objc(Favorites)
-class Favorites: NSObject {
-    @objc public static let shared = Favorites()
-    private override init() {}
+class Favorites {
+    public static let shared = Favorites()
+    private init() {}
 
     private var favorites: [Favorite] = []
 
@@ -29,7 +28,7 @@ class Favorites: NSObject {
         }
     }
 
-    @objc func load() {
+    func load() {
         // if there are old favorites in user defaults migrate them to the new system
         if let oldfavorites = UserDefaults.standard.array(forKey:"favorites") as? [[String:String]] {
             for fave in oldfavorites {
