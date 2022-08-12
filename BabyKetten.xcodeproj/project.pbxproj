@@ -32,6 +32,9 @@
 		950BE29228A2C17E00EE1D87 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950BE29028A2C17E00EE1D87 /* Song.swift */; };
 		950BE29B28A35D8700EE1D87 /* Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950BE29A28A35D8700EE1D87 /* Favorites.swift */; };
 		953A473428A20288001F6449 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 953A473328A20288001F6449 /* Assets.xcassets */; };
+		9571B9EA28A4AF4700DC66C7 /* FavoritesListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9571B9E928A4AF4700DC66C7 /* FavoritesListTableViewController.swift */; };
+		9571B9ED28A4B89100DC66C7 /* SubtitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9571B9EC28A4B89100DC66C7 /* SubtitleTableViewCell.swift */; };
+		9571B9EF28A4BCE700DC66C7 /* Value1TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9571B9EE28A4BCE700DC66C7 /* Value1TableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +81,9 @@
 		950BE29A28A35D8700EE1D87 /* Favorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorites.swift; sourceTree = "<group>"; };
 		9512834528A2BDE400809E1D /* baby ketten.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "baby ketten.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		953A473328A20288001F6449 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9571B9E928A4AF4700DC66C7 /* FavoritesListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListTableViewController.swift; sourceTree = "<group>"; };
+		9571B9EC28A4B89100DC66C7 /* SubtitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitleTableViewCell.swift; sourceTree = "<group>"; };
+		9571B9EE28A4BCE700DC66C7 /* Value1TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Value1TableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +115,7 @@
 				950BE24C28A2C0F900EE1D87 /* App */,
 				950BE28D28A2C17600EE1D87 /* Models */,
 				950BE28628A2C16500EE1D87 /* Util */,
+				9571B9EB28A4B86D00DC66C7 /* Views */,
 				950BE25328A2C11E00EE1D87 /* ViewControllers */,
 			);
 			path = BabyKetten;
@@ -139,6 +146,7 @@
 				950BE26428A2C13C00EE1D87 /* CalendarViewController.m */,
 				950BE25428A2C13B00EE1D87 /* FavoritesListViewController.h */,
 				950BE26F28A2C13C00EE1D87 /* FavoritesListViewController.m */,
+				9571B9E928A4AF4700DC66C7 /* FavoritesListTableViewController.swift */,
 				950BE26A28A2C13C00EE1D87 /* FolderPickerTableViewController.h */,
 				950BE25528A2C13C00EE1D87 /* FolderPickerTableViewController.m */,
 				950BE25B28A2C13C00EE1D87 /* KamikazeViewController.h */,
@@ -187,6 +195,15 @@
 				9512834528A2BDE400809E1D /* baby ketten.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		9571B9EB28A4B86D00DC66C7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9571B9EC28A4B89100DC66C7 /* SubtitleTableViewCell.swift */,
+				9571B9EE28A4BCE700DC66C7 /* Value1TableViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,7 +292,9 @@
 				950BE28328A2C13C00EE1D87 /* FavoritesListViewController.m in Sources */,
 				950BE25228A2C10600EE1D87 /* main.m in Sources */,
 				950BE28028A2C13C00EE1D87 /* SongListTableViewController.swift in Sources */,
+				9571B9EA28A4AF4700DC66C7 /* FavoritesListTableViewController.swift in Sources */,
 				950BE25128A2C10600EE1D87 /* BKKAppDelegate.m in Sources */,
+				9571B9EF28A4BCE700DC66C7 /* Value1TableViewCell.swift in Sources */,
 				950BE28B28A2C16D00EE1D87 /* CGRect+Sanity.swift in Sources */,
 				950BE29B28A35D8700EE1D87 /* Favorites.swift in Sources */,
 				950BE28128A2C13C00EE1D87 /* CalendarDetailViewController.m in Sources */,
@@ -284,6 +303,7 @@
 				950BE29228A2C17E00EE1D87 /* Song.swift in Sources */,
 				950BE28A28A2C16D00EE1D87 /* NetworkManager.swift in Sources */,
 				950BE28528A2C13C00EE1D87 /* YTSearchTableViewController.m in Sources */,
+				9571B9ED28A4B89100DC66C7 /* SubtitleTableViewCell.swift in Sources */,
 				950BE28C28A2C16D00EE1D87 /* UIImageView+URLRequest.swift in Sources */,
 				950BE27F28A2C13C00EE1D87 /* SongDetailTableViewController.swift in Sources */,
 			);

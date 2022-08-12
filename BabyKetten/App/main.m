@@ -11,10 +11,8 @@
 #import "BKKAppDelegate.h"
 
 int main(int argc, char *argv[]) {
-    
     @autoreleasepool {
         int retVal = UIApplicationMain(argc, argv, nil, NSStringFromClass([BKKAppDelegate class]));
         return retVal;
     }
-    
 }

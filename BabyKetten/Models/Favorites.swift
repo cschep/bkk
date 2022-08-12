@@ -8,7 +8,7 @@
 import Foundation
 
 enum Favorite: Codable {
-    case song(Song)
+    case song(Song, folder: String? = "")
     case folder(title: String)
 }
 
@@ -17,7 +17,7 @@ class Favorites: NSObject {
     @objc public static let shared = Favorites()
     private override init() {}
 
-    var favorites: [Favorite] = []
+    private var favorites: [Favorite] = []
 
     var documentsDirectory: URL {
         FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
@@ -26,17 +26,6 @@ class Favorites: NSObject {
     func debugDump() {
         for f in favorites {
             print(f)
-        }
-    }
-
-    @objc func favoritesAsDicts() -> [[String: String]] {
-        return favorites.map { fave in
-            switch fave {
-            case .song(let song):
-                return ["artist": song.artist, "title": song.title]
-            case .folder(let title):
-                return ["title": title, "isFolder": "true"]
-            }
         }
     }
 
@@ -68,10 +57,36 @@ class Favorites: NSObject {
     func isFavorite(_ song: Song) -> Bool {
         return favorites.contains { fave in
             switch fave {
-            case .song(let favedSong):
+            case .song(let favedSong, _):
                 return favedSong == song
             case .folder(_):
                 return false
+            }
+        }
+    }
+
+    func favorites(in folder: String? = nil) -> [Favorite] {
+        guard let folder = folder else {
+            return favorites
+        }
+
+        return favorites.filter { fave in
+            switch fave {
+            case .song(_, let faveFolder):
+                return folder == faveFolder
+            case .folder:
+                return false
+            }
+        }
+    }
+
+    func folders() -> [Favorite] {
+        return favorites.filter { fave in
+            switch fave {
+            case .song:
+                return false
+            case .folder:
+                return true
             }
         }
     }
@@ -87,7 +102,7 @@ class Favorites: NSObject {
     func remove(_ song: Song) {
         favorites.removeAll { fave in
             switch fave {
-            case .song(let favedSong):
+            case .song(let favedSong, _):
                 return favedSong == song
             case .folder(_):
                 return false

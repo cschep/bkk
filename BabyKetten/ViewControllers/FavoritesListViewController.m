@@ -232,9 +232,8 @@
 }
 
 - (void)refreshDisplayList {
-//    self.favorites = [[[NSUserDefaults standardUserDefaults] objectForKey:@"favorites"] mutableCopy];
-    self.favorites = [[Favorites shared] favoritesAsDicts];
-    
+    self.favorites = [[[NSUserDefaults standardUserDefaults] objectForKey:@"favorites"] mutableCopy];
+
     if (self.currentFolder) {
         NSPredicate *pred = [NSPredicate predicateWithFormat:@"folder == %@", self.currentFolder];
         self.displayList = [[self.favorites filteredArrayUsingPredicate:pred] mutableCopy];
@@ -296,8 +295,7 @@
         
         // Build an NSIndexSet of all the objects to move
         NSMutableIndexSet *indicesOfItemsToMove = [NSMutableIndexSet new];
-        for (NSIndexPath *selectionIndex in selectedRows)
-        {
+        for (NSIndexPath *selectionIndex in selectedRows) {
             //find it in favorites
             id itemToMove = [self.displayList objectAtIndex:selectionIndex.row];
             NSUInteger indexOfItemToMove = [self.favorites indexOfObjectIdenticalTo:itemToMove];

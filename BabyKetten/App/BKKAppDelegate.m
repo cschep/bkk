@@ -35,7 +35,8 @@
 	self.navControllerCalendar.navigationBar.tintColor = [UIColor systemRedColor];
 	self.navControllerCalendar.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"calendar" image:[UIImage imageNamed:@"calendar"]  tag:2];
 
-    FavoritesListViewController *favoritesViewController = [[FavoritesListViewController alloc] initWithStyle:UITableViewStylePlain];
+//    FavoritesListViewController *favoritesViewController = [[FavoritesListViewController alloc] initWithStyle:UITableViewStylePlain];
+    FavoritesListTableViewController *favoritesViewController = [[FavoritesListTableViewController alloc] init];
 	self.navControllerFaves = [[UINavigationController alloc] initWithRootViewController:favoritesViewController];
     self.navControllerFaves.navigationBar.tintColor = [UIColor systemRedColor];
     self.navControllerFaves.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"faves" image:[UIImage imageNamed:@"inbox"] tag:3];
