@@ -62,10 +62,6 @@ class SongDetailTableViewController: UITableViewController {
 
     let song: Song
 
-    @objc convenience init(artist: String, title: String) {
-        self.init(song: Song(artist: artist, title: title))
-    }
-
     init(song: Song) {
         self.song = song
         super.init(style: .grouped)
@@ -83,7 +79,9 @@ class SongDetailTableViewController: UITableViewController {
 
     func toggleFavorite() {
         song.toggleFavorite()
+        // TODO REMOVE
         Favorites.shared.debugDump()
+
         tableView.reloadData()
     }
 
@@ -132,10 +130,13 @@ class SongDetailTableViewController: UITableViewController {
             }
         } else if (indexPath.section == 1) {
             if (indexPath.row == 0) {
-//                [self lyricsSearch];
+                //TODO LYRICS SEARCH
+                //[self lyricsSearch];
             } else if (indexPath.row == 1) {
                 youTubeSearch()
             }
+
+            // TODO SPOTIFY / APPLE MUSIC ??
         }
 
         tableView.deselectRow(at: indexPath, animated: true)
@@ -143,28 +144,28 @@ class SongDetailTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         if (section == 1) {
-            return "Searches will open a browser window."
+            return "Searches will open a browser window." //still true?
         } else {
-            return nil;
+            return nil
         }
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if (section == 0) {
-            headerView.titleLabel.text = song.title;
-            headerView.artistLabel.text = "-" + song.artist;
+            headerView.titleLabel.text = song.title
+            headerView.artistLabel.text = "- \(song.subtitle)"
 
-            return headerView;
+            return headerView
         } else {
-            return nil;
+            return nil
         }
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if (section == 0) {
-            return 116;
+            return 116
         } else {
-            return 24;
+            return 24
         }
     }
 

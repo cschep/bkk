@@ -16,13 +16,17 @@
 
 @implementation YTSearchTableViewController
 
-NSString* const kYouTubeAPIKey = @"AIzaSyBQgTWNFmBcR-omkycjHQRGiTtL2DUEm60";
+// TODO -- PROBABLY DONT MAKE THIS PUBLIC YEAH?
+NSString* const kYouTubeAPIKey = @"AIzaSyAWL6vJvkjNJc11JMPJR1dDWoaM4ryOPlY";
+//RIP
+//NSString* const kYouTubeAPIKey = @"AIzaSyBQgTWNFmBcR-omkycjHQRGiTtL2DUEm60";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
     // Whoever wrote this network manager didn't do a single ounce of error handling did they?
-    [NetworkManager GET:[self getYouTubeSearchURL] completionHandler:^(id JSON) {
+    NSString *urlString = [self getYouTubeSearchURL];
+    [NetworkManager GET:urlString completionHandler:^(id JSON) {
         if (JSON != nil) {
             NSLog(@"%@", JSON);
             [self loadVideosFromJSON:JSON];
@@ -84,14 +88,14 @@ NSString* const kYouTubeAPIKey = @"AIzaSyBQgTWNFmBcR-omkycjHQRGiTtL2DUEm60";
         cell.titleLabel.text = video[@"snippet"][@"title"];
         cell.descriptionLabel.text = video[@"snippet"][@"description"];
 
-//        __weak YTTableViewCell *_cell = cell;
-//        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:video[@"snippet"][@"thumbnails"][@"default"][@"url"]]
-//                                                 cachePolicy:NSURLRequestReturnCacheDataElseLoad
-//                                             timeoutInterval:60];
+        __weak YTTableViewCell *_cell = cell;
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:video[@"snippet"][@"thumbnails"][@"default"][@"url"]]
+                                                 cachePolicy:NSURLRequestReturnCacheDataElseLoad
+                                             timeoutInterval:60];
 
-//        [cell.myImageView setImageWithURLRequest:request placeholderImage:[UIImage imageNamed:@"ketten_small_white"] success:^(NSURLRequest *request, NSURLResponse *response, UIImage *image) {
-//            _cell.myImageView.image = image;
-//        }];
+        [cell.myImageView setImageWithURLRequest:request placeholderImage:[UIImage imageNamed:@"ketten_small_white"] success:^(NSURLRequest *request, NSURLResponse *response, UIImage *image) {
+            _cell.myImageView.image = image;
+        }];
     }
     
     return cell;

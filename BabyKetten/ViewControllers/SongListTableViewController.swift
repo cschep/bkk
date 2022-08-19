@@ -19,6 +19,8 @@ class SongListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.register(SubtitleTableViewCell.self, forCellReuseIdentifier: "SongCell")
+
         self.activityIndicator.hidesWhenStopped = true
         self.activityIndicator.color = UIColor.black
 
@@ -44,20 +46,14 @@ class SongListTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "SongCell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SongCell", for: indexPath)
 
-        if (cell == nil) {
-            cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "SongCell")
-        }
+        let song = songs[indexPath.row]
+        cell.textLabel?.text = song.title
+        cell.detailTextLabel?.text = song.subtitle
+        cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator;
 
-        if let cell = cell {
-            let song = songs[indexPath.row]
-            cell.textLabel!.text = song.title
-            cell.detailTextLabel!.text = song.artist
-            cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator;
-        }
-
-        return cell!
+        return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -68,7 +64,8 @@ class SongListTableViewController: UITableViewController {
 
     }
 
-    @objc func refreshSongs() {
+    @objc
+    func refreshSongs() {
         loadSongs(updateUI: false)
     }
 
@@ -83,6 +80,7 @@ class SongListTableViewController: UITableViewController {
                 self.tableView.reloadData()
                 self.stopLoadingUI()
             }
+
 
 //            let when = DispatchTime.now() + 2
 //            DispatchQueue.main.asyncAfter(deadline: when){

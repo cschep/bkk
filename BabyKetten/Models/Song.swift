@@ -9,8 +9,23 @@
 import Foundation
 
 struct Song: Codable, Equatable {
+    init(artist: String, title: String, brand: String = "") {
+        self.artist = artist
+        self.title = title
+        self.brand = brand
+    }
+
     let artist: String
     let title: String
+    let brand: String
+
+    var subtitle: String {
+        if !brand.isEmpty {
+            return "\(artist) (\(brand))"
+        } else {
+            return artist
+        }
+    }
 }
 
 extension Song {
@@ -31,8 +46,11 @@ extension Song {
                 return nil
         }
 
+        let brand = json["brand"] as? String ?? ""
+
         self.artist = artist
         self.title = title
+        self.brand = brand
     }
 }
 

@@ -43,6 +43,8 @@ class Favorites {
                 }
             }
 
+
+            // TODO !!
             // move them under a new key just in case
             //UserDefaults.standard.set(oldfavorites, forKey: "oldFavorites")
 

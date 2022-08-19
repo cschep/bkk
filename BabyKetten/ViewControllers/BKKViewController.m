@@ -58,7 +58,7 @@
     self.searchTextField.keyboardAppearance = UIKeyboardAppearanceDark;
     self.searchTextField.translatesAutoresizingMaskIntoConstraints = NO;
 
-    self.segmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"artist", @"title"]];
+    self.segmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"artist", @"title", @"brand"]];
     self.segmentedControl.translatesAutoresizingMaskIntoConstraints = NO;
     self.segmentedControl.selectedSegmentIndex = 0;
     self.segmentedControl.backgroundColor = [UIColor secondarySystemBackgroundColor];

@@ -57,7 +57,8 @@ class FavoritesListTableViewController: UITableViewController {
         refreshDisplayList()
     }
 
-    @objc func addAction() {
+    @objc
+    func addAction() {
         let alertController = UIAlertController(title:"New Folder", message:"name of the new folder?", preferredStyle:.alert)
         alertController.addTextField()
         alertController.addAction(UIAlertAction(title:"create", style:.default, handler: { [weak self] action in
@@ -72,17 +73,23 @@ class FavoritesListTableViewController: UITableViewController {
         self.present(alertController, animated: true)
     }
 
-    @objc func editFavesAction() {
+    @objc
+    func editFavesAction() {
         setEditing(true, animated: true)
         updateButtonsToMatchTableState()
     }
 
-    @objc func cancelAction() {
+    @objc
+    func cancelAction() {
         setEditing(false, animated: true)
         updateButtonsToMatchTableState()
     }
-    @objc func deleteAction() {}
-    @objc func moveAction() {
+
+    @objc
+    func deleteAction() {}
+
+    @objc
+    func moveAction() {
         let vc = FolderPickerTableViewController()
 //        NSPredicate *pred = [NSPredicate predicateWithFormat:@"isFolder == %@", @"true"];
 //

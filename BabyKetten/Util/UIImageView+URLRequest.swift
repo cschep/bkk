@@ -9,6 +9,7 @@
 import UIKit
 
 extension UIImageView {
+    @objc
     func setImage(withURLRequest request: URLRequest, placeholderImage: UIImage, success: @escaping (URLRequest, URLResponse, UIImage) -> ()) {
         image = placeholderImage
 

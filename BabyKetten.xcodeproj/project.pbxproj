@@ -12,7 +12,6 @@
 		950BE27328A2C13C00EE1D87 /* YTTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 950BE25628A2C13C00EE1D87 /* YTTableViewCell.m */; };
 		950BE27528A2C13C00EE1D87 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 950BE25828A2C13C00EE1D87 /* LaunchScreen.storyboard */; };
 		950BE27628A2C13C00EE1D87 /* KamikazeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 950BE25928A2C13C00EE1D87 /* KamikazeViewController.xib */; };
-		950BE27B28A2C13C00EE1D87 /* SongDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 950BE26228A2C13C00EE1D87 /* SongDetailViewController.xib */; };
 		950BE27C28A2C13C00EE1D87 /* CalendarDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 950BE26328A2C13C00EE1D87 /* CalendarDetailViewController.xib */; };
 		950BE27D28A2C13C00EE1D87 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 950BE26428A2C13C00EE1D87 /* CalendarViewController.m */; };
 		950BE27E28A2C13C00EE1D87 /* YTTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 950BE26628A2C13C00EE1D87 /* YTTableViewCell.xib */; };
@@ -20,7 +19,6 @@
 		950BE28028A2C13C00EE1D87 /* SongListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950BE26B28A2C13C00EE1D87 /* SongListTableViewController.swift */; };
 		950BE28128A2C13C00EE1D87 /* CalendarDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 950BE26C28A2C13C00EE1D87 /* CalendarDetailViewController.m */; };
 		950BE28228A2C13C00EE1D87 /* KamikazeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 950BE26E28A2C13C00EE1D87 /* KamikazeViewController.m */; };
-		950BE28328A2C13C00EE1D87 /* FavoritesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 950BE26F28A2C13C00EE1D87 /* FavoritesListViewController.m */; };
 		950BE28428A2C13C00EE1D87 /* BKKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 950BE27028A2C13C00EE1D87 /* BKKViewController.m */; };
 		950BE28528A2C13C00EE1D87 /* YTSearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 950BE27128A2C13C00EE1D87 /* YTSearchTableViewController.m */; };
 		950BE28A28A2C16D00EE1D87 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950BE28728A2C16D00EE1D87 /* NetworkManager.swift */; };
@@ -41,7 +39,6 @@
 		834DE11915DC83160050139B /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		950BE25028A2C10600EE1D87 /* BabyKetten-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "BabyKetten-Bridging-Header.h"; path = "BabyKetten/App/BabyKetten-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
-		950BE25428A2C13B00EE1D87 /* FavoritesListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FavoritesListViewController.h; path = BabyKetten/ViewControllers/FavoritesListViewController.h; sourceTree = SOURCE_ROOT; };
 		950BE25528A2C13C00EE1D87 /* FolderPickerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FolderPickerTableViewController.m; path = BabyKetten/ViewControllers/FolderPickerTableViewController.m; sourceTree = SOURCE_ROOT; };
 		950BE25628A2C13C00EE1D87 /* YTTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YTTableViewCell.m; path = BabyKetten/ViewControllers/YTTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		950BE25828A2C13C00EE1D87 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = BabyKetten/App/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
@@ -49,13 +46,10 @@
 		950BE25A28A2C13C00EE1D87 /* YTTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YTTableViewCell.h; path = BabyKetten/ViewControllers/YTTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		950BE25B28A2C13C00EE1D87 /* KamikazeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KamikazeViewController.h; path = BabyKetten/ViewControllers/KamikazeViewController.h; sourceTree = SOURCE_ROOT; };
 		950BE25D28A2C13C00EE1D87 /* SongListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SongListViewController.m; path = BabyKetten/ViewControllers/SongListViewController.m; sourceTree = SOURCE_ROOT; };
-		950BE25E28A2C13C00EE1D87 /* SongDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SongDetailViewController.m; path = BabyKetten/ViewControllers/SongDetailViewController.m; sourceTree = SOURCE_ROOT; };
 		950BE26028A2C13C00EE1D87 /* YTSearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YTSearchTableViewController.h; path = BabyKetten/ViewControllers/YTSearchTableViewController.h; sourceTree = SOURCE_ROOT; };
 		950BE26128A2C13C00EE1D87 /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalendarViewController.h; path = BabyKetten/ViewControllers/CalendarViewController.h; sourceTree = SOURCE_ROOT; };
-		950BE26228A2C13C00EE1D87 /* SongDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SongDetailViewController.xib; path = BabyKetten/ViewControllers/SongDetailViewController.xib; sourceTree = SOURCE_ROOT; };
 		950BE26328A2C13C00EE1D87 /* CalendarDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CalendarDetailViewController.xib; path = BabyKetten/ViewControllers/CalendarDetailViewController.xib; sourceTree = SOURCE_ROOT; };
 		950BE26428A2C13C00EE1D87 /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CalendarViewController.m; path = BabyKetten/ViewControllers/CalendarViewController.m; sourceTree = SOURCE_ROOT; };
-		950BE26528A2C13C00EE1D87 /* SongDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SongDetailViewController.h; path = BabyKetten/ViewControllers/SongDetailViewController.h; sourceTree = SOURCE_ROOT; };
 		950BE26628A2C13C00EE1D87 /* YTTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = YTTableViewCell.xib; path = BabyKetten/ViewControllers/YTTableViewCell.xib; sourceTree = SOURCE_ROOT; };
 		950BE26728A2C13C00EE1D87 /* SongDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SongDetailTableViewController.swift; path = BabyKetten/ViewControllers/SongDetailTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		950BE26828A2C13C00EE1D87 /* CalendarDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalendarDetailViewController.h; path = BabyKetten/ViewControllers/CalendarDetailViewController.h; sourceTree = SOURCE_ROOT; };
@@ -65,7 +59,6 @@
 		950BE26C28A2C13C00EE1D87 /* CalendarDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CalendarDetailViewController.m; path = BabyKetten/ViewControllers/CalendarDetailViewController.m; sourceTree = SOURCE_ROOT; };
 		950BE26D28A2C13C00EE1D87 /* SongListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SongListViewController.h; path = BabyKetten/ViewControllers/SongListViewController.h; sourceTree = SOURCE_ROOT; };
 		950BE26E28A2C13C00EE1D87 /* KamikazeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KamikazeViewController.m; path = BabyKetten/ViewControllers/KamikazeViewController.m; sourceTree = SOURCE_ROOT; };
-		950BE26F28A2C13C00EE1D87 /* FavoritesListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FavoritesListViewController.m; path = BabyKetten/ViewControllers/FavoritesListViewController.m; sourceTree = SOURCE_ROOT; };
 		950BE27028A2C13C00EE1D87 /* BKKViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BKKViewController.m; path = BabyKetten/ViewControllers/BKKViewController.m; sourceTree = SOURCE_ROOT; };
 		950BE27128A2C13C00EE1D87 /* YTSearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YTSearchTableViewController.m; path = BabyKetten/ViewControllers/YTSearchTableViewController.m; sourceTree = SOURCE_ROOT; };
 		950BE28728A2C16D00EE1D87 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkManager.swift; path = BabyKetten/Util/NetworkManager.swift; sourceTree = SOURCE_ROOT; };
@@ -146,8 +139,6 @@
 				950BE26328A2C13C00EE1D87 /* CalendarDetailViewController.xib */,
 				950BE26128A2C13C00EE1D87 /* CalendarViewController.h */,
 				950BE26428A2C13C00EE1D87 /* CalendarViewController.m */,
-				950BE25428A2C13B00EE1D87 /* FavoritesListViewController.h */,
-				950BE26F28A2C13C00EE1D87 /* FavoritesListViewController.m */,
 				9571B9E928A4AF4700DC66C7 /* FavoritesListTableViewController.swift */,
 				950BE26A28A2C13C00EE1D87 /* FolderPickerTableViewController.h */,
 				950BE25528A2C13C00EE1D87 /* FolderPickerTableViewController.m */,
@@ -155,9 +146,6 @@
 				950BE26E28A2C13C00EE1D87 /* KamikazeViewController.m */,
 				950BE25928A2C13C00EE1D87 /* KamikazeViewController.xib */,
 				950BE26728A2C13C00EE1D87 /* SongDetailTableViewController.swift */,
-				950BE26528A2C13C00EE1D87 /* SongDetailViewController.h */,
-				950BE25E28A2C13C00EE1D87 /* SongDetailViewController.m */,
-				950BE26228A2C13C00EE1D87 /* SongDetailViewController.xib */,
 				950BE26B28A2C13C00EE1D87 /* SongListTableViewController.swift */,
 				950BE26D28A2C13C00EE1D87 /* SongListViewController.h */,
 				950BE25D28A2C13C00EE1D87 /* SongListViewController.m */,
@@ -273,7 +261,6 @@
 				950BE27C28A2C13C00EE1D87 /* CalendarDetailViewController.xib in Resources */,
 				950BE27E28A2C13C00EE1D87 /* YTTableViewCell.xib in Resources */,
 				834DE11A15DC83160050139B /* Settings.bundle in Resources */,
-				950BE27B28A2C13C00EE1D87 /* SongDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,7 +276,6 @@
 				950BE29128A2C17E00EE1D87 /* Date.m in Sources */,
 				950BE28428A2C13C00EE1D87 /* BKKViewController.m in Sources */,
 				950BE27228A2C13C00EE1D87 /* FolderPickerTableViewController.m in Sources */,
-				950BE28328A2C13C00EE1D87 /* FavoritesListViewController.m in Sources */,
 				9571B9F328A6B74E00DC66C7 /* SceneDelegate.swift in Sources */,
 				950BE28028A2C13C00EE1D87 /* SongListTableViewController.swift in Sources */,
 				9571B9EA28A4AF4700DC66C7 /* FavoritesListTableViewController.swift in Sources */,

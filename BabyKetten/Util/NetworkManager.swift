@@ -25,6 +25,7 @@ public class NetworkManager : NSObject {
 
             if let error = error {
                 print(error.localizedDescription)
+                completionHandler(nil)
             } else if let httpResponse = response as? HTTPURLResponse {
                 if httpResponse.statusCode == 200 {
                     if let data = data,
