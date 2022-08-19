@@ -8,7 +8,7 @@
 
 #import "FavoritesListViewController.h"
 #import "FolderPickerTableViewController.h"
-#import "baby_ketten-Swift.h"
+#import "BabyKetten-Swift.h"
 
 @implementation FavoritesListViewController
 

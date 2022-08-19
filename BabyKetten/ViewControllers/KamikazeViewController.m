@@ -7,7 +7,7 @@
 //
 
 #import "KamikazeViewController.h"
-#import "baby_ketten-Swift.h"
+#import "BabyKetten-Swift.h"
 
 @implementation KamikazeViewController
 

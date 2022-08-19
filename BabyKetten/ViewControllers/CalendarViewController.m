@@ -9,7 +9,7 @@
 #import "CalendarViewController.h"
 #import "CalendarDetailViewController.h"
 #import "Date.h"
-#import "baby_ketten-Swift.h"
+#import "BabyKetten-Swift.h"
 
 @implementation CalendarViewController
 
