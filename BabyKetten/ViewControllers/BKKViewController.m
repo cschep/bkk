@@ -20,12 +20,11 @@
 }
 
 - (void)searchFor:(NSString *)searchTerm By:(NSString *)searchBy UsingRandom:(BOOL)random  {
-    SongListTableViewController *vc = [[SongListTableViewController alloc]
-                                          initWithStyle:UITableViewStylePlain];
+    SongListTableViewController *vc = [[SongListTableViewController alloc] init];
 
-    vc.searchTerm = searchTerm;
-    vc.searchBy = searchBy;
-    vc.random = random;
+//    vc.searchTerm = searchTerm;
+//    vc.searchBy = searchBy;
+//    vc.random = random;
     
 	vc.title = @"Results";
 	
@@ -33,13 +32,8 @@
 	[self.navigationController pushViewController:vc animated:YES];
 }
 
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
-}
-
 - (void)viewWillAppear:(BOOL)animated {
 	self.navigationController.navigationBar.hidden = YES;
-    
     [super viewWillAppear:animated];
 }
 
@@ -86,11 +80,11 @@
 
     [NSLayoutConstraint activateConstraints:constraints];
 
-    UISwipeGestureRecognizer *recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
-    [recognizer setDirection:UISwipeGestureRecognizerDirectionDown];
-    [[self view] addGestureRecognizer:recognizer];
+//    UISwipeGestureRecognizer *recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
+//    [recognizer setDirection:UISwipeGestureRecognizerDirectionDown];
+//    [[self view] addGestureRecognizer:recognizer];
     
-    [self loadMessageInBackground];
+//    [self loadMessageInBackground];
     
     [super viewDidLoad];
 }
@@ -149,9 +143,9 @@
 //    }];
 }
 
-- (void)dismissKeyboard:(id)sender {
-    [self.searchTextField resignFirstResponder];
-}
+//- (void)dismissKeyboard:(id)sender {
+//    [self.searchTextField resignFirstResponder];
+//}
 
 - (void)reloadTableViewDataSource{
     [self loadMessageInBackground];

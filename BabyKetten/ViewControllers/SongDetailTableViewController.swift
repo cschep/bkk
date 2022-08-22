@@ -65,6 +65,7 @@ class SongDetailTableViewController: UITableViewController {
     init(song: Song) {
         self.song = song
         super.init(style: .grouped)
+        tableView.tintColor = .systemRed
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "SongDetailCell")
     }
 
@@ -170,10 +171,10 @@ class SongDetailTableViewController: UITableViewController {
     }
 
     func artistSearch() {
-        let vc = SongListTableViewController(style: .plain)
-        vc.searchTerm = song.artist
-        vc.searchBy = "artist"
-        vc.random = false
+        let vc = SongListTableViewController()
+//        vc.searchTerm = song.artist
+//        vc.searchBy = "artist"
+//        vc.random = false
 
         navigationController?.pushViewController(vc, animated: true)
     }

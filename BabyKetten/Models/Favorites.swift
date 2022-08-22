@@ -51,7 +51,7 @@ class Favorites {
             // clear the old key
             //UserDefaults.standard.removeObject(forKey: "favorites")
 
-            print(favorites)
+            //print(favorites)
         }
     }
 

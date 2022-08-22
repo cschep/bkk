@@ -12,5 +12,6 @@
 
 @property (strong, nonatomic) NSArray *videos;
 @property (strong, nonatomic) NSString *searchString;
+@property (strong, nonatomic) NSString *youTubeAPIKey;
 
 @end

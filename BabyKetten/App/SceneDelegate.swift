@@ -18,10 +18,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     let kamikaze: UINavigationController
 
     override init() {
-        search = UINavigationController(rootViewController: BKKViewController())
+
+        search = UINavigationController(rootViewController: SearchViewController())
+        search.navigationBar.tintColor = .systemRed
+        search.navigationBar.prefersLargeTitles = true
         search.tabBarItem = UITabBarItem(title: "search", image: UIImage(named: "mic"), tag: 1)
 
         calendar = UINavigationController(rootViewController: CalendarViewController())
+        calendar.navigationBar.tintColor = .systemRed
         calendar.tabBarItem = UITabBarItem(title: "calendar", image: UIImage(named: "calendar"), tag: 2)
 
         faves = UINavigationController(rootViewController: FavoritesListTableViewController())

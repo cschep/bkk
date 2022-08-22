@@ -9,30 +9,30 @@
 import UIKit
 
 class SongListTableViewController: UITableViewController {
-    @objc public var searchTerm: String = ""
-    @objc public var searchBy: String = ""
-    @objc public var random: Bool = false
+    var songs: [Song] = []
 
-    private var songs: [Song] = []
-    private var activityIndicator = UIActivityIndicatorView(frame: CGRect(0, 0, 20, 20))
+    var didSelectSong: ((Song) -> ())?
 
+    init() {
+        super.init(style: .plain)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.register(SubtitleTableViewCell.self, forCellReuseIdentifier: "SongCell")
 
-        self.activityIndicator.hidesWhenStopped = true
-        self.activityIndicator.color = UIColor.black
+        let l = UILabel()
+        l.text = "empty!"
+        l.textAlignment = .center
+        l.font = .systemFont(ofSize: 44)
+        tableView.backgroundView = l
 
-        let activityBarButton = UIBarButtonItem(customView: self.activityIndicator)
-        self.navigationItem.rightBarButtonItem = activityBarButton
-
-        if random {
-            refreshControl = UIRefreshControl()
-            refreshControl?.addTarget(self, action: #selector(refreshSongs), for: UIControl.Event.valueChanged)
-        }
-
-        loadSongs(updateUI: true)
+        title = "Search"
     }
 
     // MARK: - Table view data source
@@ -58,57 +58,30 @@ class SongListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let song = songs[indexPath.row]
-
-        let detailVC = SongDetailTableViewController(song: song)
-        self.navigationController?.pushViewController(detailVC, animated: true)
-
+        didSelectSong?(song)
+        tableView.deselectRow(at: indexPath, animated: false)
     }
 
     @objc
-    func refreshSongs() {
-        loadSongs(updateUI: false)
+    func setupRandom() {
+        tableView.backgroundView = nil
+        didSelectSong = { [weak self] song in
+            let detailVC = SongDetailTableViewController(song: song)
+            self?.navigationController?.pushViewController(detailVC, animated: true)
+        }
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(randomize), for: UIControl.Event.valueChanged)
+        randomize()
     }
 
-    func loadSongs(updateUI: Bool) {
-        if updateUI {
-            startLoadingUI()
-        }
-
-        Song.songs(for: searchTerm, searchBy: searchBy, isRandom: random) { songs in
+    @objc
+    func randomize() {
+        Song.songs(for: "", searchBy: "", isRandom: true) { songs in
             DispatchQueue.main.async {
+                self.refreshControl?.endRefreshing()
                 self.songs = songs
                 self.tableView.reloadData()
-                self.stopLoadingUI()
-            }
-
-
-//            let when = DispatchTime.now() + 2
-//            DispatchQueue.main.asyncAfter(deadline: when){
-//                self.songs = songs
-//                self.tableView.reloadData()
-//                self.stopLoadingUI()
-//            }
-        }
-    }
-
-    func startLoadingUI() {
-        self.activityIndicator.startAnimating()
-        self.navigationItem.title = "Loading..."
-    }
-
-    func stopLoadingUI() {
-        if (songs.count == 0) {
-            self.navigationItem.title = "Not Found!";
-        } else {
-            if (random) {
-                self.navigationItem.title = "Kamikaze!";
-            } else {
-                self.navigationItem.title = "Results";
             }
         }
-
-        self.refreshControl?.endRefreshing()
-        self.activityIndicator.stopAnimating()
-        self.tableView.flashScrollIndicators()
     }
 }

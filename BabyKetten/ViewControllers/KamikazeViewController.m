@@ -12,8 +12,22 @@
 @implementation KamikazeViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
     self.running = NO;
+
+    self.kamikazeImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"kamikaze_ketten_background"]];
+    [self.kamikazeImage setContentMode:UIViewContentModeScaleAspectFill];
+
+    self.kamikazeImage.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:self.kamikazeImage];
+
+    [NSLayoutConstraint activateConstraints:@[
+        [self.kamikazeImage.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor],
+        [self.kamikazeImage.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor],
+        [self.kamikazeImage.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor],
+        [self.kamikazeImage.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor],
+    ]];
+
+    [super viewDidLoad];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -64,7 +78,6 @@
     alphaDown.fillMode = kCAFillModeForwards;
     alphaDown.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
 
-    
     [self.kamikazeImage.layer addAnimation:scale forKey:@"move forward by scaling"];
     [self.kamikazeImage.layer addAnimation:rotate forKey:@"rotate back and forth"];
     [self.kamikazeImage.layer addAnimation:alphaDown forKey:@"alpha fade out"];
@@ -74,10 +87,8 @@
     self.navigationController.view.alpha = 0.0;
     self.navigationController.navigationBar.hidden = NO;
     
-    SongListTableViewController *songList = [[SongListTableViewController alloc] initWithStyle:UITableViewStylePlain];
-    songList.searchTerm = @"none";
-    songList.searchBy = @"none";
-    songList.random = true;
+    SongListTableViewController *songList = [[SongListTableViewController alloc] init];
+    [songList setupRandom];
 
     [self.navigationController pushViewController:songList animated:NO];
     

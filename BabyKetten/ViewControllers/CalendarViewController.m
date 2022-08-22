@@ -13,15 +13,9 @@
 
 @implementation CalendarViewController
 
-@synthesize dateList;
-
 NSString* const kSeattleCalendarId = @"b73eparqatr3h2160l7i298tas@group.calendar.google.com";
 NSString* const kPortlandCalendarId = @"9a434tnlm9mbo57r05rkodl6d0@group.calendar.google.com";
-NSString* const kGoogleCalendarAPIKey = @"AIzaSyBQgTWNFmBcR-omkycjHQRGiTtL2DUEm60";
-
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleDefault;
-}
+NSString* const kGoogleCalendarAPIKey = @"AIzaSyC3RJ8eZ4AXCect-2RUdWMEUSdoJMOA0ds";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -65,7 +59,6 @@ NSString* const kGoogleCalendarAPIKey = @"AIzaSyBQgTWNFmBcR-omkycjHQRGiTtL2DUEm6
         if (JSON != nil) {
             [self loadDatesFromJSON:JSON];
         } else {
-            // this is not good
             [self loadDatesFromJSON:@{}];
         }
     }];
@@ -98,7 +91,7 @@ NSString* const kGoogleCalendarAPIKey = @"AIzaSyBQgTWNFmBcR-omkycjHQRGiTtL2DUEm6
 
 
 - (void)loadDatesFromJSON:(id)JSON {
-	dateList = [[NSMutableArray alloc] init];
+	NSMutableArray *dateList = [[NSMutableArray alloc] init];
 
     static NSDateFormatter *dayFormatter, *timeFormatter, *printDateFormatter;
     if (!dayFormatter || !timeFormatter || !printDateFormatter) {
@@ -129,21 +122,23 @@ NSString* const kGoogleCalendarAPIKey = @"AIzaSyBQgTWNFmBcR-omkycjHQRGiTtL2DUEm6
         
 		[dateList addObject:d];
 	}
+    self.dateList = dateList;
 
-    if ([dateList count] == 0) {
-        self.navigationItem.title = @"Not Found!";
-    } else {
-        self.navigationItem.title = @"Calendar";
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if ([dateList count] == 0) {
+            self.navigationItem.title = @"Not Found!";
+        } else {
+            self.navigationItem.title = @"Calendar";
+        }
 
-    [self stopLoadingUI];
-    [self.tableView reloadData];
-    [self.tableView flashScrollIndicators];
+        [self stopLoadingUI];
+        [self.tableView reloadData];
+    });
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-	return [dateList count];
+	return [self.dateList count];
 
 }
 
@@ -152,11 +147,10 @@ NSString* const kGoogleCalendarAPIKey = @"AIzaSyBQgTWNFmBcR-omkycjHQRGiTtL2DUEm6
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return [[dateList objectAtIndex:section] when];
+    return [[self.dateList objectAtIndex:section] when];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -164,7 +158,7 @@ NSString* const kGoogleCalendarAPIKey = @"AIzaSyBQgTWNFmBcR-omkycjHQRGiTtL2DUEm6
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
- 	cell.textLabel.text = [[dateList objectAtIndex:indexPath.section] title];
+    cell.textLabel.text = [[self.dateList objectAtIndex:indexPath.section] title];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
@@ -174,15 +168,13 @@ NSString* const kGoogleCalendarAPIKey = @"AIzaSyBQgTWNFmBcR-omkycjHQRGiTtL2DUEm6
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    Date *d = [dateList objectAtIndex:indexPath.section];
+    Date *d = [self.dateList objectAtIndex:indexPath.section];
     if (![d.where isEqualToString:@""]) {
         CalendarDetailViewController *calendarDetailViewController = [[CalendarDetailViewController alloc] initWithDate:d];
         [self.navigationController pushViewController:calendarDetailViewController animated:YES];
     } else {
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"title" message:@"Not Sure Where?!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        UIAlertController *alert2 = [UIAlertController alertControllerWithTitle:@"title" message:@"Not Sure WHere?!" preferredStyle:UIAlertControllerStyleAlert];
-
-        [self presentViewController:alert2 animated:YES completion:nil];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"title" message:@"Not Sure WHere?!" preferredStyle:UIAlertControllerStyleAlert];
+        [self presentViewController:alert animated:YES completion:nil];
     }
 }
 

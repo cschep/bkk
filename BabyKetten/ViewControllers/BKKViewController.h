@@ -19,7 +19,6 @@
 
 - (void)loadMessageInBackground;
 - (void)searchFor:(NSString *)searchTerm By:(NSString *)searchBy UsingRandom:(BOOL)random;
-- (void)dismissKeyboard:(id)sender;
 
 @end
 

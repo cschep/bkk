@@ -13,7 +13,7 @@
 	IBOutlet UITextView *numSongs;
 }
 
-@property (nonatomic, weak) IBOutlet UIImageView *kamikazeImage;
+@property (nonatomic, strong) UIImageView *kamikazeImage;
 @property BOOL running;
 
 - (void)kamikazeKetten;

@@ -10,16 +10,9 @@
 #import "YTTableViewCell.h"
 #import "BabyKetten-Swift.h"
 
-@interface YTSearchTableViewController ()
-
-@end
-
 @implementation YTSearchTableViewController
 
-// TODO -- PROBABLY DONT MAKE THIS PUBLIC YEAH?
-NSString* const kYouTubeAPIKey = @"AIzaSyAWL6vJvkjNJc11JMPJR1dDWoaM4ryOPlY";
-//RIP
-//NSString* const kYouTubeAPIKey = @"AIzaSyBQgTWNFmBcR-omkycjHQRGiTtL2DUEm60";
+NSString* const kYouTubeAPIKey = @"AIzaSyC3RJ8eZ4AXCect-2RUdWMEUSdoJMOA0ds";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -28,7 +21,6 @@ NSString* const kYouTubeAPIKey = @"AIzaSyAWL6vJvkjNJc11JMPJR1dDWoaM4ryOPlY";
     NSString *urlString = [self getYouTubeSearchURL];
     [NetworkManager GET:urlString completionHandler:^(id JSON) {
         if (JSON != nil) {
-            NSLog(@"%@", JSON);
             [self loadVideosFromJSON:JSON];
         } else {
             // this is not good
@@ -74,7 +66,6 @@ NSString* const kYouTubeAPIKey = @"AIzaSyAWL6vJvkjNJc11JMPJR1dDWoaM4ryOPlY";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
     static NSString *CellIdentifier = @"YTTableViewCell";
     YTTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -83,7 +74,6 @@ NSString* const kYouTubeAPIKey = @"AIzaSyAWL6vJvkjNJc11JMPJR1dDWoaM4ryOPlY";
     }
 
     NSDictionary *video = self.videos[indexPath.row];
-    //NSLog(@"%@", video);
     if (video) {
         cell.titleLabel.text = video[@"snippet"][@"title"];
         cell.descriptionLabel.text = video[@"snippet"][@"description"];
@@ -113,13 +103,12 @@ NSString* const kYouTubeAPIKey = @"AIzaSyAWL6vJvkjNJc11JMPJR1dDWoaM4ryOPlY";
 
     if (videoId) {
         NSString *urlString = [NSString stringWithFormat:@"http://youtube.com/watch?v=%@", videoId];
-
-        NSLog(@"%@", urlString);
-        NSString* escapedUrlString = [urlString stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLHostAllowedCharacterSet];
-        NSURL *url = [NSURL URLWithString:escapedUrlString];
+        NSURL *url = [NSURL URLWithString:urlString];
 
         [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
     }
+
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 @end
