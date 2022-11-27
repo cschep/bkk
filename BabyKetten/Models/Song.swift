@@ -20,11 +20,7 @@ struct Song: Codable, Equatable {
     let brand: String
 
     var subtitle: String {
-        if !brand.isEmpty {
-            return "\(artist) (\(brand))"
-        } else {
-            return artist
-        }
+        brand.isEmpty ? artist : "\(artist) (\(brand))"
     }
 }
 
@@ -55,10 +51,13 @@ extension Song {
 }
 
 extension Song {
+    //TODO: this is nice for local testing
+    //private static let urlComponents = URLComponents(string: "http://rocky.local:3000")
+
     private static let urlComponents = URLComponents(string: "https://bkk.schepman.org")
     private static let session = URLSession.shared
 
-    static func songs(for term: String, searchBy: String, isRandom: Bool, completion: @escaping ([Song]) -> Void) {
+    static func songs(for term: String, searchBy: String, isRandom: Bool, isLive: Bool = false, completion: @escaping ([Song]) -> Void) {
         var searchURLComponents = urlComponents
         var searchURL: URL
 
@@ -67,7 +66,11 @@ extension Song {
             searchURL = searchURLComponents!.url!
         } else {
             searchURLComponents?.path = "/json"
-            searchURLComponents?.queryItems = [URLQueryItem(name: "search", value: term), URLQueryItem(name: "searchby", value: searchBy)]
+            var queryItems = [URLQueryItem(name: "search", value: term), URLQueryItem(name: "searchby", value: searchBy)]
+            if isLive {
+                queryItems.append(URLQueryItem(name: "live", value: "true"))
+            }
+            searchURLComponents?.queryItems = queryItems
             searchURL = searchURLComponents!.url!
         }
 

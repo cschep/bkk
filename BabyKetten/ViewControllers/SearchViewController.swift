@@ -76,8 +76,9 @@ class SearchViewController: UIViewController {
 }
 
 extension SearchViewController: UISearchResultsUpdating {
+    // called incrementally
     func updateSearchResults(for searchController: UISearchController) {
-        //search()
+        //search(isLive: true)
     }
 }
 
@@ -103,14 +104,14 @@ extension SearchViewController: UISearchBarDelegate {
         }
     }
 
-    func search() {
+    func search(isLive: Bool = false) {
         if let songListVC = searchController.searchResultsController as? SongListTableViewController,
            let searchTerm = searchController.searchBar.text {
 
             let scopes = ["artist", "title", "brand"]
             let searchBy = scopes[searchController.searchBar.selectedScopeButtonIndex]
 
-            Song.songs(for: searchTerm, searchBy: searchBy, isRandom: false) { songs in
+            Song.songs(for: searchTerm, searchBy: searchBy, isRandom: false, isLive: isLive) { songs in
                 DispatchQueue.main.async {
                     songListVC.songs = songs
                     songListVC.tableView.reloadData()
