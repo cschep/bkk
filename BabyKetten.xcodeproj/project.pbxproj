@@ -33,6 +33,7 @@
 		9571B9EF28A4BCE700DC66C7 /* Value1TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9571B9EE28A4BCE700DC66C7 /* Value1TableViewCell.swift */; };
 		9571B9F128A6B28100DC66C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9571B9F028A6B28100DC66C7 /* AppDelegate.swift */; };
 		9571B9F328A6B74E00DC66C7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9571B9F228A6B74E00DC66C7 /* SceneDelegate.swift */; };
+		959BBC822934008E001B31CB /* Songbook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959BBC812934008E001B31CB /* Songbook.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,7 @@
 		9571B9F628AD49AC00DC66C7 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
 		9571B9F728AD4C1F00DC66C7 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		9571B9F828AD4C2A00DC66C7 /* Beta.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Beta.xcconfig; sourceTree = "<group>"; };
+		959BBC812934008E001B31CB /* Songbook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Songbook.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +177,7 @@
 				950BE28F28A2C17E00EE1D87 /* Date.m */,
 				950BE29028A2C17E00EE1D87 /* Song.swift */,
 				950BE29A28A35D8700EE1D87 /* Favorites.swift */,
+				959BBC812934008E001B31CB /* Songbook.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				9571B9F128A6B28100DC66C7 /* AppDelegate.swift in Sources */,
 				950BE27328A2C13C00EE1D87 /* YTTableViewCell.m in Sources */,
 				950BE29128A2C17E00EE1D87 /* Date.m in Sources */,
+				959BBC822934008E001B31CB /* Songbook.swift in Sources */,
 				950BE28428A2C13C00EE1D87 /* BKKViewController.m in Sources */,
 				950BE27228A2C13C00EE1D87 /* FolderPickerTableViewController.m in Sources */,
 				9571B9F328A6B74E00DC66C7 /* SceneDelegate.swift in Sources */,

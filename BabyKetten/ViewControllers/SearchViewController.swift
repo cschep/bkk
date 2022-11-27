@@ -78,7 +78,10 @@ class SearchViewController: UIViewController {
 extension SearchViewController: UISearchResultsUpdating {
     // called incrementally
     func updateSearchResults(for searchController: UISearchController) {
-        //search(isLive: true)
+//        search(isLive: true)
+        if let text = searchController.searchBar.text, text.isEmpty {
+            clearSearch()
+        }
     }
 }
 

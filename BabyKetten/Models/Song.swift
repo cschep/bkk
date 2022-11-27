@@ -52,9 +52,9 @@ extension Song {
 
 extension Song {
     //TODO: this is nice for local testing
-    //private static let urlComponents = URLComponents(string: "http://rocky.local:3000")
+    private static let urlComponents = URLComponents(string: "http://rocky.local:3000")
 
-    private static let urlComponents = URLComponents(string: "https://bkk.schepman.org")
+//    private static let urlComponents = URLComponents(string: "https://bkk.schepman.org")
     private static let session = URLSession.shared
 
     static func songs(for term: String, searchBy: String, isRandom: Bool, isLive: Bool = false, completion: @escaping ([Song]) -> Void) {
