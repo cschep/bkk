@@ -75,7 +75,7 @@ class SongDetailTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Details"
+//        navigationItem.largeTitleDisplayMode = .never
     }
 
     func toggleFavorite() {
@@ -171,12 +171,14 @@ class SongDetailTableViewController: UITableViewController {
     }
 
     func artistSearch() {
-        let vc = SongListTableViewController()
-//        vc.searchTerm = song.artist
-//        vc.searchBy = "artist"
-//        vc.random = false
-
-        navigationController?.pushViewController(vc, animated: true)
+        Song.songs(for: song.artist, searchBy: "artist", isRandom: false) { songs in
+            DispatchQueue.main.async { [weak self] in
+                let vc = SongListTableViewController()
+                vc.songs = songs
+                vc.title = self?.song.artist
+                self?.navigationController?.pushViewController(vc, animated: true)
+            }
+        }
     }
 
     func youTubeSearch() {

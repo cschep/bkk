@@ -18,7 +18,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     let kamikaze: UINavigationController
 
     override init() {
-
         search = UINavigationController(rootViewController: SearchViewController())
         search.navigationBar.tintColor = .systemRed
         search.navigationBar.prefersLargeTitles = true

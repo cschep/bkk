@@ -26,13 +26,7 @@ class SongListTableViewController: UITableViewController {
 
         tableView.register(SubtitleTableViewCell.self, forCellReuseIdentifier: "SongCell")
 
-        let l = UILabel()
-        l.text = "empty!"
-        l.textAlignment = .center
-        l.font = .systemFont(ofSize: 44)
-        tableView.backgroundView = l
-
-        title = "Search"
+//        title = "Results"
     }
 
     // MARK: - Table view data source
@@ -58,17 +52,19 @@ class SongListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let song = songs[indexPath.row]
+
+        //TODO: is this a useful thing?
         didSelectSong?(song)
+
+        let vc = SongDetailTableViewController(song: song)
+        navigationController?.pushViewController(vc, animated: true)
+
         tableView.deselectRow(at: indexPath, animated: false)
     }
 
     @objc
     func setupRandom() {
         tableView.backgroundView = nil
-        didSelectSong = { [weak self] song in
-            let detailVC = SongDetailTableViewController(song: song)
-            self?.navigationController?.pushViewController(detailVC, animated: true)
-        }
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(randomize), for: UIControl.Event.valueChanged)
         randomize()

@@ -34,29 +34,49 @@ class SearchViewController: UIViewController {
         return sv
     }()
 
-    var searchController: UISearchController!
+    let searchBar: UITextField = {
+        let tf = UITextField()
+        tf.font = .systemFont(ofSize: 16)
+        tf.tintColor = .systemRed
+        tf.backgroundColor = .systemBackground
+        tf.autocapitalizationType = .none
+        tf.autocorrectionType = .no
+        tf.borderStyle = .roundedRect
+        tf.returnKeyType = .search
+        tf.clearButtonMode = .whileEditing
+        return tf
+    }()
+
+    let searchToggle: UISegmentedControl = {
+        let sc = UISegmentedControl(items: ["artist", "title", "brand"])
+        sc.tintColor = .systemRed
+        sc.selectedSegmentIndex = 0
+        return sc
+    }()
 
     override func viewDidLoad() {
-        let songListVC = SongListTableViewController()
-        songListVC.didSelectSong = songSelected(song:)
-        searchController = UISearchController(searchResultsController: songListVC)
-        searchController.searchBar.scopeButtonTitles = ["artist", "title", "brand"]
-        searchController.searchResultsUpdater = self
-        searchController.searchBar.delegate = self
-        searchController.searchBar.searchTextField.delegate = self
-        searchController.searchBar.autocapitalizationType = .none
-        navigationItem.searchController = searchController
+        searchBar.delegate = self
+
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(searchBar)
+
+        searchToggle.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(searchToggle)
 
         buttonStack.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(buttonStack)
 
         let constraints = [
-//            imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-//            imageView.widthAnchor.constraint(equalTo: view.widthAnchor),
-//            imageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.15),
-//            imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            searchBar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            searchBar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            searchBar.heightAnchor.constraint(equalToConstant: 45),
 
-            buttonStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            searchToggle.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 10),
+            searchToggle.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            searchToggle.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+
+            buttonStack.topAnchor.constraint(equalTo: searchToggle.bottomAnchor),
             buttonStack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             buttonStack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             buttonStack.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.5),
@@ -69,55 +89,19 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
     }
 
-    func songSelected(song: Song) {
-        let vc = SongDetailTableViewController(song: song)
-        navigationController?.pushViewController(vc, animated: true)
-    }
-}
-
-extension SearchViewController: UISearchResultsUpdating {
-    // called incrementally
-    func updateSearchResults(for searchController: UISearchController) {
-//        search(isLive: true)
-        if let text = searchController.searchBar.text, text.isEmpty {
-            clearSearch()
-        }
-    }
-}
-
-extension SearchViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        search()
-    }
-
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        search()
-    }
-
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        clearSearch()
-    }
-
-    func clearSearch() {
-        if let songListVC = searchController.searchResultsController as? SongListTableViewController {
-            DispatchQueue.main.async {
-                songListVC.songs = []
-                songListVC.tableView.reloadData()
-            }
-        }
-    }
-
     func search(isLive: Bool = false) {
-        if let songListVC = searchController.searchResultsController as? SongListTableViewController,
-           let searchTerm = searchController.searchBar.text {
+        if let searchTerm = searchBar.text {
 
             let scopes = ["artist", "title", "brand"]
-            let searchBy = scopes[searchController.searchBar.selectedScopeButtonIndex]
+            let searchBy = scopes[searchToggle.selectedSegmentIndex]
 
             Song.songs(for: searchTerm, searchBy: searchBy, isRandom: false, isLive: isLive) { songs in
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { [weak self] in
+                    let songListVC = SongListTableViewController()
                     songListVC.songs = songs
+                    songListVC.title = searchTerm
                     songListVC.tableView.reloadData()
+                    self?.navigationController?.pushViewController(songListVC, animated: true)
                 }
             }
         }
@@ -125,8 +109,8 @@ extension SearchViewController: UISearchBarDelegate {
 }
 
 extension SearchViewController: UITextFieldDelegate {
-    func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        clearSearch()
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        search()
         return true
     }
 }
