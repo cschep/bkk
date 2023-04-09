@@ -59,11 +59,9 @@ extension Song {
 
     static func songs(for term: String, searchBy: String, isRandom: Bool, isLive: Bool = false, completion: @escaping ([Song]) -> Void) {
         var searchURLComponents = urlComponents
-        var searchURL: URL
 
         if isRandom {
             searchURLComponents?.path = "/random"
-            searchURL = searchURLComponents!.url!
         } else {
             searchURLComponents?.path = "/json"
             var queryItems = [URLQueryItem(name: "search", value: term), URLQueryItem(name: "searchby", value: searchBy)]
@@ -71,8 +69,8 @@ extension Song {
                 queryItems.append(URLQueryItem(name: "live", value: "true"))
             }
             searchURLComponents?.queryItems = queryItems
-            searchURL = searchURLComponents!.url!
         }
+        let searchURL = searchURLComponents!.url!
 
         session.dataTask(with: searchURL, completionHandler: { data, _, _ in
             var songs: [Song] = []
