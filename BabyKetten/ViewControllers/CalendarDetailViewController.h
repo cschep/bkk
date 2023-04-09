@@ -15,8 +15,9 @@
 @property (strong, nonatomic) CLGeocoder *geocoder;
 @property (strong, nonatomic) MKPlacemark *currentPlacemark;
 @property (strong, nonatomic) Date *date;
-@property (strong, nonatomic) IBOutlet UITextView *descText;
-@property (strong, nonatomic) IBOutlet MKMapView *mapView;
+@property (strong, nonatomic) UITextView *descriptionTextView;
+@property (strong, nonatomic) MKMapView *mapView;
+@property (strong, nonatomic) UIImageView *backgroundImageView;
 
 - (id)initWithDate:(Date *)date;
 

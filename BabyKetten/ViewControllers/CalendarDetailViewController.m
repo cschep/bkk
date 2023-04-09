@@ -11,20 +11,12 @@
 
 @implementation CalendarDetailViewController
 
-@synthesize date, descText;
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (id)initWithDate:(Date *)_date {
-	if ((self = [super initWithNibName:@"CalendarDetailViewController" bundle:nil])) {
-		self.date = _date;
+- (id)initWithDate:(Date *)date {
+	if (self = [super init]) {
+		self.date = date;
+        self.mapView = [[MKMapView alloc] init];
+        self.descriptionTextView = [[UITextView alloc] init];
+        self.backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"calendar_detail_bg"]];
 	}
 	return self;
 }
@@ -39,8 +31,8 @@
 {
     [super viewDidLoad];
     
-    self.title = date.title;
-    descText.text = date.description;
+    self.title = self.date.title;
+    self.descriptionTextView.text = self.date.description;
     
     NSString *city = [[NSUserDefaults standardUserDefaults] stringForKey:@"city"];
     if ([city isEqualToString:@"1"]) {
@@ -58,6 +50,41 @@
         
         [self performForwardGeocode:searchTerm];
     }
+
+    self.backgroundImageView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:self.backgroundImageView];
+
+    self.mapView.delegate = self;
+    self.mapView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.mapView.layer.cornerRadius = 10;
+    int mapViewBuffer = 45; //TODO: what are we doing here
+    [self.view addSubview:self.mapView];
+
+    self.descriptionTextView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.descriptionTextView.layer.cornerRadius = 10;
+    self.descriptionTextView.font = [UIFont systemFontOfSize:22];
+    self.descriptionTextView.backgroundColor = UIColor.secondarySystemBackgroundColor;
+    [self.view addSubview:self.descriptionTextView];
+
+    NSArray *constraints = @[
+        [self.backgroundImageView.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor],
+        [self.backgroundImageView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor],
+        [self.backgroundImageView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor],
+        [self.backgroundImageView.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor],
+
+
+        [self.mapView.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor constant:mapViewBuffer],
+        [self.mapView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:mapViewBuffer],
+        [self.mapView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-mapViewBuffer],
+        [self.mapView.heightAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.heightAnchor multiplier:.60],
+
+        [self.descriptionTextView.topAnchor constraintEqualToAnchor:self.mapView.bottomAnchor constant:10],
+        [self.descriptionTextView.leadingAnchor constraintEqualToAnchor:self.mapView.leadingAnchor],
+        [self.descriptionTextView.trailingAnchor constraintEqualToAnchor:self.mapView.trailingAnchor],
+        [self.descriptionTextView.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor constant:-mapViewBuffer],
+    ];
+
+    [NSLayoutConstraint activateConstraints:constraints];
 }
 
 
