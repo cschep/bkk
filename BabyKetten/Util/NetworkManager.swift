@@ -13,14 +13,12 @@ public class NetworkManager : NSObject {
     static var dataTask: URLSessionDataTask?
 
     @objc
-    static func GET(_ urlString: String, completionHandler: @escaping (Any?) -> ()) {
-
+    static func GET(_ url: URL, completionHandler: @escaping (Any?) -> ()) {
         if dataTask != nil {
             dataTask?.cancel()
         }
 
-        let url = URL(string: urlString)
-        dataTask = defaultSession.dataTask(with: url!) {
+        dataTask = defaultSession.dataTask(with: url) {
             data, response, error in
 
             if let error = error {
@@ -42,6 +40,11 @@ public class NetworkManager : NSObject {
         }
 
         dataTask?.resume()
+    }
+
+    @objc
+    static func GET(urlString: String, completionHandler: @escaping (Any?) -> ()) {
+        GET(URL(string: urlString)!, completionHandler: completionHandler)
     }
 }
 

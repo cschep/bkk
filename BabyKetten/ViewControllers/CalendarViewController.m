@@ -19,7 +19,7 @@ NSString* const kGoogleCalendarAPIKey = @"AIzaSyC3RJ8eZ4AXCect-2RUdWMEUSdoJMOA0d
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
 	self.activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
     self.activityIndicator.color = [UIColor blackColor];
 	[self.activityIndicator hidesWhenStopped];
@@ -58,7 +58,7 @@ NSString* const kGoogleCalendarAPIKey = @"AIzaSyC3RJ8eZ4AXCect-2RUdWMEUSdoJMOA0d
     }];
 }
 
-- (NSString *)getCalendarURL {
+- (NSURL *)getCalendarURL {
     //TODO: figure out maybe there is a timezone thing happening, still seeing "before" events
     NSDate *now = [NSDate date];
 	NSDate *maxDate = [NSDate dateWithTimeIntervalSinceNow:60*60*24*30*3]; //next 3 months'ish
@@ -80,7 +80,7 @@ NSString* const kGoogleCalendarAPIKey = @"AIzaSyC3RJ8eZ4AXCect-2RUdWMEUSdoJMOA0d
     NSString *urlFormat = @"https://www.googleapis.com/calendar/v3/calendars/%@/events?key=%@&singleEvents=true&orderBy=startTime&timeMin=%@&timeMax=%@&timeZone=America/Los_Angeles&fields=items(id,start,summary,status,location,description)";
     NSString *calendarUrl = [NSString stringWithFormat:urlFormat, calendarId, kGoogleCalendarAPIKey, [timeFormatter stringFromDate:now], [timeFormatter stringFromDate:maxDate]];
 
-    return calendarUrl;
+    return [NSURL URLWithString:calendarUrl];
 }
 
 

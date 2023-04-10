@@ -17,9 +17,9 @@ NSString* const kYouTubeAPIKey = @"AIzaSyC3RJ8eZ4AXCect-2RUdWMEUSdoJMOA0ds";
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    // Whoever wrote this network manager didn't do a single ounce of error handling did they?
-    NSString *urlString = [self getYouTubeSearchURL];
-    [NetworkManager GET:urlString completionHandler:^(id JSON) {
+    // TODO: Whoever wrote this network manager didn't do a single ounce of error handling did they?
+    // cromslor cackles wildly into the night
+    [NetworkManager GET:[self getYouTubeSearchURL] completionHandler:^(id JSON) {
         if (JSON != nil) {
             [self loadVideosFromJSON:JSON];
         } else {
@@ -29,10 +29,10 @@ NSString* const kYouTubeAPIKey = @"AIzaSyC3RJ8eZ4AXCect-2RUdWMEUSdoJMOA0ds";
     }];
 }
 
-- (NSString *)getYouTubeSearchURL {
+- (NSURL *)getYouTubeSearchURL {
     NSString *urlFormat = @"https://www.googleapis.com/youtube/v3/search?part=snippet&q=%@&maxResults=15&type=video&key=%@";
     NSString *escapedSearchString = [self.searchString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
-    return [NSString stringWithFormat:urlFormat, escapedSearchString, kYouTubeAPIKey];
+    return [NSURL URLWithString:[NSString stringWithFormat:urlFormat, escapedSearchString, kYouTubeAPIKey]];
 }
 
 - (void)loadVideosFromJSON:(id)JSON {

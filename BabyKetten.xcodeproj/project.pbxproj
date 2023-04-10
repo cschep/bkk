@@ -32,6 +32,7 @@
 		9571B9EF28A4BCE700DC66C7 /* Value1TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9571B9EE28A4BCE700DC66C7 /* Value1TableViewCell.swift */; };
 		9571B9F128A6B28100DC66C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9571B9F028A6B28100DC66C7 /* AppDelegate.swift */; };
 		9571B9F328A6B74E00DC66C7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9571B9F228A6B74E00DC66C7 /* SceneDelegate.swift */; };
+		95881A1929E3B6ED00CBD7A0 /* StorefrontCountries.plist in Resources */ = {isa = PBXBuildFile; fileRef = 95881A1829E3B6ED00CBD7A0 /* StorefrontCountries.plist */; };
 		959BBC822934008E001B31CB /* Songbook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959BBC812934008E001B31CB /* Songbook.swift */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +78,7 @@
 		9571B9F628AD49AC00DC66C7 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
 		9571B9F728AD4C1F00DC66C7 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		9571B9F828AD4C2A00DC66C7 /* Beta.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Beta.xcconfig; sourceTree = "<group>"; };
+		95881A1829E3B6ED00CBD7A0 /* StorefrontCountries.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = StorefrontCountries.plist; sourceTree = "<group>"; };
 		959BBC812934008E001B31CB /* Songbook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Songbook.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -101,6 +103,7 @@
 				834DE11915DC83160050139B /* Settings.bundle */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				953A473328A20288001F6449 /* Assets.xcassets */,
+				95881A1829E3B6ED00CBD7A0 /* StorefrontCountries.plist */,
 				9512834628A2BDE400809E1D /* Products */,
 			);
 			name = CustomTemplate;
@@ -259,6 +262,7 @@
 				953A473428A20288001F6449 /* Assets.xcassets in Resources */,
 				950BE27528A2C13C00EE1D87 /* LaunchScreen.storyboard in Resources */,
 				950BE27E28A2C13C00EE1D87 /* YTTableViewCell.xib in Resources */,
+				95881A1929E3B6ED00CBD7A0 /* StorefrontCountries.plist in Resources */,
 				834DE11A15DC83160050139B /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,17 +7,80 @@
 //
 
 import UIKit
+import StoreKit
+
+class DoubleButtonView: UIView {
+    var leftAction: (()->Void)?
+    var rightAction: (()->Void)?
+
+    let leftButton: UIButton = {
+        let b = UIButton(type: .custom)
+        b.setImage(UIImage(named: "listen_on_apple_music_white_type"), for: .normal)
+        b.contentMode = .scaleAspectFit
+        b.layer.borderColor = UIColor.systemFill.cgColor
+        b.layer.borderWidth = 2
+        b.layer.cornerRadius = 20
+        return b
+    }()
+
+    let rightButton: UIButton = {
+        let b = UIButton(type: .custom)
+        b.setImage(UIImage(named: "spotify_logo_green"), for: .normal)
+        b.contentMode = .scaleAspectFit
+        b.clipsToBounds = true
+        b.imageEdgeInsets = UIEdgeInsets(top: 20, left: 25, bottom: 20, right: 25)
+        b.layer.borderColor = UIColor.systemFill.cgColor
+        b.layer.borderWidth = 2
+        b.layer.cornerRadius = 20
+        return b
+    }()
+
+    @objc func leftSelector() {
+        leftAction?()
+    }
+
+    @objc func rightSelector() {
+        rightAction?()
+    }
+
+    override init(frame: CGRect) {
+        super.init(frame: .zero)
+
+        leftButton.addTarget(self, action: #selector(leftSelector), for: .touchUpInside)
+        rightButton.addTarget(self, action: #selector(rightSelector), for: .touchUpInside)
+
+        let stackView = UIStackView(arrangedSubviews: [leftButton, rightButton])
+        stackView.spacing = 10
+        stackView.distribution = .fillEqually
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(stackView)
+
+        let constraints = [
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            stackView.topAnchor.constraint(equalTo: topAnchor, constant: 20),
+            stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
+        ]
+        NSLayoutConstraint.activate(constraints)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
 
 class SongDetailHeaderView: UIView {
     let imageView: UIImageView = {
         return UIImageView(image: UIImage(named:"ketten_small_white.png"))
     }()
+
     let titleLabel: UILabel = {
         let l = UILabel()
         l.font = UIFont.systemFont(ofSize: 36)
         l.adjustsFontSizeToFitWidth = true
         return l
     }()
+
     let artistLabel: UILabel = {
         let l = UILabel()
         l.font = UIFont.systemFont(ofSize: 14)
@@ -60,22 +123,25 @@ class SongDetailTableViewController: UITableViewController {
         return SongDetailHeaderView()
     }()
 
+    let footerView = DoubleButtonView()
     let song: Song
+    let cloudServiceController = SKCloudServiceController()
 
     init(song: Song) {
         self.song = song
         super.init(style: .grouped)
         tableView.tintColor = .systemRed
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "SongDetailCell")
+        footerView.leftAction = {
+            self.appleMusicSearch()
+        }
+        footerView.rightAction = {
+            self.spotifySearch()
+        }
     }
 
     required init?(coder: NSCoder) {
         fatalError()
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-//        navigationItem.largeTitleDisplayMode = .never
     }
 
     func toggleFavorite() {
@@ -88,11 +154,11 @@ class SongDetailTableViewController: UITableViewController {
 
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        2
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -117,6 +183,15 @@ class SongDetailTableViewController: UITableViewController {
             } else if (indexPath.row == 1) {
                 cell.textLabel!.text = "YouTube Search"
             }
+        } else if (indexPath.section == 2) {
+            let dub = DoubleButtonView(frame: .zero)
+
+            dub.translatesAutoresizingMaskIntoConstraints = false
+            cell.contentView.addSubview(dub)
+            dub.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor).isActive = true
+            dub.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor).isActive = true
+            dub.topAnchor.constraint(equalTo: cell.contentView.topAnchor).isActive = true
+            dub.bottomAnchor.constraint(equalTo: cell.contentView.bottomAnchor).isActive = true
         }
 
         return cell
@@ -131,24 +206,21 @@ class SongDetailTableViewController: UITableViewController {
             }
         } else if (indexPath.section == 1) {
             if (indexPath.row == 0) {
-                //TODO LYRICS SEARCH
-                //[self lyricsSearch];
+                lyricsSearch()
             } else if (indexPath.row == 1) {
                 youTubeSearch()
             }
 
-            // TODO SPOTIFY / APPLE MUSIC ??
+
+        } else if (indexPath.section == 2) {
+            if (indexPath.row == 0) {
+                appleMusicSearch()
+            } else if (indexPath.row == 1) {
+                spotifySearch()
+            }
         }
 
         tableView.deselectRow(at: indexPath, animated: true)
-    }
-
-    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        if (section == 1) {
-            return "Searches will open a browser window." //still true?
-        } else {
-            return nil
-        }
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -157,20 +229,23 @@ class SongDetailTableViewController: UITableViewController {
             headerView.artistLabel.text = "- \(song.subtitle)"
 
             return headerView
-        } else {
-            return nil
         }
+        return nil
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if (section == 0) {
-            return 116
-        } else {
-            return 24
-        }
+        section == 0 ? 116 : 24
     }
 
-    func artistSearch() {
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        section == 1 ? footerView : nil
+    }
+
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        section == 1 ? 100 : 0
+    }
+
+    private func artistSearch() {
         Song.songs(for: song.artist, searchBy: "artist", isRandom: false) { songs in
             DispatchQueue.main.async { [weak self] in
                 let vc = SongListTableViewController()
@@ -181,12 +256,81 @@ class SongDetailTableViewController: UITableViewController {
         }
     }
 
-    func youTubeSearch() {
+    private func appleMusicSearch() {
+        // TODO: this is fairly hideous and has no error checking (cromslor says to remind you that it works!)
+        SKCloudServiceController.requestAuthorization { status in
+            self.cloudServiceController.requestCapabilities { capabilities, capabilitiesError in
+                self.cloudServiceController.requestStorefrontIdentifier { storeFrontIdentifier, storeFrontError in
+                    guard let storeFrontIdentifier = storeFrontIdentifier, storeFrontError == nil else { return }
+                    var identifier = storeFrontIdentifier.components(separatedBy: ",").first
+                    identifier = identifier?.components(separatedBy: "-").first
+                    let countryCode = self.countryCode(with: identifier)
+
+                    var urlComponents = URLComponents(string: "https://itunes.apple.com/search")!
+                    urlComponents.queryItems = [
+                        URLQueryItem(name: "isStreamable", value: "true"),
+                        URLQueryItem(name: "term", value: "\(self.song.artist) \(self.song.title)"),
+                        URLQueryItem(name: "limit", value: "5"),
+                        URLQueryItem(name: "country", value: countryCode),
+                    ]
+
+                    NetworkManager.GET(urlComponents.url!) { result in
+                        if let result = result as? Dictionary<String, Any>,
+                           let results = result["results"] as? Array<Dictionary<String, Any>>,
+                           let first = results.first, let trackViewUrl = first["trackViewUrl"] {
+
+                            let appleMusicDeepLink = "\(trackViewUrl)&mt=1&app=music"
+                            UIApplication.shared.open(URL(string: appleMusicDeepLink)!)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private func getSearchString() -> String {
+        let searchString = "\(song.artist) \(song.title)"
+        var allowedCharacterSet = CharacterSet.urlQueryAllowed
+        allowedCharacterSet.remove("&")
+        allowedCharacterSet.remove("=")
+        allowedCharacterSet.remove("?")
+
+        return searchString.addingPercentEncoding(withAllowedCharacters: allowedCharacterSet) ?? song.title
+    }
+
+    private func spotifySearch() {
+        let spotifySearchUrl = "\(song.artist.replacingOccurrences(of: ",", with: ""))+\(song.title)"
+        if let f = spotifySearchUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+            UIApplication.shared.open(URL(string: "spotify:search:\(f)")!)
+        }
+    }
+
+    private func lyricsSearch() {
+        // TODO: I don't care if this falters a bit but will it CRASH?
+        let smashedString =  "\(song.artist.replacingOccurrences(of: ",", with: ""))+\(song.title)"
+        if let smashedReplacedString = smashedString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+           let url = URL(string: "http://www.songlyrics.com/index.php?section=search&searchW=\(smashedReplacedString)&submit=Search&searchIn1=artist&searchIn2=album&searchIn3=song&searchIn4=lyrics") {
+
+            UIApplication.shared.open(url)
+        }
+    }
+
+    private func youTubeSearch() {
         let searchString = "\(song.artist) \(song.title)"
 
         let vc = YTSearchTableViewController()
         vc.searchString = searchString
 
         navigationController?.pushViewController(vc, animated: true)
+    }
+
+    private func countryCode(with identifier: String?) -> String? {
+        guard let identifier = identifier else { return nil }
+        let plistURL = Bundle.main.url(forResource: "StorefrontCountries", withExtension: "plist")!
+        if let countryCodeDictionary = try? NSDictionary(contentsOf: plistURL, error: ()) {
+            return countryCodeDictionary.value(forKey: identifier) as? String
+        }
+
+        return nil
     }
 }

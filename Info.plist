@@ -53,5 +53,7 @@
 	<string>Dark</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>Allows the user to open songs in Apple Music for practicing karaoke</string>
 </dict>
 </plist>
