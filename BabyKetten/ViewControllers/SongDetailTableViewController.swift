@@ -78,9 +78,6 @@ class SongDetailTableViewController: UITableViewController {
 
     func toggleFavorite() {
         song.toggleFavorite()
-        // TODO REMOVE
-        Favorites.shared.debugDump()
-
         tableView.reloadData()
     }
 

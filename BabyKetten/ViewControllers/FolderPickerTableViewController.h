@@ -12,7 +12,7 @@
 
 @interface FolderPickerTableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, retain) NSArray *folderList;
+@property (nonatomic, retain) NSArray<NSString *> *folderList;
 @property (nonatomic, retain) NSIndexPath *selectedFolder;
 
 @property (nonatomic, weak) id<FolderPickerTableViewDelegate> delegate;

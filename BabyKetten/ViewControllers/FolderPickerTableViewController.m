@@ -14,14 +14,6 @@
 
 @implementation FolderPickerTableViewController
 
-- (id)init {
-    self = [super initWithStyle:UITableViewStylePlain];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -38,7 +30,7 @@
         [self.delegate folderPicked:@""];
         [self dismissViewControllerAnimated:YES completion:nil];
     } else {
-        NSString *folderName = [[self.folderList objectAtIndex:self.selectedFolder.row] objectForKey:@"title"];
+        NSString *folderName = [self.folderList objectAtIndex:self.selectedFolder.row];
         [self.delegate folderPicked:folderName];
         [self dismissViewControllerAnimated:YES completion:nil];
     }
@@ -58,6 +50,8 @@
     return self.folderList.count;
 }
 
+//CROMS fucking loves that this is in objective-c
+//ha ha ha!
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"FolderPickerCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -65,12 +59,13 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
 
-    id current = [self.folderList objectAtIndex:indexPath.row];
-    
+    NSString* title = [self.folderList objectAtIndex:indexPath.row];
+
+    // first row is a move it up to base level thing
     if (indexPath.row == 0) {
-        cell.textLabel.text = [current objectForKey:@"title"];
+        cell.textLabel.text = title;
     } else {
-        cell.textLabel.text = [NSString stringWithFormat:@"📁 %@", [current objectForKey:@"title"]];
+        cell.textLabel.text = [NSString stringWithFormat:@"📁 %@", title];
     }
 
     cell.textLabel.font = [UIFont boldSystemFontOfSize:18.0];

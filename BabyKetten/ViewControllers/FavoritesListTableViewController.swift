@@ -9,9 +9,14 @@ import UIKit
 
 class FavoritesListTableViewController: UITableViewController {
     var displayList: [Favorite] = []
-    var currentFolder: String?
+    var currentFolder: Favorite?
 
-    // What are we doing here?
+    // cromslor loves this but I hate it
+    // If we want to init the buttons and add the target at the same time e.g. self
+    // then self has to be fully initalized - which requires super.init to be called
+    // ... which requires the god damn buttons to be init'd
+    // I've spent 15 minutes on this and I'm annoyed
+    // cromlor is cackling maniacly chanting SHIP! SHIP!!
     var editButton: UIBarButtonItem!
     var addButton: UIBarButtonItem!
     var cancelButton: UIBarButtonItem!
@@ -29,6 +34,9 @@ class FavoritesListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // TODO REMOVE
+        Favorites.shared.debugDump()
+
         editButton = UIBarButtonItem(barButtonSystemItem:.edit, target:self, action:#selector(editFavesAction))
         addButton = UIBarButtonItem(barButtonSystemItem:.add, target:self, action:#selector(addAction))
         cancelButton = UIBarButtonItem(barButtonSystemItem:.cancel, target:self, action:#selector(cancelAction))
@@ -40,8 +48,8 @@ class FavoritesListTableViewController: UITableViewController {
 
         navigationItem.rightBarButtonItem = editButton;
 
-        if (currentFolder != nil) {
-            navigationItem.title = currentFolder
+        if let title = currentFolder?.title {
+            navigationItem.title = title
         } else {
             navigationItem.title = "Favorites!"
             navigationItem.leftBarButtonItem = addButton
@@ -91,19 +99,16 @@ class FavoritesListTableViewController: UITableViewController {
     @objc
     func moveAction() {
         let vc = FolderPickerTableViewController()
-//        NSPredicate *pred = [NSPredicate predicateWithFormat:@"isFolder == %@", @"true"];
-//
-        let folderList = Favorites.shared.folders()
-//        [folderList sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-//            return [[obj1 objectForKey:@"title"] compare:[obj2 objectForKey:@"title"] options:NSCaseInsensitiveSearch];
-//        }];
 
-        //[folderList insertObject:@{@"title": @"🔙 to faves!"} atIndex:0];
+        // the first item is so you can move a song out of a folder to the base level
+        // there are no folders in folders
+        let folderList = ["🔙 to faves!"] + Favorites.shared.folders().map { $0.title }
+
         vc.folderList = folderList
         vc.delegate = self;
 
-//        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
-        present(vc, animated: true)
+        let nc = UINavigationController(rootViewController: vc)
+        present(nc, animated: true)
     }
 
     func updateButtonsToMatchTableState() {
@@ -137,22 +142,8 @@ class FavoritesListTableViewController: UITableViewController {
     }
 
     func refreshDisplayList() {
-        displayList = Favorites.shared.favorites(in: currentFolder)
-
-    //    [self.displayList sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-    //        //if either are folders, put them to the top, otherwise just alpha
-    //        if ([[obj1 objectForKey:@"isFolder"] isEqualToString:@"true"] && ![[obj2 objectForKey:@"isFolder"] isEqualToString:@"true"]) {
-    //            return NSOrderedAscending;
-    //        } else if ([[obj2 objectForKey:@"isFolder"] isEqualToString:@"true"] && ![[obj1 objectForKey:@"isFolder"] isEqualToString:@"true"]) {
-    //            return NSOrderedDescending;
-    //        } else {
-    //            return [[obj1 objectForKey:@"title"] compare:[obj2 objectForKey:@"title"] options:NSCaseInsensitiveSearch];
-    //        }
-    //    }];
-    //
-
+        displayList = Favorites.shared.favorites(inFolder: currentFolder)
         tableView.reloadData()
-    //    [self updateButtonsToMatchTableState];
     }
 
     override func setEditing(_ editing: Bool, animated: Bool) {
@@ -182,9 +173,9 @@ class FavoritesListTableViewController: UITableViewController {
                 case .song(let song, _):
                     let vc = SongDetailTableViewController(song: song)
                     navigationController?.pushViewController(vc, animated: true)
-                case .folder(title: let title):
+                case .folder(let title):
                     let vc = FavoritesListTableViewController()
-                    vc.currentFolder = title
+                    vc.currentFolder = .folder(title: title)
                     navigationController?.pushViewController(vc, animated: true)
                 }
             } else {
@@ -211,9 +202,8 @@ class FavoritesListTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "FolderCell", for: indexPath)
             cell.textLabel?.text = String(format: "📁 %@", title)
             cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-            //NSPredicate *pred = [NSPredicate predicateWithFormat:@"folder == %@", [current objectForKey:@"title"]];
-            //int count = (int)[[self.favorites filteredArrayUsingPredicate:pred] count];
-            cell.detailTextLabel?.text = String(format: "%i", 0)
+            let count = Favorites.shared.favorites(inFolder: .folder(title: title)).count
+            cell.detailTextLabel?.text = String(format: "%i", count)
             cell.accessoryType = .disclosureIndicator;
             return cell
         }
@@ -221,35 +211,20 @@ class FavoritesListTableViewController: UITableViewController {
 }
 
 extension FavoritesListTableViewController: FolderPickerTableViewDelegate {
-    func folderPicked(_ folderName: String!) {
-        if folderName != nil {
-//            NSArray *selectedRows = [self.tableView indexPathsForSelectedRows];
-//
-//            // Build an NSIndexSet of all the objects to move
-//            NSMutableIndexSet *indicesOfItemsToMove = [NSMutableIndexSet new];
-//            for (NSIndexPath *selectionIndex in selectedRows) {
-//                //find it in favorites
-//                id itemToMove = [self.displayList objectAtIndex:selectionIndex.row];
-//                NSUInteger indexOfItemToMove = [self.favorites indexOfObjectIdenticalTo:itemToMove];
-//
-//                //change it
-//                NSMutableDictionary *song = [[self.favorites objectAtIndex:indexOfItemToMove] mutableCopy];
-//                if ([folderName isEqualToString:@""]) {
-//                    [song removeObjectForKey:@"folder"];
-//                } else {
-//                    [song setObject:folderName forKey:@"folder"];
-//                }
-//                [self.favorites setObject:song atIndexedSubscript:indexOfItemToMove];
-//
-//                //then remove it from the displayList
-//                [indicesOfItemsToMove addIndex:selectionIndex.row];
-//            }
-//
-//            [self.displayList removeObjectsAtIndexes:indicesOfItemsToMove];
-//
-//            [self setEditing:NO animated:YES];
-//            [self syncFavorites];
-//            [self updateButtonsToMatchTableState];
+    func folderPicked(_ folderName: String?) {
+        if let folderName = folderName {
+            // nothing selected? bail!
+            guard let selectedRows = tableView.indexPathsForSelectedRows else { return }
+
+            // go through the selected favorites
+            for selectionIndex in selectedRows {
+                let favoriteToMove = displayList[selectionIndex.row]
+                Favorites.shared.move(song: favoriteToMove, to: .folder(title: folderName))
+            }
+
+            refreshDisplayList()
+            setEditing(false, animated: true)
+            updateButtonsToMatchTableState()
         } else {
             setEditing(false, animated: true)
         }

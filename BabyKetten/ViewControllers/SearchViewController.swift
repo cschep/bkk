@@ -37,7 +37,6 @@ class SearchViewController: UIViewController {
     let privateRoomSwitch: UISwitch = {
         let s = UISwitch()
         s.onTintColor = .systemRed
-        s.tintColor = .systemRed
         return s
     }()
 
