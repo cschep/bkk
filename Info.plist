@@ -55,5 +55,7 @@
 	<false/>
 	<key>NSAppleMusicUsageDescription</key>
 	<string>Allows the user to open songs in Apple Music for practicing karaoke</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 </dict>
 </plist>
