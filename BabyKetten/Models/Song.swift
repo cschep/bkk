@@ -57,7 +57,7 @@ extension Song {
     private static let urlComponents = URLComponents(string: "https://bkk.schepman.org")
     private static let session = URLSession.shared
 
-    static func songs(for term: String, searchBy: String, isRandom: Bool, isLive: Bool = false, completion: @escaping ([Song]) -> Void) {
+    static func songs(for term: String, searchBy: String, isRandom: Bool, isPrivate: Bool = false, isLive: Bool = false, completion: @escaping ([Song]) -> Void) {
         var searchURLComponents = urlComponents
 
         if isRandom {
@@ -67,6 +67,9 @@ extension Song {
             var queryItems = [URLQueryItem(name: "search", value: term), URLQueryItem(name: "searchby", value: searchBy)]
             if isLive {
                 queryItems.append(URLQueryItem(name: "live", value: "true"))
+            }
+            if isPrivate {
+                queryItems.append(URLQueryItem(name: "db", value: "private"))
             }
             searchURLComponents?.queryItems = queryItems
         }

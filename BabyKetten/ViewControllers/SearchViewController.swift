@@ -8,32 +8,6 @@
 import Foundation
 
 class SearchViewController: UIViewController {
-//    let buttonStack: UIStackView = {
-//        var buttons: [UIButton] = []
-//        for i in 0..<4 {
-//            let b = UIButton(type: .custom)
-//            b.setImage(UIImage(named: "ketten_small_white"), for: .normal)
-//            buttons.append(b)
-//        }
-//
-//        let topRow = UIStackView(arrangedSubviews: [buttons[0], buttons[1]])
-//        topRow.axis = .horizontal
-//        topRow.spacing = 10
-//        topRow.distribution = .fillEqually
-//
-//        let bottomRow = UIStackView(arrangedSubviews: [buttons[2], buttons[3]])
-//        bottomRow.axis = .horizontal
-//        bottomRow.spacing = 10
-//        bottomRow.distribution = .fillEqually
-//
-//        let sv = UIStackView(arrangedSubviews: [topRow, bottomRow])
-//        sv.axis = .vertical
-//        sv.distribution = .fillEqually
-//        sv.spacing = 10
-//
-//        return sv
-//    }()
-
     let searchBar: UITextField = {
         let tf = UITextField()
         tf.font = .systemFont(ofSize: 32)
@@ -52,17 +26,37 @@ class SearchViewController: UIViewController {
         return iv
     }()
 
-    let latestMewsImageView: UIImageView = {
-        let iv = UIImageView(image: UIImage(named: "latest_mews_taller"))
-        return iv
-    }()
-
     let searchToggle: UISegmentedControl = {
         // TODO: do we want to add brand here?
         let sc = UISegmentedControl(items: ["artist", "title"])
         sc.tintColor = .systemRed
         sc.selectedSegmentIndex = 0
         return sc
+    }()
+
+    let privateRoomSwitch: UISwitch = {
+        let s = UISwitch()
+        s.onTintColor = .systemRed
+        s.tintColor = .systemRed
+        return s
+    }()
+
+    let publicLabel: UILabel = {
+        let l = UILabel()
+        l.text = "public\nkaraoke"
+        l.font = .systemFont(ofSize: 18, weight: .bold)
+        l.numberOfLines = 2
+        l.textAlignment = .center
+        return l
+    }()
+
+    let privateLabel: UILabel = {
+        let l = UILabel()
+        l.text = "private\nroom"
+        l.font = .systemFont(ofSize: 18, weight: .bold)
+        l.numberOfLines = 2
+        l.textAlignment = .center
+        return l
     }()
 
     override func viewDidLoad() {
@@ -74,14 +68,17 @@ class SearchViewController: UIViewController {
         searchToggle.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(searchToggle)
 
-//        buttonStack.translatesAutoresizingMaskIntoConstraints = false
-//        view.addSubview(buttonStack)
-
-        latestMewsImageView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(latestMewsImageView)
-
         bkkLogoImageView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(bkkLogoImageView)
+
+        publicLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(publicLabel)
+
+        privateRoomSwitch.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(privateRoomSwitch)
+
+        privateLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(privateLabel)
 
         let constraints = [
             bkkLogoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -99,16 +96,16 @@ class SearchViewController: UIViewController {
             searchToggle.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             searchToggle.heightAnchor.constraint(equalToConstant: 35),
 
-//            buttonStack.topAnchor.constraint(equalTo: searchToggle.bottomAnchor),
-//            buttonStack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-//            buttonStack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-//            buttonStack.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.5),
+            publicLabel.topAnchor.constraint(equalTo: searchToggle.bottomAnchor, constant: 20),
+            publicLabel.leadingAnchor.constraint(equalTo: searchToggle.leadingAnchor),
+            publicLabel.widthAnchor.constraint(equalTo: searchToggle.widthAnchor, multiplier: 0.5),
 
-            latestMewsImageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            latestMewsImageView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            latestMewsImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            privateRoomSwitch.topAnchor.constraint(equalTo: searchToggle.bottomAnchor, constant: 22),
+            privateRoomSwitch.centerXAnchor.constraint(equalTo: searchToggle.centerXAnchor),
 
-
+            privateLabel.topAnchor.constraint(equalTo: searchToggle.bottomAnchor, constant: 20),
+            privateLabel.trailingAnchor.constraint(equalTo: searchToggle.trailingAnchor),
+            privateLabel.widthAnchor.constraint(equalTo: searchToggle.widthAnchor, multiplier: 0.5)
         ]
 
         NSLayoutConstraint.activate(constraints)
@@ -139,7 +136,7 @@ class SearchViewController: UIViewController {
             let scopes = ["artist", "title"]
             let searchBy = scopes[searchToggle.selectedSegmentIndex]
 
-            Song.songs(for: searchTerm, searchBy: searchBy, isRandom: false, isLive: isLive) { songs in
+            Song.songs(for: searchTerm, searchBy: searchBy, isRandom: false, isPrivate: privateRoomSwitch.isOn, isLive: isLive) { songs in
                 DispatchQueue.main.async { [weak self] in
                     let songListVC = SongListTableViewController()
                     songListVC.songs = songs
