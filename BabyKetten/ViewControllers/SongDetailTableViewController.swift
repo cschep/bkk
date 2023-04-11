@@ -9,66 +9,6 @@
 import UIKit
 import StoreKit
 
-class DoubleButtonView: UIView {
-    var leftAction: (()->Void)?
-    var rightAction: (()->Void)?
-
-    let leftButton: UIButton = {
-        let b = UIButton(type: .custom)
-        b.setImage(UIImage(named: "listen_on_apple_music_white_type"), for: .normal)
-        b.contentMode = .scaleAspectFit
-        b.layer.borderColor = UIColor.systemFill.cgColor
-        b.layer.borderWidth = 2
-        b.layer.cornerRadius = 20
-        return b
-    }()
-
-    let rightButton: UIButton = {
-        let b = UIButton(type: .custom)
-        b.setImage(UIImage(named: "spotify_logo_green"), for: .normal)
-        b.contentMode = .scaleAspectFit
-        b.clipsToBounds = true
-        b.imageEdgeInsets = UIEdgeInsets(top: 20, left: 25, bottom: 20, right: 25)
-        b.layer.borderColor = UIColor.systemFill.cgColor
-        b.layer.borderWidth = 2
-        b.layer.cornerRadius = 20
-        return b
-    }()
-
-    @objc func leftSelector() {
-        leftAction?()
-    }
-
-    @objc func rightSelector() {
-        rightAction?()
-    }
-
-    override init(frame: CGRect) {
-        super.init(frame: .zero)
-
-        leftButton.addTarget(self, action: #selector(leftSelector), for: .touchUpInside)
-        rightButton.addTarget(self, action: #selector(rightSelector), for: .touchUpInside)
-
-        let stackView = UIStackView(arrangedSubviews: [leftButton, rightButton])
-        stackView.spacing = 10
-        stackView.distribution = .fillEqually
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(stackView)
-
-        let constraints = [
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            stackView.topAnchor.constraint(equalTo: topAnchor, constant: 20),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
-        ]
-        NSLayoutConstraint.activate(constraints)
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
 class SongDetailHeaderView: UIView {
     let imageView: UIImageView = {
         return UIImageView(image: UIImage(named:"ketten_small_white.png"))
@@ -123,7 +63,6 @@ class SongDetailTableViewController: UITableViewController {
         return SongDetailHeaderView()
     }()
 
-    let footerView = DoubleButtonView()
     let song: Song
     let cloudServiceController = SKCloudServiceController()
 
@@ -131,13 +70,6 @@ class SongDetailTableViewController: UITableViewController {
         self.song = song
         super.init(style: .grouped)
         tableView.tintColor = .systemRed
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "SongDetailCell")
-        footerView.leftAction = {
-            self.appleMusicSearch()
-        }
-        footerView.rightAction = {
-            self.spotifySearch()
-        }
     }
 
     required init?(coder: NSCoder) {
@@ -154,7 +86,7 @@ class SongDetailTableViewController: UITableViewController {
 
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
-        2
+        3
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -162,7 +94,7 @@ class SongDetailTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SongDetailCell", for: indexPath)
+        let cell = UITableViewCell()
         cell.accessoryType = .none
 
         if (indexPath.section == 0) {
@@ -184,17 +116,22 @@ class SongDetailTableViewController: UITableViewController {
                 cell.textLabel!.text = "YouTube Search"
             }
         } else if (indexPath.section == 2) {
-            let dub = DoubleButtonView(frame: .zero)
-
-            dub.translatesAutoresizingMaskIntoConstraints = false
-            cell.contentView.addSubview(dub)
-            dub.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor).isActive = true
-            dub.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor).isActive = true
-            dub.topAnchor.constraint(equalTo: cell.contentView.topAnchor).isActive = true
-            dub.bottomAnchor.constraint(equalTo: cell.contentView.bottomAnchor).isActive = true
+            if (indexPath.row == 0) {
+                cell.contentView.addSubview(logoImage(imageName: "apple_music_logo_red", leftMargin: 21.0, width: 150))
+            } else if (indexPath.row == 1) {
+                cell.contentView.addSubview(logoImage(imageName: "spotify_logo_green", leftMargin: 18.0, width: 120))
+            }
         }
 
         return cell
+    }
+
+    func logoImage(imageName: String, leftMargin: CGFloat, width: CGFloat) -> UIImageView {
+        let imageView = UIImageView(frame: .init(leftMargin, 3, width, 50))
+        imageView.image = UIImage(named: imageName)
+        imageView.contentMode = .scaleAspectFit
+
+        return imageView
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -237,12 +174,8 @@ class SongDetailTableViewController: UITableViewController {
         section == 0 ? 116 : 24
     }
 
-    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        section == 1 ? footerView : nil
-    }
-
-    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        section == 1 ? 100 : 0
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        indexPath.section == 2 ? 56 : 44
     }
 
     private func artistSearch() {
@@ -288,8 +221,8 @@ class SongDetailTableViewController: UITableViewController {
         }
     }
 
-    private func getSearchString() -> String {
-        let searchString = "\(song.artist) \(song.title)"
+    private func getSearchString(separator: String = "+") -> String {
+        let searchString = "\(song.artist)\(separator)\(song.title)"
         var allowedCharacterSet = CharacterSet.urlQueryAllowed
         allowedCharacterSet.remove("&")
         allowedCharacterSet.remove("=")
@@ -299,24 +232,18 @@ class SongDetailTableViewController: UITableViewController {
     }
 
     private func spotifySearch() {
-        let spotifySearchUrl = "\(song.artist.replacingOccurrences(of: ",", with: ""))+\(song.title)"
-        if let f = spotifySearchUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
-            UIApplication.shared.open(URL(string: "spotify:search:\(f)")!)
-        }
+        guard let spotifyURL = URL(string: "spotify:search:\(getSearchString())") else { return }
+        UIApplication.shared.open(spotifyURL)
     }
 
     private func lyricsSearch() {
-        // TODO: I don't care if this falters a bit but will it CRASH?
-        let smashedString =  "\(song.artist.replacingOccurrences(of: ",", with: ""))+\(song.title)"
-        if let smashedReplacedString = smashedString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
-           let url = URL(string: "http://www.songlyrics.com/index.php?section=search&searchW=\(smashedReplacedString)&submit=Search&searchIn1=artist&searchIn2=album&searchIn3=song&searchIn4=lyrics") {
-
+        if let url = URL(string: "http://www.songlyrics.com/index.php?section=search&searchW=\(getSearchString())&submit=Search&searchIn1=artist&searchIn2=album&searchIn3=song&searchIn4=lyrics") {
             UIApplication.shared.open(url)
         }
     }
 
     private func youTubeSearch() {
-        let searchString = "\(song.artist) \(song.title)"
+        let searchString = getSearchString(separator: " ")
 
         let vc = YTSearchTableViewController()
         vc.searchString = searchString
