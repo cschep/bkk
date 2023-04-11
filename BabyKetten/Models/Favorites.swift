@@ -30,7 +30,7 @@ class Favorites {
 
     func load() {
         // if there are old favorites in user defaults migrate them to the new system
-        if let oldfavorites = UserDefaults.standard.array(forKey:"favorites") as? [[String:String]] {
+        if let oldfavorites = UserDefaults.standard.array(forKey:"favorites") as? [[String: String]] {
             for fave in oldfavorites {
                 guard let title = fave["title"] else {
                     continue
@@ -112,10 +112,6 @@ class Favorites {
     }
 
     func toggleFavorite(_ song: Song) {
-        if isFavorite(song) {
-            remove(song)
-        } else {
-            add(song)
-        }
+        isFavorite(song) ? remove(song) : add(song)
     }
 }
