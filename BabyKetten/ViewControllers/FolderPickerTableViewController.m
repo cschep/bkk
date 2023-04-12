@@ -7,6 +7,7 @@
 //
 
 #import "FolderPickerTableViewController.h"
+#import "BabyKetten-Swift.h"
 
 @interface FolderPickerTableViewController ()
 
@@ -27,7 +28,7 @@
     if (self.selectedFolder == nil) {
         [self dismissViewControllerAnimated:YES completion:nil];
     } else if (self.selectedFolder.row == 0) {
-        [self.delegate folderPicked:@""];
+        [self.delegate folderPicked:[FavoritesRootFolder name]];
         [self dismissViewControllerAnimated:YES completion:nil];
     } else {
         NSString *folderName = [self.folderList objectAtIndex:self.selectedFolder.row];

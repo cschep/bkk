@@ -7,9 +7,14 @@
 
 import UIKit
 
+enum DisplayFavorite {
+    case song(song: Song)
+    case folder(folderName: String)
+}
+
 class FavoritesListTableViewController: UITableViewController {
-    var displayList: [Favorite] = []
-    var currentFolder: Favorite?
+    var currentFolder: String = FavoritesRootFolder.name
+    var displayList: [DisplayFavorite] = Favorites.shared.displayFavorites()
 
     // cromslor loves this but I hate it
     // If we want to init the buttons and add the target at the same time e.g. self
@@ -34,9 +39,6 @@ class FavoritesListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // TODO REMOVE
-        Favorites.shared.debugDump()
-
         editButton = UIBarButtonItem(barButtonSystemItem:.edit, target:self, action:#selector(editFavesAction))
         addButton = UIBarButtonItem(barButtonSystemItem:.add, target:self, action:#selector(addAction))
         cancelButton = UIBarButtonItem(barButtonSystemItem:.cancel, target:self, action:#selector(cancelAction))
@@ -48,16 +50,19 @@ class FavoritesListTableViewController: UITableViewController {
 
         navigationItem.rightBarButtonItem = editButton;
 
-        if let title = currentFolder?.title {
-            navigationItem.title = title
-        } else {
+        // if were in root, allow adding and show the default title
+        if currentFolder == FavoritesRootFolder.name {
             navigationItem.title = "Favorites!"
             navigationItem.leftBarButtonItem = addButton
+        } else {
+            navigationItem.title = currentFolder
         }
 
         tableView.register(SubtitleTableViewCell.self, forCellReuseIdentifier: "FavoritesCell")
         tableView.register(Value1TableViewCell.self, forCellReuseIdentifier: "FolderCell")
         tableView.backgroundColor = .systemBackground
+
+        refreshDisplayList()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -70,10 +75,10 @@ class FavoritesListTableViewController: UITableViewController {
         let alertController = UIAlertController(title:"New Folder", message:"name of the new folder?", preferredStyle:.alert)
         alertController.addTextField()
         alertController.addAction(UIAlertAction(title:"create", style:.default, handler: { [weak self] action in
-            guard let folderTitle = alertController.textFields?[0].text else {
+            guard let folderName = alertController.textFields?[0].text else {
                 return
             }
-            Favorites.shared.add(.folder(title: folderTitle))
+            Favorites.shared.add(folderName: folderName)
             self?.refreshDisplayList()
         }))
 
@@ -94,7 +99,34 @@ class FavoritesListTableViewController: UITableViewController {
     }
 
     @objc
-    func deleteAction() {}
+    func deleteAction() {
+        guard let selectedRows = tableView.indexPathsForSelectedRows, selectedRows.count > 0 else { return }
+
+        let message = selectedRows.count == 1 ? "Are you sure you want to remove this item?" : "Are you sure you want to remove these items?"
+        let actionSheet = UIAlertController(title: "", message: message, preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "OK", style: .destructive) { [weak self] action in
+            guard let selectedRows = self?.tableView.indexPathsForSelectedRows else { return }
+
+            // go through the selected favorites
+            for selectionIndex in selectedRows {
+                if let favoriteToDelete = self?.displayList[selectionIndex.row] {
+                    switch favoriteToDelete {
+                    case .song(let song):
+                        Favorites.shared.remove(song)
+                    case .folder(let folderName):
+                        Favorites.shared.remove(folderName: folderName)
+                    }
+                }
+            }
+
+            self?.refreshDisplayList()
+            self?.setEditing(false, animated: true)
+            self?.updateButtonsToMatchTableState()
+        })
+        actionSheet.addAction(UIAlertAction(title: "cancel", style: .cancel))
+
+        present(actionSheet, animated: true)
+    }
 
     @objc
     func moveAction() {
@@ -102,9 +134,8 @@ class FavoritesListTableViewController: UITableViewController {
 
         // the first item is so you can move a song out of a folder to the base level
         // there are no folders in folders
-        let folderList = ["🔙 to faves!"] + Favorites.shared.folders().map { $0.title }
-
-        vc.folderList = folderList
+        // -- should this be handled by the picker? does it matter?
+        vc.folderList = ["🔙 to faves!"] + Favorites.shared.folders()
         vc.delegate = self;
 
         let nc = UINavigationController(rootViewController: vc)
@@ -116,6 +147,7 @@ class FavoritesListTableViewController: UITableViewController {
             navigationItem.rightBarButtonItem = self.cancelButton;
             navigationItem.setLeftBarButtonItems([self.deleteButton, self.moveButton], animated:true)
 
+            //TODO: selected rows
             if let selectedRows = self.tableView.indexPathsForSelectedRows {
                 let containsFolder = selectedRows.contains { indexPath in
                     switch displayList[indexPath.row] {
@@ -130,20 +162,21 @@ class FavoritesListTableViewController: UITableViewController {
                 deleteButton.isEnabled = selectedRows.count > 0
             }
         } else {
-            if currentFolder != nil {
-                navigationItem.leftBarButtonItems = nil;
-            } else {
+            if currentFolder == FavoritesRootFolder.name {
                 navigationItem.setLeftBarButtonItems([addButton], animated: true)
+            } else {
+                navigationItem.leftBarButtonItems = nil;
             }
 
-            self.editButton.isEnabled = self.displayList.count > 0;
+            self.editButton.isEnabled = Favorites.shared.favorites().count > 0;
             self.navigationItem.rightBarButtonItem = self.editButton;
         }
     }
 
     func refreshDisplayList() {
-        displayList = Favorites.shared.favorites(inFolder: currentFolder)
+        displayList = Favorites.shared.displayFavorites(in: currentFolder)
         tableView.reloadData()
+        updateButtonsToMatchTableState()
     }
 
     override func setEditing(_ editing: Bool, animated: Bool) {
@@ -168,20 +201,20 @@ class FavoritesListTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            if !self.tableView.isEditing {
-                switch displayList[indexPath.row] {
-                case .song(let song, _):
-                    let vc = SongDetailTableViewController(song: song)
-                    navigationController?.pushViewController(vc, animated: true)
-                case .folder(let title):
-                    let vc = FavoritesListTableViewController()
-                    vc.currentFolder = .folder(title: title)
-                    navigationController?.pushViewController(vc, animated: true)
-                }
-            } else {
-                // while editing update the buttons depending on if anything is selected
-                updateButtonsToMatchTableState()
+        if !self.tableView.isEditing {
+            switch displayList[indexPath.row] {
+            case .song(let song):
+                let vc = SongDetailTableViewController(song: song)
+                navigationController?.pushViewController(vc, animated: true)
+            case .folder(let folderName):
+                let vc = FavoritesListTableViewController()
+                vc.currentFolder = folderName
+                navigationController?.pushViewController(vc, animated: true)
             }
+        } else {
+            // while editing update the buttons depending on if anything is selected
+            updateButtonsToMatchTableState()
+        }
     }
 
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
@@ -192,17 +225,17 @@ class FavoritesListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch displayList[indexPath.row] {
-        case .song(let song, _):
+        case .song(let song):
             let cell = tableView.dequeueReusableCell(withIdentifier: "FavoritesCell", for: indexPath)
             cell.textLabel?.text = song.title
             cell.detailTextLabel?.text = song.artist
             cell.accessoryType = .disclosureIndicator
             return cell
-        case .folder(let title):
+        case .folder(let folderName):
             let cell = tableView.dequeueReusableCell(withIdentifier: "FolderCell", for: indexPath)
-            cell.textLabel?.text = String(format: "📁 %@", title)
+            cell.textLabel?.text = String(format: "📁 %@", folderName)
             cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-            let count = Favorites.shared.favorites(inFolder: .folder(title: title)).count
+            let count = Favorites.shared.favorites(in: folderName).count
             cell.detailTextLabel?.text = String(format: "%i", count)
             cell.accessoryType = .disclosureIndicator;
             return cell
@@ -219,7 +252,13 @@ extension FavoritesListTableViewController: FolderPickerTableViewDelegate {
             // go through the selected favorites
             for selectionIndex in selectedRows {
                 let favoriteToMove = displayList[selectionIndex.row]
-                Favorites.shared.move(song: favoriteToMove, to: .folder(title: folderName))
+                switch favoriteToMove {
+                case .song(let song):
+                    Favorites.shared.move(song: song, to: folderName)
+                case .folder:
+                    print("what's going on here?")
+                    break
+                }
             }
 
             refreshDisplayList()
@@ -228,10 +267,7 @@ extension FavoritesListTableViewController: FolderPickerTableViewDelegate {
         } else {
             setEditing(false, animated: true)
         }
-
     }
-
-
 }
 
 

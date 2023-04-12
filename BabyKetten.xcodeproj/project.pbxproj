@@ -96,9 +96,9 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				9571B9F628AD49AC00DC66C7 /* Development.xcconfig */,
 				9571B9F828AD4C2A00DC66C7 /* Beta.xcconfig */,
 				9571B9F728AD4C1F00DC66C7 /* Release.xcconfig */,
-				9571B9F628AD49AC00DC66C7 /* Development.xcconfig */,
 				950BE24B28A2C0E400EE1D87 /* BabyKetten */,
 				834DE11915DC83160050139B /* Settings.bundle */,
 				8D1107310486CEB800E47090 /* Info.plist */,
@@ -230,9 +230,7 @@
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
-						DevelopmentTeam = 78FKA3KWWM;
 						LastSwiftMigration = 1340;
-						ProvisioningStyle = Automatic;
 					};
 				};
 			};
