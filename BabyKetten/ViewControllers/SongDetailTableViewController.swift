@@ -243,10 +243,9 @@ class SongDetailTableViewController: UITableViewController {
     }
 
     private func youTubeSearch() {
-        let searchString = getSearchString(separator: " ")
-
+        // the youtube controller does its own escaping
         let vc = YTSearchTableViewController()
-        vc.searchString = searchString
+        vc.searchString = "\(song.artist) \(song.title)"
 
         navigationController?.pushViewController(vc, animated: true)
     }

@@ -11,6 +11,7 @@ class InsetImageTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
         imageView?.contentMode = .scaleAspectFit
+        separatorInset = UIEdgeInsets.zero
     }
 
     required init?(coder aDecoder: NSCoder) {

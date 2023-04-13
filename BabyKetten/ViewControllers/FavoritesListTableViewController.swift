@@ -257,7 +257,6 @@ class FavoritesListTableViewController: UITableViewController {
             refreshDisplayList()
             updateButtonsToMatchTableState()
         }
-
     }
 }
 
