@@ -20,7 +20,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     override init() {
         search = UINavigationController(rootViewController: SearchViewController())
         search.navigationBar.tintColor = .systemRed
-//        search.navigationBar.prefersLargeTitles = true
         search.tabBarItem = UITabBarItem(title: "search", image: UIImage(named: "mic"), tag: 1)
 
         calendar = UINavigationController(rootViewController: CalendarViewController())

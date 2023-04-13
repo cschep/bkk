@@ -34,6 +34,8 @@
 		9571B9F328A6B74E00DC66C7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9571B9F228A6B74E00DC66C7 /* SceneDelegate.swift */; };
 		95881A1929E3B6ED00CBD7A0 /* StorefrontCountries.plist in Resources */ = {isa = PBXBuildFile; fileRef = 95881A1829E3B6ED00CBD7A0 /* StorefrontCountries.plist */; };
 		959BBC822934008E001B31CB /* Songbook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959BBC812934008E001B31CB /* Songbook.swift */; };
+		95FB780629E765F00073D428 /* UITableView+EmptyMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FB780529E765F00073D428 /* UITableView+EmptyMessage.swift */; };
+		95FB780829E771B10073D428 /* InsetImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FB780729E771B10073D428 /* InsetImageTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +82,8 @@
 		9571B9F828AD4C2A00DC66C7 /* Beta.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Beta.xcconfig; sourceTree = "<group>"; };
 		95881A1829E3B6ED00CBD7A0 /* StorefrontCountries.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = StorefrontCountries.plist; sourceTree = "<group>"; };
 		959BBC812934008E001B31CB /* Songbook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Songbook.swift; sourceTree = "<group>"; };
+		95FB780529E765F00073D428 /* UITableView+EmptyMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+EmptyMessage.swift"; sourceTree = "<group>"; };
+		95FB780729E771B10073D428 /* InsetImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetImageTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +170,7 @@
 				950BE28828A2C16D00EE1D87 /* CGRect+Sanity.swift */,
 				950BE28728A2C16D00EE1D87 /* NetworkManager.swift */,
 				950BE28928A2C16D00EE1D87 /* UIImageView+URLRequest.swift */,
+				95FB780529E765F00073D428 /* UITableView+EmptyMessage.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -195,6 +200,7 @@
 			children = (
 				9571B9EC28A4B89100DC66C7 /* SubtitleTableViewCell.swift */,
 				9571B9EE28A4BCE700DC66C7 /* Value1TableViewCell.swift */,
+				95FB780729E771B10073D428 /* InsetImageTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -276,6 +282,7 @@
 				950BE27328A2C13C00EE1D87 /* YTTableViewCell.m in Sources */,
 				950BE29128A2C17E00EE1D87 /* Date.m in Sources */,
 				959BBC822934008E001B31CB /* Songbook.swift in Sources */,
+				95FB780629E765F00073D428 /* UITableView+EmptyMessage.swift in Sources */,
 				950BE28428A2C13C00EE1D87 /* BKKViewController.m in Sources */,
 				950BE27228A2C13C00EE1D87 /* FolderPickerTableViewController.m in Sources */,
 				9571B9F328A6B74E00DC66C7 /* SceneDelegate.swift in Sources */,
@@ -288,6 +295,7 @@
 				950BE27D28A2C13C00EE1D87 /* CalendarViewController.m in Sources */,
 				950BE28228A2C13C00EE1D87 /* KamikazeViewController.m in Sources */,
 				950BE29228A2C17E00EE1D87 /* Song.swift in Sources */,
+				95FB780829E771B10073D428 /* InsetImageTableViewCell.swift in Sources */,
 				952FD83728B323E000CF7AC8 /* SearchViewController.swift in Sources */,
 				950BE28A28A2C16D00EE1D87 /* NetworkManager.swift in Sources */,
 				950BE28528A2C13C00EE1D87 /* YTSearchTableViewController.m in Sources */,
@@ -310,7 +318,6 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
@@ -340,7 +347,6 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -417,7 +423,6 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
 				CURRENT_PROJECT_VERSION = 1;

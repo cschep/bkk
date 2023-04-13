@@ -25,8 +25,6 @@ class SongListTableViewController: UITableViewController {
         super.viewDidLoad()
 
         tableView.register(SubtitleTableViewCell.self, forCellReuseIdentifier: "SongCell")
-
-//        title = "Results"
     }
 
     // MARK: - Table view data source
@@ -36,6 +34,12 @@ class SongListTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if songs.count == 0 {
+            self.tableView.setEmptyMessage("nothing found!")
+        } else {
+            self.tableView.restore()
+        }
+
         return songs.count
     }
 

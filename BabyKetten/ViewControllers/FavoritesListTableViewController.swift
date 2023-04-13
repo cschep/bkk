@@ -109,14 +109,7 @@ class FavoritesListTableViewController: UITableViewController {
 
             // go through the selected favorites
             for selectionIndex in selectedRows {
-                if let favoriteToDelete = self?.displayList[selectionIndex.row] {
-                    switch favoriteToDelete {
-                    case .song(let song):
-                        Favorites.shared.remove(song)
-                    case .folder(let folderName):
-                        Favorites.shared.remove(folderName: folderName)
-                    }
-                }
+                self?.deleteFavorite(at: selectionIndex)
             }
 
             self?.refreshDisplayList()
@@ -126,6 +119,15 @@ class FavoritesListTableViewController: UITableViewController {
         actionSheet.addAction(UIAlertAction(title: "cancel", style: .cancel))
 
         present(actionSheet, animated: true)
+    }
+
+    func deleteFavorite(at indexPath: IndexPath) {
+        switch displayList[indexPath.row] {
+        case .song(let song):
+            Favorites.shared.remove(song)
+        case .folder(let folderName):
+            Favorites.shared.remove(folderName: folderName)
+        }
     }
 
     @objc
@@ -189,7 +191,13 @@ class FavoritesListTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        displayList.count
+        if displayList.count == 0 {
+            self.tableView.setEmptyMessage("no favorites yet!")
+        } else {
+            self.tableView.restore()
+        }
+
+        return displayList.count
     }
 
     override func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath) {
@@ -241,6 +249,16 @@ class FavoritesListTableViewController: UITableViewController {
             return cell
         }
     }
+
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            deleteFavorite(at: indexPath)
+
+            refreshDisplayList()
+            updateButtonsToMatchTableState()
+        }
+
+    }
 }
 
 extension FavoritesListTableViewController: FolderPickerTableViewDelegate {
@@ -256,7 +274,7 @@ extension FavoritesListTableViewController: FolderPickerTableViewDelegate {
                 case .song(let song):
                     Favorites.shared.move(song: song, to: folderName)
                 case .folder:
-                    print("what's going on here?")
+                    // you can't move folders
                     break
                 }
             }
@@ -269,82 +287,3 @@ extension FavoritesListTableViewController: FolderPickerTableViewDelegate {
         }
     }
 }
-
-
-//- (void)deleteAction {
-//    NSArray *selectedRows = [self.tableView indexPathsForSelectedRows];
-//    BOOL deleteSpecificRows = selectedRows.count > 0;
-//    if (deleteSpecificRows) {
-//        NSString *actionTitle;
-//        if (([[self.tableView indexPathsForSelectedRows] count] == 1)) {
-//            actionTitle = NSLocalizedString(@"Are you sure you want to remove this item?", @"");
-//        } else {
-//            actionTitle = NSLocalizedString(@"Are you sure you want to remove these items?", @"");
-//        }
-//
-//        NSString *cancelTitle = NSLocalizedString(@"Cancel", @"Cancel title for item removal action");
-//        NSString *okTitle = NSLocalizedString(@"OK", @"OK title for item removal action");
-//        UIAlertAction *okAction = [UIAlertAction actionWithTitle:okTitle style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-//            NSArray *selectedRows = [self.tableView indexPathsForSelectedRows];
-//
-//            // Build an NSIndexSet of all the objects to delete, so they can all be removed at once.
-//            NSMutableIndexSet *indicesOfItemsToDelete = [NSMutableIndexSet new];
-//            for (NSIndexPath *selectionIndex in selectedRows)
-//            {
-//                id removed = [self.displayList objectAtIndex:selectionIndex.row];
-//
-//                //if it's a folder, delete all songs in it as well
-//                if ([[removed objectForKey:@"isFolder"] isEqualToString:@"true"]) {
-//                    NSPredicate *pred = [NSPredicate predicateWithFormat:@"folder == %@", [removed objectForKey:@"title"]];
-//                    NSArray *songsToDelete = [self.favorites filteredArrayUsingPredicate:pred];
-//
-//                    [self.favorites removeObjectsInArray:songsToDelete];
-//                }
-//
-//                [self.favorites removeObjectIdenticalTo:removed];
-//
-//                [indicesOfItemsToDelete addIndex:selectionIndex.row];
-//            }
-//
-//            [self.displayList removeObjectsAtIndexes:indicesOfItemsToDelete];
-//
-//            [self.tableView deleteRowsAtIndexPaths:selectedRows withRowAnimation:UITableViewRowAnimationLeft];
-//
-//            [self setEditing:NO animated:YES];
-//            [self syncFavorites];
-//            [self updateButtonsToMatchTableState];
-//        }];
-//        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:cancelTitle style:UIAlertActionStyleCancel handler:nil];
-//
-//        UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"" message:actionTitle preferredStyle:UIAlertControllerStyleActionSheet];
-//        [actionSheet addAction:okAction];
-//        [actionSheet addAction:cancelAction];
-//
-//        [self presentViewController:actionSheet animated:YES completion:nil];
-//    }
-//}
-//
-
-//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-//    if (editingStyle == UITableViewCellEditingStyleDelete) {
-//        id removed = [self.displayList objectAtIndex:indexPath.row];
-//
-//        //if it's a folder, delete all songs in it as well
-//        if ([[removed objectForKey:@"isFolder"] isEqualToString:@"true"]) {
-//            NSPredicate *pred = [NSPredicate predicateWithFormat:@"folder == %@", [removed objectForKey:@"title"]];
-//            NSArray *songsToDelete = [self.favorites filteredArrayUsingPredicate:pred];
-//
-//            [self.favorites removeObjectsInArray:songsToDelete];
-//        }
-//
-//        [self.favorites removeObjectIdenticalTo:removed];
-//    }
-//
-//    [self.displayList removeObjectAtIndex:indexPath.row];
-//
-//    [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-//
-//    [self syncFavorites];
-//    [self updateButtonsToMatchTableState];
-//}
-

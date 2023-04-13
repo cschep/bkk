@@ -91,7 +91,7 @@ class SongDetailTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        var cell = UITableViewCell()
         cell.accessoryType = .none
 
         if (indexPath.section == 0) {
@@ -113,10 +113,13 @@ class SongDetailTableViewController: UITableViewController {
                 cell.textLabel!.text = "YouTube Search"
             }
         } else if (indexPath.section == 2) {
+            cell = InsetImageTableViewCell()
             if (indexPath.row == 0) {
-                cell.contentView.addSubview(logoImage(imageName: "apple_music_logo_red", leftMargin: 21.0, width: 150))
+                cell.imageView?.image = UIImage(named: "apple_music_icon_red")
+                cell.textLabel?.text = "Apple Music"
             } else if (indexPath.row == 1) {
-                cell.contentView.addSubview(logoImage(imageName: "spotify_logo_green", leftMargin: 18.0, width: 120))
+                cell.imageView?.image = UIImage(named: "spotify_icon_green")
+                cell.textLabel?.text = "Spotify"
             }
         }
 

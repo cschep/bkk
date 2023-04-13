@@ -1,5 +1,5 @@
 //
-//  BKKDev.xcconfig
+//  Development.xcconfig
 //  BabyKetten
 //
 //  Created by Christopher Schepman on 8/17/22.
@@ -7,4 +7,4 @@
 
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
-PRODUCT_BUNDLE_IDENTIFIER = org.schepman.babyketten
+PRODUCT_BUNDLE_IDENTIFIER = org.schepman.babyketten.dev

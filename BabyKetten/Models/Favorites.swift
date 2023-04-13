@@ -16,11 +16,12 @@ public class Favorites {
     public static let shared = Favorites()
     private init() {}
 
-    private static let defaultsKey = "bkk_favorites_db"
+    typealias FavoritesDB = [String: [Song]]
+
     private static let migratedKey = "bkk_favorites_migrated"
     private static let oldDefaultsKey = "favorites"
 
-    private var db: [String: [Song]] = [FavoritesRootFolder.name: []]
+    private var db: FavoritesDB  = [FavoritesRootFolder.name: []]
     private var defaults = UserDefaults.standard
 
     private var documentsDirectory: URL {
@@ -37,16 +38,13 @@ public class Favorites {
     }
 
     func load() {
-        //TODO: REMOVE
-//        defaults.set(false, forKey: Favorites.migratedKey)
-        //
-
-
         // if there are any existing faves in the new system, load them all in
-        if let defaultsDb = defaults.data(forKey: Favorites.defaultsKey) {
-            if let decodedDb = try? JSONDecoder().decode([String: [Song]].self, from: defaultsDb) {
-                db = decodedDb
-            }
+        do {
+            let fileURL = documentsDirectory.appendingPathComponent("favorites.json")
+            let data = try Data(contentsOf: fileURL)
+            db = try JSONDecoder().decode(FavoritesDB.self, from: data)
+        } catch {
+            print("error when loading favorites", error.localizedDescription)
         }
 
         // then, if we haven't migrated, let's do it. -- SHOULD BE non-destructive!
@@ -58,14 +56,15 @@ public class Favorites {
     }
 
     func save() {
-        if let encodedDb = try? JSONEncoder().encode(db) {
-            defaults.set(encodedDb, forKey: Favorites.defaultsKey)
+        do {
+            let fileURL = documentsDirectory.appendingPathComponent("favorites.json")
+            try JSONEncoder().encode(db).write(to: fileURL, options: [.atomic])
+        } catch {
+            print("error saving favorites", error.localizedDescription)
         }
     }
 
     func migrate() {
-        print("MIGRATING")
-
         // if there are old favorites in user defaults migrate them to the new system
         if let oldfavorites = UserDefaults.standard.array(forKey: Favorites.oldDefaultsKey) as? [[String: String]] {
             for fave in oldfavorites {
@@ -96,8 +95,6 @@ public class Favorites {
 
         defaults.set(true, forKey: Favorites.migratedKey)
     }
-
-
 
     func isFavorite(_ song: Song) -> Bool {
         for (_, songs) in db {
@@ -144,13 +141,11 @@ public class Favorites {
             db[foundFolder]?.removeAll { $0 == song }
         }
         save()
-        debugDump()
     }
 
     func remove(folderName: String) {
         db.removeValue(forKey: folderName)
         save()
-        debugDump()
     }
 
     func move(song: Song, to folderName: String) {
