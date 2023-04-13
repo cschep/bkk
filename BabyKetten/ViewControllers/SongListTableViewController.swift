@@ -71,6 +71,7 @@ class SongListTableViewController: UITableViewController {
         tableView.backgroundView = nil
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(randomize), for: UIControl.Event.valueChanged)
+        title = "kamikaze!"
         randomize()
     }
 

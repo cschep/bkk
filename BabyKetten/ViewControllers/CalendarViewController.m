@@ -120,9 +120,9 @@ NSString* const kGoogleCalendarAPIKey = @"AIzaSyC3RJ8eZ4AXCect-2RUdWMEUSdoJMOA0d
 
     dispatch_async(dispatch_get_main_queue(), ^{
         if ([dateList count] == 0) {
-            self.navigationItem.title = @"Not Found!";
+            self.navigationItem.title = @"not found!";
         } else {
-            self.navigationItem.title = @"Calendar";
+            self.navigationItem.title = @"calendar";
         }
 
         [self stopLoadingUI];

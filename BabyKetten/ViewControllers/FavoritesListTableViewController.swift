@@ -52,7 +52,7 @@ class FavoritesListTableViewController: UITableViewController {
 
         // if were in root, allow adding and show the default title
         if currentFolder == FavoritesRootFolder.name {
-            navigationItem.title = "Favorites!"
+            navigationItem.title = "favorites!"
             navigationItem.leftBarButtonItem = addButton
         } else {
             navigationItem.title = currentFolder
