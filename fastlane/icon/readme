@@ -1,0 +1,4 @@
+# https://inteist.com/removing-alpha-channel-for-app-store-pictures-figma
+brew update && brew install imagemagick
+mogrify -alpha off *.png
+
