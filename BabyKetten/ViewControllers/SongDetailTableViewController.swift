@@ -76,6 +76,10 @@ class SongDetailTableViewController: UITableViewController {
         fatalError()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+
     func toggleFavorite() {
         song.toggleFavorite()
         tableView.reloadData()
