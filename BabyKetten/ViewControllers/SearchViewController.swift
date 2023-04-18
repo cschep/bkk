@@ -10,6 +10,7 @@ import Foundation
 class SearchViewController: UIViewController {
     let searchBar: UITextField = {
         let tf = UITextField()
+        tf.translatesAutoresizingMaskIntoConstraints = false
         tf.font = .systemFont(ofSize: 32)
         tf.tintColor = .systemRed
         tf.placeholder = "search!"
@@ -22,6 +23,7 @@ class SearchViewController: UIViewController {
 
     let bkkLogoImageView: UIImageView = {
         let iv = UIImageView(image: UIImage(named: "bkklogobwtouchup"))
+        iv.translatesAutoresizingMaskIntoConstraints = false
         iv.contentMode = .scaleAspectFit
         return iv
     }()
@@ -29,6 +31,7 @@ class SearchViewController: UIViewController {
     let searchToggle: UISegmentedControl = {
         // TODO: do we want to add brand here?
         let sc = UISegmentedControl(items: ["artist", "title"])
+        sc.translatesAutoresizingMaskIntoConstraints = false
         sc.tintColor = .systemRed
         sc.selectedSegmentIndex = 0
         return sc
@@ -36,12 +39,14 @@ class SearchViewController: UIViewController {
 
     let privateRoomSwitch: UISwitch = {
         let s = UISwitch()
+        s.translatesAutoresizingMaskIntoConstraints = false
         s.onTintColor = .systemRed
         return s
     }()
 
     let publicLabel: UILabel = {
         let l = UILabel()
+        l.translatesAutoresizingMaskIntoConstraints = false
         l.text = "public\nkaraoke"
         l.font = .systemFont(ofSize: 18, weight: .bold)
         l.numberOfLines = 2
@@ -51,6 +56,7 @@ class SearchViewController: UIViewController {
 
     let privateLabel: UILabel = {
         let l = UILabel()
+        l.translatesAutoresizingMaskIntoConstraints = false
         l.text = "private\nroom"
         l.font = .systemFont(ofSize: 18, weight: .bold)
         l.numberOfLines = 2
@@ -58,74 +64,84 @@ class SearchViewController: UIViewController {
         return l
     }()
 
+    // croms thinks this is so funny
+    // have we always had to do this on apple or is this a hack around?
+    let tapCatcher: UIView = {
+        let v = UIView()
+        v.translatesAutoresizingMaskIntoConstraints = false
+        v.backgroundColor = .systemBackground
+        return v
+    }()
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+    }
+
     override func viewDidLoad() {
+        super.viewDidLoad()
         searchBar.delegate = self
 
-        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        let tapper = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:)))
+        view.addGestureRecognizer(tapper)
+
+        let swipeRecognizer = UISwipeGestureRecognizer(target: view, action: #selector(UIView.endEditing(_:)))
+        swipeRecognizer.direction = .down
+        view.addGestureRecognizer(swipeRecognizer)
+
+        view.addSubview(tapCatcher)
         view.addSubview(searchBar)
-
-        searchToggle.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(searchToggle)
-
-        bkkLogoImageView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(bkkLogoImageView)
-
-        publicLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(publicLabel)
-
-        privateRoomSwitch.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(privateRoomSwitch)
-
-        privateLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(privateLabel)
 
         let constraints = [
+            tapCatcher.topAnchor.constraint(equalTo: view.topAnchor),
+            tapCatcher.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tapCatcher.widthAnchor.constraint(equalTo: view.widthAnchor),
+            tapCatcher.heightAnchor.constraint(equalTo: view.heightAnchor),
+
             bkkLogoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            bkkLogoImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            bkkLogoImageView.widthAnchor.constraint(equalTo: view.widthAnchor),
             bkkLogoImageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.15),
-            bkkLogoImageView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            bkkLogoImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
 
             searchBar.topAnchor.constraint(equalTo: bkkLogoImageView.bottomAnchor, constant: 20),
-            searchBar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            searchBar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            searchBar.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -40),
             searchBar.heightAnchor.constraint(equalToConstant: 65),
 
             searchToggle.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 10),
-            searchToggle.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            searchToggle.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            searchToggle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            searchToggle.widthAnchor.constraint(equalTo: searchBar.widthAnchor),
             searchToggle.heightAnchor.constraint(equalToConstant: 35),
 
             publicLabel.topAnchor.constraint(equalTo: searchToggle.bottomAnchor, constant: 20),
             publicLabel.leadingAnchor.constraint(equalTo: searchToggle.leadingAnchor),
             publicLabel.widthAnchor.constraint(equalTo: searchToggle.widthAnchor, multiplier: 0.5),
+            publicLabel.heightAnchor.constraint(equalToConstant: 44),
 
             privateRoomSwitch.topAnchor.constraint(equalTo: searchToggle.bottomAnchor, constant: 22),
             privateRoomSwitch.centerXAnchor.constraint(equalTo: searchToggle.centerXAnchor),
+            privateRoomSwitch.heightAnchor.constraint(equalToConstant: 44),
 
             privateLabel.topAnchor.constraint(equalTo: searchToggle.bottomAnchor, constant: 20),
             privateLabel.trailingAnchor.constraint(equalTo: searchToggle.trailingAnchor),
-            privateLabel.widthAnchor.constraint(equalTo: searchToggle.widthAnchor, multiplier: 0.5)
+            privateLabel.widthAnchor.constraint(equalTo: searchToggle.widthAnchor, multiplier: 0.5),
+            privateLabel.heightAnchor.constraint(equalToConstant: 44),
         ]
 
         NSLayoutConstraint.activate(constraints)
 
         title = "Search"
-
-        let swipeRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        swipeRecognizer.direction = .down
-        view.addGestureRecognizer(swipeRecognizer)
-
-        super.viewDidLoad()
     }
 
     @objc
     func dismissKeyboard() {
-        searchBar.resignFirstResponder()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.navigationBar.isHidden = true
-        super.viewWillAppear(animated)
+//        searchBar.resignFirstResponder()
+        view.endEditing(true)
     }
 
     func search(isLive: Bool = false) {
