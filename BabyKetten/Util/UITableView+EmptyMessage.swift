@@ -39,8 +39,35 @@ extension UITableView {
         self.separatorStyle = .none
     }
 
+    // with message?
+    func setLoading() {
+        let bgView = UIView(frame: .init(x: 0, y: 0, width: bounds.size.width, height: bounds.size.height))
+
+        let imageView = UIImageView(image: UIImage(named: "ketten_small_white"))
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        bgView.addSubview(imageView)
+
+        self.backgroundView = bgView
+        let constraints = [
+            imageView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+            imageView.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
+        ]
+        NSLayoutConstraint.activate(constraints)
+
+        let rotation = CABasicAnimation(keyPath: "transform.rotation.z")
+        rotation.toValue = NSNumber(value: Double.pi * 2)
+        rotation.duration = 1
+        rotation.isCumulative = true
+        rotation.repeatCount = .greatestFiniteMagnitude
+        imageView.layer.add(rotation, forKey: "rotationAnimation")
+
+        self.separatorStyle = .none
+    }
+
     func restore() {
-        self.backgroundView = nil
         self.separatorStyle = .singleLine
+        UIView.animate(withDuration: 0.3) {
+            self.backgroundView?.alpha = 0
+        }
     }
 }

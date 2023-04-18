@@ -21,7 +21,7 @@ NSString* const kGoogleCalendarAPIKey = @"AIzaSyC3RJ8eZ4AXCect-2RUdWMEUSdoJMOA0d
     [super viewDidLoad];
 
 	self.activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
-    self.activityIndicator.color = [UIColor blackColor];
+    self.activityIndicator.color = [UIColor labelColor];
 	[self.activityIndicator hidesWhenStopped];
     
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
@@ -40,7 +40,7 @@ NSString* const kGoogleCalendarAPIKey = @"AIzaSyC3RJ8eZ4AXCect-2RUdWMEUSdoJMOA0d
 
 - (void)startLoadingUI {
     [self.activityIndicator startAnimating];
-	self.navigationItem.title = @"Loading...";
+	self.navigationItem.title = @"loading...";
 }
 
 - (void)stopLoadingUI {
