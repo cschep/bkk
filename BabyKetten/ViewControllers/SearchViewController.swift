@@ -8,8 +8,6 @@
 import Foundation
 
 class SearchViewController: UIViewController {
-    let spinner = SpinnerViewController()
-
     let searchBar: UITextField = {
         let tf = UITextField()
         tf.translatesAutoresizingMaskIntoConstraints = false
@@ -142,51 +140,19 @@ class SearchViewController: UIViewController {
 
     //TODO: push the vc to a loading state or loading state then push - the button can be hit multiple times and if the net is slow it's worse and worse
     func search(isLive: Bool = false) {
-        createSpinnerView()
+        // TODO: brand?
         guard let searchTerm = searchBar.text else { return }
         let scopes = ["artist", "title"]
         let searchBy = scopes[searchToggle.selectedSegmentIndex]
 
-        let group = DispatchGroup()
+        let songListVC = SongListTableViewController()
+        songListVC.searchTerm = searchTerm
+        songListVC.searchBy = searchBy
+        songListVC.isPrivate = privateRoomSwitch.isOn
+        songListVC.startLoading()
 
-        // TODO: brand?
-        group.enter()
-        var theseSongs: [Song] = []
-        Song.songs(for: searchTerm, searchBy: searchBy, isRandom: false) { songs in
-            theseSongs = songs
-            group.leave()
-            print("songs loaded!")
-        }
-
-        // The idea here is that if it loads too fast it looks janky so make
-        // everything wait at least one second?
-        group.enter()
-        DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 0.2) {
-            group.leave()
-            print("paused one second!")
-        }
-
-        group.notify(queue: .main) { [weak self] in
-            let songListVC = SongListTableViewController()
-            songListVC.title = searchTerm
-            songListVC.songs = theseSongs
-            self?.removeSpinnerView()
-            self?.navigationController?.navigationBar.isHidden = false
-            self?.navigationController?.pushViewController(songListVC, animated: true)
-        }
-    }
-
-    func createSpinnerView() {
-        addChild(spinner)
-        spinner.view.frame = view.frame
-        view.addSubview(spinner.view)
-        spinner.didMove(toParent: self)
-    }
-
-    func removeSpinnerView() {
-        spinner.willMove(toParent: nil)
-        spinner.view.removeFromSuperview()
-        spinner.removeFromParent()
+        navigationController?.navigationBar.isHidden = false
+        navigationController?.pushViewController(songListVC, animated: true)
     }
 }
 

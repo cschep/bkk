@@ -8,47 +8,41 @@
 
 import UIKit
 
-class SpinnerViewController: UIViewController {
-    var spinner = UIActivityIndicatorView(style: .large)
-    var spinningKetten = UIImageView(image: UIImage(named: "ketten_small_white"))
-
-    override func loadView() {
-        view = UIView()
-        view.backgroundColor = UIColor(white: 0, alpha: 0.7)
-
-        let rotation = CABasicAnimation(keyPath: "transform.rotation.z")
-        rotation.toValue = NSNumber(value: Double.pi * 2)
-        rotation.duration = 1
-        rotation.isCumulative = true
-        rotation.repeatCount = .greatestFiniteMagnitude
-        rotation.isRemovedOnCompletion = false
-        spinningKetten.layer.add(rotation, forKey: "rotationAnimation")
-
-        spinningKetten.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(spinningKetten)
-
-        NSLayoutConstraint.activate([
-            spinningKetten.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            spinningKetten.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-        ])
-    }
-}
-
 class SongListTableViewController: UITableViewController {
-    var songs: [Song] = []
+    enum State {
+        case loading
+        case empty
+        case loaded
+    }
 
-    init() {
-        super.init(style: .plain)
+    let spinner = SpinnerViewController()
+
+    var state: State = .loading {
+        didSet {
+            switch state {
+            case .loading:
+                DispatchQueue.main.async {
+                    self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.spinner.view)
+                }
+            case .loaded, .empty:
+                DispatchQueue.main.async {
+                    self.navigationItem.rightBarButtonItem = nil
+                    self.tableView.reloadData()
+                }
+            }
+        }
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+
+    var songs: [Song] = []
+    var searchTerm: String?
+    var searchBy: String?
+    var isPrivate: Bool?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.register(SubtitleTableViewCell.self, forCellReuseIdentifier: "SongCell")
+        title = searchTerm
     }
 
     // MARK: - Table view data source
@@ -58,10 +52,15 @@ class SongListTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if songs.count == 0 {
-            self.tableView.setEmptyMessage("nothing found!")
-        } else {
-            self.tableView.restore()
+        switch state {
+        case .loaded, .empty:
+            if songs.count == 0 {
+                self.tableView.setEmptyMessage("nothing found!")
+            } else {
+                self.tableView.restore()
+            }
+        case .loading:
+            break
         }
 
         return songs.count
@@ -96,7 +95,8 @@ class SongListTableViewController: UITableViewController {
         randomize()
     }
 
-    @objc // this is a target -> action selector
+    @objc // this is a target -> action selector -- this currently does NOT use the var state = .loading paradigm -- this WILL bite your ass
+    // croms: *maniac cackle*
     func randomize() {
         Song.songs(for: "", searchBy: "", isRandom: true) { [weak self] songs in
             self?.songs = songs
@@ -104,6 +104,18 @@ class SongListTableViewController: UITableViewController {
                 self?.tableView.refreshControl?.endRefreshing()
                 self?.tableView.reloadData()
             }
+        }
+    }
+
+    func startLoading() {
+        guard let searchTerm = searchTerm,
+              let searchBy = searchBy,
+              let isPrivate = isPrivate else { return }
+
+        state = .loading
+        Song.songs(for: searchTerm, searchBy: searchBy, isRandom: false, isPrivate: isPrivate) { [weak self] songs in
+            self?.songs = songs
+            self?.state = .loaded
         }
     }
 }

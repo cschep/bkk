@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		834DE11A15DC83160050139B /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 834DE11915DC83160050139B /* Settings.bundle */; };
+		9509122129F0C85B006C2FBD /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9509122029F0C85B006C2FBD /* SpinnerViewController.swift */; };
 		950BE27228A2C13C00EE1D87 /* FolderPickerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 950BE25528A2C13C00EE1D87 /* FolderPickerTableViewController.m */; };
 		950BE27328A2C13C00EE1D87 /* YTTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 950BE25628A2C13C00EE1D87 /* YTTableViewCell.m */; };
 		950BE27528A2C13C00EE1D87 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 950BE25828A2C13C00EE1D87 /* LaunchScreen.storyboard */; };
@@ -41,6 +42,7 @@
 /* Begin PBXFileReference section */
 		834DE11915DC83160050139B /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		9509122029F0C85B006C2FBD /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		950BE25028A2C10600EE1D87 /* BabyKetten-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "BabyKetten-Bridging-Header.h"; path = "BabyKetten/App/BabyKetten-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		950BE25528A2C13C00EE1D87 /* FolderPickerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FolderPickerTableViewController.m; path = BabyKetten/ViewControllers/FolderPickerTableViewController.m; sourceTree = SOURCE_ROOT; };
 		950BE25628A2C13C00EE1D87 /* YTTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YTTableViewCell.m; path = BabyKetten/ViewControllers/YTTableViewCell.m; sourceTree = SOURCE_ROOT; };
@@ -160,6 +162,7 @@
 				950BE25628A2C13C00EE1D87 /* YTTableViewCell.m */,
 				950BE26628A2C13C00EE1D87 /* YTTableViewCell.xib */,
 				952FD83628B323E000CF7AC8 /* SearchViewController.swift */,
+				9509122029F0C85B006C2FBD /* SpinnerViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				950BE27328A2C13C00EE1D87 /* YTTableViewCell.m in Sources */,
 				950BE29128A2C17E00EE1D87 /* Date.m in Sources */,
 				959BBC822934008E001B31CB /* Songbook.swift in Sources */,
+				9509122129F0C85B006C2FBD /* SpinnerViewController.swift in Sources */,
 				95FB780629E765F00073D428 /* UITableView+EmptyMessage.swift in Sources */,
 				950BE28428A2C13C00EE1D87 /* BKKViewController.m in Sources */,
 				950BE27228A2C13C00EE1D87 /* FolderPickerTableViewController.m in Sources */,

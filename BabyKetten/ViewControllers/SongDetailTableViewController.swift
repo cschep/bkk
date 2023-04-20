@@ -183,6 +183,7 @@ class SongDetailTableViewController: UITableViewController {
         indexPath.section == 2 ? 56 : 44
     }
 
+    //TODO: this won't have a loader ever - does that matter?
     private func artistSearch() {
         Song.songs(for: song.artist, searchBy: "artist", isRandom: false) { songs in
             DispatchQueue.main.async { [weak self] in
