@@ -20,10 +20,6 @@ NSString* const kGoogleCalendarAPIKey = @"AIzaSyC3RJ8eZ4AXCect-2RUdWMEUSdoJMOA0d
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-	self.activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
-    self.activityIndicator.color = [UIColor blackColor];
-	[self.activityIndicator hidesWhenStopped];
-    
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self
                        action:@selector(loadDates)
@@ -31,7 +27,8 @@ NSString* const kGoogleCalendarAPIKey = @"AIzaSyC3RJ8eZ4AXCect-2RUdWMEUSdoJMOA0d
 
     self.refreshControl = refreshControl;
 
-	UIBarButtonItem* barButton = [[UIBarButtonItem alloc] initWithCustomView:self.activityIndicator];
+    SpinnerViewController *spinner = [[SpinnerViewController alloc] init];
+    UIBarButtonItem* barButton = [[UIBarButtonItem alloc] initWithCustomView:spinner.view];
 	[self navigationItem].rightBarButtonItem = barButton;
     
     [self startLoadingUI];
@@ -39,12 +36,11 @@ NSString* const kGoogleCalendarAPIKey = @"AIzaSyC3RJ8eZ4AXCect-2RUdWMEUSdoJMOA0d
 }
 
 - (void)startLoadingUI {
-    [self.activityIndicator startAnimating];
-	self.navigationItem.title = @"Loading...";
+	self.navigationItem.title = @"loading...";
 }
 
 - (void)stopLoadingUI {
-    [self.activityIndicator stopAnimating];
+    self.navigationItem.rightBarButtonItem = nil;
     [self.refreshControl endRefreshing];
 }
 

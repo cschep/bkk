@@ -40,7 +40,9 @@ extension UITableView {
     }
 
     func restore() {
-        self.backgroundView = nil
         self.separatorStyle = .singleLine
+        UIView.animate(withDuration: 0.3) {
+            self.backgroundView?.alpha = 0
+        }
     }
 }

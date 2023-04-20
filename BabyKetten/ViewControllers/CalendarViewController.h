@@ -11,6 +11,5 @@
 @interface CalendarViewController : UITableViewController
 
 @property (strong) NSMutableArray *dateList;
-@property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
 
 @end

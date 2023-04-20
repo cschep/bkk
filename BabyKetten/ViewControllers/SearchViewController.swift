@@ -138,30 +138,21 @@ class SearchViewController: UIViewController {
         title = "Search"
     }
 
-    @objc
-    func dismissKeyboard() {
-//        searchBar.resignFirstResponder()
-        view.endEditing(true)
-    }
-
+    //TODO: push the vc to a loading state or loading state then push - the button can be hit multiple times and if the net is slow it's worse and worse
     func search(isLive: Bool = false) {
-        if let searchTerm = searchBar.text {
+        // TODO: brand?
+        guard let searchTerm = searchBar.text else { return }
+        let scopes = ["artist", "title"]
+        let searchBy = scopes[searchToggle.selectedSegmentIndex]
 
-            // TODO: brand here?
-            let scopes = ["artist", "title"]
-            let searchBy = scopes[searchToggle.selectedSegmentIndex]
+        let songListVC = SongListTableViewController()
+        songListVC.searchTerm = searchTerm
+        songListVC.searchBy = searchBy
+        songListVC.isPrivate = privateRoomSwitch.isOn
+        songListVC.startLoading()
 
-            Song.songs(for: searchTerm, searchBy: searchBy, isRandom: false, isPrivate: privateRoomSwitch.isOn, isLive: isLive) { songs in
-                DispatchQueue.main.async { [weak self] in
-                    let songListVC = SongListTableViewController()
-                    songListVC.songs = songs
-                    songListVC.title = searchTerm
-                    songListVC.tableView.reloadData()
-                    self?.navigationController?.navigationBar.isHidden = false
-                    self?.navigationController?.pushViewController(songListVC, animated: true)
-                }
-            }
-        }
+        navigationController?.navigationBar.isHidden = false
+        navigationController?.pushViewController(songListVC, animated: true)
     }
 }
 
