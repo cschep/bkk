@@ -3,25 +3,22 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 53;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		274A09E255EB42CE96861F05 /* CalendarDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3840F9A635425CBF41EA49 /* CalendarDetailViewController.swift */; };
+		39FD1ACCB4894B53BF238164 /* YTTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47CACAF7D1249A0A9AFF70F /* YTTableViewCell.swift */; };
+		40AFE510FDC34A52ABACE4B0 /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC36F5A8F39465E87917245 /* CalendarEvent.swift */; };
 		834DE11A15DC83160050139B /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 834DE11915DC83160050139B /* Settings.bundle */; };
+		8F24C1EB76644A198B3ED766 /* YTSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D188F1173484BC286E3CC53 /* YTSearchTableViewController.swift */; };
 		9509122129F0C85B006C2FBD /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9509122029F0C85B006C2FBD /* SpinnerViewController.swift */; };
-		950BE27328A2C13C00EE1D87 /* YTTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 950BE25628A2C13C00EE1D87 /* YTTableViewCell.m */; };
 		950BE27528A2C13C00EE1D87 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 950BE25828A2C13C00EE1D87 /* LaunchScreen.storyboard */; };
-		950BE27D28A2C13C00EE1D87 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 950BE26428A2C13C00EE1D87 /* CalendarViewController.m */; };
-		950BE27E28A2C13C00EE1D87 /* YTTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 950BE26628A2C13C00EE1D87 /* YTTableViewCell.xib */; };
 		950BE27F28A2C13C00EE1D87 /* SongDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950BE26728A2C13C00EE1D87 /* SongDetailTableViewController.swift */; };
 		950BE28028A2C13C00EE1D87 /* SongListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950BE26B28A2C13C00EE1D87 /* SongListTableViewController.swift */; };
-		950BE28128A2C13C00EE1D87 /* CalendarDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 950BE26C28A2C13C00EE1D87 /* CalendarDetailViewController.m */; };
-		950BE28228A2C13C00EE1D87 /* KamikazeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 950BE26E28A2C13C00EE1D87 /* KamikazeViewController.m */; };
-		950BE28528A2C13C00EE1D87 /* YTSearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 950BE27128A2C13C00EE1D87 /* YTSearchTableViewController.m */; };
 		950BE28A28A2C16D00EE1D87 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950BE28728A2C16D00EE1D87 /* NetworkManager.swift */; };
 		950BE28B28A2C16D00EE1D87 /* CGRect+Sanity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950BE28828A2C16D00EE1D87 /* CGRect+Sanity.swift */; };
 		950BE28C28A2C16D00EE1D87 /* UIImageView+URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950BE28928A2C16D00EE1D87 /* UIImageView+URLRequest.swift */; };
-		950BE29128A2C17E00EE1D87 /* Date.m in Sources */ = {isa = PBXBuildFile; fileRef = 950BE28F28A2C17E00EE1D87 /* Date.m */; };
 		950BE29228A2C17E00EE1D87 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950BE29028A2C17E00EE1D87 /* Song.swift */; };
 		950BE29B28A35D8700EE1D87 /* Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950BE29A28A35D8700EE1D87 /* Favorites.swift */; };
 		952FD83728B323E000CF7AC8 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952FD83628B323E000CF7AC8 /* SearchViewController.swift */; };
@@ -32,35 +29,27 @@
 		9571B9F128A6B28100DC66C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9571B9F028A6B28100DC66C7 /* AppDelegate.swift */; };
 		9571B9F328A6B74E00DC66C7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9571B9F228A6B74E00DC66C7 /* SceneDelegate.swift */; };
 		95881A1929E3B6ED00CBD7A0 /* StorefrontCountries.plist in Resources */ = {isa = PBXBuildFile; fileRef = 95881A1829E3B6ED00CBD7A0 /* StorefrontCountries.plist */; };
-		A3A906CC9C1541C3A1FB3890 /* FolderPickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682149E71847495DBC3B7E41 /* FolderPickerTableViewController.swift */; };
 		95FB780629E765F00073D428 /* UITableView+EmptyMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FB780529E765F00073D428 /* UITableView+EmptyMessage.swift */; };
 		95FB780829E771B10073D428 /* InsetImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FB780729E771B10073D428 /* InsetImageTableViewCell.swift */; };
+		A3A906CC9C1541C3A1FB3890 /* FolderPickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682149E71847495DBC3B7E41 /* FolderPickerTableViewController.swift */; };
+		C4332BC36FC14828A5DE4447 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A849C0FE9894B218F74300E /* CalendarViewController.swift */; };
+		DF2CBD1D50F44735A782E6AE /* KamikazeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7606C39165364A4F92520ECC /* KamikazeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A849C0FE9894B218F74300E /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		5D188F1173484BC286E3CC53 /* YTSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YTSearchTableViewController.swift; sourceTree = "<group>"; };
+		682149E71847495DBC3B7E41 /* FolderPickerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderPickerTableViewController.swift; sourceTree = "<group>"; };
+		7606C39165364A4F92520ECC /* KamikazeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KamikazeViewController.swift; sourceTree = "<group>"; };
 		834DE11915DC83160050139B /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		9509122029F0C85B006C2FBD /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
-		950BE25028A2C10600EE1D87 /* BabyKetten-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "BabyKetten-Bridging-Header.h"; path = "BabyKetten/App/BabyKetten-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
-		950BE25628A2C13C00EE1D87 /* YTTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YTTableViewCell.m; path = BabyKetten/ViewControllers/YTTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		950BE25828A2C13C00EE1D87 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = BabyKetten/App/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
-		950BE25A28A2C13C00EE1D87 /* YTTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YTTableViewCell.h; path = BabyKetten/ViewControllers/YTTableViewCell.h; sourceTree = SOURCE_ROOT; };
-		950BE25B28A2C13C00EE1D87 /* KamikazeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KamikazeViewController.h; path = BabyKetten/ViewControllers/KamikazeViewController.h; sourceTree = SOURCE_ROOT; };
-		950BE26028A2C13C00EE1D87 /* YTSearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YTSearchTableViewController.h; path = BabyKetten/ViewControllers/YTSearchTableViewController.h; sourceTree = SOURCE_ROOT; };
-		950BE26128A2C13C00EE1D87 /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalendarViewController.h; path = BabyKetten/ViewControllers/CalendarViewController.h; sourceTree = SOURCE_ROOT; };
-		950BE26428A2C13C00EE1D87 /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CalendarViewController.m; path = BabyKetten/ViewControllers/CalendarViewController.m; sourceTree = SOURCE_ROOT; };
-		950BE26628A2C13C00EE1D87 /* YTTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = YTTableViewCell.xib; path = BabyKetten/ViewControllers/YTTableViewCell.xib; sourceTree = SOURCE_ROOT; };
 		950BE26728A2C13C00EE1D87 /* SongDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SongDetailTableViewController.swift; path = BabyKetten/ViewControllers/SongDetailTableViewController.swift; sourceTree = SOURCE_ROOT; };
-		950BE26828A2C13C00EE1D87 /* CalendarDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalendarDetailViewController.h; path = BabyKetten/ViewControllers/CalendarDetailViewController.h; sourceTree = SOURCE_ROOT; };
 		950BE26B28A2C13C00EE1D87 /* SongListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SongListTableViewController.swift; path = BabyKetten/ViewControllers/SongListTableViewController.swift; sourceTree = SOURCE_ROOT; };
-		950BE26C28A2C13C00EE1D87 /* CalendarDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CalendarDetailViewController.m; path = BabyKetten/ViewControllers/CalendarDetailViewController.m; sourceTree = SOURCE_ROOT; };
-		950BE26E28A2C13C00EE1D87 /* KamikazeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KamikazeViewController.m; path = BabyKetten/ViewControllers/KamikazeViewController.m; sourceTree = SOURCE_ROOT; };
-		950BE27128A2C13C00EE1D87 /* YTSearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YTSearchTableViewController.m; path = BabyKetten/ViewControllers/YTSearchTableViewController.m; sourceTree = SOURCE_ROOT; };
 		950BE28728A2C16D00EE1D87 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkManager.swift; path = BabyKetten/Util/NetworkManager.swift; sourceTree = SOURCE_ROOT; };
 		950BE28828A2C16D00EE1D87 /* CGRect+Sanity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CGRect+Sanity.swift"; path = "BabyKetten/Util/CGRect+Sanity.swift"; sourceTree = SOURCE_ROOT; };
 		950BE28928A2C16D00EE1D87 /* UIImageView+URLRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImageView+URLRequest.swift"; path = "BabyKetten/Util/UIImageView+URLRequest.swift"; sourceTree = SOURCE_ROOT; };
-		950BE28E28A2C17E00EE1D87 /* Date.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Date.h; path = BabyKetten/Models/Date.h; sourceTree = SOURCE_ROOT; };
-		950BE28F28A2C17E00EE1D87 /* Date.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Date.m; path = BabyKetten/Models/Date.m; sourceTree = SOURCE_ROOT; };
 		950BE29028A2C17E00EE1D87 /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Song.swift; path = BabyKetten/Models/Song.swift; sourceTree = SOURCE_ROOT; };
 		950BE29A28A35D8700EE1D87 /* Favorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorites.swift; sourceTree = "<group>"; };
 		9512834528A2BDE400809E1D /* baby ketten.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "baby ketten.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,9 +64,11 @@
 		9571B9F728AD4C1F00DC66C7 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		9571B9F828AD4C2A00DC66C7 /* Beta.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Beta.xcconfig; sourceTree = "<group>"; };
 		95881A1829E3B6ED00CBD7A0 /* StorefrontCountries.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = StorefrontCountries.plist; sourceTree = "<group>"; };
-		682149E71847495DBC3B7E41 /* FolderPickerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderPickerTableViewController.swift; sourceTree = "<group>"; };
 		95FB780529E765F00073D428 /* UITableView+EmptyMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+EmptyMessage.swift"; sourceTree = "<group>"; };
 		95FB780729E771B10073D428 /* InsetImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetImageTableViewCell.swift; sourceTree = "<group>"; };
+		9E3840F9A635425CBF41EA49 /* CalendarDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDetailViewController.swift; sourceTree = "<group>"; };
+		D47CACAF7D1249A0A9AFF70F /* YTTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YTTableViewCell.swift; sourceTree = "<group>"; };
+		DAC36F5A8F39465E87917245 /* CalendarEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEvent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,7 +116,6 @@
 				9571B9F028A6B28100DC66C7 /* AppDelegate.swift */,
 				9571B9F228A6B74E00DC66C7 /* SceneDelegate.swift */,
 				950BE25828A2C13C00EE1D87 /* LaunchScreen.storyboard */,
-				950BE25028A2C10600EE1D87 /* BabyKetten-Bridging-Header.h */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -133,21 +123,15 @@
 		950BE25328A2C11E00EE1D87 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				950BE26828A2C13C00EE1D87 /* CalendarDetailViewController.h */,
-				950BE26C28A2C13C00EE1D87 /* CalendarDetailViewController.m */,
-				950BE26128A2C13C00EE1D87 /* CalendarViewController.h */,
-				950BE26428A2C13C00EE1D87 /* CalendarViewController.m */,
+				9E3840F9A635425CBF41EA49 /* CalendarDetailViewController.swift */,
+				1A849C0FE9894B218F74300E /* CalendarViewController.swift */,
 				9571B9E928A4AF4700DC66C7 /* FavoritesListTableViewController.swift */,
 				682149E71847495DBC3B7E41 /* FolderPickerTableViewController.swift */,
-				950BE25B28A2C13C00EE1D87 /* KamikazeViewController.h */,
-				950BE26E28A2C13C00EE1D87 /* KamikazeViewController.m */,
+				7606C39165364A4F92520ECC /* KamikazeViewController.swift */,
 				950BE26728A2C13C00EE1D87 /* SongDetailTableViewController.swift */,
 				950BE26B28A2C13C00EE1D87 /* SongListTableViewController.swift */,
-				950BE26028A2C13C00EE1D87 /* YTSearchTableViewController.h */,
-				950BE27128A2C13C00EE1D87 /* YTSearchTableViewController.m */,
-				950BE25A28A2C13C00EE1D87 /* YTTableViewCell.h */,
-				950BE25628A2C13C00EE1D87 /* YTTableViewCell.m */,
-				950BE26628A2C13C00EE1D87 /* YTTableViewCell.xib */,
+				5D188F1173484BC286E3CC53 /* YTSearchTableViewController.swift */,
+				D47CACAF7D1249A0A9AFF70F /* YTTableViewCell.swift */,
 				952FD83628B323E000CF7AC8 /* SearchViewController.swift */,
 				9509122029F0C85B006C2FBD /* SpinnerViewController.swift */,
 			);
@@ -168,8 +152,7 @@
 		950BE28D28A2C17600EE1D87 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				950BE28E28A2C17E00EE1D87 /* Date.h */,
-				950BE28F28A2C17E00EE1D87 /* Date.m */,
+				DAC36F5A8F39465E87917245 /* CalendarEvent.swift */,
 				950BE29028A2C17E00EE1D87 /* Song.swift */,
 				950BE29A28A35D8700EE1D87 /* Favorites.swift */,
 			);
@@ -254,7 +237,6 @@
 			files = (
 				953A473428A20288001F6449 /* Assets.xcassets in Resources */,
 				950BE27528A2C13C00EE1D87 /* LaunchScreen.storyboard in Resources */,
-				950BE27E28A2C13C00EE1D87 /* YTTableViewCell.xib in Resources */,
 				95881A1929E3B6ED00CBD7A0 /* StorefrontCountries.plist in Resources */,
 				834DE11A15DC83160050139B /* Settings.bundle in Resources */,
 			);
@@ -268,11 +250,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9571B9F128A6B28100DC66C7 /* AppDelegate.swift in Sources */,
-				950BE27328A2C13C00EE1D87 /* YTTableViewCell.m in Sources */,
-				950BE29128A2C17E00EE1D87 /* Date.m in Sources */,
+				39FD1ACCB4894B53BF238164 /* YTTableViewCell.swift in Sources */,
+				40AFE510FDC34A52ABACE4B0 /* CalendarEvent.swift in Sources */,
 				9509122129F0C85B006C2FBD /* SpinnerViewController.swift in Sources */,
 				95FB780629E765F00073D428 /* UITableView+EmptyMessage.swift in Sources */,
-				950BE28428A2C13C00EE1D87 /* BKKViewController.m in Sources */,
 				9571B9F328A6B74E00DC66C7 /* SceneDelegate.swift in Sources */,
 				950BE28028A2C13C00EE1D87 /* SongListTableViewController.swift in Sources */,
 				9571B9EA28A4AF4700DC66C7 /* FavoritesListTableViewController.swift in Sources */,
@@ -280,14 +261,14 @@
 				9571B9EF28A4BCE700DC66C7 /* Value1TableViewCell.swift in Sources */,
 				950BE28B28A2C16D00EE1D87 /* CGRect+Sanity.swift in Sources */,
 				950BE29B28A35D8700EE1D87 /* Favorites.swift in Sources */,
-				950BE28128A2C13C00EE1D87 /* CalendarDetailViewController.m in Sources */,
-				950BE27D28A2C13C00EE1D87 /* CalendarViewController.m in Sources */,
-				950BE28228A2C13C00EE1D87 /* KamikazeViewController.m in Sources */,
+				274A09E255EB42CE96861F05 /* CalendarDetailViewController.swift in Sources */,
+				C4332BC36FC14828A5DE4447 /* CalendarViewController.swift in Sources */,
+				DF2CBD1D50F44735A782E6AE /* KamikazeViewController.swift in Sources */,
 				950BE29228A2C17E00EE1D87 /* Song.swift in Sources */,
 				95FB780829E771B10073D428 /* InsetImageTableViewCell.swift in Sources */,
 				952FD83728B323E000CF7AC8 /* SearchViewController.swift in Sources */,
 				950BE28A28A2C16D00EE1D87 /* NetworkManager.swift in Sources */,
-				950BE28528A2C13C00EE1D87 /* YTSearchTableViewController.m in Sources */,
+				8F24C1EB76644A198B3ED766 /* YTSearchTableViewController.swift in Sources */,
 				9571B9ED28A4B89100DC66C7 /* SubtitleTableViewCell.swift in Sources */,
 				950BE28C28A2C16D00EE1D87 /* UIImageView+URLRequest.swift in Sources */,
 				950BE27F28A2C13C00EE1D87 /* SongDetailTableViewController.swift in Sources */,
@@ -320,7 +301,6 @@
 				PRODUCT_MODULE_NAME = BabyKetten;
 				PRODUCT_NAME = "baby ketten";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "BabyKetten/App/BabyKetten-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -349,7 +329,6 @@
 				PRODUCT_MODULE_NAME = BabyKetten;
 				PRODUCT_NAME = "baby ketten";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "BabyKetten/App/BabyKetten-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -390,7 +369,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER)";
@@ -425,7 +404,6 @@
 				PRODUCT_MODULE_NAME = BabyKetten;
 				PRODUCT_NAME = "baby ketten";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "BabyKetten/App/BabyKetten-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -467,7 +445,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
@@ -514,7 +492,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(PRODUCT_BUNDLE_IDENTIFIER)";

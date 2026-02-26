@@ -5,7 +5,7 @@
 //  Created by Christopher Schepman on 8/21/22.
 //
 
-import Foundation
+import UIKit
 
 class SearchViewController: UIViewController {
     let searchBar: UITextField = {

@@ -8,11 +8,10 @@
 
 import Foundation
 
-public class NetworkManager : NSObject {
+class NetworkManager {
     static let defaultSession = URLSession(configuration: .default)
     static var dataTask: URLSessionDataTask?
 
-    @objc
     static func GET(_ url: URL, completionHandler: @escaping (Any?) -> ()) {
         if dataTask != nil {
             dataTask?.cancel()
@@ -42,7 +41,6 @@ public class NetworkManager : NSObject {
         dataTask?.resume()
     }
 
-    @objc
     static func GET(urlString: String, completionHandler: @escaping (Any?) -> ()) {
         GET(URL(string: urlString)!, completionHandler: completionHandler)
     }

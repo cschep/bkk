@@ -7,6 +7,9 @@
 
 // purloined from: https://stackoverflow.com/questions/15746745/handling-an-empty-uitableview-print-a-friendly-message
 // specifically this is for BKK obviously but -- might be copy and pastable ya know?
+
+import UIKit
+
 extension UITableView {
     func setEmptyMessage(_ message: String) {
         let bgView = UIView(frame: .init(x: 0, y: 0, width: bounds.size.width, height: bounds.size.height))
