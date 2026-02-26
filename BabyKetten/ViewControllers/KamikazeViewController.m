@@ -45,7 +45,7 @@
 }
 
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
-	if (event.type == UIEventSubtypeMotionShake && !self.running) {
+	if (event.subtype == UIEventSubtypeMotionShake && !self.running) {
 		[self kamikazeKetten];
 	}
 }
