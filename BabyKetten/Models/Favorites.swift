@@ -7,9 +7,8 @@
 
 import Foundation
 
-@objc public class FavoritesRootFolder: NSObject {
-    @objc public static let name: String = "_root_bkk_folder_"
-    override private init() {}
+enum FavoritesRootFolder {
+    static let name = "_root_bkk_folder_"
 }
 
 public class Favorites {
