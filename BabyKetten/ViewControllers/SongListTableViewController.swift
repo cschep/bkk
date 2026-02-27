@@ -45,17 +45,17 @@ class SongListTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    override func numberOfSections(in _: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         switch state {
         case .loaded, .empty:
             if songs.count == 0 {
-                self.tableView.setEmptyMessage("nothing found!")
+                tableView.setEmptyMessage("nothing found!")
             } else {
-                self.tableView.restore()
+                tableView.restore()
             }
         case .loading:
             break
@@ -70,7 +70,7 @@ class SongListTableViewController: UITableViewController {
         let song = songs[indexPath.row]
         cell.textLabel?.text = song.title
         cell.detailTextLabel?.text = song.subtitle
-        cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator;
+        cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
 
         return cell
     }
@@ -81,7 +81,7 @@ class SongListTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: false)
     }
 
-    @objc //TODO: this is called by the kamikaze vc which is written in obj-c
+    @objc // TODO: this is called by the kamikaze vc which is written in obj-c
     func setupRandom() {
         tableView.backgroundView = nil
         refreshControl = UIRefreshControl()

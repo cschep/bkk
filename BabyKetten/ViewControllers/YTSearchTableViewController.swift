@@ -16,7 +16,8 @@ class YTSearchTableViewController: UITableViewController {
         Task {
             let json = await NetworkManager.GET(url)
             if let dict = json as? [String: Any],
-               let items = dict["items"] as? [[String: Any]] {
+               let items = dict["items"] as? [[String: Any]]
+            {
                 self.videos = items
             }
             self.navigationItem.title = self.videos.isEmpty ? "Not Found!" : "Results"
@@ -32,7 +33,7 @@ class YTSearchTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         videos.count
     }
 
@@ -47,7 +48,8 @@ class YTSearchTableViewController: UITableViewController {
             if let thumbnails = snippet["thumbnails"] as? [String: Any],
                let defaultThumb = thumbnails["default"] as? [String: Any],
                let urlString = defaultThumb["url"] as? String,
-               let url = URL(string: urlString) {
+               let url = URL(string: urlString)
+            {
                 cell.myImageView.setImage(from: url, placeholder: UIImage(named: "ketten_small_white")!)
             }
         }
@@ -55,7 +57,7 @@ class YTSearchTableViewController: UITableViewController {
         return cell
     }
 
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    override func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
         75
     }
 
@@ -63,7 +65,8 @@ class YTSearchTableViewController: UITableViewController {
         let video = videos[indexPath.row]
         if let id = video["id"] as? [String: Any],
            let videoId = id["videoId"] as? String,
-           let url = URL(string: "https://youtube.com/watch?v=\(videoId)") {
+           let url = URL(string: "https://youtube.com/watch?v=\(videoId)")
+        {
             UIApplication.shared.open(url)
         }
         tableView.deselectRow(at: indexPath, animated: false)

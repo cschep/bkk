@@ -6,13 +6,11 @@
 //
 //
 
-import UIKit
 import StoreKit
+import UIKit
 
 class SongDetailHeaderView: UIView {
-    let imageView: UIImageView = {
-        return UIImageView(image: UIImage(named:"ketten_small_white.png"))
-    }()
+    let imageView: UIImageView = .init(image: UIImage(named: "ketten_small_white.png"))
 
     let titleLabel: UILabel = {
         let l = UILabel()
@@ -27,7 +25,7 @@ class SongDetailHeaderView: UIView {
         return l
     }()
 
-    override init(frame: CGRect) {
+    override init(frame _: CGRect) {
         super.init(frame: .zero)
 
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -53,7 +51,8 @@ class SongDetailHeaderView: UIView {
         NSLayoutConstraint.activate(constraints)
     }
 
-    required init?(coder: NSCoder) {
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
         fatalError()
     }
 }
@@ -62,9 +61,7 @@ class SongDetailTableViewController: UITableViewController {
     var onArtistSearch: ((String) -> Void)?
     var onYouTubeSearch: ((String) -> Void)?
 
-    let headerView: SongDetailHeaderView = {
-        return SongDetailHeaderView()
-    }()
+    let headerView: SongDetailHeaderView = .init()
 
     let song: Song
     let cloudServiceController = SKCloudServiceController()
@@ -75,7 +72,8 @@ class SongDetailTableViewController: UITableViewController {
         tableView.tintColor = .systemRed
     }
 
-    required init?(coder: NSCoder) {
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
         fatalError()
     }
 
@@ -90,20 +88,21 @@ class SongDetailTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-    override func numberOfSections(in tableView: UITableView) -> Int {
+
+    override func numberOfSections(in _: UITableView) -> Int {
         3
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         2
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
         cell.accessoryType = .none
 
-        if (indexPath.section == 0) {
-            if (indexPath.row == 0) {
+        if indexPath.section == 0 {
+            if indexPath.row == 0 {
                 cell.textLabel!.text = "Favorite"
 
                 if song.isFavorite {
@@ -111,21 +110,21 @@ class SongDetailTableViewController: UITableViewController {
                 } else {
                     cell.accessoryType = .none
                 }
-            } else if (indexPath.row == 1) {
+            } else if indexPath.row == 1 {
                 cell.textLabel!.text = "More By This Artist"
             }
-        } else if (indexPath.section == 1) {
-            if (indexPath.row == 0) {
+        } else if indexPath.section == 1 {
+            if indexPath.row == 0 {
                 cell.textLabel!.text = "Lyrics Search"
-            } else if (indexPath.row == 1) {
+            } else if indexPath.row == 1 {
                 cell.textLabel!.text = "YouTube Search"
             }
-        } else if (indexPath.section == 2) {
+        } else if indexPath.section == 2 {
             cell = InsetImageTableViewCell()
-            if (indexPath.row == 0) {
+            if indexPath.row == 0 {
                 cell.imageView?.image = UIImage(named: "apple_music_icon_red")
                 cell.textLabel?.text = "Apple Music"
-            } else if (indexPath.row == 1) {
+            } else if indexPath.row == 1 {
                 cell.imageView?.image = UIImage(named: "spotify_icon_green")
                 cell.textLabel?.text = "Spotify"
             }
@@ -146,21 +145,20 @@ class SongDetailTableViewController: UITableViewController {
         if indexPath.section == 0 {
             if indexPath.row == 0 {
                 toggleFavorite()
-            } else if (indexPath.row == 1) {
+            } else if indexPath.row == 1 {
                 artistSearch()
             }
-        } else if (indexPath.section == 1) {
-            if (indexPath.row == 0) {
+        } else if indexPath.section == 1 {
+            if indexPath.row == 0 {
                 lyricsSearch()
-            } else if (indexPath.row == 1) {
+            } else if indexPath.row == 1 {
                 youTubeSearch()
             }
 
-
-        } else if (indexPath.section == 2) {
-            if (indexPath.row == 0) {
+        } else if indexPath.section == 2 {
+            if indexPath.row == 0 {
                 appleMusicSearch()
-            } else if (indexPath.row == 1) {
+            } else if indexPath.row == 1 {
                 spotifySearch()
             }
         }
@@ -168,8 +166,8 @@ class SongDetailTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if (section == 0) {
+    override func tableView(_: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0 {
             headerView.titleLabel.text = song.title
             headerView.artistLabel.text = "- \(song.subtitle)"
 
@@ -178,11 +176,11 @@ class SongDetailTableViewController: UITableViewController {
         return nil
     }
 
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         section == 0 ? 116 : 24
     }
 
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    override func tableView(_: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         indexPath.section == 2 ? 56 : 44
     }
 
@@ -209,9 +207,10 @@ class SongDetailTableViewController: UITableViewController {
             ]
 
             let result = await NetworkManager.GET(urlComponents.url!)
-            if let result = result as? Dictionary<String, Any>,
-               let results = result["results"] as? Array<Dictionary<String, Any>>,
-               let first = results.first, let trackViewUrl = first["trackViewUrl"] {
+            if let result = result as? [String: Any],
+               let results = result["results"] as? [[String: Any]],
+               let first = results.first, let trackViewUrl = first["trackViewUrl"]
+            {
                 let appleMusicDeepLink = "\(trackViewUrl)&mt=1&app=music"
                 await UIApplication.shared.open(URL(string: appleMusicDeepLink)!)
             }

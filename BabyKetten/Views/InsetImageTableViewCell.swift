@@ -8,13 +8,14 @@
 import UIKit
 
 class InsetImageTableViewCell: UITableViewCell {
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    override init(style _: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
         imageView?.contentMode = .scaleAspectFit
         separatorInset = UIEdgeInsets.zero
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 

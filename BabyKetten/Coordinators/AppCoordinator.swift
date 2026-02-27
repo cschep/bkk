@@ -7,7 +7,7 @@ class AppCoordinator: Coordinator {
     let tabBarController = UITabBarController()
 
     init() {
-        self.navigationController = UINavigationController()
+        navigationController = UINavigationController()
     }
 
     func start() {

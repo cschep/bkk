@@ -1,5 +1,5 @@
-import UIKit
 import MapKit
+import UIKit
 
 class CalendarDetailViewController: UIViewController, MKMapViewDelegate {
     private let event: CalendarEvent
@@ -14,7 +14,8 @@ class CalendarDetailViewController: UIViewController, MKMapViewDelegate {
         super.init(nibName: nil, bundle: nil)
     }
 
-    required init?(coder: NSCoder) {
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -70,7 +71,7 @@ class CalendarDetailViewController: UIViewController, MKMapViewDelegate {
 
     // MARK: - MKMapViewDelegate
 
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+    func mapView(_: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let pin = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "pin")
         pin.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
         pin.canShowCallout = true
@@ -78,12 +79,12 @@ class CalendarDetailViewController: UIViewController, MKMapViewDelegate {
         return pin
     }
 
-    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+    func mapView(_: MKMapView, annotationView _: MKAnnotationView, calloutAccessoryControlTapped _: UIControl) {
         guard let placemark = currentPlacemark else { return }
         let destination = MKMapItem(placemark: placemark)
         let current = MKMapItem.forCurrentLocation()
         MKMapItem.openMaps(with: [current, destination], launchOptions: [
-            MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving
+            MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving,
         ])
     }
 

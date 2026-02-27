@@ -7,7 +7,7 @@
 
 import UIKit
 
-//TODO: does this need to be a VC or just a view? this is tiny for barbuttons right now?
+// TODO: does this need to be a VC or just a view? this is tiny for barbuttons right now?
 class SpinnerViewController: UIViewController {
     var spinningKetten = UIImageView(image: UIImage(named: "ketten_small_white"))
 

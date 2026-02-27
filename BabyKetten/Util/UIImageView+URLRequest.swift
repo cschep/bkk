@@ -1,5 +1,5 @@
 //
-//  UIImage+URL.swift
+//  UIImageView+URLRequest.swift
 //  Baby Ketten
 //
 //  Created by Christopher Schepman on 11/27/16.

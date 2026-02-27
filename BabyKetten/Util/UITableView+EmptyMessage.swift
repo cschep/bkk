@@ -29,21 +29,21 @@ extension UITableView {
         messageLabel.translatesAutoresizingMaskIntoConstraints = false
         bgView.addSubview(messageLabel)
 
-        self.backgroundView = bgView
+        backgroundView = bgView
 
         let constraints = [
             imageView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
             imageView.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
             messageLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor),
-            messageLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor)
+            messageLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
         ]
         NSLayoutConstraint.activate(constraints)
 
-        self.separatorStyle = .none
+        separatorStyle = .none
     }
 
     func restore() {
-        self.separatorStyle = .singleLine
+        separatorStyle = .singleLine
         UIView.animate(withDuration: 0.3) {
             self.backgroundView?.alpha = 0
         }

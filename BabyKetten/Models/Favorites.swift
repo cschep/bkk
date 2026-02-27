@@ -20,7 +20,7 @@ public class Favorites {
     private static let migratedKey = "bkk_favorites_migrated"
     private static let oldDefaultsKey = "favorites"
 
-    private var db: FavoritesDB  = [FavoritesRootFolder.name: []]
+    private var db: FavoritesDB = [FavoritesRootFolder.name: []]
     private var defaults = UserDefaults.standard
 
     private var documentsDirectory: URL {
@@ -51,7 +51,6 @@ public class Favorites {
         if defaults.bool(forKey: Favorites.migratedKey) == false {
             migrate()
         }
-
     }
 
     func save() {
@@ -67,7 +66,6 @@ public class Favorites {
         // if there are old favorites in user defaults migrate them to the new system
         if let oldfavorites = UserDefaults.standard.array(forKey: Favorites.oldDefaultsKey) as? [[String: String]] {
             for fave in oldfavorites {
-
                 // has to have a title
                 guard let title = fave["title"] else {
                     continue
@@ -122,7 +120,7 @@ public class Favorites {
             .sorted()
     }
 
-    // save after all adds and removes
+    /// save after all adds and removes
     func add(song: Song, folderName: String = FavoritesRootFolder.name) {
         guard isFavorite(song) == false else { return } // prevent dupes
         db[folderName]?.append(song)
@@ -130,7 +128,7 @@ public class Favorites {
     }
 
     func add(folderName: String) {
-        guard db.keys.contains(folderName) == false else { return } //do not overwrite key
+        guard db.keys.contains(folderName) == false else { return } // do not overwrite key
         db[folderName] = []
         save()
     }

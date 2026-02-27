@@ -36,23 +36,24 @@ class FavoritesListTableViewController: UITableViewController {
         super.init(style: .plain)
     }
 
-    required init?(coder: NSCoder) {
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        editButton = UIBarButtonItem(barButtonSystemItem:.edit, target:self, action:#selector(editFavesAction))
-        addButton = UIBarButtonItem(barButtonSystemItem:.add, target:self, action:#selector(addAction))
-        cancelButton = UIBarButtonItem(barButtonSystemItem:.cancel, target:self, action:#selector(cancelAction))
-        deleteButton = UIBarButtonItem(barButtonSystemItem:.trash, target:self, action:#selector(deleteAction))
-        moveButton = UIBarButtonItem(barButtonSystemItem:.action, target:self, action:#selector(moveAction))
+        editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editFavesAction))
+        addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addAction))
+        cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelAction))
+        deleteButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteAction))
+        moveButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(moveAction))
 
         deleteButton.isEnabled = false
         moveButton.isEnabled = false
 
-        navigationItem.rightBarButtonItem = editButton;
+        navigationItem.rightBarButtonItem = editButton
 
         // if were in root, allow adding and show the default title
         if currentFolder == FavoritesRootFolder.name {
@@ -76,9 +77,9 @@ class FavoritesListTableViewController: UITableViewController {
 
     @objc
     func addAction() {
-        let alertController = UIAlertController(title:"New Folder", message:"name of the new folder?", preferredStyle:.alert)
+        let alertController = UIAlertController(title: "New Folder", message: "name of the new folder?", preferredStyle: .alert)
         alertController.addTextField()
-        alertController.addAction(UIAlertAction(title:"create", style:.default, handler: { [weak self] action in
+        alertController.addAction(UIAlertAction(title: "create", style: .default, handler: { [weak self] _ in
             guard let folderName = alertController.textFields?[0].text else {
                 return
             }
@@ -87,7 +88,7 @@ class FavoritesListTableViewController: UITableViewController {
         }))
 
         alertController.addAction(UIAlertAction(title: "cancel", style: .cancel))
-        self.present(alertController, animated: true)
+        present(alertController, animated: true)
     }
 
     @objc
@@ -108,7 +109,7 @@ class FavoritesListTableViewController: UITableViewController {
 
         let message = selectedRows.count == 1 ? "Are you sure you want to remove this item?" : "Are you sure you want to remove these items?"
         let actionSheet = UIAlertController(title: "", message: message, preferredStyle: .actionSheet)
-        actionSheet.addAction(UIAlertAction(title: "OK", style: .destructive) { [weak self] action in
+        actionSheet.addAction(UIAlertAction(title: "OK", style: .destructive) { [weak self] _ in
             guard let selectedRows = self?.tableView.indexPathsForSelectedRows else { return }
 
             // go through the selected favorites
@@ -127,9 +128,9 @@ class FavoritesListTableViewController: UITableViewController {
 
     func deleteFavorite(at indexPath: IndexPath) {
         switch displayList[indexPath.row] {
-        case .song(let song):
+        case let .song(song):
             Favorites.shared.remove(song)
-        case .folder(let folderName):
+        case let .folder(folderName):
             Favorites.shared.remove(folderName: folderName)
         }
     }
@@ -138,7 +139,7 @@ class FavoritesListTableViewController: UITableViewController {
     func moveAction() {
         guard let selectedRows = tableView.indexPathsForSelectedRows else { return }
         let selectedSongs = selectedRows.compactMap { indexPath -> Song? in
-            if case .song(let song) = displayList[indexPath.row] { return song }
+            if case let .song(song) = displayList[indexPath.row] { return song }
             return nil
         }
         let folderList = ["🔙 to faves!"] + Favorites.shared.folders()
@@ -147,11 +148,11 @@ class FavoritesListTableViewController: UITableViewController {
 
     func updateButtonsToMatchTableState() {
         if tableView.isEditing {
-            navigationItem.rightBarButtonItem = self.cancelButton;
-            navigationItem.setLeftBarButtonItems([self.deleteButton, self.moveButton], animated:true)
+            navigationItem.rightBarButtonItem = cancelButton
+            navigationItem.setLeftBarButtonItems([deleteButton, moveButton], animated: true)
 
-            //TODO: selected rows
-            if let selectedRows = self.tableView.indexPathsForSelectedRows {
+            // TODO: selected rows
+            if let selectedRows = tableView.indexPathsForSelectedRows {
                 let containsFolder = selectedRows.contains { indexPath in
                     switch displayList[indexPath.row] {
                     case .song:
@@ -168,11 +169,11 @@ class FavoritesListTableViewController: UITableViewController {
             if currentFolder == FavoritesRootFolder.name {
                 navigationItem.setLeftBarButtonItems([addButton], animated: true)
             } else {
-                navigationItem.leftBarButtonItems = nil;
+                navigationItem.leftBarButtonItems = nil
             }
 
-            self.editButton.isEnabled = Favorites.shared.favorites().count > 0;
-            self.navigationItem.rightBarButtonItem = self.editButton;
+            editButton.isEnabled = Favorites.shared.favorites().count > 0
+            navigationItem.rightBarButtonItem = editButton
         }
     }
 
@@ -187,34 +188,34 @@ class FavoritesListTableViewController: UITableViewController {
         super.setEditing(editing, animated: animated)
     }
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    override func numberOfSections(in _: UITableView) -> Int {
         1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         if displayList.count == 0 {
-            self.tableView.setEmptyMessage("no favorites yet!")
+            tableView.setEmptyMessage("no favorites yet!")
         } else {
-            self.tableView.restore()
+            tableView.restore()
         }
 
         return displayList.count
     }
 
-    override func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath) {
+    override func tableView(_: UITableView, willBeginEditingRowAt _: IndexPath) {
         editButton.isEnabled = false
     }
 
-    override func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
+    override func tableView(_: UITableView, didEndEditingRowAt _: IndexPath?) {
         editButton.isEnabled = true
     }
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if !self.tableView.isEditing {
+    override func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if !tableView.isEditing {
             switch displayList[indexPath.row] {
-            case .song(let song):
+            case let .song(song):
                 onSongSelected?(song)
-            case .folder(let folderName):
+            case let .folder(folderName):
                 onFolderSelected?(folderName)
             }
         } else {
@@ -223,7 +224,7 @@ class FavoritesListTableViewController: UITableViewController {
         }
     }
 
-    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didDeselectRowAt _: IndexPath) {
         if tableView.isEditing {
             updateButtonsToMatchTableState()
         }
@@ -231,24 +232,24 @@ class FavoritesListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch displayList[indexPath.row] {
-        case .song(let song):
+        case let .song(song):
             let cell = tableView.dequeueReusableCell(withIdentifier: "FavoritesCell", for: indexPath)
             cell.textLabel?.text = song.title
             cell.detailTextLabel?.text = song.artist
             cell.accessoryType = .disclosureIndicator
             return cell
-        case .folder(let folderName):
+        case let .folder(folderName):
             let cell = tableView.dequeueReusableCell(withIdentifier: "FolderCell", for: indexPath)
             cell.textLabel?.text = String(format: "📁 %@", folderName)
             cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 18)
             let count = Favorites.shared.favorites(in: folderName).count
             cell.detailTextLabel?.text = String(format: "%i", count)
-            cell.accessoryType = .disclosureIndicator;
+            cell.accessoryType = .disclosureIndicator
             return cell
         }
     }
 
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             deleteFavorite(at: indexPath)
 
@@ -257,4 +258,3 @@ class FavoritesListTableViewController: UITableViewController {
         }
     }
 }
-

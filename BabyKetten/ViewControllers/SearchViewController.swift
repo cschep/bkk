@@ -66,8 +66,8 @@ class SearchViewController: UIViewController {
         return l
     }()
 
-    // croms thinks this is so funny
-    // have we always had to do this on apple or is this a hack around?
+    /// croms thinks this is so funny
+    /// have we always had to do this on apple or is this a hack around?
     let tapCatcher: UIView = {
         let v = UIView()
         v.translatesAutoresizingMaskIntoConstraints = false
@@ -140,8 +140,8 @@ class SearchViewController: UIViewController {
         title = "Search"
     }
 
-    //TODO: push the vc to a loading state or loading state then push - the button can be hit multiple times and if the net is slow it's worse and worse
-    func search(isLive: Bool = false) {
+    // TODO: push the vc to a loading state or loading state then push - the button can be hit multiple times and if the net is slow it's worse and worse
+    func search(isLive _: Bool = false) {
         // TODO: brand?
         guard let searchTerm = searchBar.text else { return }
         let scopes = ["artist", "title"]
@@ -152,7 +152,7 @@ class SearchViewController: UIViewController {
 }
 
 extension SearchViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_: UITextField) -> Bool {
         search()
         return true
     }

@@ -70,10 +70,12 @@ class CalendarViewController: UITableViewController {
 
                 if let start = entry["start"] as? [String: Any] {
                     if let dateStr = start["date"] as? String,
-                       let date = dayFormatter.date(from: dateStr) {
+                       let date = dayFormatter.date(from: dateStr)
+                    {
                         event.when = printDateFormatter.string(from: date)
                     } else if let dateTimeStr = start["dateTime"] as? String,
-                              let date = timeFormatter.date(from: dateTimeStr) {
+                              let date = timeFormatter.date(from: dateTimeStr)
+                    {
                         event.when = printDateFormatter.string(from: date)
                     } else {
                         event.when = "no date!"
@@ -94,26 +96,26 @@ class CalendarViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    override func numberOfSections(in _: UITableView) -> Int {
         dateList.count
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         1
     }
 
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_: UITableView, titleForHeaderInSection section: Int) -> String? {
         dateList[section].when
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "Cell")
         cell.textLabel?.text = dateList[indexPath.section].title
         cell.accessoryType = .disclosureIndicator
         return cell
     }
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         let event = dateList[indexPath.section]
         if !event.location.isEmpty {
             onEventSelected?(event)

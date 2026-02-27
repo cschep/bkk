@@ -26,15 +26,17 @@ class KamikazeViewController: UIViewController, CAAnimationDelegate {
         navigationController?.navigationBar.isHidden = true
     }
 
-    override var canBecomeFirstResponder: Bool { true }
+    override var canBecomeFirstResponder: Bool {
+        true
+    }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         becomeFirstResponder()
     }
 
-    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-        if event?.subtype == .motionShake && !running {
+    override func motionEnded(_: UIEvent.EventSubtype, with event: UIEvent?) {
+        if event?.subtype == .motionShake, !running {
             kamikazeKetten()
         }
     }
@@ -74,7 +76,7 @@ class KamikazeViewController: UIViewController, CAAnimationDelegate {
         kamikazeImage.layer.add(alphaDown, forKey: "alpha fade out")
     }
 
-    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+    func animationDidStop(_: CAAnimation, finished _: Bool) {
         navigationController?.view.alpha = 0.0
         navigationController?.navigationBar.isHidden = false
 
