@@ -73,7 +73,7 @@ public class Favorites {
 
                 // if it has an artist, it's a song so we add it!
                 if let artist = fave["artist"] {
-                    let song = Song(artist: artist, title: title)
+                    let song = Song(artist: artist, title: title, brand: "")
                     add(song: song)
                     if let folderName = fave["folder"] {
                         // if it was in a folder then add the folder and move the song to it

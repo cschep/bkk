@@ -9,12 +9,6 @@
 import Foundation
 
 struct Song: Codable, Equatable {
-    init(artist: String, title: String, brand: String? = nil) {
-        self.artist = artist
-        self.title = title
-        self.brand = brand
-    }
-
     let artist: String
     let title: String
     let brand: String?
