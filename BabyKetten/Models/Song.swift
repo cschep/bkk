@@ -57,7 +57,8 @@ extension Song {
     private static let urlComponents = URLComponents(string: "https://bkk.schepman.org")
     private static let session = URLSession.shared
 
-    static func songs(for term: String, searchBy: String, isRandom: Bool, isPrivate: Bool = false, isLive: Bool = false, completion: @escaping ([Song]) -> Void) {
+    static func songs(for term: String, searchBy: String, isRandom: Bool,
+                       isPrivate: Bool = false, isLive: Bool = false) async -> [Song] {
         var searchURLComponents = urlComponents
 
         if isRandom {
@@ -75,19 +76,11 @@ extension Song {
         }
         let searchURL = searchURLComponents!.url!
 
-        session.dataTask(with: searchURL, completionHandler: { data, _, _ in
-            var songs: [Song] = []
+        guard let (data, _) = try? await session.data(from: searchURL),
+              let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [[String: String]] else {
+            return []
+        }
 
-            if let data = data,
-            let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [[String: String]] {
-                for result in json {
-                    if let song = Song(json: result) {
-                        songs.append(song)
-                    }
-                }
-            }
-
-            completion(songs)
-        }).resume()
+        return json.compactMap { Song(json: $0) }
     }
 }

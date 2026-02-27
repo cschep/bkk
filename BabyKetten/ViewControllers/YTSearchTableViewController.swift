@@ -13,16 +13,14 @@ class YTSearchTableViewController: UITableViewController {
 
         guard let url = youTubeSearchURL() else { return }
 
-        NetworkManager.GET(url) { [weak self] json in
-            guard let self else { return }
+        Task {
+            let json = await NetworkManager.GET(url)
             if let dict = json as? [String: Any],
                let items = dict["items"] as? [[String: Any]] {
                 self.videos = items
             }
-            DispatchQueue.main.async {
-                self.navigationItem.title = self.videos.isEmpty ? "Not Found!" : "Results"
-                self.tableView.reloadData()
-            }
+            self.navigationItem.title = self.videos.isEmpty ? "Not Found!" : "Results"
+            self.tableView.reloadData()
         }
     }
 

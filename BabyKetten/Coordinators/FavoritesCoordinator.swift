@@ -48,17 +48,15 @@ class FavoritesCoordinator: Coordinator {
     }
 
     private func showArtistSongs(artist: String) {
-        Song.songs(for: artist, searchBy: "artist", isRandom: false) { [weak self] songs in
-            DispatchQueue.main.async {
-                guard let self else { return }
-                let vc = SongListTableViewController()
-                vc.songs = songs
-                vc.title = artist
-                vc.onSongSelected = { [weak self] song in
-                    self?.showSongDetail(song: song)
-                }
-                self.navigationController.pushViewController(vc, animated: true)
+        Task {
+            let songs = await Song.songs(for: artist, searchBy: "artist", isRandom: false)
+            let vc = SongListTableViewController()
+            vc.songs = songs
+            vc.title = artist
+            vc.onSongSelected = { [weak self] song in
+                self?.showSongDetail(song: song)
             }
+            self.navigationController.pushViewController(vc, animated: true)
         }
     }
 

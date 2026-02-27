@@ -21,14 +21,10 @@ class SongListTableViewController: UITableViewController {
         didSet {
             switch state {
             case .loading:
-                DispatchQueue.main.async {
-                    self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.spinner.view)
-                }
+                navigationItem.rightBarButtonItem = UIBarButtonItem(customView: spinner.view)
             case .loaded, .empty:
-                DispatchQueue.main.async {
-                    self.navigationItem.rightBarButtonItem = nil
-                    self.tableView.reloadData()
-                }
+                navigationItem.rightBarButtonItem = nil
+                tableView.reloadData()
             }
         }
     }
@@ -97,12 +93,11 @@ class SongListTableViewController: UITableViewController {
     @objc // this is a target -> action selector -- this currently does NOT use the var state = .loading paradigm -- this WILL bite your ass
     // croms: *maniac cackle*
     func randomize() {
-        Song.songs(for: "", searchBy: "", isRandom: true) { [weak self] songs in
-            self?.songs = songs
-            DispatchQueue.main.async {
-                self?.tableView.refreshControl?.endRefreshing()
-                self?.tableView.reloadData()
-            }
+        Task {
+            let songs = await Song.songs(for: "", searchBy: "", isRandom: true)
+            self.songs = songs
+            self.tableView.refreshControl?.endRefreshing()
+            self.tableView.reloadData()
         }
     }
 
@@ -112,9 +107,10 @@ class SongListTableViewController: UITableViewController {
               let isPrivate = isPrivate else { return }
 
         state = .loading
-        Song.songs(for: searchTerm, searchBy: searchBy, isRandom: false, isPrivate: isPrivate) { [weak self] songs in
-            self?.songs = songs
-            self?.state = .loaded
+        Task {
+            let songs = await Song.songs(for: searchTerm, searchBy: searchBy, isRandom: false, isPrivate: isPrivate)
+            self.songs = songs
+            self.state = .loaded
         }
     }
 }

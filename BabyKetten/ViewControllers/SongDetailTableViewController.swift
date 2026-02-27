@@ -191,33 +191,29 @@ class SongDetailTableViewController: UITableViewController {
     }
 
     private func appleMusicSearch() {
-        // TODO: this is fairly hideous and has no error checking (cromslor says to remind you that it works!)
-        SKCloudServiceController.requestAuthorization { status in
-            self.cloudServiceController.requestCapabilities { capabilities, capabilitiesError in
-                self.cloudServiceController.requestStorefrontIdentifier { storeFrontIdentifier, storeFrontError in
-                    guard let storeFrontIdentifier = storeFrontIdentifier, storeFrontError == nil else { return }
-                    var identifier = storeFrontIdentifier.components(separatedBy: ",").first
-                    identifier = identifier?.components(separatedBy: "-").first
-                    let countryCode = self.countryCode(with: identifier)
+        Task {
+            let _ = await SKCloudServiceController.requestAuthorization()
+            let _ = try? await cloudServiceController.requestCapabilities()
+            guard let storeFrontIdentifier = try? await cloudServiceController.requestStorefrontIdentifier() else { return }
+            var identifier = storeFrontIdentifier.components(separatedBy: ",").first
+            identifier = identifier?.components(separatedBy: "-").first
+            let countryCode = countryCode(with: identifier)
 
-                    var urlComponents = URLComponents(string: "https://itunes.apple.com/search")!
-                    urlComponents.queryItems = [
-                        URLQueryItem(name: "isStreamable", value: "true"),
-                        URLQueryItem(name: "term", value: "\(self.song.artist) \(self.song.title)"),
-                        URLQueryItem(name: "limit", value: "5"),
-                        URLQueryItem(name: "country", value: countryCode),
-                    ]
+            var urlComponents = URLComponents(string: "https://itunes.apple.com/search")!
+            urlComponents.queryItems = [
+                URLQueryItem(name: "media", value: "music"),
+                URLQueryItem(name: "isStreamable", value: "true"),
+                URLQueryItem(name: "term", value: "\(song.artist) \(song.title)"),
+                URLQueryItem(name: "limit", value: "5"),
+                URLQueryItem(name: "country", value: countryCode),
+            ]
 
-                    NetworkManager.GET(urlComponents.url!) { result in
-                        if let result = result as? Dictionary<String, Any>,
-                           let results = result["results"] as? Array<Dictionary<String, Any>>,
-                           let first = results.first, let trackViewUrl = first["trackViewUrl"] {
-
-                            let appleMusicDeepLink = "\(trackViewUrl)&mt=1&app=music"
-                            UIApplication.shared.open(URL(string: appleMusicDeepLink)!)
-                        }
-                    }
-                }
+            let result = await NetworkManager.GET(urlComponents.url!)
+            if let result = result as? Dictionary<String, Any>,
+               let results = result["results"] as? Array<Dictionary<String, Any>>,
+               let first = results.first, let trackViewUrl = first["trackViewUrl"] {
+                let appleMusicDeepLink = "\(trackViewUrl)&mt=1&app=music"
+                await UIApplication.shared.open(URL(string: appleMusicDeepLink)!)
             }
         }
     }
@@ -234,7 +230,13 @@ class SongDetailTableViewController: UITableViewController {
 
     private func spotifySearch() {
         guard let spotifyURL = URL(string: "spotify:search:\(getSearchString())") else { return }
-        UIApplication.shared.open(spotifyURL)
+        UIApplication.shared.open(spotifyURL) { success in
+            if !success {
+                let alert = UIAlertController(title: "Spotify Not Installed", message: "Install Spotify to search for songs.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                self.present(alert, animated: true)
+            }
+        }
     }
 
     private func lyricsSearch() {

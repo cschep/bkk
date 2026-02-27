@@ -26,8 +26,8 @@ class CalendarViewController: UITableViewController {
     @objc private func loadDates() {
         guard let url = calendarURL() else { return }
 
-        NetworkManager.GET(url) { [weak self] json in
-            guard let self else { return }
+        Task {
+            let json = await NetworkManager.GET(url)
             if let dict = json as? [String: Any] {
                 self.parseDates(from: dict)
             } else {
@@ -86,12 +86,10 @@ class CalendarViewController: UITableViewController {
 
         dateList = events
 
-        DispatchQueue.main.async {
-            self.navigationItem.title = events.isEmpty ? "not found!" : "calendar"
-            self.navigationItem.rightBarButtonItem = nil
-            self.refreshControl?.endRefreshing()
-            self.tableView.reloadData()
-        }
+        navigationItem.title = events.isEmpty ? "not found!" : "calendar"
+        navigationItem.rightBarButtonItem = nil
+        refreshControl?.endRefreshing()
+        tableView.reloadData()
     }
 
     // MARK: - Table view data source
