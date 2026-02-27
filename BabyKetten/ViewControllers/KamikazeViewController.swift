@@ -1,6 +1,8 @@
 import UIKit
 
 class KamikazeViewController: UIViewController, CAAnimationDelegate {
+    var onShakeComplete: (() -> Void)?
+
     private let kamikazeImage = UIImageView(image: UIImage(named: "kamikaze_ketten_background"))
     private var running = false
 
@@ -76,9 +78,7 @@ class KamikazeViewController: UIViewController, CAAnimationDelegate {
         navigationController?.view.alpha = 0.0
         navigationController?.navigationBar.isHidden = false
 
-        let songList = SongListTableViewController()
-        songList.setupRandom()
-        navigationController?.pushViewController(songList, animated: false)
+        onShakeComplete?()
 
         UIView.animate(withDuration: 0.7, delay: 0.1, options: .curveEaseInOut) {
             self.navigationController?.view.alpha = 1.0

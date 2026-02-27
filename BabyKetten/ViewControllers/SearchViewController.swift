@@ -8,6 +8,8 @@
 import UIKit
 
 class SearchViewController: UIViewController {
+    var onSearch: ((String, String, Bool) -> Void)?
+
     let searchBar: UITextField = {
         let tf = UITextField()
         tf.translatesAutoresizingMaskIntoConstraints = false
@@ -145,14 +147,7 @@ class SearchViewController: UIViewController {
         let scopes = ["artist", "title"]
         let searchBy = scopes[searchToggle.selectedSegmentIndex]
 
-        let songListVC = SongListTableViewController()
-        songListVC.searchTerm = searchTerm
-        songListVC.searchBy = searchBy
-        songListVC.isPrivate = privateRoomSwitch.isOn
-        songListVC.startLoading()
-
-        navigationController?.navigationBar.isHidden = false
-        navigationController?.pushViewController(songListVC, animated: true)
+        onSearch?(searchTerm, searchBy, privateRoomSwitch.isOn)
     }
 }
 

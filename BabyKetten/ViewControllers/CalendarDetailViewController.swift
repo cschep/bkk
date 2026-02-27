@@ -71,10 +71,10 @@ class CalendarDetailViewController: UIViewController, MKMapViewDelegate {
     // MARK: - MKMapViewDelegate
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        let pin = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
+        let pin = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "pin")
         pin.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
         pin.canShowCallout = true
-        pin.animatesDrop = true
+        pin.animatesWhenAdded = true
         return pin
     }
 

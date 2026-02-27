@@ -59,6 +59,9 @@ class SongDetailHeaderView: UIView {
 }
 
 class SongDetailTableViewController: UITableViewController {
+    var onArtistSearch: ((String) -> Void)?
+    var onYouTubeSearch: ((String) -> Void)?
+
     let headerView: SongDetailHeaderView = {
         return SongDetailHeaderView()
     }()
@@ -183,16 +186,8 @@ class SongDetailTableViewController: UITableViewController {
         indexPath.section == 2 ? 56 : 44
     }
 
-    //TODO: this won't have a loader ever - does that matter?
     private func artistSearch() {
-        Song.songs(for: song.artist, searchBy: "artist", isRandom: false) { songs in
-            DispatchQueue.main.async { [weak self] in
-                let vc = SongListTableViewController()
-                vc.songs = songs
-                vc.title = self?.song.artist
-                self?.navigationController?.pushViewController(vc, animated: true)
-            }
-        }
+        onArtistSearch?(song.artist)
     }
 
     private func appleMusicSearch() {
@@ -249,11 +244,7 @@ class SongDetailTableViewController: UITableViewController {
     }
 
     private func youTubeSearch() {
-        // the youtube controller does its own escaping
-        let vc = YTSearchTableViewController()
-        vc.searchString = "\(song.artist) \(song.title)"
-
-        navigationController?.pushViewController(vc, animated: true)
+        onYouTubeSearch?("\(song.artist) \(song.title)")
     }
 
     private func countryCode(with identifier: String?) -> String? {

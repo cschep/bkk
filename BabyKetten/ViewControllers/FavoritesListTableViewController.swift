@@ -13,6 +13,10 @@ enum DisplayFavorite {
 }
 
 class FavoritesListTableViewController: UITableViewController {
+    var onSongSelected: ((Song) -> Void)?
+    var onFolderSelected: ((String) -> Void)?
+    var onMoveRequested: (([Song], [String]) -> Void)?
+
     var currentFolder: String = FavoritesRootFolder.name
     var displayList: [DisplayFavorite] = Favorites.shared.displayFavorites()
 
@@ -132,16 +136,13 @@ class FavoritesListTableViewController: UITableViewController {
 
     @objc
     func moveAction() {
-        let vc = FolderPickerTableViewController()
-
-        // the first item is so you can move a song out of a folder to the base level
-        // there are no folders in folders
-        // -- should this be handled by the picker? does it matter?
-        vc.folderList = ["🔙 to faves!"] + Favorites.shared.folders()
-        vc.delegate = self;
-
-        let nc = UINavigationController(rootViewController: vc)
-        present(nc, animated: true)
+        guard let selectedRows = tableView.indexPathsForSelectedRows else { return }
+        let selectedSongs = selectedRows.compactMap { indexPath -> Song? in
+            if case .song(let song) = displayList[indexPath.row] { return song }
+            return nil
+        }
+        let folderList = ["🔙 to faves!"] + Favorites.shared.folders()
+        onMoveRequested?(selectedSongs, folderList)
     }
 
     func updateButtonsToMatchTableState() {
@@ -212,12 +213,9 @@ class FavoritesListTableViewController: UITableViewController {
         if !self.tableView.isEditing {
             switch displayList[indexPath.row] {
             case .song(let song):
-                let vc = SongDetailTableViewController(song: song)
-                navigationController?.pushViewController(vc, animated: true)
+                onSongSelected?(song)
             case .folder(let folderName):
-                let vc = FavoritesListTableViewController()
-                vc.currentFolder = folderName
-                navigationController?.pushViewController(vc, animated: true)
+                onFolderSelected?(folderName)
             }
         } else {
             // while editing update the buttons depending on if anything is selected
@@ -260,29 +258,3 @@ class FavoritesListTableViewController: UITableViewController {
     }
 }
 
-extension FavoritesListTableViewController: FolderPickerTableViewDelegate {
-    func folderPicked(_ folderName: String?) {
-        if let folderName = folderName {
-            // nothing selected? bail!
-            guard let selectedRows = tableView.indexPathsForSelectedRows else { return }
-
-            // go through the selected favorites
-            for selectionIndex in selectedRows {
-                let favoriteToMove = displayList[selectionIndex.row]
-                switch favoriteToMove {
-                case .song(let song):
-                    Favorites.shared.move(song: song, to: folderName)
-                case .folder:
-                    // you can't move folders
-                    break
-                }
-            }
-
-            refreshDisplayList()
-            setEditing(false, animated: true)
-            updateButtonsToMatchTableState()
-        } else {
-            setEditing(false, animated: true)
-        }
-    }
-}

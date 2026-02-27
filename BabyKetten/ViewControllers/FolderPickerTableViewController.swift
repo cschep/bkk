@@ -1,14 +1,10 @@
 import UIKit
 
-protocol FolderPickerTableViewDelegate: AnyObject {
-    func folderPicked(_ folderName: String?)
-}
-
 class FolderPickerTableViewController: UITableViewController {
     var folderList: [String] = []
     var selectedFolder: IndexPath?
 
-    weak var delegate: FolderPickerTableViewDelegate?
+    var onFolderPicked: ((String?) -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,12 +20,13 @@ class FolderPickerTableViewController: UITableViewController {
             let folderName = selectedFolder.row == 0
                 ? FavoritesRootFolder.name
                 : folderList[selectedFolder.row]
-            delegate?.folderPicked(folderName)
+            onFolderPicked?(folderName)
         }
         dismiss(animated: true)
     }
 
     @objc private func cancelAction() {
+        onFolderPicked?(nil)
         dismiss(animated: true)
     }
 

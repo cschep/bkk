@@ -1,6 +1,8 @@
 import UIKit
 
 class CalendarViewController: UITableViewController {
+    var onEventSelected: ((CalendarEvent) -> Void)?
+
     private var dateList: [CalendarEvent] = []
 
     private let seattleCalendarId = "b73eparqatr3h2160l7i298tas@group.calendar.google.com"
@@ -116,8 +118,7 @@ class CalendarViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let event = dateList[indexPath.section]
         if !event.location.isEmpty {
-            let detail = CalendarDetailViewController(event: event)
-            navigationController?.pushViewController(detail, animated: true)
+            onEventSelected?(event)
         }
     }
 }

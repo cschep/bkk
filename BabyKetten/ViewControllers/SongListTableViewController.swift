@@ -33,6 +33,8 @@ class SongListTableViewController: UITableViewController {
         }
     }
 
+    var onSongSelected: ((Song) -> Void)?
+
     var songs: [Song] = []
     var searchTerm: String?
     var searchBy: String?
@@ -79,10 +81,7 @@ class SongListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let song = songs[indexPath.row]
-
-        let vc = SongDetailTableViewController(song: song)
-        navigationController?.pushViewController(vc, animated: true)
-
+        onSongSelected?(song)
         tableView.deselectRow(at: indexPath, animated: false)
     }
 

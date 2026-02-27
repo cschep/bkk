@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA00000100000000000B0001 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000100000000000F0001 /* Coordinator.swift */; };
+		AA00000100000000000B0002 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000100000000000F0002 /* AppCoordinator.swift */; };
+		AA00000100000000000B0003 /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000100000000000F0003 /* SearchCoordinator.swift */; };
+		AA00000100000000000B0004 /* CalendarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000100000000000F0004 /* CalendarCoordinator.swift */; };
+		AA00000100000000000B0005 /* FavoritesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000100000000000F0005 /* FavoritesCoordinator.swift */; };
+		AA00000100000000000B0006 /* KamikazeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000100000000000F0006 /* KamikazeCoordinator.swift */; };
 		274A09E255EB42CE96861F05 /* CalendarDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3840F9A635425CBF41EA49 /* CalendarDetailViewController.swift */; };
 		39FD1ACCB4894B53BF238164 /* YTTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47CACAF7D1249A0A9AFF70F /* YTTableViewCell.swift */; };
 		40AFE510FDC34A52ABACE4B0 /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC36F5A8F39465E87917245 /* CalendarEvent.swift */; };
@@ -37,6 +43,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AA00000100000000000F0001 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		AA00000100000000000F0002 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		AA00000100000000000F0003 /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
+		AA00000100000000000F0004 /* CalendarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCoordinator.swift; sourceTree = "<group>"; };
+		AA00000100000000000F0005 /* FavoritesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoordinator.swift; sourceTree = "<group>"; };
+		AA00000100000000000F0006 /* KamikazeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KamikazeCoordinator.swift; sourceTree = "<group>"; };
 		1A849C0FE9894B218F74300E /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		5D188F1173484BC286E3CC53 /* YTSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YTSearchTableViewController.swift; sourceTree = "<group>"; };
 		682149E71847495DBC3B7E41 /* FolderPickerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderPickerTableViewController.swift; sourceTree = "<group>"; };
@@ -102,12 +114,26 @@
 			isa = PBXGroup;
 			children = (
 				950BE24C28A2C0F900EE1D87 /* App */,
+				AA00000100000000000G0001 /* Coordinators */,
 				950BE28D28A2C17600EE1D87 /* Models */,
 				950BE28628A2C16500EE1D87 /* Util */,
 				9571B9EB28A4B86D00DC66C7 /* Views */,
 				950BE25328A2C11E00EE1D87 /* ViewControllers */,
 			);
 			path = BabyKetten;
+			sourceTree = "<group>";
+		};
+		AA00000100000000000G0001 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				AA00000100000000000F0002 /* AppCoordinator.swift */,
+				AA00000100000000000F0004 /* CalendarCoordinator.swift */,
+				AA00000100000000000F0001 /* Coordinator.swift */,
+				AA00000100000000000F0005 /* FavoritesCoordinator.swift */,
+				AA00000100000000000F0006 /* KamikazeCoordinator.swift */,
+				AA00000100000000000F0003 /* SearchCoordinator.swift */,
+			);
+			path = Coordinators;
 			sourceTree = "<group>";
 		};
 		950BE24C28A2C0F900EE1D87 /* App */ = {
@@ -249,6 +275,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA00000100000000000B0001 /* Coordinator.swift in Sources */,
+				AA00000100000000000B0002 /* AppCoordinator.swift in Sources */,
+				AA00000100000000000B0003 /* SearchCoordinator.swift in Sources */,
+				AA00000100000000000B0004 /* CalendarCoordinator.swift in Sources */,
+				AA00000100000000000B0005 /* FavoritesCoordinator.swift in Sources */,
+				AA00000100000000000B0006 /* KamikazeCoordinator.swift in Sources */,
 				9571B9F128A6B28100DC66C7 /* AppDelegate.swift in Sources */,
 				39FD1ACCB4894B53BF238164 /* YTTableViewCell.swift in Sources */,
 				40AFE510FDC34A52ABACE4B0 /* CalendarEvent.swift in Sources */,
