@@ -9,15 +9,13 @@
 import UIKit
 
 extension UIImageView {
-    func setImage(withURLRequest request: URLRequest, placeholderImage: UIImage, success: @escaping (URLRequest, URLResponse, UIImage) -> ()) {
-        image = placeholderImage
+    func setImage(from url: URL, placeholder: UIImage) {
+        image = placeholder
 
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let data = data {
-                DispatchQueue.main.async {
-                    success(request, response!, UIImage(data: data)!)
-                }
-            }
-        }.resume()
+        Task {
+            guard let (data, _) = try? await URLSession.shared.data(from: url),
+                  let downloaded = UIImage(data: data) else { return }
+            self.image = downloaded
+        }
     }
 }

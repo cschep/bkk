@@ -9,7 +9,7 @@
 import Foundation
 
 struct Song: Codable, Equatable {
-    init(artist: String, title: String, brand: String = "") {
+    init(artist: String, title: String, brand: String? = nil) {
         self.artist = artist
         self.title = title
         self.brand = brand
@@ -17,10 +17,13 @@ struct Song: Codable, Equatable {
 
     let artist: String
     let title: String
-    let brand: String
+    let brand: String?
 
     var subtitle: String {
-        brand.isEmpty ? artist : "\(artist) (\(brand))"
+        if let brand, !brand.isEmpty {
+            return "\(artist) (\(brand))"
+        }
+        return artist
     }
 }
 
@@ -31,22 +34,6 @@ extension Song {
 
     func toggleFavorite() {
         Favorites.shared.toggleFavorite(self)
-    }
-}
-
-extension Song {
-    init?(json: [String: Any]) {
-        guard let artist = json["artist"] as? String,
-              let title = json["title"] as? String
-            else {
-                return nil
-        }
-
-        let brand = json["brand"] as? String ?? ""
-
-        self.artist = artist
-        self.title = title
-        self.brand = brand
     }
 }
 
@@ -77,10 +64,10 @@ extension Song {
         let searchURL = searchURLComponents!.url!
 
         guard let (data, _) = try? await session.data(from: searchURL),
-              let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [[String: String]] else {
+              let songs = try? JSONDecoder().decode([Song].self, from: data) else {
             return []
         }
 
-        return json.compactMap { Song(json: $0) }
+        return songs
     }
 }

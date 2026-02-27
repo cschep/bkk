@@ -48,10 +48,7 @@ class YTSearchTableViewController: UITableViewController {
                let defaultThumb = thumbnails["default"] as? [String: Any],
                let urlString = defaultThumb["url"] as? String,
                let url = URL(string: urlString) {
-                let request = URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad, timeoutInterval: 60)
-                cell.myImageView.setImage(withURLRequest: request, placeholderImage: UIImage(named: "ketten_small_white")!) { _, _, image in
-                    cell.myImageView.image = image
-                }
+                cell.myImageView.setImage(from: url, placeholder: UIImage(named: "ketten_small_white")!)
             }
         }
 
