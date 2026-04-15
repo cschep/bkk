@@ -40,8 +40,12 @@ class FolderPickerTableViewController: UITableViewController {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "FolderPickerCell")
         let title = folderList[indexPath.row]
 
-        cell.textLabel?.text = indexPath.row == 0 ? title : "📁 \(title)"
+        cell.textLabel?.text = title
         cell.textLabel?.font = .boldSystemFont(ofSize: 18)
+        if indexPath.row != 0 {
+            cell.imageView?.image = UIImage(systemName: "folder")
+            cell.imageView?.tintColor = .systemRed
+        }
 
         return cell
     }

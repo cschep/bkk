@@ -81,23 +81,24 @@ class SongListTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: false)
     }
 
-    @objc // TODO: this is called by the kamikaze vc which is written in obj-c
     func setupRandom() {
         tableView.backgroundView = nil
-        refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: #selector(randomize), for: UIControl.Event.valueChanged)
+        let refresh = UIRefreshControl()
+        refresh.addAction(UIAction { [weak self] _ in
+            self?.randomize()
+        }, for: .valueChanged)
+        refreshControl = refresh
         title = "kamikaze!"
         randomize()
     }
 
-    @objc // this is a target -> action selector -- this currently does NOT use the var state = .loading paradigm -- this WILL bite your ass
-    // croms: *maniac cackle*
+    // Intentionally bypasses the `state` machine: this path is driven by
+    // UIRefreshControl, which owns its own spinner.
     func randomize() {
         Task {
-            let songs = await Song.songs(for: "", searchBy: "", isRandom: true)
-            self.songs = songs
-            self.tableView.refreshControl?.endRefreshing()
-            self.tableView.reloadData()
+            songs = await Song.songs(for: "", searchBy: "", isRandom: true)
+            tableView.refreshControl?.endRefreshing()
+            tableView.reloadData()
         }
     }
 

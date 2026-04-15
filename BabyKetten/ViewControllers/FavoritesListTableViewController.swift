@@ -240,10 +240,12 @@ class FavoritesListTableViewController: UITableViewController {
             return cell
         case let .folder(folderName):
             let cell = tableView.dequeueReusableCell(withIdentifier: "FolderCell", for: indexPath)
-            cell.textLabel?.text = String(format: "📁 %@", folderName)
+            cell.imageView?.image = UIImage(systemName: "folder")
+            cell.imageView?.tintColor = .systemRed
+            cell.textLabel?.text = folderName
             cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 18)
             let count = Favorites.shared.favorites(in: folderName).count
-            cell.detailTextLabel?.text = String(format: "%i", count)
+            cell.detailTextLabel?.text = "\(count)"
             cell.accessoryType = .disclosureIndicator
             return cell
         }
